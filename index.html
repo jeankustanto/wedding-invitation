@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Jean & Dwi</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2c6e49;
+            --secondary-color: #4c956c;
+            --light-color: #f8f9fa;
+            --accent-color: #d4e8e0;
+            --text-color: #333;
+            --soft-pink: #f9e6e6;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+        
+        /* Marble Background */
+        .marble-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.8) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.6) 0%, transparent 30%),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.5) 0%, transparent 20%),
+                linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            z-index: -1;
+        }
+        
+        /* Islamic Pattern */
+        .islamic-pattern-top, .islamic-pattern-bottom {
+            position: relative;
+            height: 120px;
+            width: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .islamic-pattern-top {
+            margin-bottom: 30px;
+        }
+        
+        .islamic-pattern-bottom {
+            margin-top: 30px;
+            transform: rotate(180deg);
+        }
+        
+        .pattern-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--secondary-color);
+            opacity: 0.3;
+        }
+        
+        .pattern-line:nth-child(1) { top: 20px; }
+        .pattern-line:nth-child(2) { top: 40px; }
+        .pattern-line:nth-child(3) { top: 60px; }
+        .pattern-line:nth-child(4) { top: 80px; }
+        .pattern-line:nth-child(5) { top: 100px; }
+        
+        /* Magnolia Flowers */
+        .magnolia {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            z-index: 2;
+        }
+        
+        .magnolia-petals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .magnolia-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: #fffacd;
+            border-radius: 50%;
+            z-index: 3;
+        }
+        
+        .magnolia-1 {
+            top: 10px;
+            left: 10%;
+        }
+        
+        .magnolia-2 {
+            top: 30px;
+            right: 15%;
+        }
+        
+        .magnolia-3 {
+            top: 60px;
+            left: 30%;
+        }
+        
+        .magnolia-4 {
+            top: 20px;
+            right: 40%;
+        }
+        
+        /* Leaves */
+        .leaf {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background-color: #c8e6c9;
+            border-radius: 0 100% 0 100%;
+            transform: rotate(45deg);
+            z-index: 2;
+        }
+        
+        .leaf-1 {
+            top: 40px;
+            left: 20%;
+        }
+        
+        .leaf-2 {
+            top: 70px;
+            right: 25%;
+        }
+        
+        .leaf-3 {
+            top: 50px;
+            left: 60%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-color);
+            overflow: hidden;
+            padding: 50px 0;
+        }
+        
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+        
+        .couple-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 6rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+            line-height: 1;
+        }
+        
+        .wedding-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1s forwards;
+        }
+        
+        .salam-doa {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            color: var(--text-color);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1.5s forwards;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .save-the-date {
+            background-color: var(--soft-pink);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: 3px;
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 2s forwards;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .save-the-date:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-color: var(--soft-pink);
+        }
+        
+        /* Love Story Section */
+        .love-story-section {
+            padding: 80px 0;
+            background-color: white;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .story-card {
+            background-color: var(--light-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+        
+        .story-content {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            font-style: italic;
+        }
+        
+        /* Countdown Section */
+        .countdown-section {
+            padding: 80px 0;
+            background-color: var(--accent-color);
+        }
+        
+        .countdown-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px 20px;
+            min-width: 120px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .countdown-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Event Details Section */
+        .event-details {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .event-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .event-card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .event-card-body {
+            padding: 25px;
+        }
+        
+        .event-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .event-info i {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+            margin-top: 3px;
+        }
+        
+        .event-info-content {
+            flex: 1;
+        }
+        
+        .event-info-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        
+        .event-info-detail {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 80px 0;
+            background-color: var(--accent-color);
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* RSVP Section */
+        .rsvp-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.25rem rgba(76, 149, 108, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-color);
+            border-color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Gift Section */
+        .gift-section {
+            padding: 80px 0;
+            background-color: var(--accent-color);
+        }
+        
+        .gift-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--light-color);
+        }
+        
+        .gift-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gift-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .gift-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .account-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .copy-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* Guestbook Section */
+        .guestbook-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .guestbook-form {
+            max-width: 600px;
+            margin: 0 auto 50px;
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .guestbook-wall {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .wish-card {
+            background-color: var(--light-color);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .wish-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .wish-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .wish-name {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .wish-date {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .wish-message {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .couple-name {
+                font-size: 4rem;
+            }
+            
+            .countdown-item {
+                min-width: 100px;
+                padding: 15px;
+            }
+            
+            .countdown-number {
+                font-size: 2.5rem;
+            }
+            
+            .wedding-date {
+                font-size: 1.5rem;
+            }
+            
+            .salam-doa {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="marble-bg"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="islamic-pattern-top">
+            <div class="pattern-line"></div>
+            <div class="pattern-line"></div>
+            <div class="pattern-line"></div>
+            <div class="pattern-line"></div>
+            <div class="pattern-line"></div>
+            
+            <div class="magnolia magnolia-1">
+                <div class="magnolia-petals"></div>
+                <div class="magnolia-center"></div>
+            </div>
+            <div class="magnolia magnolia-2">
+                <div class="magnolia-petals"></div>
+                <div class="magnolia-center"></div>
+            </div>
+            <div class="magnolia magnolia-3">
+                <div class="magnolia-petals"></div>
+                <div class="magnolia-center"></div>
+            </div>
+            <div class="magnolia magnolia-4">
+                <div class="magnolia-petals"></div>
+                <div class="magnolia-center"></div>
+            </div>
+            
+            <div class="leaf leaf-1"></div>
+            <div class="leaf leaf-2"></div>
+            <div class="leaf leaf-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+            <h1 class="couple-name">Jean & Dwi</h1>
+            <p class="wedding-date">Sabtu, 8 Oktober 2025</p>
+            <p class="salam-doa">Assalamu'alaikum Warahmatullahi Wabarakatuh<br>
+            Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah, perkenankanlah kami merangkai kasih sayang yang Kau ciptakan di antara kami untuk membina mahligai pernikahan suci dan sakinah.</p>
+            <div class="save-the-date">SAVE THE DATE</div>
+        </div>
+        
+        <div class="islamic-pattern-bottom">
+            <div class="pattern-line"></div>
+            <div class="pattern-line"></div>
+            <div class="pattern-line"></div>
+            <div class="pattern-line"></div>
+            <div class="pattern-line"></div>
+            
+            <div class="magnolia magnolia-1">
+                <div class="magnolia-petals"></div>
+                <div class="magnolia-center"></div>
+            </div>
+            <div class="magnolia magnolia-2">
+                <div class="magnolia-petals"></div>
+                <div class="magnolia-center"></div>
+            </div>
+            <div class="magnolia magnolia-3">
+                <div class="magnolia-petals"></div>
+                <div class="magnolia-center"></div>
+            </div>
+            <div class="magnolia magnolia-4">
+                <div class="magnolia-petals"></div>
+                <div class="magnolia-center"></div>
+            </div>
+            
+            <div class="leaf leaf-1"></div>
+            <div class="leaf leaf-2"></div>
+            <div class="leaf leaf-3"></div>
+        </div>
+    </section>
+    
+    <!-- Love Story Section -->
+    <section class="love-story-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Love Story</h2>
+            
+            <div class="story-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="story-content">
+                    Di awal bulan Juni, dengan izin Allah, kami memulai langkah pertama menuju jalan yang diridhai-Nya. Bukan dengan janji manis, bukan pula dengan pertemuan tanpa arah, melainkan melalui ta'aruf — saling memperkenalkan diri dengan cara yang syar'i, saling bertukar CV, dan bertanya jawab tentang visi pernikahan.
+                </div>
+            </div>
+            
+            <div class="story-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="story-content">
+                    Hingga akhir bulan Juni, Allah tuntun kami melangkah pada proses nazhor, memandang satu sama lain dengan niat yang suci. Dari sana, hati kami semakin mantap untuk melangkah ke tahap berikutnya.
+                </div>
+            </div>
+            
+            <div class="story-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="story-content">
+                    Alhamdulillah, dengan ridha Allah, kami sampai pada proses khitbah. Saat itulah kami menyerahkan segala urusan kepada Allah, memohon agar keputusan ini menjadi jalan kebaikan dunia dan akhirat.
+                </div>
+            </div>
+            
+            <div class="story-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="story-content">
+                    Dan kini, dengan penuh syukur, kami menantikan hari yang Allah takdirkan, yakni 8 Oktober 2025, saat ikatan suci itu akan terjalin dalam bingkai akad nikah. Semoga Allah menjadikan pernikahan ini sebagai ladang ibadah, penuh sakinah, mawaddah, wa rahmah. 🤲
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <div class="container">
+            <h2 class="countdown-title" data-aos="fade-up">Menuju Hari Bahagia</h2>
+            <div class="countdown-container" data-aos="fade-up" data-aos-delay="100">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Hari</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Jam</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Menit</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Detik</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Event Details Section -->
+    <section class="event-details">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Detail Acara</h2>
+            
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                    <div class="event-card">
+                        <div class="event-card-header">
+                            <i class="fas fa-mosque"></i> Akad Nikah
+                        </div>
+                        <div class="event-card-body">
+                            <div class="event-info">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div class="event-info-content">
+                                    <div class="event-info-title">Hari, Tanggal</div>
+                                    <div class="event-info-detail">Sabtu, 8 Oktober 2025</div>
+                                </div>
+                            </div>
+                            <div class="event-info">
+                                <i class="fas fa-clock"></i>
+                                <div class="event-info-content">
+                                    <div class="event-info-title">Waktu</div>
+                                    <div class="event-info-detail">07:30 WIB</div>
+                                </div>
+                            </div>
+                            <div class="event-info">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="event-info-content">
+                                    <div class="event-info-title">Lokasi</div>
+                                    <div class="event-info-detail">Tempuran, Probolinggo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="event-card">
+                        <div class="event-card-header">
+                            <i class="fas fa-glass-cheers"></i> Resepsi
+                        </div>
+                        <div class="event-card-body">
+                            <div class="event-info">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div class="event-info-content">
+                                    <div class="event-info-title">Hari, Tanggal</div>
+                                    <div class="event-info-detail">Sabtu, 8 Oktober 2025</div>
+                                </div>
+                            </div>
+                            <div class="event-info">
+                                <i class="fas fa-clock"></i>
+                                <div class="event-info-content">
+                                    <div class="event-info-title">Waktu</div>
+                                    <div class="event-info-detail">11:00 - 16:00 WIB</div>
+                                </div>
+                            </div>
+                            <div class="event-info">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="event-info-content">
+                                    <div class="event-info-title">Lokasi</div>
+                                    <div class="event-info-detail">Tempuran, Probolinggo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Lokasi Acara</h2>
+            <div class="map-container" data-aos="fade-up" data-aos-delay="100">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.716636699481!2d113.220877314747!3d-7.759872994389326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6cc3d3e8d7b2f%3A0x9d5b8c9a8b8c9a8b!2sProbolinggo%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1629786547323!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RSVP Section -->
+    <section class="rsvp-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Konfirmasi Kehadiran</h2>
+            <div class="rsvp-form" data-aos="fade-up" data-aos-delay="100">
+                <form id="rsvpForm">
+                    <div class="mb-3">
+                        <label for="guestName" class="form-label">Nama Lengkap</label>
+                        <input type="text" class="form-control" id="guestName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="guestCount" class="form-label">Jumlah Tamu</label>
+                        <select class="form-select" id="guestCount" required>
+                            <option value="" selected disabled>Pilih jumlah tamu</option>
+                            <option value="1">1 Orang</option>
+                            <option value="2">2 Orang</option>
+                            <option value="3">3 Orang</option>
+                            <option value="4">4 Orang</option>
+                            <option value="5+">5+ Orang</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Konfirmasi Kehadiran</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="attendance" id="attendanceYes" value="yes" required>
+                                <label class="form-check-label" for="attendanceYes">Hadir</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="attendance" id="attendanceNo" value="no" required>
+                                <label class="form-check-label" for="attendanceNo">Tidak Hadir</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Kirim Konfirmasi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gift Section -->
+    <section class="gift-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Wedding Gift</h2>
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+                    <div class="gift-card">
+                        <h3 class="gift-card-title"><i class="fas fa-university"></i> Bank Transfer</h3>
+                        <div class="gift-info">
+                            <div>
+                                <strong>Bank Mandiri</strong>
+                                <p class="account-number">1370012345678</p>
+                                <p>a.n. Jean Dwi Kustanto</p>
+                            </div>
+                            <button class="copy-btn" onclick="copyAccountNumber('1370012345678')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="gift-card">
+                        <h3 class="gift-card-title"><i class="fas fa-wallet"></i> E-Wallet</h3>
+                        <div class="gift-info">
+                            <div>
+                                <strong>GoPay</strong>
+                                <p class="account-number">0812-3456-7890</p>
+                                <p>a.n. Pyjana Dwi Kusumawati</p>
+                            </div>
+                            <button class="copy-btn" onclick="copyAccountNumber('0812-3456-7890')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Guestbook Section -->
+    <section class="guestbook-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Ucapan & Doa</h2>
+            
+            <div class="guestbook-form" data-aos="fade-up" data-aos-delay="100">
+                <form id="wishForm">
+                    <div class="mb-3">
+                        <label for="wishName" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="wishName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="wishMessage" class="form-label">Ucapan & Doa</label>
+                        <textarea class="form-control" id="wishMessage" rows="3" required></textarea>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Kirim Ucapan</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="guestbook-wall" id="guestbookWall">
+                <!-- Sample wishes -->
+                <div class="wish-card" data-aos="fade-up">
+                    <div class="wish-header">
+                        <div class="wish-avatar">A</div>
+                        <div>
+                            <div class="wish-name">Ahmad</div>
+                            <div class="wish-date">2 hari yang lalu</div>
+                        </div>
+                    </div>
+                    <div class="wish-message">
+                        "Semoga pernikahan kalian langgeng hingga maut memisahkan. Bahagia selalu ya Jean dan Dwi!"
+                    </div>
+                </div>
+                
+                <div class="wish-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="wish-header">
+                        <div class="wish-avatar">S</div>
+                        <div>
+                            <div class="wish-name">Siti</div>
+                            <div class="wish-date">3 hari yang lalu</div>
+                        </div>
+                    </div>
+                    <div class="wish-message">
+                        "Selamat menempuh hidup baru! Semoga menjadi keluarga yang Sakinah, Mawaddah, Warahmah."
+                    </div>
+                </div>
+                
+                <div class="wish-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="wish-header">
+                        <div class="wish-avatar">R</div>
+                        <div>
+                            <div class="wish-name">Rizki</div>
+                            <div class="wish-date">5 hari yang lalu</div>
+                        </div>
+                    </div>
+                    <div class="wish-message">
+                        "Semoga Allah SWT selalu memberkati rumah tangga kalian. Aamiin."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h3 class="footer-title">Jean & Dwi</h3>
+                    <p>Terima kasih atas doa dan restunya</p>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="social-links">
+                        <a href="#" onclick="shareToWhatsApp()"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" onclick="shareToInstagram()"><i class="fab fa-instagram"></i></a>
+                        <a href="#" onclick="shareToFacebook()"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" onclick="shareToTwitter()"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Jean & Dwi Wedding. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Countdown Timer
+        function startCountdown() {
+            // Set the date we're counting down to
+            const countDownDate = new Date("Oct 8, 2025 07:30:00").getTime();
+            
+            // Update the count down every 1 second
+            const x = setInterval(function() {
+                // Get today's date and time
+                const now = new Date().getTime();
+                
+                // Find the distance between now and the count down date
+                const distance = countDownDate - now;
+                
+                // Time calculations for days, hours, minutes and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Display the result in the elements
+                document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+                
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("days").innerHTML = "00";
+                    document.getElementById("hours").innerHTML = "00";
+                    document.getElementById("minutes").innerHTML = "00";
+                    document.getElementById("seconds").innerHTML = "00";
+                }
+            }, 1000);
+        }
+        
+        // Start countdown when page loads
+        window.onload = startCountdown;
+        
+        // Copy Account Number
+        function copyAccountNumber(accountNumber) {
+            navigator.clipboard.writeText(accountNumber)
+                .then(() => {
+                    alert('Nomor rekening disalin: ' + accountNumber);
+                })
+                .catch(err => {
+                    console.error('Gagal menyalin: ', err);
+                });
+        }
+        
+        // RSVP Form Submission
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('guestName').value;
+            const count = document.getElementById('guestCount').value;
+            const attendance = document.querySelector('input[name="attendance"]:checked').value;
+            
+            // Show success message
+            alert('Terima kasih ' + name + '! Konfirmasi kehadiran Anda telah kami terima.');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Wish Form Submission
+        document.getElementById('wishForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('wishName').value;
+            const message = document.getElementById('wishMessage').value;
+            
+            // Create new wish card
+            const wishCard = document.createElement('div');
+            wishCard.className = 'wish-card';
+            wishCard.setAttribute('data-aos', 'fade-up');
+            
+            // Get first letter of name for avatar
+            const firstLetter = name.charAt(0).toUpperCase();
+            
+            // Set wish card HTML
+            wishCard.innerHTML = `
+                <div class="wish-header">
+                    <div class="wish-avatar">${firstLetter}</div>
+                    <div>
+                        <div class="wish-name">${name}</div>
+                        <div class="wish-date">Baru saja</div>
+                    </div>
+                </div>
+                <div class="wish-message">
+                    "${message}"
+                </div>
+            `;
+            
+            // Add to guestbook wall
+            const guestbookWall = document.getElementById('guestbookWall');
+            guestbookWall.insertBefore(wishCard, guestbookWall.firstChild);
+            
+            // Refresh AOS
+            AOS.refresh();
+            
+            // Show success message
+            alert('Terima kasih! Ucapan Anda telah terkirim.');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Share functions
+        function shareToWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Undangan Pernikahan Jean & Dwi');
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+        
+        function shareToFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+        
+        function shareToTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Undangan Pernikahan Jean & Dwi');
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+        }
+        
+        function shareToInstagram() {
+            // Instagram doesn't support direct URL sharing, so we'll just copy the URL to clipboard
+            navigator.clipboard.writeText(window.location.href)
+                .then(() => {
+                    alert('Link undangan telah disalin! Silakan tempel di bio Instagram Anda.');
+                })
+                .catch(err => {
+                    console.error('Gagal menyalin: ', err);
+                });
+        }
+    </script>
+</body>
+</html>
