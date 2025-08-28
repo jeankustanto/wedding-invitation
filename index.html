@@ -21,10 +21,11 @@
         :root {
             --primary-color: #2c6e49;
             --secondary-color: #4c956c;
+            --accent-color: #d4af37; /* Gold accent */
             --light-color: #f8f9fa;
-            --accent-color: #d4e8e0;
+            --dark-color: #1a1a1a;
             --text-color: #333;
-            --soft-pink: #f9e6e6;
+            --bg-dark: #0a0a0a;
         }
         
         body {
@@ -34,142 +35,48 @@
             background-color: #fff;
         }
         
-        /* Marble Background */
-        .marble-bg {
+        /* Music Player */
+        .music-player {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.8) 0%, transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.6) 0%, transparent 30%),
-                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.5) 0%, transparent 20%),
-                linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
-            z-index: -1;
-        }
-        
-        /* Islamic Pattern */
-        .islamic-pattern-top, .islamic-pattern-bottom {
-            position: relative;
-            height: 120px;
-            width: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .islamic-pattern-top {
-            margin-bottom: 30px;
-        }
-        
-        .islamic-pattern-bottom {
-            margin-top: 30px;
-            transform: rotate(180deg);
-        }
-        
-        .pattern-line {
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: var(--secondary-color);
-            opacity: 0.3;
-        }
-        
-        .pattern-line:nth-child(1) { top: 20px; }
-        .pattern-line:nth-child(2) { top: 40px; }
-        .pattern-line:nth-child(3) { top: 60px; }
-        .pattern-line:nth-child(4) { top: 80px; }
-        .pattern-line:nth-child(5) { top: 100px; }
-        
-        /* Magnolia Flowers */
-        .magnolia {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            z-index: 2;
-        }
-        
-        .magnolia-petals {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
             border-radius: 50%;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .magnolia-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background-color: #fffacd;
-            border-radius: 50%;
-            z-index: 3;
-        }
-        
-        .magnolia-1 {
-            top: 10px;
-            left: 10%;
-        }
-        
-        .magnolia-2 {
-            top: 30px;
-            right: 15%;
-        }
-        
-        .magnolia-3 {
-            top: 60px;
-            left: 30%;
-        }
-        
-        .magnolia-4 {
-            top: 20px;
-            right: 40%;
-        }
-        
-        /* Leaves */
-        .leaf {
-            position: absolute;
-            width: 40px;
-            height: 20px;
-            background-color: #c8e6c9;
-            border-radius: 0 100% 0 100%;
-            transform: rotate(45deg);
-            z-index: 2;
-        }
-        
-        .leaf-1 {
-            top: 40px;
-            left: 20%;
-        }
-        
-        .leaf-2 {
-            top: 70px;
-            right: 25%;
-        }
-        
-        .leaf-3 {
-            top: 50px;
-            left: 60%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            position: relative;
-            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: var(--text-color);
-            overflow: hidden;
-            padding: 50px 0;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
         
-        .hero-content {
+        .music-player:hover {
+            transform: scale(1.1);
+        }
+        
+        .music-player i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        /* Cover Section */
+        .cover-section {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .cover-content {
             z-index: 2;
             max-width: 800px;
             padding: 0 20px;
@@ -177,18 +84,18 @@
         
         .bismillah {
             font-family: 'Amiri', serif;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
             opacity: 0;
             animation: fadeIn 1.5s ease-in-out forwards;
         }
         
         .couple-name {
             font-family: 'Great Vibes', cursive;
-            font-size: 6rem;
+            font-size: 5rem;
             margin-bottom: 20px;
-            color: var(--primary-color);
+            color: white;
             opacity: 0;
             animation: fadeInUp 1.5s ease-out 0.5s forwards;
             line-height: 1;
@@ -198,7 +105,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             margin-bottom: 30px;
-            color: var(--secondary-color);
+            color: var(--accent-color);
             opacity: 0;
             animation: fadeInUp 1.5s ease-out 1s forwards;
         }
@@ -209,7 +116,7 @@
             font-size: 1.2rem;
             margin-bottom: 40px;
             line-height: 1.8;
-            color: var(--text-color);
+            color: rgba(255, 255, 255, 0.9);
             opacity: 0;
             animation: fadeInUp 1.5s ease-out 1.5s forwards;
             max-width: 700px;
@@ -217,35 +124,66 @@
             margin-right: auto;
         }
         
-        .save-the-date {
-            background-color: var(--soft-pink);
-            color: var(--primary-color);
-            padding: 15px 40px;
-            border-radius: 50px;
-            display: inline-block;
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            letter-spacing: 3px;
-            font-size: 1.2rem;
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
             opacity: 0;
-            animation: fadeInUp 1.5s ease-out 2s forwards;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            animation: fadeInUp 1.5s ease-out 2s forwards, bounce 2s infinite 2s;
+        }
+        
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
             transition: all 0.3s ease;
-            cursor: pointer;
-            border: 2px solid transparent;
         }
         
-        .save-the-date:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            border-color: var(--soft-pink);
+        .navbar-brand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
         }
         
-        /* Love Story Section */
-        .love-story-section {
+        .nav-link {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: var(--text-color) !important;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Section Styling */
+        .section {
             padding: 80px 0;
-            background-color: white;
             position: relative;
         }
         
@@ -266,7 +204,12 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background-color: var(--secondary-color);
+            background-color: var(--accent-color);
+        }
+        
+        /* Love Story Section */
+        .love-story-section {
+            background-color: white;
         }
         
         .story-card {
@@ -286,7 +229,7 @@
             left: 0;
             width: 5px;
             height: 100%;
-            background-color: var(--secondary-color);
+            background-color: var(--accent-color);
         }
         
         .story-content {
@@ -297,63 +240,9 @@
             font-style: italic;
         }
         
-        /* Countdown Section */
-        .countdown-section {
-            padding: 80px 0;
-            background-color: var(--accent-color);
-        }
-        
-        .countdown-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-        }
-        
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .countdown-item {
-            text-align: center;
-            background-color: white;
-            border-radius: 15px;
-            padding: 25px 20px;
-            min-width: 120px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-        }
-        
-        .countdown-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .countdown-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: block;
-            line-height: 1;
-        }
-        
-        .countdown-label {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            color: var(--secondary-color);
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
         /* Event Details Section */
         .event-details {
-            padding: 80px 0;
-            background-color: white;
+            background-color: var(--light-color);
         }
         
         .event-card {
@@ -363,7 +252,7 @@
             overflow: hidden;
             margin-bottom: 30px;
             transition: transform 0.3s ease;
-            border: 1px solid var(--accent-color);
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .event-card:hover {
@@ -391,7 +280,7 @@
         
         .event-info i {
             font-size: 1.5rem;
-            color: var(--secondary-color);
+            color: var(--accent-color);
             margin-right: 15px;
             width: 30px;
             text-align: center;
@@ -415,10 +304,62 @@
             color: #666;
         }
         
+        /* Countdown Section */
+        .countdown-section {
+            background-color: white;
+        }
+        
+        .countdown-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            background-color: var(--light-color);
+            border-radius: 15px;
+            padding: 25px 20px;
+            min-width: 120px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .countdown-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
         /* Map Section */
         .map-section {
-            padding: 80px 0;
-            background-color: var(--accent-color);
+            background-color: var(--light-color);
         }
         
         .map-container {
@@ -430,7 +371,6 @@
         
         /* RSVP Section */
         .rsvp-section {
-            padding: 80px 0;
             background-color: white;
         }
         
@@ -452,8 +392,8 @@
         }
         
         .form-control:focus, .form-select:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 0.25rem rgba(76, 149, 108, 0.25);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
         }
         
         .btn-primary {
@@ -476,8 +416,7 @@
         
         /* Gift Section */
         .gift-section {
-            padding: 80px 0;
-            background-color: var(--accent-color);
+            background-color: var(--light-color);
         }
         
         .gift-card {
@@ -487,7 +426,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             margin-bottom: 20px;
             transition: transform 0.3s ease;
-            border: 1px solid var(--light-color);
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .gift-card:hover {
@@ -517,7 +456,7 @@
         }
         
         .copy-btn {
-            background-color: var(--secondary-color);
+            background-color: var(--accent-color);
             color: white;
             border: none;
             border-radius: 50px;
@@ -534,7 +473,6 @@
         
         /* Guestbook Section */
         .guestbook-section {
-            padding: 80px 0;
             background-color: white;
         }
         
@@ -558,7 +496,7 @@
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-left: 4px solid var(--secondary-color);
+            border-left: 4px solid var(--accent-color);
         }
         
         .wish-header {
@@ -571,7 +509,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: var(--secondary-color);
+            background-color: var(--accent-color);
             color: white;
             display: flex;
             align-items: center;
@@ -602,7 +540,7 @@
         
         /* Footer */
         footer {
-            background-color: var(--primary-color);
+            background-color: var(--dark-color);
             color: white;
             padding: 50px 0 20px;
         }
@@ -634,7 +572,7 @@
         }
         
         .social-links a:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--accent-color);
             transform: translateY(-5px);
         }
         
@@ -664,6 +602,12 @@
             }
         }
         
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .couple-name {
@@ -686,115 +630,118 @@
             .salam-doa {
                 font-size: 1rem;
             }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            .nav-link {
+                margin: 5px 0;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="marble-bg"></div>
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <i class="fas fa-music" id="musicIcon"></i>
+    </div>
     
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="islamic-pattern-top">
-            <div class="pattern-line"></div>
-            <div class="pattern-line"></div>
-            <div class="pattern-line"></div>
-            <div class="pattern-line"></div>
-            <div class="pattern-line"></div>
-            
-            <div class="magnolia magnolia-1">
-                <div class="magnolia-petals"></div>
-                <div class="magnolia-center"></div>
+    <!-- Hidden Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Jean & Dwi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#story">Love Story</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#event">Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rsvp">RSVP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gift">Gift</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wishes">Wishes</a>
+                    </li>
+                </ul>
             </div>
-            <div class="magnolia magnolia-2">
-                <div class="magnolia-petals"></div>
-                <div class="magnolia-center"></div>
-            </div>
-            <div class="magnolia magnolia-3">
-                <div class="magnolia-petals"></div>
-                <div class="magnolia-center"></div>
-            </div>
-            <div class="magnolia magnolia-4">
-                <div class="magnolia-petals"></div>
-                <div class="magnolia-center"></div>
-            </div>
-            
-            <div class="leaf leaf-1"></div>
-            <div class="leaf leaf-2"></div>
-            <div class="leaf leaf-3"></div>
         </div>
-        
-        <div class="hero-content">
+    </nav>
+    
+    <!-- Cover Section -->
+    <section class="cover-section" id="home">
+        <div class="cover-content">
             <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
             <h1 class="couple-name">Jean & Dwi</h1>
             <p class="wedding-date">Sabtu, 8 Oktober 2025</p>
             <p class="salam-doa">Assalamu'alaikum Warahmatullahi Wabarakatuh<br>
             Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah, perkenankanlah kami merangkai kasih sayang yang Kau ciptakan di antara kami untuk membina mahligai pernikahan suci dan sakinah.</p>
-            <div class="save-the-date">SAVE THE DATE</div>
         </div>
-        
-        <div class="islamic-pattern-bottom">
-            <div class="pattern-line"></div>
-            <div class="pattern-line"></div>
-            <div class="pattern-line"></div>
-            <div class="pattern-line"></div>
-            <div class="pattern-line"></div>
-            
-            <div class="magnolia magnolia-1">
-                <div class="magnolia-petals"></div>
-                <div class="magnolia-center"></div>
-            </div>
-            <div class="magnolia magnolia-2">
-                <div class="magnolia-petals"></div>
-                <div class="magnolia-center"></div>
-            </div>
-            <div class="magnolia magnolia-3">
-                <div class="magnolia-petals"></div>
-                <div class="magnolia-center"></div>
-            </div>
-            <div class="magnolia magnolia-4">
-                <div class="magnolia-petals"></div>
-                <div class="magnolia-center"></div>
-            </div>
-            
-            <div class="leaf leaf-1"></div>
-            <div class="leaf leaf-2"></div>
-            <div class="leaf leaf-3"></div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
     
     <!-- Love Story Section -->
-    <section class="love-story-section">
+    <section class="section love-story-section" id="story">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Our Love Story</h2>
             
-            <div class="story-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="story-content">
-                    Di awal bulan Juni, dengan izin Allah, kami memulai langkah pertama menuju jalan yang diridhai-Nya. Bukan dengan janji manis, bukan pula dengan pertemuan tanpa arah, melainkan melalui ta'aruf — saling memperkenalkan diri dengan cara yang syar'i, saling bertukar CV, dan bertanya jawab tentang visi pernikahan.
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                    <div class="story-card">
+                        <div class="story-content">
+                            Di awal bulan Juni, dengan izin Allah, kami memulai langkah pertama menuju jalan yang diridhai-Nya. Bukan dengan janji manis, bukan pula dengan pertemuan tanpa arah, melainkan melalui ta'aruf — saling memperkenalkan diri dengan cara yang syar'i, saling bertukar CV, dan bertanya jawab tentang visi pernikahan.
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="story-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="story-content">
-                    Hingga akhir bulan Juni, Allah tuntun kami melangkah pada proses nazhor, memandang satu sama lain dengan niat yang suci. Dari sana, hati kami semakin mantap untuk melangkah ke tahap berikutnya.
+                
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="story-card">
+                        <div class="story-content">
+                            Hingga akhir bulan Juni, Allah tuntun kami melangkah pada proses nazhor, memandang satu sama lain dengan niat yang suci. Dari sana, hati kami semakin mantap untuk melangkah ke tahap berikutnya.
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="story-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="story-content">
-                    Alhamdulillah, dengan ridha Allah, kami sampai pada proses khitbah. Saat itulah kami menyerahkan segala urusan kepada Allah, memohon agar keputusan ini menjadi jalan kebaikan dunia dan akhirat.
+                
+                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="300">
+                    <div class="story-card">
+                        <div class="story-content">
+                            Alhamdulillah, dengan ridha Allah, kami sampai pada proses khitbah. Saat itulah kami menyerahkan segala urusan kepada Allah, memohon agar keputusan ini menjadi jalan kebaikan dunia dan akhirat.
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="story-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="story-content">
-                    Dan kini, dengan penuh syukur, kami menantikan hari yang Allah takdirkan, yakni 8 Oktober 2025, saat ikatan suci itu akan terjalin dalam bingkai akad nikah. Semoga Allah menjadikan pernikahan ini sebagai ladang ibadah, penuh sakinah, mawaddah, wa rahmah. 🤲
+                
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="400">
+                    <div class="story-card">
+                        <div class="story-content">
+                            Dan kini, dengan penuh syukur, kami menantikan hari yang Allah takdirkan, yakni 8 Oktober 2025, saat ikatan suci itu akan terjalin dalam bingkai akad nikah. Semoga Allah menjadikan pernikahan ini sebagai ladang ibadah, penuh sakinah, mawaddah, wa rahmah. 🤲
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- Countdown Section -->
-    <section class="countdown-section">
+    <section class="section countdown-section" id="countdown">
         <div class="container">
             <h2 class="countdown-title" data-aos="fade-up">Menuju Hari Bahagia</h2>
             <div class="countdown-container" data-aos="fade-up" data-aos-delay="100">
@@ -819,7 +766,7 @@
     </section>
     
     <!-- Event Details Section -->
-    <section class="event-details">
+    <section class="section event-details" id="event">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Detail Acara</h2>
             
@@ -890,7 +837,7 @@
     </section>
     
     <!-- Map Section -->
-    <section class="map-section">
+    <section class="section map-section" id="map">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Lokasi Acara</h2>
             <div class="map-container" data-aos="fade-up" data-aos-delay="100">
@@ -900,7 +847,7 @@
     </section>
     
     <!-- RSVP Section -->
-    <section class="rsvp-section">
+    <section class="section rsvp-section" id="rsvp">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Konfirmasi Kehadiran</h2>
             <div class="rsvp-form" data-aos="fade-up" data-aos-delay="100">
@@ -942,7 +889,7 @@
     </section>
     
     <!-- Gift Section -->
-    <section class="gift-section">
+    <section class="section gift-section" id="gift">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Wedding Gift</h2>
             <div class="row">
@@ -981,7 +928,7 @@
     </section>
     
     <!-- Guestbook Section -->
-    <section class="guestbook-section">
+    <section class="section guestbook-section" id="wishes">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Ucapan & Doa</h2>
             
@@ -1079,6 +1026,72 @@
         AOS.init({
             duration: 1000,
             once: true
+        });
+        
+        // Music Player
+        const musicPlayer = document.getElementById('musicPlayer');
+        const musicIcon = document.getElementById('musicIcon');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+        
+        // Auto play music when page loads (some browsers may block this)
+        window.addEventListener('load', function() {
+            // Try to play music
+            const playPromise = bgMusic.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Autoplay started
+                    isPlaying = true;
+                    musicIcon.classList.remove('fa-music');
+                    musicIcon.classList.add('fa-pause');
+                })
+                .catch(error => {
+                    // Autoplay was prevented
+                    console.log("Autoplay was prevented");
+                });
+            }
+        });
+        
+        // Toggle music play/pause
+        musicPlayer.addEventListener('click', function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-music');
+            } else {
+                bgMusic.play();
+                musicIcon.classList.remove('fa-music');
+                musicIcon.classList.add('fa-pause');
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Change navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = 'none';
+            }
         });
         
         // Countdown Timer
