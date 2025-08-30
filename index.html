@@ -20,6 +20,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            user-select: none; /* Mencegah seleksi teks di seluruh halaman */
+            -webkit-user-select: none; /* Untuk Safari */
+            -moz-user-select: none; /* Untuk Firefox */
+            -ms-user-select: none; /* Untuk IE/Edge */
         }
         
         .mobile-container {
@@ -31,6 +35,10 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
+            user-select: none; /* Mencegah seleksi teks di container */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .ornament-container {
@@ -44,12 +52,24 @@
             opacity: 0;
             animation: fadeIn 1.5s ease 0.2s forwards, float 6s ease-in-out 2s infinite;
             padding: 0;
+            user-select: none; /* Mencegah seleksi teks di ornamen */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none; /* Mencegah interaksi dengan ornamen */
         }
         
         .ornament {
             width: 100%;
             height: auto;
             max-width: none;
+            user-select: none; /* Mencegah seleksi gambar ornamen */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none; /* Mencegah interaksi dengan gambar ornamen */
+            -webkit-touch-callout: none; /* Mencegah menu konteks di iOS */
+            -webkit-user-drag: none; /* Mencegah drag di Safari */
         }
         
         .header {
@@ -61,6 +81,10 @@
             animation: fadeInDown 1.5s ease forwards;
             position: relative;
             z-index: 2;
+            user-select: none; /* Mencegah seleksi teks di header */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .bismillah {
@@ -71,6 +95,10 @@
             color: #ffffff;
             opacity: 0;
             animation: fadeIn 1s ease 0.5s forwards;
+            user-select: none; /* Mencegah seleksi teks bismillah */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .invitation {
@@ -83,6 +111,10 @@
             text-transform: uppercase;
             opacity: 0;
             animation: fadeIn 1s ease 0.8s forwards;
+            user-select: none; /* Mencegah seleksi teks invitation */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .names {
@@ -92,16 +124,24 @@
             margin-bottom: 20px;
             opacity: 0;
             animation: fadeIn 1s ease 1.1s forwards;
+            user-select: none; /* Mencegah seleksi teks names */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .name-couple {
             font-family: 'Hammersmith One', sans-serif;
             font-size: 42px;
             font-weight: 400;
-            color: #FFFDE7;
+            color: #f6d36d;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
+            user-select: none; /* Mencegah seleksi teks nama pasangan */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .date {
@@ -113,6 +153,10 @@
             text-transform: uppercase;
             opacity: 0;
             animation: fadeIn 1s ease 1.3s forwards;
+            user-select: none; /* Mencegah seleksi teks tanggal */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .content {
@@ -122,6 +166,10 @@
             justify-content: space-between;
             position: relative;
             z-index: 2;
+            user-select: none; /* Mencegah seleksi teks di content */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .button-container {
@@ -130,10 +178,14 @@
             margin-bottom: 20px;
             opacity: 0;
             animation: fadeInUp 1s ease 1.6s forwards;
+            user-select: none; /* Mencegah seleksi teks di button container */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .open-button {
-            background-color: #FFFDE7;
+            background-color: #f6d36d;
             color: #18364b;
             border: none;
             padding: 12px 40px;
@@ -145,10 +197,14 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 253, 231, 0.3);
+            box-shadow: 0 4px 10px rgba(246, 211, 109, 0.3);
             position: relative;
             overflow: hidden;
             z-index: 1;
+            user-select: none; /* Mencegah seleksi teks tombol */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .open-button:before {
@@ -164,9 +220,10 @@
         }
         
         .open-button:hover {
-            background-color: #FFB347;
+            background-color: #ffffff;
+            color: #18364b;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 179, 71, 0.4);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
         }
         
         .open-button:hover:before {
@@ -178,6 +235,10 @@
             margin-bottom: 20px;
             opacity: 0;
             animation: fadeIn 1s ease 2.2s forwards;
+            user-select: none; /* Mencegah seleksi teks di guest text container */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .you-are-invited {
@@ -188,14 +249,22 @@
             color: #ffffff;
             text-transform: uppercase;
             margin-bottom: 5px;
+            user-select: none; /* Mencegah seleksi teks you are invited */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .tamu-undangan {
             font-family: 'Montserrat', sans-serif;
             font-size: 20px;
             font-weight: 600;
-            color: #FFFDE7;
+            color: #f6d36d;
             text-transform: uppercase;
+            user-select: none; /* Mencegah seleksi teks tamu undangan */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .image-container {
@@ -206,9 +275,13 @@
             line-height: 0;
             opacity: 0;
             transform: translateY(50px);
-            animation: fadeInUp 1.5s ease 1.9s forwards, gentleFloat 4s ease-in-out 3.5s infinite;
+            animation: fadeInUp 1.5s ease 1.9s forwards, gentleFloat 4s ease-inout 3.5s infinite;
             margin: 0;
             padding: 0;
+            user-select: none; /* Mencegah seleksi teks di image container */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         
         .image-container img {
@@ -216,17 +289,29 @@
             height: auto;
             display: block;
             vertical-align: bottom;
+            user-select: none; /* Mencegah seleksi gambar couple */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none; /* Mencegah interaksi dengan gambar couple */
+            -webkit-touch-callout: none; /* Mencegah menu konteks di iOS */
+            -webkit-user-drag: none; /* Mencegah drag di Safari */
         }
         
-        /* Animasi Daun Jatuh */
-        .leaf {
+        /* Animasi Salju */
+        .snowflake {
             position: absolute;
             top: -10px;
-            color: #D2B48C; /* Warna soft daun kering (tan) */
+            color: #f6d36d;
             font-size: 1em;
             animation: fall linear;
             opacity: 0.8;
             z-index: 1;
+            user-select: none; /* Mencegah seleksi salju */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none; /* Mencegah interaksi dengan salju */
         }
         
         @keyframes fall {
@@ -323,6 +408,21 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Mencegah klik kanan pada seluruh halaman
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Mencegah drag pada gambar
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('dragstart', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+            });
+            
             // Fungsi tombol buka undangan
             const openButton = document.getElementById('openButton');
             openButton.addEventListener('click', function() {
@@ -342,28 +442,28 @@
                 document.getElementById('guestName').textContent = formattedName;
             }
             
-            // Animasi Daun Jatuh
-            const leafSymbol = "🍂"; // Menggunakan simbol daun maple
+            // Animasi Salju
+            const snowflakeSymbols = ["❄", "❅", "❆"];
             const mobileContainer = document.querySelector('.mobile-container');
-            const createLeaf = () => {
-                const leaf = document.createElement('div');
-                leaf.classList.add('leaf');
-                leaf.innerHTML = leafSymbol;
-                leaf.style.left = Math.random() * 100 + '%';
-                leaf.style.animationDuration = Math.random() * 3 + 5 + 's'; // Durasi antara 5-8 detik
-                leaf.style.opacity = Math.random();
-                leaf.style.fontSize = Math.random() * 10 + 15 + 'px'; // Ukuran antara 15-25px
+            const createSnowflake = () => {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = Math.random() * 3 + 5 + 's'; // Durasi antara 5-8 detik
+                snowflake.style.opacity = Math.random();
+                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Ukuran antara 10-20px
                 
-                mobileContainer.appendChild(leaf);
+                mobileContainer.appendChild(snowflake);
                 
-                // Hapus daun setelah animasi selesai
+                // Hapus snowflake setelah animasi selesai
                 setTimeout(() => {
-                    leaf.remove();
+                    snowflake.remove();
                 }, 8000);
             };
             
-            // Buat daun setiap 100-300ms (sama seperti animasi salju)
-            setInterval(createLeaf, Math.random() * 200 + 100);
+            // Buat snowflake setiap 100-300ms
+            setInterval(createSnowflake, Math.random() * 200 + 100);
         });
     </script>
 </body>
