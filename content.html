@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Undangan Pernikahan - Ayat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Amiri+Quran:wght@400;700&family=Montserrat:wght@300;400;600&family=Great+Vibes&family=Hammersmith+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-color: #FFFDE7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-container {
+            width: 375px;
+            height: 100vh;
+            background-color: #18364b;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ornament-container {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeIn 1.5s ease 0.2s forwards, float 6s ease-in-out 2s infinite;
+            padding: 0;
+        }
+        
+        .ornament {
+            width: 100%;
+            height: auto;
+            max-width: none;
+        }
+        
+        .music-control {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.3s ease;
+        }
+        
+        .music-control:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .music-control i {
+            color: #f6d36d;
+            font-size: 18px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 120px 0 20px;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 1.5s ease forwards;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+            overflow-y: auto;
+        }
+        
+        .verse-container {
+            width: 90%;
+            opacity: 0;
+            animation: fadeIn 1.5s ease 0.5s forwards;
+        }
+        
+        .verse-arabic {
+            font-family: 'Amiri Quran', serif;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.8;
+            color: #f6d36d;
+            margin-bottom: 20px;
+            text-align: right;
+            direction: rtl;
+        }
+        
+        .verse-indonesian {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .verse-source {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #f6d36d;
+            text-align: right;
+        }
+        
+        /* Animasi Salju */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #f6d36d;
+            font-size: 1em;
+            animation: fall linear;
+            opacity: 0.8;
+            z-index: 1;
+        }
+        
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+            }
+            to {
+                transform: translateY(calc(100vh + 100px));
+            }
+        }
+        
+        /* Animasi */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Ornamen Bunga di Bagian Atas -->
+        <div class="ornament-container">
+            <img src="flower-1.png" alt="Ornamen Bunga" class="ornament">
+        </div>
+        
+        <!-- Kontrol Musik -->
+        <div class="music-control" id="musicControl">
+            <i class="fas fa-music" id="musicIcon"></i>
+        </div>
+        
+        <div class="header">
+            <!-- Tidak ada judul "Ayat Pernikahan" -->
+        </div>
+        
+        <div class="content">
+            <div class="verse-container">
+                <div class="verse-arabic">
+                    وَمِنْ ءَايَـٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًۭا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةًۭ وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَـَٔايَـٰتٍۢ لِّقَوْمٍۢ يَتَفَكَّرُونَ (٢١)
+                </div>
+                <div class="verse-indonesian">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+                </div>
+                <div class="verse-source">
+                    (QS. Ar-Rum 30: Ayat 21)
+                </div>
+            </div>
+        </div>
+        
+        <!-- Audio untuk musik islami -->
+        <audio id="backgroundMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            <!-- Ganti dengan musik islami yang sesuai -->
+        </audio>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mencegah klik kanan pada seluruh halaman
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Kontrol Musik
+            const musicControl = document.getElementById('musicControl');
+            const musicIcon = document.getElementById('musicIcon');
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            let isPlaying = false;
+            
+            musicControl.addEventListener('click', function() {
+                if (isPlaying) {
+                    backgroundMusic.pause();
+                    musicIcon.classList.remove('fa-pause');
+                    musicIcon.classList.add('fa-music');
+                } else {
+                    backgroundMusic.play();
+                    musicIcon.classList.remove('fa-music');
+                    musicIcon.classList.add('fa-pause');
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            // Animasi Salju
+            const snowflakeSymbols = ["❄", "❅", "❆"];
+            const mobileContainer = document.querySelector('.mobile-container');
+            const createSnowflake = () => {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = Math.random() * 3 + 5 + 's'; // Durasi antara 5-8 detik
+                snowflake.style.opacity = Math.random();
+                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Ukuran antara 10-20px
+                
+                mobileContainer.appendChild(snowflake);
+                
+                // Hapus snowflake setelah animasi selesai
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 8000);
+            };
+            
+            // Buat snowflake setiap 100-300ms
+            setInterval(createSnowflake, Math.random() * 200 + 100);
+        });
+    </script>
+</body>
+</html>
