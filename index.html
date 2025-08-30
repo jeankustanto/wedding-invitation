@@ -98,7 +98,7 @@
             font-family: 'Hammersmith One', sans-serif;
             font-size: 42px;
             font-weight: 400;
-            color: #FFD700; /* Diubah menjadi kuning */
+            color: #f6d36d;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
@@ -133,8 +133,8 @@
         }
         
         .open-button {
-            background-color: #FFD700; /* Diubah menjadi kuning */
-            color: #18364b; /* Teks diubah menjadi gelap untuk kontras */
+            background-color: #f6d36d;
+            color: #18364b;
             border: none;
             padding: 12px 40px;
             font-size: 16px;
@@ -145,7 +145,7 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3); /* Bayangan disesuaikan dengan warna kuning */
+            box-shadow: 0 4px 10px rgba(246, 211, 109, 0.3);
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -164,9 +164,10 @@
         }
         
         .open-button:hover {
-            background-color: #FFC107; /* Warna hover yang sedikit lebih gelap */
+            background-color: #ffffff;
+            color: #18364b;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 193, 7, 0.4); /* Bayangan hover disesuaikan */
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
         }
         
         .open-button:hover:before {
@@ -194,12 +195,14 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 20px;
             font-weight: 600;
-            color: #FFD700; /* Diubah menjadi kuning */
+            color: #f6d36d;
             text-transform: uppercase;
         }
         
         .image-container {
             width: 100%;
+            height: auto;
+            max-height: 50vh;
             display: flex;
             justify-content: center;
             align-items: flex-end;
@@ -209,11 +212,16 @@
             animation: fadeInUp 1.5s ease 1.9s forwards, gentleFloat 4s ease-in-out 3.5s infinite;
             margin: 0;
             padding: 0;
+            position: relative;
+            z-index: 1;
         }
         
         .image-container img {
             width: 100%;
             height: auto;
+            max-height: 50vh;
+            object-fit: contain;
+            object-position: bottom;
             display: block;
             vertical-align: bottom;
         }
@@ -222,7 +230,7 @@
         .snowflake {
             position: absolute;
             top: -10px;
-            color: #FFD700; /* Diubah menjadi kuning */
+            color: #f6d36d;
             font-size: 1em;
             animation: fall linear;
             opacity: 0.8;
@@ -316,13 +324,28 @@
             </div>
             
             <div class="image-container">
-                <img src="couple.png" alt="Pasangan Pengantin">
+                <img src="couple.png" alt="Pasangan Pengantin" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMDAwIj5HYW1iYXIgVmlkZW88L3RleHQ+PC9zdmc+';">
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Mencegah klik kanan pada seluruh halaman
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Mencegah drag pada gambar
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('dragstart', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+            });
+            
             // Fungsi tombol buka undangan
             const openButton = document.getElementById('openButton');
             openButton.addEventListener('click', function() {
@@ -364,6 +387,17 @@
             
             // Buat snowflake setiap 100-300ms
             setInterval(createSnowflake, Math.random() * 200 + 100);
+            
+            // Debug untuk memeriksa apakah gambar dimuat
+            const coupleImage = document.querySelector('.image-container img');
+            coupleImage.addEventListener('error', function() {
+                console.error('Gambar couple.png tidak dapat dimuat. Periksa path file.');
+                console.log('Path yang dicoba:', this.src);
+            });
+            
+            coupleImage.addEventListener('load', function() {
+                console.log('Gambar couple.png berhasil dimuat');
+            });
         });
     </script>
 </body>
