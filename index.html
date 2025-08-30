@@ -11,14 +11,11 @@
             box-sizing: border-box;
         }
         
-        body {
-            background-color: #FFFDE7;
-            height: 100vh;
+        html, body {
+            height: 100%;
+            width: 100%;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
+            background-color: #FFFDE7;
         }
         
         .mobile-container {
@@ -37,13 +34,14 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
+            line-height: 0; /* Menghilangkan gap di bawah gambar */
         }
         
         .image-container img {
             width: 100%;
             height: auto;
-            object-fit: contain;
-            object-position: bottom center;
+            display: block; /* Menghilangkan gap di bawah gambar */
+            vertical-align: bottom; /* Menyelaraskan gambar ke bawah */
         }
     </style>
 </head>
