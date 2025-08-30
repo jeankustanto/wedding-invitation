@@ -349,9 +349,8 @@
             // Fungsi tombol buka undangan
             const openButton = document.getElementById('openButton');
             openButton.addEventListener('click', function() {
-                // Ganti dengan halaman undangan lengkap
-                alert('Undangan akan segera dibuka!');
-                // window.location.href = 'halaman-lengkap.html';
+                // Arahkan ke halaman ayat
+                window.location.href = 'content.html';
             });
             
             // Mendapatkan parameter dari URL
@@ -364,6 +363,17 @@
                 const formattedName = guestName.replace(/\+/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
                 document.getElementById('guestName').textContent = formattedName;
             }
+            
+            // Debug untuk memeriksa apakah gambar dimuat
+            const coupleImage = document.querySelector('.image-container img');
+            coupleImage.addEventListener('error', function() {
+                console.error('Gambar couple.png tidak dapat dimuat. Periksa path file.');
+                console.log('Path yang dicoba:', this.src);
+            });
+            
+            coupleImage.addEventListener('load', function() {
+                console.log('Gambar couple.png berhasil dimuat');
+            });
             
             // Animasi Salju
             const snowflakeSymbols = ["❄", "❅", "❆"];
@@ -387,17 +397,6 @@
             
             // Buat snowflake setiap 100-300ms
             setInterval(createSnowflake, Math.random() * 200 + 100);
-            
-            // Debug untuk memeriksa apakah gambar dimuat
-            const coupleImage = document.querySelector('.image-container img');
-            coupleImage.addEventListener('error', function() {
-                console.error('Gambar couple.png tidak dapat dimuat. Periksa path file.');
-                console.log('Path yang dicoba:', this.src);
-            });
-            
-            coupleImage.addEventListener('load', function() {
-                console.log('Gambar couple.png berhasil dimuat');
-            });
         });
     </script>
 </body>
