@@ -35,28 +35,25 @@
         
         .ornament-container {
             position: absolute;
-            top: 0;
+            top: 20px;
             left: 0;
             width: 100%;
-            height: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            z-index: 1;
+            z-index: 10;
             opacity: 0;
-            animation: fadeIn 2s ease 0.2s forwards;
+            animation: fadeIn 1.5s ease 0.2s forwards, float 6s ease-in-out 2s infinite;
         }
         
         .ornament {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.15; /* Opacity rendah agar tidak mengganggu teks */
+            width: 90%; /* Diperbesar hingga hampir memenuhi layar */
+            height: auto;
+            max-width: 350px; /* Maksimal lebar agar tidak melebihi container */
         }
         
         .header {
             text-align: center;
-            padding: 80px 20px 20px;
+            padding: 120px 20px 20px; /* Tambah padding atas untuk ornamen yang lebih besar */
             color: #ffffff;
             opacity: 0;
             transform: translateY(-20px);
@@ -98,7 +95,7 @@
         
         .name-couple {
             font-family: 'Hammersmith One', sans-serif;
-            font-size: 36px;
+            font-size: 42px; /* Diperbesar dari 36px menjadi 42px */
             font-weight: 400;
             color: #FFFDE7;
             text-transform: uppercase;
@@ -129,7 +126,7 @@
         .button-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px; /* Dikurangi jaraknya dari gambar */
             opacity: 0;
             animation: fadeInUp 1s ease 1.6s forwards;
         }
@@ -224,11 +221,20 @@
                 transform: translateY(0);
             }
         }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="mobile-container">
-        <!-- Ornamen Bunga Full Layar -->
+        <!-- Ornamen Bunga di Bagian Atas -->
         <div class="ornament-container">
             <img src="flower-1.png" alt="Ornamen Bunga" class="ornament">
         </div>
