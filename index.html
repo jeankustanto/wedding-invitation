@@ -269,7 +269,8 @@
         
         .image-container {
             width: 100%;
-            height: 60%; /* Menentukan tinggi container gambar */
+            height: auto; /* Menggunakan auto agar menyesuaikan konten */
+            max-height: 50vh; /* Batasi tinggi maksimal */
             display: flex;
             justify-content: center;
             align-items: flex-end;
@@ -284,14 +285,16 @@
             -moz-user-select: none;
             -ms-user-select: none;
             position: relative;
-            bottom: 0;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.2); /* Tambahkan background untuk debugging */
         }
         
         .image-container img {
             width: 100%;
-            height: 100%;
-            object-fit: contain; /* Memastikan gambar memenuhi container tanpa merubah rasio */
-            object-position: bottom; /* Menempatkan gambar di bagian bawah */
+            height: auto;
+            max-height: 50vh; /* Batasi tinggi maksimal gambar */
+            object-fit: contain; /* Menjaga rasio aspek */
+            object-position: bottom; /* Posisikan gambar di bagian bawah */
             display: block;
             vertical-align: bottom;
             user-select: none;
@@ -301,6 +304,7 @@
             pointer-events: none;
             -webkit-touch-callout: none;
             -webkit-user-drag: none;
+            border: 1px solid rgba(255, 0, 0, 0.3); /* Tambahkan border untuk debugging */
         }
         
         /* Animasi Salju */
@@ -406,7 +410,7 @@
             </div>
             
             <div class="image-container">
-                <img src="couple.png" alt="Pasangan Pengantin">
+                <img src="couple.png" alt="Pasangan Pengantin" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMDAwIj5HYW1iYXIgVmlkZW88L3RleHQ+PC9zdmc+';">
             </div>
         </div>
     </div>
@@ -469,6 +473,21 @@
             
             // Buat snowflake setiap 100-300ms
             setInterval(createSnowflake, Math.random() * 200 + 100);
+            
+            // Debug untuk memeriksa apakah gambar dimuat
+            const coupleImage = document.querySelector('.image-container img');
+            coupleImage.addEventListener('error', function() {
+                console.error('Gambar couple.png tidak dapat dimuat. Periksa path file.');
+                console.log('Path yang dicoba:', this.src);
+                // Gambar placeholder sudah ditambahkan melalui atribut onerror
+            });
+            
+            coupleImage.addEventListener('load', function() {
+                console.log('Gambar couple.png berhasil dimuat');
+                // Hapus border debugging setelah gambar berhasil dimuat
+                this.style.border = 'none';
+                this.parentElement.style.backgroundColor = 'transparent';
+            });
         });
     </script>
 </body>
