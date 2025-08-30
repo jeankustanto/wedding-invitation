@@ -192,7 +192,7 @@
         
         .tamu-undangan {
             font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 600;
             color: #FFFDE7;
             text-transform: uppercase;
@@ -218,11 +218,11 @@
             vertical-align: bottom;
         }
         
-        /* Animasi Hujan Salju */
-        .snowflake {
+        /* Animasi Daun Jatuh */
+        .leaf {
             position: absolute;
             top: -10px;
-            color: white;
+            color: #D2B48C; /* Warna soft daun kering (tan) */
             font-size: 1em;
             animation: fall linear;
             opacity: 0.8;
@@ -298,7 +298,7 @@
         
         <div class="header">
             <div class="bismillah">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</div>
-            <div class="invitation">THEINVITATION</div>
+            <div class="invitation">THE INVITATION</div>
             <div class="names">
                 <div class="name-couple">JEAN & DWI</div>
                 <div class="date">08 OKTOBER 2025</div>
@@ -312,7 +312,7 @@
             
             <div class="guest-text-container">
                 <div class="you-are-invited">YOU ARE INVITED</div>
-                <div class="tamu-undangan">TAMU UNDANGAN</div>
+                <div class="tamu-undangan" id="guestName">TAMU UNDANGAN</div>
             </div>
             
             <div class="image-container">
@@ -331,28 +331,39 @@
                 // window.location.href = 'halaman-lengkap.html';
             });
             
-            // Animasi Hujan Salju
-            const snowflakeSymbols = ["❄", "❅", "❆"];
+            // Mendapatkan parameter dari URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('to');
+            
+            // Mengubah teks tamu undangan jika ada parameter 'to'
+            if (guestName) {
+                // Mengganti '+' dengan spasi dan membuat huruf kapital di awal kata
+                const formattedName = guestName.replace(/\+/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                document.getElementById('guestName').textContent = formattedName;
+            }
+            
+            // Animasi Daun Jatuh
+            const leafSymbol = "🍂"; // Menggunakan simbol daun maple
             const mobileContainer = document.querySelector('.mobile-container');
-            const createSnowflake = () => {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.innerHTML = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
-                snowflake.style.left = Math.random() * 100 + '%';
-                snowflake.style.animationDuration = Math.random() * 3 + 5 + 's'; // Durasi antara 5-8 detik
-                snowflake.style.opacity = Math.random();
-                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Ukuran antara 10-20px
+            const createLeaf = () => {
+                const leaf = document.createElement('div');
+                leaf.classList.add('leaf');
+                leaf.innerHTML = leafSymbol;
+                leaf.style.left = Math.random() * 100 + '%';
+                leaf.style.animationDuration = Math.random() * 3 + 5 + 's'; // Durasi antara 5-8 detik
+                leaf.style.opacity = Math.random();
+                leaf.style.fontSize = Math.random() * 10 + 15 + 'px'; // Ukuran antara 15-25px
                 
-                mobileContainer.appendChild(snowflake);
+                mobileContainer.appendChild(leaf);
                 
-                // Hapus snowflake setelah animasi selesai
+                // Hapus daun setelah animasi selesai
                 setTimeout(() => {
-                    snowflake.remove();
+                    leaf.remove();
                 }, 8000);
             };
             
-            // Buat snowflake setiap 100-300ms
-            setInterval(createSnowflake, Math.random() * 200 + 100);
+            // Buat daun setiap 100-300ms (sama seperti animasi salju)
+            setInterval(createLeaf, Math.random() * 200 + 100);
         });
     </script>
 </body>
