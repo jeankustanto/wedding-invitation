@@ -35,17 +35,18 @@
         
         .image-container {
             width: 100%;
+            height: 70%; /* Mengatur tinggi container agar tidak memenuhi seluruh layar */
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            height: 100%;
+            padding-bottom: 20px; /* Memberikan jarak dari bagian paling bawah */
         }
         
         .image-container img {
-            max-width: 100%;
+            max-width: 90%; /* Membatasi lebar gambar */
             max-height: 100%;
-            object-fit: contain;
-            object-position: bottom;
+            object-fit: contain; /* Menjaga rasio aspek gambar */
+            object-position: bottom center; /* Menempatkan gambar di bagian bawah tengah */
         }
     </style>
 </head>
