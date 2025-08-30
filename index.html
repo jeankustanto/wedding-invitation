@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Undangan Pernikahan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -28,31 +29,110 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 1.5s ease forwards;
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+        
+        .header h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 42px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-top: 5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+        
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         
         .image-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            line-height: 0; /* Menghilangkan gap di bawah gambar */
+            line-height: 0;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.5s ease 1.5s forwards;
         }
         
         .image-container img {
             width: 100%;
             height: auto;
-            display: block; /* Menghilangkan gap di bawah gambar */
-            vertical-align: bottom; /* Menyelaraskan gambar ke bawah */
+            display: block;
+            vertical-align: bottom;
+        }
+        
+        /* Animasi */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
     <div class="mobile-container">
-        <div class="image-container">
-            <img src="couple.png" alt="Pasangan Pengantin">
+        <div class="header">
+            <h1>walimatul ursy</h1>
+            <h2>Jean & Dwi</h2>
+        </div>
+        
+        <div class="content">
+            <div class="image-container">
+                <img src="couple.png" alt="Pasangan Pengantin">
+            </div>
         </div>
     </div>
 </body>
