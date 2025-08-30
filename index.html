@@ -70,13 +70,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
         }
 
-        .illustration img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            border-radius: 10px;
+        .illustration-placeholder {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+        }
+
+        .illustration-placeholder svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+            fill: rgba(255, 255, 255, 0.4);
         }
 
         .date-container {
@@ -260,10 +269,16 @@
             <h2>Laila & Rajib</h2>
         </div>
         
-        <!-- Ilustrasi Pengantin -->
+        <!-- Ilustrasi Pengantin - Placeholder -->
         <div class="illustration-container">
             <div class="illustration">
-                <img src="https://z-cdn-media.chatglm.cn/files/5bdf915d-d521-418c-bb3e-b859b2389927_WhatsApp%20Image%202025-08-31%20at%2000.27.11.jpeg?auth_key=1788112377-d266b08d79b54345966b4e9f4da769fa-0-b26e4d08e9afeb89a19eb246b550e18e" alt="Pengantin">
+                <div class="illustration-placeholder">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                    <p>Gambar Pengantin</p>
+                    <p style="font-size: 12px; margin-top: 5px;">Ganti dengan gambar Anda</p>
+                </div>
             </div>
         </div>
         
