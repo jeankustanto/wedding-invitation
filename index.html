@@ -43,17 +43,18 @@
             z-index: 10;
             opacity: 0;
             animation: fadeIn 1.5s ease 0.2s forwards, float 6s ease-in-out 2s infinite;
+            padding: 0; /* Menghapus padding */
         }
         
         .ornament {
-            width: 90%; /* Diperbesar hingga hampir memenuhi layar */
+            width: 100%; /* Membuat gambar memenuhi lebar penuh */
             height: auto;
-            max-width: 350px; /* Maksimal lebar agar tidak melebihi container */
+            max-width: none; /* Menghapus batas maksimal lebar */
         }
         
         .header {
             text-align: center;
-            padding: 120px 20px 20px; /* Tambah padding atas untuk ornamen yang lebih besar */
+            padding: 120px 0 20px; /* Menghapus padding kiri dan kanan */
             color: #ffffff;
             opacity: 0;
             transform: translateY(-20px);
@@ -95,7 +96,7 @@
         
         .name-couple {
             font-family: 'Hammersmith One', sans-serif;
-            font-size: 42px; /* Diperbesar dari 36px menjadi 42px */
+            font-size: 42px;
             font-weight: 400;
             color: #FFFDE7;
             text-transform: uppercase;
@@ -126,7 +127,7 @@
         .button-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px; /* Dikurangi jaraknya dari gambar */
+            margin-bottom: 20px;
             opacity: 0;
             animation: fadeInUp 1s ease 1.6s forwards;
         }
@@ -181,10 +182,12 @@
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 1.5s ease 1.9s forwards;
+            margin: 0; /* Menghapus margin */
+            padding: 0; /* Menghapus padding */
         }
         
         .image-container img {
-            width: 100%;
+            width: 100%; /* Membuat gambar memenuhi lebar penuh */
             height: auto;
             display: block;
             vertical-align: bottom;
