@@ -34,18 +34,19 @@
         
         .image-container {
             width: 100%;
-            height: 70%; /* Mengatur tinggi container agar tidak memenuhi seluruh layar */
+            height: 80%; /* Meningkatkan tinggi container gambar */
             display: flex;
             justify-content: center;
-            align-items: flex-end;
-            padding-bottom: 20px; /* Memberikan jarak dari bagian paling bawah */
+            align-items: center; /* Mengubah dari flex-end ke center */
+            padding-bottom: 40px; /* Menambah jarak dari bagian paling bawah */
         }
         
         .image-container img {
-            max-width: 90%; /* Membatasi lebar gambar */
+            width: 100%; /* Menggunakan width 100% bukan max-width */
+            height: auto; /* Menjaga rasio aspek */
             max-height: 100%;
             object-fit: contain; /* Menjaga rasio aspek gambar */
-            object-position: bottom center; /* Menempatkan gambar di bagian bawah tengah */
+            object-position: center bottom; /* Menempatkan gambar di bagian bawah tengah */
         }
     </style>
 </head>
