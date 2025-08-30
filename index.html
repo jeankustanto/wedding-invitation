@@ -43,18 +43,18 @@
             z-index: 10;
             opacity: 0;
             animation: fadeIn 1.5s ease 0.2s forwards, float 6s ease-in-out 2s infinite;
-            padding: 0; /* Menghapus padding */
+            padding: 0;
         }
         
         .ornament {
-            width: 100%; /* Membuat gambar memenuhi lebar penuh */
+            width: 100%;
             height: auto;
-            max-width: none; /* Menghapus batas maksimal lebar */
+            max-width: none;
         }
         
         .header {
             text-align: center;
-            padding: 120px 0 20px; /* Menghapus padding kiri dan kanan */
+            padding: 120px 0 20px;
             color: #ffffff;
             opacity: 0;
             transform: translateY(-20px);
@@ -173,6 +173,31 @@
             left: 100%;
         }
         
+        .guest-text-container {
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease 2.2s forwards;
+        }
+        
+        .you-are-invited {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .tamu-undangan {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #FFFDE7;
+            text-transform: uppercase;
+        }
+        
         .image-container {
             width: 100%;
             display: flex;
@@ -181,16 +206,36 @@
             line-height: 0;
             opacity: 0;
             transform: translateY(50px);
-            animation: fadeInUp 1.5s ease 1.9s forwards;
-            margin: 0; /* Menghapus margin */
-            padding: 0; /* Menghapus padding */
+            animation: fadeInUp 1.5s ease 1.9s forwards, gentleFloat 4s ease-in-out 3.5s infinite;
+            margin: 0;
+            padding: 0;
         }
         
         .image-container img {
-            width: 100%; /* Membuat gambar memenuhi lebar penuh */
+            width: 100%;
             height: auto;
             display: block;
             vertical-align: bottom;
+        }
+        
+        /* Animasi Hujan Salju */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            animation: fall linear;
+            opacity: 0.8;
+            z-index: 1;
+        }
+        
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+            }
+            to {
+                transform: translateY(calc(100vh + 100px));
+            }
         }
         
         /* Animasi */
@@ -233,6 +278,15 @@
                 transform: translateY(-10px);
             }
         }
+        
+        @keyframes gentleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -256,6 +310,11 @@
                 <button class="open-button" id="openButton">OPEN INVITATION</button>
             </div>
             
+            <div class="guest-text-container">
+                <div class="you-are-invited">YOU ARE INVITED</div>
+                <div class="tamu-undangan">TAMU UNDANGAN</div>
+            </div>
+            
             <div class="image-container">
                 <img src="couple.png" alt="Pasangan Pengantin">
             </div>
@@ -271,6 +330,29 @@
                 alert('Undangan akan segera dibuka!');
                 // window.location.href = 'halaman-lengkap.html';
             });
+            
+            // Animasi Hujan Salju
+            const snowflakeSymbols = ["❄", "❅", "❆"];
+            const mobileContainer = document.querySelector('.mobile-container');
+            const createSnowflake = () => {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = Math.random() * 3 + 5 + 's'; // Durasi antara 5-8 detik
+                snowflake.style.opacity = Math.random();
+                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Ukuran antara 10-20px
+                
+                mobileContainer.appendChild(snowflake);
+                
+                // Hapus snowflake setelah animasi selesai
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 8000);
+            };
+            
+            // Buat snowflake setiap 100-300ms
+            setInterval(createSnowflake, Math.random() * 200 + 100);
         });
     </script>
 </body>
