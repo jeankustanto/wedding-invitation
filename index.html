@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Undangan Pernikahan</title>
     <style>
         * {
@@ -12,12 +12,25 @@
         }
         
         body {
-            background-color: #18364b;
+            background-color: #FFFDE7;
             height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .mobile-frame {
+            width: 375px;
+            height: 812px;
+            background-color: #18364b;
+            position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
         }
         
         .image-container {
@@ -37,8 +50,10 @@
     </style>
 </head>
 <body>
-    <div class="image-container">
-        <img src="couple.png" alt="Pasangan Pengantin">
+    <div class="mobile-frame">
+        <div class="image-container">
+            <img src="couple.png" alt="Pasangan Pengantin">
+        </div>
     </div>
 </body>
 </html>
