@@ -27,26 +27,23 @@
             background-color: #18364b;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
         }
         
         .image-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            height: 80%; /* Meningkatkan tinggi container gambar */
             display: flex;
             justify-content: center;
-            align-items: center; /* Mengubah dari flex-end ke center */
-            padding-bottom: 40px; /* Menambah jarak dari bagian paling bawah */
+            align-items: flex-end;
         }
         
         .image-container img {
-            width: 100%; /* Menggunakan width 100% bukan max-width */
-            height: auto; /* Menjaga rasio aspek */
-            max-height: 100%;
-            object-fit: contain; /* Menjaga rasio aspek gambar */
-            object-position: center bottom; /* Menempatkan gambar di bagian bawah tengah */
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            object-position: bottom center;
         }
     </style>
 </head>
