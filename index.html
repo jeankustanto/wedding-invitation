@@ -20,10 +20,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .mobile-container {
@@ -35,10 +31,6 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .ornament-container {
@@ -52,24 +44,12 @@
             opacity: 0;
             animation: fadeIn 1.5s ease 0.2s forwards, float 6s ease-in-out 2s infinite;
             padding: 0;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            pointer-events: none;
         }
         
         .ornament {
             width: 100%;
             height: auto;
             max-width: none;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            pointer-events: none;
-            -webkit-touch-callout: none;
-            -webkit-user-drag: none;
         }
         
         .header {
@@ -81,10 +61,6 @@
             animation: fadeInDown 1.5s ease forwards;
             position: relative;
             z-index: 2;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .bismillah {
@@ -95,10 +71,6 @@
             color: #ffffff;
             opacity: 0;
             animation: fadeIn 1s ease 0.5s forwards;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .invitation {
@@ -111,10 +83,6 @@
             text-transform: uppercase;
             opacity: 0;
             animation: fadeIn 1s ease 0.8s forwards;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .names {
@@ -124,24 +92,16 @@
             margin-bottom: 20px;
             opacity: 0;
             animation: fadeIn 1s ease 1.1s forwards;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .name-couple {
             font-family: 'Hammersmith One', sans-serif;
             font-size: 42px;
             font-weight: 400;
-            color: #f6d36d;
+            color: #FFD700; /* Diubah menjadi kuning */
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .date {
@@ -153,10 +113,6 @@
             text-transform: uppercase;
             opacity: 0;
             animation: fadeIn 1s ease 1.3s forwards;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .content {
@@ -166,10 +122,6 @@
             justify-content: space-between;
             position: relative;
             z-index: 2;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .button-container {
@@ -178,15 +130,11 @@
             margin-bottom: 20px;
             opacity: 0;
             animation: fadeInUp 1s ease 1.6s forwards;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .open-button {
-            background-color: #f6d36d;
-            color: #18364b;
+            background-color: #FFD700; /* Diubah menjadi kuning */
+            color: #18364b; /* Teks diubah menjadi gelap untuk kontras */
             border: none;
             padding: 12px 40px;
             font-size: 16px;
@@ -197,14 +145,10 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(246, 211, 109, 0.3);
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3); /* Bayangan disesuaikan dengan warna kuning */
             position: relative;
             overflow: hidden;
             z-index: 1;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .open-button:before {
@@ -220,10 +164,9 @@
         }
         
         .open-button:hover {
-            background-color: #ffffff;
-            color: #18364b;
+            background-color: #FFC107; /* Warna hover yang sedikit lebih gelap */
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 6px 15px rgba(255, 193, 7, 0.4); /* Bayangan hover disesuaikan */
         }
         
         .open-button:hover:before {
@@ -235,10 +178,6 @@
             margin-bottom: 20px;
             opacity: 0;
             animation: fadeIn 1s ease 2.2s forwards;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .you-are-invited {
@@ -249,78 +188,45 @@
             color: #ffffff;
             text-transform: uppercase;
             margin-bottom: 5px;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .tamu-undangan {
             font-family: 'Montserrat', sans-serif;
             font-size: 20px;
             font-weight: 600;
-            color: #f6d36d;
+            color: #FFD700; /* Diubah menjadi kuning */
             text-transform: uppercase;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
         
         .image-container {
             width: 100%;
-            height: auto; /* Menggunakan auto agar menyesuaikan konten */
-            max-height: 50vh; /* Batasi tinggi maksimal */
             display: flex;
             justify-content: center;
             align-items: flex-end;
             line-height: 0;
             opacity: 0;
             transform: translateY(50px);
-            animation: fadeInUp 1.5s ease 1.9s forwards, gentleFloat 4s ease-inout 3.5s infinite;
+            animation: fadeInUp 1.5s ease 1.9s forwards, gentleFloat 4s ease-in-out 3.5s infinite;
             margin: 0;
             padding: 0;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            position: relative;
-            z-index: 1;
-            background-color: rgba(0, 0, 0, 0.2); /* Tambahkan background untuk debugging */
         }
         
         .image-container img {
             width: 100%;
             height: auto;
-            max-height: 50vh; /* Batasi tinggi maksimal gambar */
-            object-fit: contain; /* Menjaga rasio aspek */
-            object-position: bottom; /* Posisikan gambar di bagian bawah */
             display: block;
             vertical-align: bottom;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            pointer-events: none;
-            -webkit-touch-callout: none;
-            -webkit-user-drag: none;
-            border: 1px solid rgba(255, 0, 0, 0.3); /* Tambahkan border untuk debugging */
         }
         
         /* Animasi Salju */
         .snowflake {
             position: absolute;
             top: -10px;
-            color: #f6d36d;
+            color: #FFD700; /* Diubah menjadi kuning */
             font-size: 1em;
             animation: fall linear;
             opacity: 0.8;
             z-index: 1;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            pointer-events: none;
         }
         
         @keyframes fall {
@@ -417,21 +323,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mencegah klik kanan pada seluruh halaman
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
-            });
-            
-            // Mencegah drag pada gambar
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                img.addEventListener('dragstart', function(e) {
-                    e.preventDefault();
-                    return false;
-                });
-            });
-            
             // Fungsi tombol buka undangan
             const openButton = document.getElementById('openButton');
             openButton.addEventListener('click', function() {
@@ -473,21 +364,6 @@
             
             // Buat snowflake setiap 100-300ms
             setInterval(createSnowflake, Math.random() * 200 + 100);
-            
-            // Debug untuk memeriksa apakah gambar dimuat
-            const coupleImage = document.querySelector('.image-container img');
-            coupleImage.addEventListener('error', function() {
-                console.error('Gambar couple.png tidak dapat dimuat. Periksa path file.');
-                console.log('Path yang dicoba:', this.src);
-                // Gambar placeholder sudah ditambahkan melalui atribut onerror
-            });
-            
-            coupleImage.addEventListener('load', function() {
-                console.log('Gambar couple.png berhasil dimuat');
-                // Hapus border debugging setelah gambar berhasil dimuat
-                this.style.border = 'none';
-                this.parentElement.style.backgroundColor = 'transparent';
-            });
         });
     </script>
 </body>
