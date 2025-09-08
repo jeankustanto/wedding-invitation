@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Undangan Pernikahan Aisyah & Amirul</title>
+    <title>Undangan Pernikahan</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Amiri+Quran:wght@400;700&family=Montserrat:wght@300;400;600&family=Great+Vibes&family=Hammersmith+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -53,32 +52,6 @@
             max-width: none;
         }
         
-        .music-control {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 20;
-            transition: all 0.3s ease;
-        }
-        
-        .music-control:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-        
-        .music-control i {
-            color: #f6d36d;
-            font-size: 18px;
-        }
-        
         .header {
             text-align: center;
             padding: 120px 0 20px;
@@ -90,143 +63,176 @@
             z-index: 2;
         }
         
+        .bismillah {
+            font-family: 'Amiri Quran', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+        
+        .invitation {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.8s forwards;
+        }
+        
+        .names {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.1s forwards;
+        }
+        
+        .name-couple {
+            font-family: 'Hammersmith One', sans-serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: #f6d36d;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.3s forwards;
+        }
+        
         .content {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            justify-content: space-between;
             position: relative;
             z-index: 2;
-            overflow-y: auto;
         }
         
-        .greeting {
-            font-family: 'Amiri Quran', serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: #f6d36d;
-            margin-bottom: 10px;
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 1.5s ease 0.5s forwards;
-        }
-        
-        .greeting-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            color: #ffffff;
-            margin-bottom: 30px;
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 1.5s ease 0.7s forwards;
-        }
-        
-        .invitation-card {
-            width: 90%;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            position: relative;
-            opacity: 0;
-            animation: fadeIn 1.5s ease 1s forwards;
-            border: 1px solid rgba(246, 211, 109, 0.3);
-        }
-        
-        .bride-section, .groom-section {
-            text-align: center;
-            padding: 20px 0;
-        }
-        
-        .bride-section {
-            border-bottom: 1px dashed rgba(246, 211, 109, 0.5);
-        }
-        
-        .bride-name, .groom-name {
-            font-family: 'Great Vibes', cursive;
-            font-size: 28px;
-            font-weight: 700;
-            color: #f6d36d;
-            margin-bottom: 10px;
-        }
-        
-        .bride-title, .groom-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            color: #ffffff;
-            margin-bottom: 5px;
-        }
-        
-        .bride-parents, .groom-parents {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
-            color: #e0e0e0;
-            margin-top: 5px;
-        }
-        
-        .verse-container {
-            width: 90%;
-            margin: 20px 0;
-            opacity: 0;
-            animation: fadeIn 1.5s ease 1.5s forwards;
-        }
-        
-        .verse-arabic {
-            font-family: 'Amiri Quran', serif;
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 1.8;
-            color: #f6d36d;
+        .button-container {
+            display: flex;
+            justify-content: center;
             margin-bottom: 20px;
-            text-align: center;
-            direction: rtl;
-        }
-        
-        .verse-indonesian {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.6;
-            color: #ffffff;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        
-        .verse-source {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            color: #f6d36d;
-            text-align: right;
-        }
-        
-        .invitation-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
-            color: #ffffff;
-            text-align: center;
-            margin: 20px 0;
             opacity: 0;
-            animation: fadeIn 1.5s ease 2s forwards;
-            line-height: 1.6;
+            animation: fadeInUp 1s ease 1.6s forwards;
         }
         
-        .flower {
-            position: absolute;
-            color: #f6d36d;
-            font-size: 1em;
-            animation: fall linear;
-            opacity: 0.8;
+        .open-button {
+            background-color: #f6d36d;
+            color: #18364b;
+            border: none;
+            padding: 12px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(246, 211, 109, 0.3);
+            position: relative;
+            overflow: hidden;
             z-index: 1;
         }
         
-        .star {
+        .open-button:before {
+            content: "";
             position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+            z-index: -1;
+        }
+        
+        .open-button:hover {
+            background-color: #ffffff;
+            color: #18364b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
+        }
+        
+        .open-button:hover:before {
+            left: 100%;
+        }
+        
+        .guest-text-container {
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease 2.2s forwards;
+        }
+        
+        .you-are-invited {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
             color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .tamu-undangan {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #f6d36d;
+            text-transform: uppercase;
+        }
+        
+        .image-container {
+            width: 100%;
+            height: auto;
+            max-height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            line-height: 0;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.5s ease 1.9s forwards, gentleFloat 4s ease-in-out 3.5s infinite;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 50vh;
+            object-fit: contain;
+            object-position: bottom;
+            display: block;
+            vertical-align: bottom;
+        }
+        
+        /* Animasi Salju */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #f6d36d;
             font-size: 1em;
-            animation: twinkle 3s infinite;
+            animation: fall linear;
             opacity: 0.8;
             z-index: 1;
         }
@@ -240,15 +246,7 @@
             }
         }
         
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: 0.2;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-        
+        /* Animasi */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -272,7 +270,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -288,6 +286,15 @@
                 transform: translateY(-10px);
             }
         }
+        
+        @keyframes gentleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -296,33 +303,19 @@
         <div class="ornament-container">
             <img src="flower-1.png" alt="Ornamen Bunga" class="ornament">
         </div>
-        <!-- Kontrol Musik -->
-        <div class="music-control" id="musicControl">
-            <i class="fas fa-music" id="musicIcon"></i>
-        </div>
         
         <div class="header">
-            <!-- Header kosong -->
-        </div>
-        
-        <div class="content">
-          <!-- salam pembuka -->
-            <div class="verse-container">
-                <div class="verse-arabic">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</div>
-                <div class="verse-indonesian">
-                    Assalamu`alaikum Warahmatullahi Wabarakatuh<br>
-                    Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami,
-                </div>
+            <div class="bismillah">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</div>
+            <div class="invitation">Assalamu`alaikum Warahmatullahi Wabarakatuh <br>
+                Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.
+                Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami,
             </div>
         </div>
         
-        <!-- Audio untuk musik -->
-        <audio id="backgroundMusic" loop>
-            <source src="wedding-music.mp3" type="audio/mpeg">
-            <!-- Ganti dengan musik pernikahan yang sesuai -->
-        </audio>
-    </div>
-    
+        <div class="content">
+                        
+          </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Mencegah klik kanan pada seluruh halaman
@@ -331,68 +324,66 @@
                 return false;
             });
             
-            // Kontrol Musik
-            const musicControl = document.getElementById('musicControl');
-            const musicIcon = document.getElementById('musicIcon');
-            const backgroundMusic = document.getElementById('backgroundMusic');
-            let isPlaying = false;
-            
-            musicControl.addEventListener('click', function() {
-                if (isPlaying) {
-                    backgroundMusic.pause();
-                    musicIcon.classList.remove('fa-pause');
-                    musicIcon.classList.add('fa-music');
-                } else {
-                    backgroundMusic.play();
-                    musicIcon.classList.remove('fa-music');
-                    musicIcon.classList.add('fa-pause');
-                }
-                isPlaying = !isPlaying;
+            // Mencegah drag pada gambar
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('dragstart', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
             });
             
-            // Animasi Bunga
-            const flowerSymbols = ["❀", "❁", "❂", "✿", "❃"];
+            // Fungsi tombol buka undangan
+            const openButton = document.getElementById('openButton');
+            openButton.addEventListener('click', function() {
+                // Arahkan ke halaman ayat
+                window.location.href = 'content.html';
+            });
+            
+            // Mendapatkan parameter dari URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('to');
+            
+            // Mengubah teks tamu undangan jika ada parameter 'to'
+            if (guestName) {
+                // Mengganti '+' dengan spasi dan membuat huruf kapital di awal kata
+                const formattedName = guestName.replace(/\+/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                document.getElementById('guestName').textContent = formattedName;
+            }
+            
+            // Debug untuk memeriksa apakah gambar dimuat
+            const coupleImage = document.querySelector('.image-container img');
+            coupleImage.addEventListener('error', function() {
+                console.error('Gambar couple.png tidak dapat dimuat. Periksa path file.');
+                console.log('Path yang dicoba:', this.src);
+            });
+            
+            coupleImage.addEventListener('load', function() {
+                console.log('Gambar couple.png berhasil dimuat');
+            });
+            
+            // Animasi Salju
+            const snowflakeSymbols = ["❄", "❅", "❆"];
             const mobileContainer = document.querySelector('.mobile-container');
-            const createFlower = () => {
-                const flower = document.createElement('div');
-                flower.classList.add('flower');
-                flower.innerHTML = flowerSymbols[Math.floor(Math.random() * flowerSymbols.length)];
-                flower.style.left = Math.random() * 100 + '%';
-                flower.style.animationDuration = Math.random() * 3 + 5 + 's'; // Durasi antara 5-8 detik
-                flower.style.opacity = Math.random();
-                flower.style.fontSize = Math.random() * 10 + 10 + 'px'; // Ukuran antara 10-20px
+            const createSnowflake = () => {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = Math.random() * 3 + 5 + 's'; // Durasi antara 5-8 detik
+                snowflake.style.opacity = Math.random();
+                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Ukuran antara 10-20px
                 
-                mobileContainer.appendChild(flower);
+                mobileContainer.appendChild(snowflake);
                 
-                // Hapus bunga setelah animasi selesai
+                // Hapus snowflake setelah animasi selesai
                 setTimeout(() => {
-                    flower.remove();
+                    snowflake.remove();
                 }, 8000);
             };
             
-            // Buat bunga setiap 100-300ms
-            setInterval(createFlower, Math.random() * 200 + 100);
-            
-            // Animasi Bintang
-            const starSymbols = ["✦", "✧", "✶", "✷", "✸"];
-            const createStar = () => {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                star.innerHTML = starSymbols[Math.floor(Math.random() * starSymbols.length)];
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.fontSize = Math.random() * 10 + 10 + 'px'; // Ukuran antara 10-20px
-                
-                mobileContainer.appendChild(star);
-                
-                // Hapus bintang setelah beberapa saat
-                setTimeout(() => {
-                    star.remove();
-                }, 10000);
-            };
-            
-            // Buat bintang setiap 500-1000ms
-            setInterval(createStar, Math.random() * 500 + 500);
+            // Buat snowflake setiap 100-300ms
+            setInterval(createSnowflake, Math.random() * 200 + 100);
         });
     </script>
 </body>
