@@ -298,6 +298,82 @@
       color: #333;
     }
     
+    /* ======== Amplop Digital Section ======== */
+    .amplop-digital-container {
+      position: relative;
+      width: 100%;
+      background-color: #FAF4EF;
+      border: 5px solid #A5A58D;
+      border-radius: 15px;
+      padding: 30px 20px;
+      margin-top: 40px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .amplop-digital-title {
+      font-family: 'Merriweather', serif;
+      font-size: 24px;
+      color: #8B3A3A;
+      margin-bottom: 20px;
+    }
+    
+    .amplop-digital-subtitle {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+    
+    .bank-card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 15px;
+      text-align: left;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .bank-info {
+      flex: 1;
+    }
+    
+    .bank-name {
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    
+    .bank-number {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 3px;
+    }
+    
+    .bank-owner {
+      font-size: 12px;
+      color: #777;
+    }
+    
+    .copy-btn {
+      background-color: #A45C40;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .copy-btn:hover {
+      background-color: #8B3A3A;
+    }
+    
     /* Tombol QR Code */
     .qr-btn {
       position: fixed;
@@ -412,13 +488,42 @@
       <p class="love-story-verse">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang..." - QS. Ar-Rum : 21</p>
       
       <div class="story-section">
-        <h3>Pertemuan</h3>
-        <p>Kami bertemu dalam sebuah acara kampus, tak disangka cinta tumbuh di hati kami. Dari pertemuan singkat itu, kami mulai saling mengenal dan memahami satu sama lain. Setiap pertemuan selalu menjadi cerita indah yang kami kenang bersama.</p>
+        <h3>Ta'aruf</h3>
+        <p>Awal bulan Juni, dengan izin Allah, kami memulai langkah pertama menuju jalan yang diridhai-Nya. Bukan dengan janji manis, bukan pula dengan pertemuan tanpa arah, melainkan melalui ta'aruf saling memperkenalkan diri dengan cara yang syar'i. Saling bertukar CV, bertanya jawab tentang visi misi hidup dan pernikahan serta hal-hal lain untuk mengenal dasar aqidah dan keimanan pada masing-masing dari kami.</p>
       </div>
       
       <div class="story-section">
-        <h3>Perjalanan Cinta</h3>
-        <p>Setelah melewati berbagai suka dan duka, kami memutuskan untuk melangkah ke jenjang yang lebih serius. Dengan restu dari kedua keluarga, kami berkomitmen untuk membangun bahtera rumah tangga yang sakrah dan mawaddah warahmah.</p>
+        <h3>Nadzor</h3>
+        <p>Akhir bulan Juni Biidznillah Allah tuntun kami melangkah pada proses, memandang satu sama lain, mengenal bagaimana pribadi masing-masing dalam bincang jumpa bersama orang tua agar semakin meyakini untuk melangkah ke tahap berikutnya.</p>
+      </div>
+      
+      <div class="story-section">
+        <h3>Khitbah</h3>
+        <p>Biidznillah, Alhamdulillah, dengan ridha Allah, kami sampai pada proses khitbah. Dengan perasaan haru penuh khidmat kami memohon dan berharap agar keputusan ini menjadi jalan kebaikan dunia - akhirat sesurga kelak.</p>
+      </div>
+    </div>
+    
+    <!-- ======== Amplop Digital Section ======== -->
+    <div class="amplop-digital-container hidden">
+      <h2 class="amplop-digital-title">Amplop Digital</h2>
+      <p class="amplop-digital-subtitle">Bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih, dapat melalui transfer ke rekening berikut:</p>
+      
+      <div class="bank-card">
+        <div class="bank-info">
+          <div class="bank-name">Mandiri</div>
+          <div class="bank-number">7823196314</div>
+          <div class="bank-owner">A/n Hafizah Laila Qonita</div>
+        </div>
+        <button class="copy-btn" onclick="copyToClipboard('7823196314')">Salin Rekening</button>
+      </div>
+      
+      <div class="bank-card">
+        <div class="bank-info">
+          <div class="bank-name">CIMB NIAGA</div>
+          <div class="bank-number">1231365151</div>
+          <div class="bank-owner">A/n Hafizah Laila Qonita</div>
+        </div>
+        <button class="copy-btn" onclick="copyToClipboard('1231365151')">Salin Rekening</button>
       </div>
     </div>
   </div>
@@ -455,6 +560,15 @@
       document.getElementById('seconds').textContent = seconds;
     }
     setInterval(updateCountdown, 1000);
+    
+    // Fungsi untuk menyalin nomor rekening
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        alert('Nomor rekening telah disalin: ' + text);
+      }, function(err) {
+        console.error('Gagal menyalin teks: ', err);
+      });
+    }
   </script>
 </body>
 </html>
