@@ -19,7 +19,6 @@
       background-color: #F3E9DC;
       color: #2c2c2c;
       overflow-x: hidden;
-      padding-top: 80px; /* Tambahkan padding atas untuk frame */
     }
     .container {
       max-width: 420px;
@@ -27,82 +26,38 @@
       text-align: center;
       padding: 20px;
     }
-    /* ======== Frame Atas ======== */
-    .top-frame {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      background-color: #F3E9DC;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .top-frame-ornament {
-      width: 100%;
-      max-width: 500px;
-      height: auto;
-    }
-    /* ======== Animasi Scroll ======== */
-    .hidden {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease-out;
-    }
-    .visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* ======== Animasi FadeIn Down ======== */
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translate3d(0, -20px, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-    .fadeInDown {
-      animation-name: fadeInDown;
-      animation-fill-mode: both;
-      animation-duration: 1s;
-    }
     /* ======== Teks Pembuka ======== */
     .opening-text {
       margin-top: 20px;
       margin-bottom: 30px;
       position: relative;
-      padding-top: 20px; /* Kurangi padding atas karena sudah ada frame */
+      padding-top: 60px;
     }
     .bismillah {
       font-size: 20px;
       font-weight: bold;
       margin-bottom: 10px;
-      opacity: 0;
     }
     .opening-text p {
       font-size: 14px;
       line-height: 1.6;
       margin: 5px 0;
-      opacity: 0;
     }
-    /* Animasi untuk teks pembuka saat muncul */
-    .opening-text.visible .bismillah {
-      animation: fadeInDown 0.8s ease forwards;
+    /* ======== Ornamen Atas ======== */
+    .ornament-container {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
     }
-    .opening-text.visible p:nth-child(2) {
-      animation: fadeInDown 0.8s ease 0.2s forwards;
-    }
-    .opening-text.visible p:nth-child(3) {
-      animation: fadeInDown 0.8s ease 0.4s forwards;
-    }
-    .opening-text.visible p:nth-child(4) {
-      animation: fadeInDown 0.8s ease 0.6s forwards;
+    .ornament-img {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
     }
     /* ======== Frame Foto Mempelai ======== */
     .photo-wrapper {
@@ -114,7 +69,6 @@
       border-radius: 150px 150px 20px 20px;
       overflow: hidden;
       position: relative;
-      opacity: 0;
     }
     /* Efek shadow pekat hanya di dalam frame */
     .photo-wrapper::after {
@@ -136,38 +90,21 @@
       position: relative;
       z-index: 1;
     }
-    /* Animasi untuk foto */
-    .photo-wrapper.visible {
-      animation: zoomInUp 1s ease forwards;
-    }
     /* Nama dan Orang Tua */
     .name {
       font-size: 20px;
       font-style: italic;
       color: #6c5d57;
       margin-top: 10px;
-      opacity: 0;
     }
     .parents-label {
       font-size: 12px;
       margin-top: 5px;
       font-weight: bold;
-      opacity: 0;
     }
     .parents-name {
       font-size: 14px;
       margin-top: 2px;
-      opacity: 0;
-    }
-    /* Animasi untuk nama pengantin */
-    .name.visible {
-      animation: zoomIn 0.8s ease forwards;
-    }
-    .name.visible + .parents-label {
-      animation: fadeInUp 0.8s ease 0.2s forwards;
-    }
-    .name.visible + .parents-label + .parents-name {
-      animation: fadeInUp 0.8s ease 0.4s forwards;
     }
     /* Divider */
     .section-divider {
@@ -183,7 +120,6 @@
       border-radius: 15px;
       margin-top: 40px;
       text-align: center;
-      opacity: 0;
     }
     .countdown-section h2 {
       font-family: 'Dancing Script', cursive;
@@ -202,10 +138,6 @@
       font-size: 28px;
       font-weight: bold;
     }
-    /* Animasi untuk countdown */
-    .countdown-section.visible {
-      animation: fadeIn 1s ease forwards;
-    }
     /* ======== Detail Acara ======== */
     .event-card {
       background: #FAF4EF;
@@ -215,19 +147,16 @@
       margin-top: 25px;
       text-align: center;
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-      opacity: 0;
     }
     .event-card h3 {
       font-family: 'Merriweather', serif;
       color: #8B3A3A;
       margin-bottom: 15px;
-      opacity: 0;
     }
     .event-card p {
       font-size: 14px;
       margin: 6px 0;
       line-height: 1.5;
-      opacity: 0;
     }
     .event-card .location-btn {
       display: inline-block;
@@ -239,32 +168,9 @@
       text-decoration: none;
       font-size: 14px;
       transition: background 0.3s ease;
-      opacity: 0;
     }
     .event-card .location-btn:hover {
       background-color: #8B3A3A;
-    }
-    /* Animasi untuk detail acara */
-    .event-card.visible {
-      animation: fadeIn 0.8s ease forwards;
-    }
-    .event-card.visible h3 {
-      animation: slideInDown 0.8s ease 0.2s forwards;
-    }
-    .event-card.visible p:nth-of-type(1) {
-      animation: fadeInUp 0.8s ease 0.4s forwards;
-    }
-    .event-card.visible p:nth-of-type(2) {
-      animation: fadeInUp 0.8s ease 0.5s forwards;
-    }
-    .event-card.visible p:nth-of-type(3) {
-      animation: fadeInUp 0.8s ease 0.6s forwards;
-    }
-    .event-card.visible p:nth-of-type(4) {
-      animation: fadeInUp 0.8s ease 0.7s forwards;
-    }
-    .event-card.visible .location-btn {
-      animation: fadeInUp 0.8s ease 0.8s forwards;
     }
     /* ======== RSVP Section ======== */
     .rsvp-container {
@@ -278,7 +184,6 @@
       margin-top: 40px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
-      opacity: 0;
     }
     .rsvp-container h2 {
       font-family: 'Merriweather', serif;
@@ -327,20 +232,12 @@
       font-size: 14px;
       text-decoration: none;
       transition: background 0.3s ease;
-      opacity: 0;
     }
     .btn-submit:hover {
       background-color: #8B3A3A;
     }
     .btn-submit i {
       font-size: 16px;
-    }
-    /* Animasi untuk RSVP */
-    .rsvp-container.visible {
-      animation: fadeIn 0.8s ease forwards;
-    }
-    .rsvp-container.visible .btn-submit {
-      animation: bounceIn 1s ease 0.5s forwards;
     }
     /* Ornamen bunga bawah */
     .ornament {
@@ -363,7 +260,6 @@
       margin-top: 40px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
-      opacity: 0;
     }
     
     .love-story-title {
@@ -411,11 +307,6 @@
       color: #333;
     }
     
-    /* Animasi untuk Love Story */
-    .love-story-container.visible {
-      animation: fadeIn 0.8s ease forwards;
-    }
-    
     /* ======== Amplop Digital Section ======== */
     .amplop-digital-container {
       position: relative;
@@ -427,7 +318,6 @@
       margin-top: 40px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
-      opacity: 0;
     }
     
     .amplop-digital-title {
@@ -493,11 +383,6 @@
       background-color: #8B3A3A;
     }
     
-    /* Animasi untuk Amplop Digital */
-    .amplop-digital-container.visible {
-      animation: fadeIn 0.8s ease forwards;
-    }
-    
     /* ======== Ucapan & Doa Section ======== */
     .ucapan-doa-container {
       position: relative;
@@ -505,7 +390,6 @@
       padding: 40px 20px;
       margin-top: 40px;
       text-align: center;
-      opacity: 0;
     }
     
     .ucapan-doa-title {
@@ -551,11 +435,6 @@
       z-index: 1;
     }
     
-    /* Animasi untuk Ucapan & Doa */
-    .ucapan-doa-container.visible {
-      animation: fadeIn 0.8s ease forwards;
-    }
-    
     /* Tombol QR Code */
     .qr-btn {
       position: fixed;
@@ -579,14 +458,15 @@
     
     /* Media Query untuk layar mobile */
     @media (max-width: 480px) {
-      body {
-        padding-top: 60px; /* Sesuaikan untuk layar mobile */
-      }
-      .top-frame {
-        height: 60px;
-      }
       .opening-text {
-        padding-top: 10px;
+        padding-top: 50px;
+      }
+      .ornament-container {
+        top: -15px;
+      }
+      .ornament-img {
+        width: 90%;
+        max-width: 300px;
       }
     }
   </style>
@@ -594,33 +474,32 @@
 <body>
   <div class="container">
     <!-- ======== Pembuka ======== -->
-    <div class="opening-text hidden">
-          <!-- ======== Frame Atas ======== -->
-  <div class="top-frame">
-    <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Frame Atas" class="top-frame-ornament">
-  </div>
-      <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
-      <p>Assalamu`alaikum Warahmatullahi Wabarakatuh</p>
-      <p>Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.</p>
-      <p>Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.</p>
+    <div class="opening-text">
+      <div class="ornament-container">
+        <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Ornamen Bunga" class="ornament-img">
+      </div>
+      <div class="bismillah animate__animated">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+      <p class="animate__animated animate__delay-1s">Assalamu`alaikum Warahmatullahi Wabarakatuh</p>
+      <p class="animate__animated animate__delay-2s">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.</p>
+      <p class="animate__animated animate__delay-3s">Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.</p>
     </div>
     <!-- ======== Mempelai Pria ======== -->
-    <div class="photo-wrapper hidden">
+    <div class="photo-wrapper animate__animated">
       <img src="foto_pria.jpg" alt="Foto Pria">
     </div>
-    <div class="name hidden">Jean Dwi Kustanto</div>
-    <div class="parents-label hidden">Putra dari</div>
-    <div class="parents-name hidden">Alm. Bapak Selamet Budiono & Ibu Kuswati</div>
-    <div class="section-divider hidden">----- & -----</div>
+    <div class="name animate__animated animate__delay-1s">Jean Dwi Kustanto</div>
+    <div class="parents-label animate__animated animate__delay-2s">Putra dari</div>
+    <div class="parents-name animate__animated animate__delay-3s">Alm. Bapak Selamet Budiono & Ibu Kuswati</div>
+    <div class="section-divider">----- & -----</div>
     <!-- ======== Mempelai Wanita ======== -->
-    <div class="photo-wrapper hidden">
+    <div class="photo-wrapper animate__animated">
       <img src="foto_wanita.jpg" alt="Foto Wanita">
     </div>
-    <div class="name hidden">Pujiana Dwi Kusumawati</div>
-    <div class="parents-label hidden">Putri dari</div>
-    <div class="parents-name hidden">Bapak Sudibyo & Ibu Siswati</div>
+    <div class="name animate__animated animate__delay-1s">Pujiana Dwi Kusumawati</div>
+    <div class="parents-label animate__animated animate__delay-2s">Putri dari</div>
+    <div class="parents-name animate__animated animate__delay-3s">Bapak Sudibyo & Ibu Siswati</div>
     <!-- ======== Countdown ======== -->
-    <div class="countdown-section hidden">
+    <div class="countdown-section animate__animated">
       <h2>Menuju Hari Bahagia</h2>
       <div class="countdown-timer">
         <div class="countdown-item"><span id="days">0</span>Hari</div>
@@ -631,29 +510,29 @@
       <p>Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri acara pernikahan kami.</p>
     </div>
     <!-- ======== Acara Akad Nikah ======== -->
-    <div class="event-card hidden">
-      <h3>Akad Nikah</h3>
-      <p><strong>Hari/Tanggal:</strong> Rabu, 08 Oktober 2025</p>
-      <p><strong>Waktu:</strong> 08.00 WIB</p>
-      <p><strong>Tempat:</strong> Kediaman Mempelai Wanita</p>
-      <p>Dusun Krajan RT 004 RW 001, Desa Tempuran, Kec. Bantaran, Probolinggo</p>
-      <a href="https://maps.google.com" target="_blank" class="location-btn">
+    <div class="event-card">
+      <h3 class="animate__animated">Akad Nikah</h3>
+      <p class="animate__animated animate__delay-1s"><strong>Hari/Tanggal:</strong> Rabu, 08 Oktober 2025</p>
+      <p class="animate__animated animate__delay-2s"><strong>Waktu:</strong> 08.00 WIB</p>
+      <p class="animate__animated animate__delay-3s"><strong>Tempat:</strong> Kediaman Mempelai Wanita</p>
+      <p class="animate__animated animate__delay-4s">Dusun Krajan RT 004 RW 001, Desa Tempuran, Kec. Bantaran, Probolinggo</p>
+      <a href="https://maps.google.com" target="_blank" class="location-btn animate__animated animate__delay-5s">
         <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
       </a>
     </div>
     <!-- ======== Walimatul 'Urs ======== -->
-    <div class="event-card hidden">
-      <h3>Walimatul 'Urs</h3>
-      <p><strong>Hari/Tanggal:</strong> Minggu, 12 Oktober 2025</p>
-      <p><strong>Waktu:</strong> 09.00 WIB - Selesai</p>
-      <p><strong>Tempat:</strong> Rumah Mempelai Pria</p>
-      <p>Candinero RT 001 RW 002, Kecamatan Wonoayu, Kabupaten Sidoarjo, Jawa Timur</p>
-      <a href="https://maps.google.com" target="_blank" class="location-btn">
+    <div class="event-card">
+      <h3 class="animate__animated">Walimatul 'Urs</h3>
+      <p class="animate__animated animate__delay-1s"><strong>Hari/Tanggal:</strong> Minggu, 12 Oktober 2025</p>
+      <p class="animate__animated animate__delay-2s"><strong>Waktu:</strong> 09.00 WIB - Selesai</p>
+      <p class="animate__animated animate__delay-3s"><strong>Tempat:</strong> Rumah Mempelai Pria</p>
+      <p class="animate__animated animate__delay-4s">Candinero RT 001 RW 002, Kecamatan Wonoayu, Kabupaten Sidoarjo, Jawa Timur</p>
+      <a href="https://maps.google.com" target="_blank" class="location-btn animate__animated animate__delay-5s">
         <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
       </a>
     </div>
     <!-- ======== RSVP ======== -->
-    <div class="rsvp-container hidden">
+    <div class="rsvp-container">
       <h2>RSVP</h2>
       <p>Diharapkan kepada tamu undangan (Bapak/Ibu/Saudara/i) dapat mengisi form kehadiran pada acara pernikahan kami</p>
       
@@ -670,7 +549,7 @@
             <option value="tidak-hadir">Tidak Hadir</option>
           </select>
         </div>
-        <button type="submit" class="btn-submit">
+        <button type="submit" class="btn-submit animate__animated animate__bounceIn">
           <i class="fas fa-check-circle"></i> Konfirmasi Kehadiran
         </button>
       </form>
@@ -679,7 +558,7 @@
     </div>
     
     <!-- ======== Love Story Section ======== -->
-    <div class="love-story-container hidden">
+    <div class="love-story-container">
       <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration">
       
       <h2 class="love-story-title">-Love Story-</h2>
@@ -693,7 +572,7 @@
       
       <div class="story-section">
         <h3>Nadzor</h3>
-        <p>Akhir bulan Juni Biidznillah Allah tuntun kami melangkah pada proses, memandang satu sama lain, mengenal bagaimana pribadi masing-masing dalam bincang jumpa bersama orang tua agar semakin meyakini untuk melangkah ke tahap berikutnya.</p>
+        <p>Akhir bulan Juni Biidznillah Allah tuntun kami melangkah pada proses, memandang satu sama lain, mengenal bagaimana pribadi masing-masing dalam bincang jumpa bersama orang tua agar semakin meyakinci untuk melangkah ke tahap berikutnya.</p>
       </div>
       
       <div class="story-section">
@@ -703,7 +582,7 @@
     </div>
     
     <!-- ======== Amplop Digital Section ======== -->
-    <div class="amplop-digital-container hidden">
+    <div class="amplop-digital-container">
       <h2 class="amplop-digital-title">Amplop Digital</h2>
       <p class="amplop-digital-subtitle">Bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih, dapat melalui transfer ke rekening berikut:</p>
       
@@ -727,7 +606,7 @@
     </div>
     
     <!-- ======== Ucapan & Doa Section ======== -->
-    <div class="ucapan-doa-container hidden">
+    <div class="ucapan-doa-container">
       <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration-top">
       
       <h2 class="ucapan-doa-title">Ucapan & Doa</h2>
@@ -744,19 +623,58 @@
     <i class="fas fa-qrcode"></i>
   </div>
   <script>
-    // Intersection Observer untuk animasi scroll
+    // Menghapus semua animasi yang ada
+    document.querySelectorAll('.animate__animated').forEach(el => {
+      el.classList.remove('animate__animated', 'animate__fadeInDown', 'animate__zoomInUp', 'animate__fadeInUp', 'animate__fadeIn', 'animate__slideInDown', 'animate__bounceIn');
+    });
+    
+    // Menambahkan animasi baru sesuai permintaan
+    const observerOptions = {
+      threshold: 0.1
+    };
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
+          // Teks Bismillah / Salam → fadeInDown
+          if (entry.target.classList.contains('bismillah') || 
+              (entry.target.parentElement.classList.contains('opening-text') && entry.target.tagName === 'P')) {
+            entry.target.classList.add('animate__animated', 'animate__fadeInDown');
+          }
+          
+          // Foto Pengantin → zoomInUp
+          else if (entry.target.classList.contains('photo-wrapper')) {
+            entry.target.classList.add('animate__animated', 'animate__zoomInUp');
+          }
+          
+          // Nama Pengantin → fadeInUp
+          else if (entry.target.classList.contains('name')) {
+            entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+          }
+          
+          // Countdown → fadeIn
+          else if (entry.target.classList.contains('countdown-section')) {
+            entry.target.classList.add('animate__animated', 'animate__fadeIn');
+          }
+          
+          // Judul Acara → slideInDown
+          else if (entry.target.parentElement.classList.contains('event-card') && entry.target.tagName === 'H3') {
+            entry.target.classList.add('animate__animated', 'animate__slideInDown');
+          }
+          
+          // Tombol RSVP → bounceIn
+          else if (entry.target.classList.contains('btn-submit')) {
+            entry.target.classList.add('animate__animated', 'animate__bounceIn');
+          }
         }
       });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.hidden').forEach(el => {
+    }, observerOptions);
+    
+    // Mengamati semua elemen yang memerlukan animasi
+    document.querySelectorAll('.bismillah, .opening-text p, .photo-wrapper, .name, .countdown-section, .event-card h3, .btn-submit').forEach(el => {
       observer.observe(el);
     });
+    
     // Countdown Timer
     const eventDate = new Date("Oct 10, 2025 08:00:00").getTime();
     function updateCountdown() {
