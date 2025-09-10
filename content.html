@@ -28,34 +28,65 @@
     /* ======== Animasi Scroll ======== */
     .hidden {
       opacity: 0;
-      transform: scale(0.5);
-      transition: all 0.5s ease-out;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
     }
     .visible {
       opacity: 1;
-      transform: scale(1);
+      transform: translateY(0);
+    }
+    /* ======== Animasi FadeIn Down ======== */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translate3d(0, -20px, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    .fadeInDown {
+      animation-name: fadeInDown;
+      animation-fill-mode: both;
+      animation-duration: 1s;
     }
     /* ======== Teks Pembuka ======== */
     .opening-text {
       margin-top: 20px;
       margin-bottom: 30px;
-      position: relative; /* Tambahkan position relative */
-      padding-top: 40px; /* Tambahkan padding atas untuk ornamen */
+      position: relative;
+      padding-top: 60px;
     }
     .bismillah {
       font-size: 20px;
       font-weight: bold;
       margin-bottom: 10px;
+      opacity: 0;
     }
     .opening-text p {
       font-size: 14px;
       line-height: 1.6;
       margin: 5px 0;
+      opacity: 0;
+    }
+    /* Animasi untuk teks pembuka saat muncul */
+    .opening-text.visible .bismillah {
+      animation: fadeInDown 0.8s ease forwards;
+    }
+    .opening-text.visible p:nth-child(2) {
+      animation: fadeInDown 0.8s ease 0.2s forwards;
+    }
+    .opening-text.visible p:nth-child(3) {
+      animation: fadeInDown 0.8s ease 0.4s forwards;
+    }
+    .opening-text.visible p:nth-child(4) {
+      animation: fadeInDown 0.8s ease 0.6s forwards;
     }
     /* ======== Ornamen Atas ======== */
     .ornament-container {
       position: absolute;
-      top: -15px;
+      top: -20px;
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
@@ -64,24 +95,21 @@
       z-index: 10;
     }
     .ornament-img {
-      width: 80%; /* Sesuaikan ukuran untuk mobile */
-      max-width: 300px; /* Maksimal ukuran */
+      width: 100%;
+      max-width: 350px;
       height: auto;
+      animation: float 3s ease-in-out infinite;
     }
     /* Animasi untuk ornamen */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
     @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
-      100% { transform: translateY(0px); }
+      0% { transform: translateY(0px) translateX(-50%); }
+      50% { transform: translateY(-10px) translateX(-50%); }
+      100% { transform: translateY(0px) translateX(-50%); }
     }
     /* ======== Frame Foto Mempelai ======== */
     .photo-wrapper {
-      width: 300px;
-      height: 300px;
+      width: 250px;
+      height: 280px;
       margin: 30px auto 15px;
       background-color: #9eb29c;
       border: 10px solid #b54d30;
@@ -195,8 +223,8 @@
     .rsvp-container {
       position: relative;
       width: 100%;
-      background-color: #FAF4EF; /* Krem */
-      border: 5px solid #A5A58D; /* Hijau sage */
+      background-color: #FAF4EF;
+      border: 5px solid #A5A58D;
       border-bottom-left-radius: 50% 20%;
       border-bottom-right-radius: 50% 20%;
       padding: 25px 20px 80px;
@@ -478,25 +506,25 @@
     /* Media Query untuk layar mobile */
     @media (max-width: 480px) {
       .opening-text {
-        padding-top: 30px; /* Kurangi padding atas untuk layar kecil */
+        padding-top: 50px;
       }
       .ornament-container {
-        top: -10px; /* Sesuaikan posisi untuk layar kecil */
+        top: -15px;
       }
       .ornament-img {
-        width: 70%; /* Sesuaikan ukuran untuk layar kecil */
-        max-width: 250px; /* Maksimal ukuran untuk layar kecil */
+        width: 90%;
+        max-width: 300px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="ornament-container">
-        <img src="flower-1.png" alt="Ornamen Bunga" class="ornament-img">
-      </div>
     <!-- ======== Pembuka ======== -->
     <div class="opening-text hidden">
+      <div class="ornament-container">
+        <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Ornamen Bunga" class="ornament-img">
+      </div>
       <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
       <p>Assalamu`alaikum Warahmatullahi Wabarakatuh</p>
       <p>Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.</p>
@@ -504,7 +532,7 @@
     </div>
     <!-- ======== Mempelai Pria ======== -->
     <div class="photo-wrapper hidden">
-      <img src="pria.png" alt="Foto Pria">
+      <img src="foto_pria.jpg" alt="Foto Pria">
     </div>
     <div class="name hidden">Jean Dwi Kustanto</div>
     <div class="parents-label hidden">Putra dari</div>
@@ -512,7 +540,7 @@
     <div class="section-divider hidden">----- & -----</div>
     <!-- ======== Mempelai Wanita ======== -->
     <div class="photo-wrapper hidden">
-      <img src="wanita.png" alt="Foto Wanita">
+      <img src="foto_wanita.jpg" alt="Foto Wanita">
     </div>
     <div class="name hidden">Pujiana Dwi Kusumawati</div>
     <div class="parents-label hidden">Putri dari</div>
@@ -573,12 +601,12 @@
         </button>
       </form>
       <!-- Ornamen bunga bawah -->
-      <img src="ornament.png" alt="Ornament Bunga" class="ornament">
+      <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Ornament Bunga" class="ornament">
     </div>
     
     <!-- ======== Love Story Section ======== -->
     <div class="love-story-container hidden">
-      <img src="flower-1.png" alt="Flower Decoration" class="flower-decoration">
+      <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration">
       
       <h2 class="love-story-title">-Love Story-</h2>
       
@@ -591,7 +619,7 @@
       
       <div class="story-section">
         <h3>Nadzor</h3>
-        <p>Akhir bulan Juni Biidznillah Allah tuntun kami melangkah pada proses, memandang satu sama lain, mengenal bagaimana pribadi masing-masing dalam bincang jumpa bersama orang tua agar semakin meyakini untuk melangkah ke tahap berikutnya.</p>
+        <p>Akhir bulan Juni Biidznillah Allah tuntun kami melangkah pada proses, memandang satu sama lain, mengenal bagaimana pribadi masing-masing dalam bincang jumpa bersama orang tua agar semakin meyakinci untuk melangkah ke tahap berikutnya.</p>
       </div>
       
       <div class="story-section">
@@ -626,7 +654,7 @@
     
     <!-- ======== Ucapan & Doa Section ======== -->
     <div class="ucapan-doa-container hidden">
-      <img src="flower-1.png" alt="Flower Decoration" class="flower-decoration-top">
+      <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration-top">
       
       <h2 class="ucapan-doa-title">Ucapan & Doa</h2>
       
@@ -634,7 +662,7 @@
       
       <p class="translation-text">"Semoga Allah memberikan keberkahan padamu dan mengumpulkan kalian berdua dalam kebaikan."</p>
       
-      <img src="flower-1.png" alt="Flower Decoration" class="flower-decoration-bottom">
+      <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration-bottom">
     </div>
   </div>
   <!-- Tombol QR Code -->
