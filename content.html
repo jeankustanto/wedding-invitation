@@ -40,6 +40,7 @@
       margin-top: 20px;
       margin-bottom: 30px;
       position: relative; /* Tambahkan position relative */
+      padding-top: 40px; /* Tambahkan padding atas untuk ornamen */
     }
     .bismillah {
       font-size: 20px;
@@ -54,15 +55,17 @@
     /* ======== Ornamen Atas ======== */
     .ornament-container {
       position: absolute;
-      top: -25px;
-      left: 0;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 100%;
       display: flex;
       justify-content: center;
       z-index: 10;
     }
     .ornament-img {
-      width: 120px;
+      width: 80%; /* Sesuaikan ukuran untuk mobile */
+      max-width: 300px; /* Maksimal ukuran */
       height: auto;
     }
     /* Animasi untuk ornamen */
@@ -72,7 +75,7 @@
     }
     @keyframes float {
       0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-5px); }
       100% { transform: translateY(0px); }
     }
     /* ======== Frame Foto Mempelai ======== */
@@ -471,6 +474,20 @@
     .qr-btn:hover {
       background-color: #8B3A3A;
     }
+    
+    /* Media Query untuk layar mobile */
+    @media (max-width: 480px) {
+      .opening-text {
+        padding-top: 30px; /* Kurangi padding atas untuk layar kecil */
+      }
+      .ornament-container {
+        top: -10px; /* Sesuaikan posisi untuk layar kecil */
+      }
+      .ornament-img {
+        width: 70%; /* Sesuaikan ukuran untuk layar kecil */
+        max-width: 250px; /* Maksimal ukuran untuk layar kecil */
+      }
+    }
   </style>
 </head>
 <body>
@@ -561,7 +578,7 @@
     
     <!-- ======== Love Story Section ======== -->
     <div class="love-story-container hidden">
-      <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration">
+      <img src="flower-1.png" alt="Flower Decoration" class="flower-decoration">
       
       <h2 class="love-story-title">-Love Story-</h2>
       
@@ -609,7 +626,7 @@
     
     <!-- ======== Ucapan & Doa Section ======== -->
     <div class="ucapan-doa-container hidden">
-      <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration-top">
+      <img src="flower-1.png" alt="Flower Decoration" class="flower-decoration-top">
       
       <h2 class="ucapan-doa-title">Ucapan & Doa</h2>
       
@@ -617,7 +634,7 @@
       
       <p class="translation-text">"Semoga Allah memberikan keberkahan padamu dan mengumpulkan kalian berdua dalam kebaikan."</p>
       
-      <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration-bottom">
+      <img src="flower-1.png" alt="Flower Decoration" class="flower-decoration-bottom">
     </div>
   </div>
   <!-- Tombol QR Code -->
