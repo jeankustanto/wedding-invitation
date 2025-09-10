@@ -129,6 +129,19 @@
       font-size: 28px;
       font-weight: bold;
     }
+    /* ======== ornamen atas ======== */
+    .ornament-container {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeIn 1.5s ease 0.2s forwards, float 6s ease-in-out 2s infinite;
+            padding: 0;
+        }
     /* ======== Detail Acara ======== */
     .event-card {
       background: #FAF4EF;
@@ -452,7 +465,9 @@
   <div class="container">
     <!-- ======== Pembuka ======== -->
     <div class="opening-text hidden">
-      <img src="flower-1.png">
+       <div class="ornament-container">
+            <img src="flower-1.png" alt="Ornamen Bunga" class="ornament">
+        </div>
       <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
       <p>Assalamu`alaikum Warahmatullahi Wabarakatuh</p>
       <p>Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.</p>
