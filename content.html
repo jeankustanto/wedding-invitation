@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Pernikahan Jean & Dwi</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins&family=Dancing+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     /* Reset */
@@ -18,12 +19,32 @@
       background-color: #F3E9DC;
       color: #2c2c2c;
       overflow-x: hidden;
+      padding-top: 80px; /* Tambahkan padding atas untuk frame */
     }
     .container {
       max-width: 420px;
       margin: auto;
       text-align: center;
       padding: 20px;
+    }
+    /* ======== Frame Atas ======== */
+    .top-frame {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background-color: #F3E9DC;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .top-frame-ornament {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
     }
     /* ======== Animasi Scroll ======== */
     .hidden {
@@ -56,7 +77,7 @@
       margin-top: 20px;
       margin-bottom: 30px;
       position: relative;
-      padding-top: 60px;
+      padding-top: 20px; /* Kurangi padding atas karena sudah ada frame */
     }
     .bismillah {
       font-size: 20px;
@@ -83,29 +104,6 @@
     .opening-text.visible p:nth-child(4) {
       animation: fadeInDown 0.8s ease 0.6s forwards;
     }
-    /* ======== Ornamen Atas ======== */
-    .ornament-container {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      z-index: 10;
-    }
-    .ornament-img {
-      width: 100%;
-      max-width: 350px;
-      height: auto;
-      animation: float 3s ease-in-out infinite;
-    }
-    /* Animasi untuk ornamen */
-    @keyframes float {
-      0% { transform: translateY(0px) translateX(-50%); }
-      50% { transform: translateY(-10px) translateX(-50%); }
-      100% { transform: translateY(0px) translateX(-50%); }
-    }
     /* ======== Frame Foto Mempelai ======== */
     .photo-wrapper {
       width: 250px;
@@ -116,6 +114,7 @@
       border-radius: 150px 150px 20px 20px;
       overflow: hidden;
       position: relative;
+      opacity: 0;
     }
     /* Efek shadow pekat hanya di dalam frame */
     .photo-wrapper::after {
@@ -137,21 +136,38 @@
       position: relative;
       z-index: 1;
     }
+    /* Animasi untuk foto */
+    .photo-wrapper.visible {
+      animation: zoomInUp 1s ease forwards;
+    }
     /* Nama dan Orang Tua */
     .name {
       font-size: 20px;
       font-style: italic;
       color: #6c5d57;
       margin-top: 10px;
+      opacity: 0;
     }
     .parents-label {
       font-size: 12px;
       margin-top: 5px;
       font-weight: bold;
+      opacity: 0;
     }
     .parents-name {
       font-size: 14px;
       margin-top: 2px;
+      opacity: 0;
+    }
+    /* Animasi untuk nama pengantin */
+    .name.visible {
+      animation: zoomIn 0.8s ease forwards;
+    }
+    .name.visible + .parents-label {
+      animation: fadeInUp 0.8s ease 0.2s forwards;
+    }
+    .name.visible + .parents-label + .parents-name {
+      animation: fadeInUp 0.8s ease 0.4s forwards;
     }
     /* Divider */
     .section-divider {
@@ -167,6 +183,7 @@
       border-radius: 15px;
       margin-top: 40px;
       text-align: center;
+      opacity: 0;
     }
     .countdown-section h2 {
       font-family: 'Dancing Script', cursive;
@@ -185,6 +202,10 @@
       font-size: 28px;
       font-weight: bold;
     }
+    /* Animasi untuk countdown */
+    .countdown-section.visible {
+      animation: fadeIn 1s ease forwards;
+    }
     /* ======== Detail Acara ======== */
     .event-card {
       background: #FAF4EF;
@@ -194,16 +215,19 @@
       margin-top: 25px;
       text-align: center;
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      opacity: 0;
     }
     .event-card h3 {
       font-family: 'Merriweather', serif;
       color: #8B3A3A;
       margin-bottom: 15px;
+      opacity: 0;
     }
     .event-card p {
       font-size: 14px;
       margin: 6px 0;
       line-height: 1.5;
+      opacity: 0;
     }
     .event-card .location-btn {
       display: inline-block;
@@ -215,9 +239,32 @@
       text-decoration: none;
       font-size: 14px;
       transition: background 0.3s ease;
+      opacity: 0;
     }
     .event-card .location-btn:hover {
       background-color: #8B3A3A;
+    }
+    /* Animasi untuk detail acara */
+    .event-card.visible {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    .event-card.visible h3 {
+      animation: slideInDown 0.8s ease 0.2s forwards;
+    }
+    .event-card.visible p:nth-of-type(1) {
+      animation: fadeInUp 0.8s ease 0.4s forwards;
+    }
+    .event-card.visible p:nth-of-type(2) {
+      animation: fadeInUp 0.8s ease 0.5s forwards;
+    }
+    .event-card.visible p:nth-of-type(3) {
+      animation: fadeInUp 0.8s ease 0.6s forwards;
+    }
+    .event-card.visible p:nth-of-type(4) {
+      animation: fadeInUp 0.8s ease 0.7s forwards;
+    }
+    .event-card.visible .location-btn {
+      animation: fadeInUp 0.8s ease 0.8s forwards;
     }
     /* ======== RSVP Section ======== */
     .rsvp-container {
@@ -231,6 +278,7 @@
       margin-top: 40px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
+      opacity: 0;
     }
     .rsvp-container h2 {
       font-family: 'Merriweather', serif;
@@ -279,12 +327,20 @@
       font-size: 14px;
       text-decoration: none;
       transition: background 0.3s ease;
+      opacity: 0;
     }
     .btn-submit:hover {
       background-color: #8B3A3A;
     }
     .btn-submit i {
       font-size: 16px;
+    }
+    /* Animasi untuk RSVP */
+    .rsvp-container.visible {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    .rsvp-container.visible .btn-submit {
+      animation: bounceIn 1s ease 0.5s forwards;
     }
     /* Ornamen bunga bawah */
     .ornament {
@@ -307,6 +363,7 @@
       margin-top: 40px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
+      opacity: 0;
     }
     
     .love-story-title {
@@ -354,6 +411,11 @@
       color: #333;
     }
     
+    /* Animasi untuk Love Story */
+    .love-story-container.visible {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    
     /* ======== Amplop Digital Section ======== */
     .amplop-digital-container {
       position: relative;
@@ -365,6 +427,7 @@
       margin-top: 40px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
+      opacity: 0;
     }
     
     .amplop-digital-title {
@@ -430,6 +493,11 @@
       background-color: #8B3A3A;
     }
     
+    /* Animasi untuk Amplop Digital */
+    .amplop-digital-container.visible {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    
     /* ======== Ucapan & Doa Section ======== */
     .ucapan-doa-container {
       position: relative;
@@ -437,6 +505,7 @@
       padding: 40px 20px;
       margin-top: 40px;
       text-align: center;
+      opacity: 0;
     }
     
     .ucapan-doa-title {
@@ -482,6 +551,11 @@
       z-index: 1;
     }
     
+    /* Animasi untuk Ucapan & Doa */
+    .ucapan-doa-container.visible {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    
     /* Tombol QR Code */
     .qr-btn {
       position: fixed;
@@ -505,26 +579,27 @@
     
     /* Media Query untuk layar mobile */
     @media (max-width: 480px) {
+      body {
+        padding-top: 60px; /* Sesuaikan untuk layar mobile */
+      }
+      .top-frame {
+        height: 60px;
+      }
       .opening-text {
-        padding-top: 50px;
-      }
-      .ornament-container {
-        top: -15px;
-      }
-      .ornament-img {
-        width: 90%;
-        max-width: 300px;
+        padding-top: 10px;
       }
     }
   </style>
 </head>
 <body>
+  <!-- ======== Frame Atas ======== -->
+  <div class="top-frame">
+    <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Frame Atas" class="top-frame-ornament">
+  </div>
+  
   <div class="container">
     <!-- ======== Pembuka ======== -->
     <div class="opening-text hidden">
-      <div class="ornament-container">
-        <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Ornamen Bunga" class="ornament-img">
-      </div>
       <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
       <p>Assalamu`alaikum Warahmatullahi Wabarakatuh</p>
       <p>Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.</p>
@@ -532,7 +607,7 @@
     </div>
     <!-- ======== Mempelai Pria ======== -->
     <div class="photo-wrapper hidden">
-      <img src="pria.png" alt="Foto Pria">
+      <img src="foto_pria.jpg" alt="Foto Pria">
     </div>
     <div class="name hidden">Jean Dwi Kustanto</div>
     <div class="parents-label hidden">Putra dari</div>
@@ -540,7 +615,7 @@
     <div class="section-divider hidden">----- & -----</div>
     <!-- ======== Mempelai Wanita ======== -->
     <div class="photo-wrapper hidden">
-      <img src="wanita.png" alt="Foto Wanita">
+      <img src="foto_wanita.jpg" alt="Foto Wanita">
     </div>
     <div class="name hidden">Pujiana Dwi Kusumawati</div>
     <div class="parents-label hidden">Putri dari</div>
@@ -619,7 +694,7 @@
       
       <div class="story-section">
         <h3>Nadzor</h3>
-        <p>Akhir bulan Juni Biidznillah Allah tuntun kami melangkah pada proses, memandang satu sama lain, mengenal bagaimana pribadi masing-masing dalam bincang jumpa bersama orang tua agar semakin meyakinci untuk melangkah ke tahap berikutnya.</p>
+        <p>Akhir bulan Juni Biidznillah Allah tuntun kami melangkah pada proses, memandang satu sama lain, mengenal bagaimana pribadi masing-masing dalam bincang jumpa bersama orang tua agar semakin meyakini untuk melangkah ke tahap berikutnya.</p>
       </div>
       
       <div class="story-section">
