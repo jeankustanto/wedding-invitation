@@ -39,6 +39,7 @@
     .opening-text {
       margin-top: 20px;
       margin-bottom: 30px;
+      position: relative; /* Tambahkan position relative */
     }
     .bismillah {
       font-size: 20px;
@@ -49,6 +50,30 @@
       font-size: 14px;
       line-height: 1.6;
       margin: 5px 0;
+    }
+    /* ======== Ornamen Atas ======== */
+    .ornament-container {
+      position: absolute;
+      top: -25px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    }
+    .ornament-img {
+      width: 120px;
+      height: auto;
+    }
+    /* Animasi untuk ornamen */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
     }
     /* ======== Frame Foto Mempelai ======== */
     .photo-wrapper {
@@ -129,19 +154,6 @@
       font-size: 28px;
       font-weight: bold;
     }
-    /* ======== ornamen atas ======== */
-    .ornament-container {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            z-index: 10;
-            opacity: 0;
-            animation: fadeIn 1.5s ease 0.2s forwards, float 6s ease-in-out 2s infinite;
-            padding: 0;
-        }
     /* ======== Detail Acara ======== */
     .event-card {
       background: #FAF4EF;
@@ -465,9 +477,9 @@
   <div class="container">
     <!-- ======== Pembuka ======== -->
     <div class="opening-text hidden">
-       <div class="ornament-container">
-            <img src="flower-1.png" alt="Ornamen Bunga" class="ornament">
-        </div>
+      <div class="ornament-container">
+        <img src="flower-1.png" alt="Ornamen Bunga" class="ornament-img">
+      </div>
       <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
       <p>Assalamu`alaikum Warahmatullahi Wabarakatuh</p>
       <p>Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.</p>
@@ -549,7 +561,7 @@
     
     <!-- ======== Love Story Section ======== -->
     <div class="love-story-container hidden">
-      <img src="https://z-cdn-media.chatglm.cn/files/ea1c9b94-8361-46b3-b735-9e37a9f74a8d_pasted_image_1757478666970.png?auth_key=1789014721-6b96b6b10fa24be4981cc9955701feed-0-222b0f9e6c58696471bfda4e90515131" alt="Flower Decoration" class="flower-decoration">
+      <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration">
       
       <h2 class="love-story-title">-Love Story-</h2>
       
@@ -597,13 +609,16 @@
     
     <!-- ======== Ucapan & Doa Section ======== -->
     <div class="ucapan-doa-container hidden">
-      <img src="https://z-cdn-media.chatglm.cn/files/da9c9f5a-0bd7-4076-800c-d6d19ff7c7b8_pasted_image_1757481561904.png?auth_key=1789014721-0a5b8b5d6c3a4f9e8b7a6c5d4e3f2a1-0-1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p" alt="Flower Decoration" class="flower-decoration-top">
+      <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration-top">
       
-      <h2 class="ucapan-doa-title">==Ucapan & Doa==</h2>
+      <h2 class="ucapan-doa-title">Ucapan & Doa</h2>
       
       <p class="arabic-text">بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
       
       <p class="translation-text">"Semoga Allah memberikan keberkahan padamu dan mengumpulkan kalian berdua dalam kebaikan."</p>
+      
+      <img src="https://helloguest.id/wp-content/uploads/2024/06/flower-1-1024x443.png" alt="Flower Decoration" class="flower-decoration-bottom">
+    </div>
   </div>
   <!-- Tombol QR Code -->
   <div class="qr-btn">
