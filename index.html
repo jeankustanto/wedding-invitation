@@ -13,7 +13,7 @@
       --background: #f6ebf1;
       --frame-bg: #7d6d78;
       --frame-border: #e4d6dd;
-      --text-primary: #4c3c45;
+      --text-primary: #6d5e67;
       --text-bold: #2c2c2c;
       --button-bg: #b8a4af;
       --button-text: #ffffff;
@@ -35,22 +35,38 @@
 
     /* FRAME FOTO */
     .frame {
-      width: 300px;
+      width: 280px;
       height: 320px;
       margin: 0 auto;
       border: 10px solid var(--frame-border);
       border-radius: 150px 150px 20px 20px;
-      background: var(--frame-bg);
+      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
       position: relative;
       overflow: hidden;
+
+      /* Bayangan luar */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
 
+    /* Efek bayangan dalam frame */
+    .frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 140px 140px 15px 15px;
+      box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1;
+    }
+
+    /* Gambar pengantin agar full */
     .frame img {
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 220px;
+      width: 100%;
+      max-width: 240px;
+      z-index: 2;
     }
 
     /* TEKS UTAMA */
@@ -132,7 +148,7 @@
     <div class="note">Mohon maaf jika ada kesalahan penulisan nama dan gelar</div>
 
     <!-- BUTTON -->
-    <a href="content.html" class="btn">
+    <a href="#" class="btn">
       <i>🔒</i> Buka Undangan
     </a>
   </div>
