@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Jean & Dwi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ===== GLOBAL STYLING ===== */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f2f5;
+      color: #333;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ===== ORNAMEN BUTTERFLY ===== */
+    .ornament {
+      margin-top: 20px;
+    }
+
+    .ornament img {
+      width: 80px;
+    }
+
+    /* ===== TEKS DOA ===== */
+    .doa {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .basmalah {
+      font-family: 'Amiri', serif;
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    /* ===== FRAME GAMBAR ===== */
+    .frame {
+      width: 260px;
+      height: 300px;
+      background: #e9dce2;
+      margin: 20px auto;
+      border-radius: 30px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .frame img {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+
+    /* ===== INFORMASI MEMPELAI ===== */
+    .mempelai {
+      background: white;
+      margin: 0 auto;
+      padding: 15px;
+      border-radius: 20px;
+      width: 80%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .mempelai h2 {
+      font-size: 18px;
+      color: #7a596d;
+      margin-bottom: 5px;
+    }
+
+    .mempelai p {
+      font-size: 12px;
+      margin: 3px 0;
+      color: #555;
+    }
+
+    .instagram-btn {
+      display: inline-block;
+      margin-top: 10px;
+      background: #e1d3d8;
+      color: #333;
+      text-decoration: none;
+      font-size: 12px;
+      padding: 5px 15px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .instagram-btn i {
+      margin-right: 6px;
+    }
+
+    .instagram-btn:hover {
+      background: #d1c1c6;
+    }
+
+    /* ===== FLOATING BUTTON ===== */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .floating-buttons button {
+      background: #7a596d;
+      color: white;
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .floating-buttons button:hover {
+      background: #5a3f4f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Ornamen Butterfly -->
+    <div class="ornament">
+      <img src="assets/butterfly.png" alt="Ornament Butterfly">
+    </div>
+
+    <!-- Basmalah dan Doa -->
+    <div class="basmalah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="doa">
+      Assalamu'alaikum Warahmatullahi Wabarakatuh <br><br>
+      Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.<br>
+      Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami,
+    </div>
+
+    <!-- Frame Gambar Mempelai Pria -->
+    <div class="frame">
+      <img src="assets/groom-1.png" alt="Mempelai Pria">
+    </div>
+
+    <!-- Identitas Mempelai Pria -->
+    <div class="mempelai">
+      <h2>Jean Dwi Kustanto</h2>
+      <p><strong>PUTRA DARI</strong></p>
+      <p>Alm Bapak Slamet Budiono & Ibu Kuswati</p>
+      <a href="https://www.instagram.com/jean_dk" target="_blank" class="instagram-btn">
+        <i class="fab fa-instagram"></i> @jean_dk
+      </a>
+    </div>
+  </div>
+
+  <!-- Floating Button -->
+  <div class="floating-buttons">
+    <button id="menuBtn"><i class="fas fa-bars"></i></button>
+    <button id="musicBtn"><i class="fas fa-play"></i></button>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Musik Play/Pause
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+
+    musicBtn.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      } else {
+        bgMusic.pause();
+        musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+      }
+    });
+  </script>
+
+</body>
+</html>
