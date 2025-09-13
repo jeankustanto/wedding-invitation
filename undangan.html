@@ -47,19 +47,22 @@
     /* ===== FRAME MEMPELAI ===== */
     :root {
       --frame-border: #d9cbd6; /* bisa diganti sesuai desain */
+        }
+    
+      .frame {
+        width: 240px;
+        height: 274px;
+        margin: 20px auto 0;
+        border: 10px solid var(--frame-border);
+        border-radius: 150px 150px 20px 20px;
+        background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
+        position: relative;
+        overflow: hidden;
+      
+        /* 🔹 Bayangan di dalam frame */
+        box-shadow: inset 0 8px 15px rgba(0, 0, 0, 0.25), inset 0 -5px 10px rgba(255, 255, 255, 0.2);
     }
 
-    .frame {
-      width: 240px;
-      height: 274px;
-      margin: 20px auto 0;
-      border: 10px solid var(--frame-border);
-      border-radius: 150px 150px 20px 20px;
-      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
-    }
     
     .frame img {
       position: absolute;
