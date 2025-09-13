@@ -42,7 +42,8 @@
       line-height: 1.6;
     }
 
-       :root {
+    /* ===== FRAME FOTO ===== */
+    :root {
       --frame-border: #d9cbd6; /* bisa diganti sesuai desain */
     }
 
@@ -159,12 +160,10 @@
       Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami,
     </div>
 
-    <!-- Frame Foto Pengantin pri -->
+    <!-- ===== MEMPELAI PRIA ===== -->
     <div class="frame">
       <img src="assets/groom-1.png" alt="Mempelai Pria">
     </div>
-
-    <!-- Identitas Mempelai pria-->
     <div class="mempelai">
       <h2>Jean Dwi Kustanto</h2>
       <p><strong>PUTRA DARI</strong></p>
@@ -173,16 +172,13 @@
         <i class="fab fa-instagram"></i> @jean_dk
       </a>
     </div>
-  </div>
 
-  <!-- Frame Foto Pengantin wanita-->
+    <!-- ===== MEMPELAI WANITA ===== -->
     <div class="frame">
-      <img src="assets/bride-1.png" alt="Mempelai Pria">
+      <img src="assets/bride-1.png" alt="Mempelai Wanita">
     </div>
-
-    <!-- Identitas Mempelai wanita-->
     <div class="mempelai">
-      <h2>PUJIANA DWI KUSUMAWATI</h2>
+      <h2>Pujiana Dwi Kusumawati</h2>
       <p><strong>PUTRI DARI</strong></p>
       <p>Bapak Sudibyo & Ibu Siswati</p>
       <a href="https://www.instagram.com/nahnu_filfirdausinuzula/" target="_blank" class="instagram-btn">
@@ -191,16 +187,34 @@
     </div>
   </div>
 
-  <!-- Floating Button -->
+  <!-- ===== FLOATING BUTTON ===== -->
   <div class="floating-buttons">
     <button id="menuBtn"><i class="fas fa-bars"></i></button>
     <button id="musicBtn"><i class="fas fa-play"></i></button>
   </div>
 
-  <!-- Musik Background -->
+  <!-- ===== MUSIK BACKGROUND ===== -->
   <audio id="bgMusic" loop>
     <source src="assets/music.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Tombol Play/Pause Musik
+    // Play/Pause Musik
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    let isPlaying = false;
+
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+      } else {
+        bgMusic.play();
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+
+</body>
+</html>
