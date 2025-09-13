@@ -127,24 +127,7 @@
       position: relative;
     }
 
-    /* Garis gelombang kiri */
-    .divider-script::before {
-      content: "";
-      flex: 1;
-      height: 12px;
-      background: repeating-linear-gradient(
-        to right,
-        transparent 0,
-        transparent 6px,
-        #9c8b97 6px,
-        #9c8b97 12px
-      );
-      background-size: 12px 12px;
-      border-radius: 50px;
-      margin-right: 15px;
-    }
-
-    /* Garis gelombang kanan */
+    .divider-script::before,
     .divider-script::after {
       content: "";
       flex: 1;
@@ -158,6 +141,13 @@
       );
       background-size: 12px 12px;
       border-radius: 50px;
+    }
+
+    .divider-script::before {
+      margin-right: 15px;
+    }
+
+    .divider-script::after {
       margin-left: 15px;
     }
 
@@ -229,6 +219,119 @@
 
     .save-event:hover {
       background-color: #d6c3d4;
+    }
+
+    /* ===== SECTION AKAD NIKAH ===== */
+    .akad-section {
+      margin: 50px auto 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .akad-card {
+      background: #f9f6f9;
+      border-radius: 40px 40px 20px 20px;
+      padding: 25px 15px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      border: 2px solid #d8c8d8;
+      text-align: center;
+    }
+
+    .akad-opening {
+      font-size: 14px;
+      color: #5d5360;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      padding: 0 10px;
+    }
+
+    .akad-ornament img {
+      width: 70px;
+      margin: 10px auto;
+    }
+
+    .akad-title {
+      font-size: 24px;
+      color: #7a596d;
+      font-weight: bold;
+      margin: 5px 0 20px;
+    }
+
+    .akad-date {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .akad-day {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .akad-date-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      font-weight: bold;
+    }
+
+    .akad-month,
+    .akad-year {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .akad-number {
+      font-size: 36px;
+      color: #7a596d;
+    }
+
+    .akad-time {
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    .akad-location h3 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .akad-location p {
+      font-size: 13px;
+      color: #444;
+      margin: 5px 0;
+      line-height: 1.4;
+    }
+
+    .location-btn {
+      display: inline-block;
+      background: #7a596d;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 25px;
+      text-decoration: none;
+      margin-top: 15px;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+
+    .location-btn i {
+      margin-right: 6px;
+    }
+
+    .location-btn:hover {
+      background: #5a3f4f;
     }
 
     /* ===== FLOATING BUTTON ===== */
@@ -341,7 +444,50 @@
     <button class="save-event">Simpan Acara</button>
   </section>
 
-  <!-- Floating Button -->
+  <!-- ===== SECTION AKAD NIKAH ===== -->
+  <section class="akad-section">
+    <div class="akad-card">
+      <p class="akad-opening">
+        Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala,
+        kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami pada:
+      </p>
+
+      <!-- Ornamen Butterfly -->
+      <div class="akad-ornament">
+        <img src="assets/butterfly.png" alt="Ornament Butterfly">
+      </div>
+
+      <h2 class="akad-title">AKAD NIKAH</h2>
+
+      <!-- Tanggal & Waktu -->
+      <div class="akad-date">
+        <div class="akad-day">RABU</div>
+        <div class="akad-date-box">
+          <span class="akad-month">OCT</span>
+          <span class="akad-number">08</span>
+          <span class="akad-year">2025</span>
+        </div>
+        <div class="akad-time">08.00 - SELESAI</div>
+      </div>
+
+      <!-- Lokasi -->
+      <div class="akad-location">
+        <h3>KEDIAMAN MEMPELAI WANITA</h3>
+        <p><strong>(Rumah Bapak Sudibyo)</strong></p>
+        <p>
+          Jl. Raya Tempuran, Desa Tempuran<br>
+          Kecamatan Bantaran<br>
+          Kabupaten Probolinggo - Jawa Timur<br>
+          (Timur SMPN I Bantaran)
+        </p>
+        <a href="https://maps.google.com/?q=-7.8457332%2C113.1792614&z=17&hl=id" target="_blank" class="location-btn">
+          <i class="fas fa-map-marker-alt"></i> Lihat Lokasi Acara
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FLOATING BUTTON ===== -->
   <div class="floating-buttons">
     <button id="menuBtn"><i class="fas fa-bars"></i></button>
     <button id="musicBtn"><i class="fas fa-play"></i></button>
@@ -356,7 +502,6 @@
     // ===== Background Music =====
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
-
     let isPlaying = false;
 
     musicBtn.addEventListener('click', function() {
@@ -371,7 +516,7 @@
     });
 
     // ===== Countdown Logic =====
-    const eventDate = new Date("2025-10-10T00:00:00").getTime();
+    const eventDate = new Date("2025-10-10T08:00:00").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
