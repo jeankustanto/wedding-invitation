@@ -46,24 +46,23 @@
 
     /* ===== FRAME MEMPELAI ===== */
     :root {
-      --frame-border: #d9cbd6; /* bisa diganti sesuai desain */
-        }
-    
-      .frame {
-        width: 240px;
-        height: 280px;
-        margin: 20px auto 0;
-        border: 10px solid var(--frame-border);
-        border-radius: 150px 150px 20px 20px;
-        background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
-        position: relative;
-        overflow: hidden;
-      
-        /* 🔹 Bayangan di dalam frame */
-        box-shadow: inset 0 8px 15px rgba(0, 0, 0, 0.25), inset 0 -5px 10px rgba(255, 255, 255, 0.2);
+      --frame-border: #d9cbd6; 
     }
 
-    
+    .frame {
+      width: 240px;
+      height: 280px;
+      margin: 20px auto 0;
+      border: 10px solid var(--frame-border);
+      border-radius: 150px 150px 20px 20px;
+      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
+      position: relative;
+      overflow: hidden;
+      /* 🔹 Bayangan di dalam frame */
+      box-shadow: inset 0 8px 15px rgba(0, 0, 0, 0.25),
+                  inset 0 -5px 10px rgba(255, 255, 255, 0.2);
+    }
+
     .frame img {
       position: absolute;
       bottom: 0;
@@ -82,7 +81,7 @@
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       position: relative;
-      top: -30px; /* naik sedikit ke atas */
+      top: -30px;
       z-index: 5;
     }
     
@@ -169,6 +168,69 @@
       font-weight: 600;
     }
 
+    /* ===== COUNTDOWN SECTION ===== */
+    .countdown-section {
+      background-color: #9a8c9f;
+      padding: 50px 20px 40px;
+      color: #fff;
+      border-radius: 20px 20px 0 0;
+      margin-top: 30px;
+    }
+
+    .flower-container {
+      margin-top: -80px;
+      margin-bottom: 15px;
+    }
+
+    .flower-container img {
+      width: 110px;
+      height: auto;
+    }
+
+    .countdown-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      margin: 10px 0 20px;
+      color: #fff;
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 20px;
+    }
+
+    .time-box {
+      text-align: center;
+    }
+
+    .time-box span {
+      display: block;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .time-box p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .save-event {
+      background-color: #e6d6e3;
+      color: #6a5b65;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .save-event:hover {
+      background-color: #d6c3d4;
+    }
+
     /* ===== FLOATING BUTTON ===== */
     .floating-buttons {
       position: fixed;
@@ -250,6 +312,35 @@
     </div>
   </div>
 
+  <!-- ===== COUNTDOWN SECTION ===== -->
+  <section class="countdown-section">
+    <div class="flower-container">
+      <img src="assets/flower-bucket.png" alt="Bunga">
+    </div>
+    <h2 class="countdown-title">Menuju Hari Bahagia</h2>
+
+    <div class="countdown-timer">
+      <div class="time-box">
+        <span id="days">0</span>
+        <p>Hari</p>
+      </div>
+      <div class="time-box">
+        <span id="hours">0</span>
+        <p>Jam</p>
+      </div>
+      <div class="time-box">
+        <span id="minutes">0</span>
+        <p>Menit</p>
+      </div>
+      <div class="time-box">
+        <span id="seconds">0</span>
+        <p>Detik</p>
+      </div>
+    </div>
+
+    <button class="save-event">Simpan Acara</button>
+  </section>
+
   <!-- Floating Button -->
   <div class="floating-buttons">
     <button id="menuBtn"><i class="fas fa-bars"></i></button>
@@ -262,6 +353,7 @@
   </audio>
 
   <script>
+    // ===== Background Music =====
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
 
@@ -277,6 +369,31 @@
       }
       isPlaying = !isPlaying;
     });
+
+    // ===== Countdown Logic =====
+    const eventDate = new Date("2025-10-10T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        document.querySelector(".countdown-timer").innerHTML = "<h3>Acara telah selesai</h3>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
