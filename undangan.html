@@ -18,6 +18,10 @@
       --btn-bg: #bba7b4;
       --top-section-bg: #f8f2f5; /* Background terang untuk bagian atas */
       --bottom-section-bg: #7d6d78; /* Background gelap untuk bagian bawah */
+      --love-bg: #f6f2f7;
+      --love-card-bg: #7a6b75;
+      --amplop-bg: #f8f2f5;
+      --amplop-card-bg: #fff;
     }
     html,body{
       height:100%;
@@ -248,6 +252,194 @@
       color: var(--text-dark);
     }
     
+    /* LOVE STORY CARD WRAPPER - sama seperti walimah-wrapper */
+    .story-wrapper {
+      width: 92%;
+      max-width: 340px;
+      margin: 30px auto 25px;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--outer-ring);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    
+    /* LOVE STORY CARD PANEL - dengan warna love-card-bg */
+    .story-panel {
+      background: var(--love-card-bg);
+      border-radius: 14px;
+      padding: 24px 18px;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+                  0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align: left;
+      color: #fff;
+    }
+    
+    /* AMLOP DIGITAL SECTION */
+    .amplop-section {
+      background-color: var(--amplop-bg);
+      padding: 40px 20px;
+      margin: 0 auto 30px;
+      max-width: 500px;
+      border-radius: 20px;
+    }
+    
+    .amplop-title {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    
+    .amplop-description {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+      max-width: 400px;
+      margin: 0 auto 25px;
+    }
+    
+    /* Amplop Card Wrapper - sama seperti walimah-wrapper */
+    .amplop-wrapper {
+      width: 92%;
+      max-width: 340px;
+      margin: 30px auto 25px;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--outer-ring);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    
+    /* Amplop Card Panel */
+    .amplop-panel {
+      background: var(--amplop-card-bg);
+      border-radius: 14px;
+      padding: 24px 18px;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+                  0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align: left;
+      color: #333;
+    }
+    
+    .account-list {
+      margin-bottom: 25px;
+    }
+    
+    .account-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px dashed #ddd;
+    }
+    
+    .account-item:last-child {
+      border-bottom: none;
+    }
+    
+    .account-info {
+      flex: 1;
+    }
+    
+    .account-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    
+    .account-number {
+      font-family: monospace;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .copy-btn {
+      background: var(--btn-bg);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .copy-btn:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    .address-section {
+      margin-top: 25px;
+    }
+    
+    .address-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .address-info {
+      margin-bottom: 15px;
+    }
+    
+    .address-info p {
+      font-size: 14px;
+      color: #555;
+      margin: 5px 0;
+      line-height: 1.5;
+    }
+    
+    .recipient {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    
+    .contact {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    
+    .whatsapp-btn {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 auto;
+    }
+    
+    .whatsapp-btn:hover {
+      background: #128C7E;
+      transform: translateY(-2px);
+    }
+    
+    .butterfly-ornament {
+      width: 60px;
+      height: auto;
+      margin: 20px auto 0;
+      opacity: 0.7;
+    }
+    
     .akad-title, .walimah-title, .rsvp-title {
       font-family: "Playfair Display", serif;
       font-size: 28px;
@@ -408,6 +600,59 @@
       transform: translateY(-2px);
     }
     
+    /* LOVE STORY SECTION */
+    .love-story-section {
+      background-color: var(--love-bg);
+      padding: 40px 20px;
+      margin: 0 auto 30px;
+      max-width: 500px;
+      border-radius: 20px;
+    }
+    
+    .love-story-section img {
+      width: 80px;
+      margin-bottom: 15px;
+    }
+    
+    .love-story-section h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    
+    .love-story-section .quote {
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #444;
+      max-width: 400px;
+      margin: 0 auto 30px;
+    }
+    
+    .love-story-section .quote strong {
+      display: block;
+      margin-top: 10px;
+      font-style: normal;
+      font-weight: 700;
+      color: #000;
+    }
+    
+    /* Story Card Styling */
+    .story-panel h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    
+    .story-panel p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #f2f2f2;
+      text-align: justify;
+    }
+    
     /* Floating buttons */
     .floating-buttons {
       position: fixed;
@@ -435,6 +680,29 @@
     .floating-buttons button:hover {
       background: rgba(125, 109, 120, 1);
       transform: scale(1.05);
+    }
+    
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(122, 89, 109, 0.9);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: all 0.4s ease;
+      z-index: 1000;
+      max-width: 80%;
+      text-align: center;
+    }
+    
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
     }
     
     /* Responsive */
@@ -513,6 +781,106 @@
       
       .countdown small {
         font-size: 12px;
+      }
+      
+      .love-story-section {
+        padding: 30px 15px;
+        margin-bottom: 20px;
+      }
+      
+      .love-story-section h2 {
+        font-size: 22px;
+      }
+      
+      .love-story-section .quote {
+        font-size: 13px;
+        max-width: 320px;
+      }
+      
+      .story-wrapper {
+        width: 94%;
+        margin: 25px auto 20px;
+        padding: 10px;
+      }
+      
+      .story-panel {
+        border-radius: 10px;
+        padding: 16px 12px;
+      }
+      
+      .story-panel h3 {
+        font-size: 16px;
+      }
+      
+      .story-panel p {
+        font-size: 13px;
+      }
+      
+      .amplop-section {
+        padding: 30px 15px;
+        margin-bottom: 20px;
+      }
+      
+      .amplop-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+      }
+      
+      .amplop-description {
+        font-size: 13px;
+        max-width: 320px;
+        margin-bottom: 20px;
+      }
+      
+      .amplop-wrapper {
+        width: 94%;
+        margin: 25px auto 20px;
+        padding: 10px;
+      }
+      
+      .amplop-panel {
+        border-radius: 10px;
+        padding: 16px 12px;
+      }
+      
+      .account-name {
+        font-size: 13px;
+      }
+      
+      .account-number {
+        font-size: 13px;
+      }
+      
+      .copy-btn {
+        padding: 5px 10px;
+        font-size: 11px;
+      }
+      
+      .address-title {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+      
+      .address-info p {
+        font-size: 13px;
+        margin: 3px 0;
+      }
+      
+      .recipient {
+        font-size: 13px;
+      }
+      
+      .contact {
+        font-size: 13px;
+      }
+      
+      .whatsapp-btn {
+        padding: 8px 15px;
+        font-size: 13px;
+      }
+      
+      .butterfly-ornament {
+        width: 50px;
       }
       
       .akad-wrapper, .walimah-wrapper, .rsvp-wrapper {
@@ -782,6 +1150,111 @@
         </form>
       </div>
     </div>
+    
+    <!-- LOVE STORY SECTION -->
+    <div class="love-story-section">
+      <img src="assets/butterfly.png" alt="Ornament Love Story">
+      <h2>- Love Story -</h2>
+      <div class="quote">
+        "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri,
+        agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.
+        Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+        <strong>– QS. Ar-Rum : 21 –</strong>
+      </div>
+      
+      <!-- Kartu Pertama: Ta'aruf -->
+      <div class="story-wrapper">
+        <div class="story-panel">
+          <h3>Ta'aruf</h3>
+          <p>
+            Awal bulan Juni, dengan izin Allah, kami memulai langkah pertama menuju jalan yang diridhai-Nya. 
+            Bukan dengan janji manis, bukan pula dengan pertemuan tanpa arah, melainkan melalui proses saling 
+            memperkenalkan diri secara syar'i. Kami bertukar CV, saling bertanya tentang visi dan misi hidup, 
+            tujuan pernikahan, serta hal-hal yang menjadi dasar aqidah dan keimanan, agar saling mengenal 
+            lebih dalam dan memahami satu sama lain.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Kartu Kedua: Nadzor -->
+      <div class="story-wrapper">
+        <div class="story-panel">
+          <h3>Nadzor</h3>
+          <p>
+            Biidznillah, Alhamdulillah, dengan ridha Allah, kami sampai pada tahap nadzor. 
+            Dengan hati yang haru dan penuh khidmat, kami memohon dan berharap agar keputusan ini 
+            menjadi jalan kebaikan, pembuka keberkahan dunia hingga akhirat, serta mengantarkan kami 
+            menuju surga-Nya kelak.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Kartu Ketiga: Akad & Walimah -->
+      <div class="story-wrapper">
+        <div class="story-panel">
+          <h3>Akad & Walimah</h3>
+          <p>
+            Biidznillah, dengan penuh rasa syukur, kami melangkah menuju hari yang dinanti. 
+            Akad yang insyaaAllah akan kami jalani, serta walimah yang ingin kami rayakan bersama 
+            keluarga dan sahabat tercinta, semoga menjadi momen suci yang penuh kebahagiaan. 
+            Rabu, 8 Oktober 2025, semoga Allah menjadikan pernikahan ini sebagai ladang ibadah, 
+            yang dipenuhi cinta, mawaddah, dan keberkahan yang berlimpah. Aamiin ya Rabbal 'Aalamin.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- AMLOP DIGITAL SECTION -->
+    <div class="amplop-section">
+      <h2 class="amplop-title">Amplop Digital</h2>
+      <p class="amplop-description">
+        Bagi Bapak/Ibu/Saudara/i yang ingin memberikan kado, dapat melalui transfer ke rekening berikut:
+      </p>
+      
+      <div class="amplop-wrapper">
+        <div class="amplop-panel">
+          <div class="account-list">
+            <div class="account-item">
+              <div class="account-info">
+                <div class="account-name">121512521313</div>
+                <div class="account-number">A/n Dinda Zahra Nabila</div>
+              </div>
+              <button class="copy-btn" onclick="copyAccount('121512521313')">
+                <i class="fas fa-copy"></i> Salin
+              </button>
+            </div>
+            
+            <div class="account-item">
+              <div class="account-info">
+                <div class="account-name">08421312412412</div>
+                <div class="account-number">A/n Dinda Zahra Nabila</div>
+              </div>
+              <button class="copy-btn" onclick="copyAccount('08421312412412')">
+                <i class="fas fa-copy"></i> Salin
+              </button>
+            </div>
+          </div>
+          
+          <div class="address-section">
+            <div class="address-title">ALAMAT PENGIRIMAN KADO</div>
+            <div class="address-info">
+              <p>Jalan Merdeka No.123, Kelurahan Mentai Indah</p>
+              <p>Kecamatan Bahagia</p>
+              <p>Kota Sejahtera</p>
+            </div>
+            <div class="recipient">Dinda Zahra Nabila</div>
+            <div class="contact">+62 822 -2355 -1205</div>
+            
+            <a href="https://wa.me/6282223551205?text=Assalamu'alaikum%20kak,%20saya%20sudah%20melakukan%20transfer%20kado%20pernikahan.%20Mohon%20konfirmasi%20ya.%20Terima%20kasih." 
+               class="whatsapp-btn" target="_blank">
+              <i class="fab fa-whatsapp"></i> KONFIRMASI WHATSAPP
+            </a>
+          </div>
+          
+          <img src="assets/butterfly.png" alt="Butterfly Ornament" class="butterfly-ornament">
+        </div>
+      </div>
+    </div>
   </section>
   
   <!-- floating buttons -->
@@ -789,6 +1262,9 @@
     <button id="menuBtn" title="Menu"><i class="fas fa-th-large"></i></button>
     <button id="musicBtn" title="Putar / Hentikan Musik"><i class="fas fa-play"></i></button>
   </div>
+  
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
   
   <audio id="bgMusic" loop>
     <source src="assets/music.mp3" type="audio/mpeg">
@@ -813,8 +1289,13 @@
     
     // Save event
     function saveEvent(){
-      alert('Simpan acara: fitur ekspor kalender belum diaktifkan di demo ini.');
+      showToast('Fitur simpan acara akan segera tersedia');
     }
+    
+    // Menu Button (placeholder)
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      showToast('Menu akan segera tersedia');
+    });
     
     // RSVP Form Handler
     document.getElementById('rsvpForm').addEventListener('submit', function(e) {
@@ -823,10 +1304,30 @@
       const konfirmasi = document.getElementById('konfirmasi').value;
       
       if (nama && konfirmasi) {
-        alert(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
+        showToast(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
         document.getElementById('rsvpForm').reset();
       }
     });
+    
+    // Copy Account Function
+    function copyAccount(accountNumber) {
+      navigator.clipboard.writeText(accountNumber).then(() => {
+        showToast(`Nomor rekening ${accountNumber} berhasil disalin!`);
+      }).catch(err => {
+        showToast('Gagal menyalin nomor rekening');
+      });
+    }
+    
+    // Toast Notification Function
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
     
     // Countdown ke 08 Oktober 2025 08:00
     const eventDate = new Date('2025-10-08T08:00:00').getTime();
@@ -852,6 +1353,16 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
+    
+    // Auto-play music on user interaction (recommended by browsers)
+    document.addEventListener('click', function initAudio() {
+      if (!playing) {
+        bgMusic.play().catch(() => {});
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        playing = true;
+      }
+      document.removeEventListener('click', initAudio);
+    }, { once: true });
   </script>
 </body>
 </html>
