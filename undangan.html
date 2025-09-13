@@ -1,407 +1,141 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Undangan — Jean & Dwi</title>
-
-  <!-- Fonts & icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Amiri&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSVP Pernikahan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
-    :root{
-      --page-bg: #9a8c9f;
-      --outer-ring: #e8dfe6;
-      --inner-panel: #f6ecef;
-      --frame-border: #d9cbd6;
-      --muted: #7a6b75;
-      --accent: #7a596d;
-      --btn-bg: #bba7b4;
+    /* === RESET DAN DASAR === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
-    html,body{
-      height:100%;
-      margin:0;
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-      background: var(--page-bg);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      color:#2f2f33;
-      text-align:center;
+    body {
+      background-color: #7b6c79; /* warna ungu gelap seperti contoh */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 10px;
     }
 
-    .container{
-      max-width:420px;
-      margin:0 auto;
-      padding:22px 14px 40px;
-    }
-
-    /* top texts */
-    .basmalah{
-      font-family:'Amiri', serif;
-      font-size:18px;
-      color:#fff;
-      margin-top:4px;
-    }
-    .doa{
-      color: rgba(255,255,255,0.95);
-      font-size:13px;
-      line-height:1.7;
-      margin: 12px auto 8px;
-      max-width:92%;
-    }
-
-    /* frame bulat (Akad) */
-    .frame {
-      width: 240px;
-      height: 280px;
-      margin: 20px auto 0;
-      border: 10px solid var(--frame-border);
-      border-radius: 150px 150px 20px 20px;
-      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
+    /* === CONTAINER === */
+    .rsvp-container {
+      background-color: #f8f2f5; /* warna soft pink */
+      width: 360px;
+      padding: 30px 20px 60px;
+      text-align: center;
+      border-radius: 20px 20px 150px 150px; /* setengah lingkaran bawah */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       position: relative;
-      overflow: hidden;
-      box-shadow: inset 0 8px 18px rgba(0,0,0,0.25),
-                  inset 0 -6px 10px rgba(255,255,255,0.12);
-    }
-    .frame img{
-      position:absolute;
-      bottom:0;
-      left:50%;
-      transform:translateX(-50%);
-      width:100%;
-      max-width:220px;
-      pointer-events:none;
-      user-select:none;
     }
 
-    /* identity card overlapping frame */
-    .mempelai {
-      background: #fff;
-      width: 80%;
-      margin: 0 auto;
-      padding: 14px;
-      border-radius: 18px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      position: relative;
-      top: -30px;
-      z-index: 5;
-    }
-    .mempelai h2 { font-size:18px; color:var(--accent); margin:6px 0 4px; }
-    .mempelai p { font-size:12px; color:#555; margin:3px 0; }
-
-    .instagram-btn {
-      display:inline-block; margin-top:8px;
-      background:#e1d3d8; color:#333; text-decoration:none;
-      padding:6px 14px; border-radius:20px; font-size:13px;
+    /* === HEADER RSVP === */
+    .rsvp-container h2 {
+      font-size: 24px;
+      color: #7b6c79;
+      margin-bottom: 20px;
     }
 
-    /* divider */
-    .divider-script{ display:flex; align-items:center; justify-content:center; margin:28px 0; }
-    .divider-script::before, .divider-script::after {
-      content:""; flex:1; height:10px;
-      background: repeating-linear-gradient(
-        to right, transparent 0, transparent 6px, #9c8b97 6px, #9c8b97 12px);
-      background-size:12px 12px; border-radius:50px;
+    .rsvp-container p {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
-    .divider-script::before{ margin-right:12px; }
-    .divider-script::after{ margin-left:12px; }
-    .divider-script span{ font-size:28px; color:var(--muted); font-weight:600; }
 
-    /* countdown */
-    .countdown-section{
-      background:#9a8c9f;
-      padding:48px 18px 38px;
-      color:#fff; border-radius:20px 20px 0 0; margin-top:28px;
+    /* === FORM === */
+    .rsvp-form {
+      text-align: left;
     }
-    .flower-container{ margin-top:-70px; margin-bottom:12px; }
-    .flower-container img{ width:110px; height:auto; display:block; margin:0 auto; }
-    .countdown-title{ font-family:'Great Vibes', cursive; font-size:30px; color:#fff; margin:8px 0 16px; }
-    .countdown-timer{ display:flex; justify-content:center; gap:26px; margin-bottom:18px; }
-    .time-box span{ display:block; font-size:34px; font-weight:700; color:#fff; }
-    .time-box p{ margin:0; font-size:13px; color:rgba(255,255,255,0.9); }
 
-    .save-event{ background:#e6d6e3; color:#6a5b65; padding:10px 18px; border-radius:10px; border:none; font-weight:600; cursor:pointer; }
+    .rsvp-form label {
+      font-size: 14px;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
 
-    /* akad wrapper bulat */
-    .akad-wrapper {
-      width: 340px; max-width:92%;
-      margin: 34px auto 30px;
+    .rsvp-form input,
+    .rsvp-form select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      background-color: #fff;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* === BUTTON === */
+    .rsvp-form button {
+      width: 100%;
+      background-color: #7b6c79;
+      color: #fff;
       padding: 12px;
-      border-radius: 200px 200px 24px 24px;
-      background: var(--outer-ring);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
     }
 
-    .akad-panel{
-      background: var(--inner-panel);
-      border-radius: 180px 180px 18px 18px;
-      padding: 26px 20px 22px;
-      border: 4px solid rgba(255,255,255,0.45);
-      box-shadow: inset 0 -12px 22px rgba(0,0,0,0.06), 0 2px 0 rgba(255,255,255,0.35) inset;
-      text-align:center;
+    .rsvp-form button:hover {
+      background-color: #6a5c69;
     }
 
-    /* walimatul urs wrapper persegi */
-    .walimah-wrapper {
-      width: 340px; max-width:92%;
-      margin: 34px auto 30px;
-      padding: 14px;
-      border-radius: 20px;
-      background: var(--outer-ring);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    /* === ORNAMEN DI BAGIAN BAWAH === */
+    .ornament-bottom {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 300px;
+      opacity: 0.8;
     }
 
-    .walimah-panel {
-      background: var(--inner-panel);
-      border-radius: 14px;
-      padding: 24px 18px;
-      border: 3px solid rgba(255,255,255,0.5);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
-                  0 2px 0 rgba(255,255,255,0.35) inset;
-      text-align:center;
-    }
-
-    .akad-title, .walimah-title {
-      font-family:"Playfair Display", serif;
-      font-size:28px;
-      color:var(--muted);
-      margin:6px 0;
-      letter-spacing:1px;
-    }
-
-    .akad-day, .walimah-day {
-      font-size:14px;
-      font-weight:700;
-      margin-top:6px;
-      color:#222;
-    }
-
-    .akad-date-row, .walimah-date-row {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:16px;
-      margin:12px 0 6px;
-      color:#6d5e67;
-      font-weight:600;
-    }
-
-    .akad-month, .akad-year,
-    .walimah-month, .walimah-year {
-      font-size:15px;
-      color:#5b4f56;
-    }
-
-    .akad-number, .walimah-number {
-      font-size:52px;
-      color:#b69fb0;
-      font-family:"Playfair Display", serif;
-      line-height:1;
-    }
-
-    .akad-time, .walimah-time {
-      margin-top:8px;
-      font-size:12px;
-      color:#6b5b63;
-      letter-spacing:0.6px;
-    }
-
-    .akad-location, .walimah-location {
-      margin-top:12px;
-      text-align:center;
-    }
-
-    .akad-location h3, .walimah-location h3 {
-      font-size:14px;
-      margin:8px 0 6px;
-      color:#2d2d2d;
-      letter-spacing:0.6px;
-      font-weight:700;
-      text-transform:uppercase;
-    }
-
-    .akad-location p, .walimah-location p {
-      font-size:13px;
-      color:#53464d;
-      margin:3px 0;
-      line-height:1.4;
-    }
-
-    .location-btn {
-      display:inline-block;
-      margin-top:12px;
-      padding:8px 14px;
-      background:var(--btn-bg);
-      color:#fff;
-      border-radius:18px;
-      text-decoration:none;
-      font-weight:600;
-      box-shadow:0 6px 12px rgba(0,0,0,0.14);
-    }
-
-    /* floating buttons */
-    .floating-buttons{ position:fixed; bottom:18px; left:18px; display:flex; flex-direction:column; gap:12px; z-index:1200; }
-    .floating-buttons button{ width:46px; height:46px; border-radius:50%; border:none; background:#8f7b85; color:#fff; font-size:18px; box-shadow: 0 6px 12px rgba(0,0,0,0.18); cursor:pointer; }
-
-    /* responsive */
-    @media (max-width:420px){
-      .akad-number, .walimah-number{ font-size:44px; }
-      .akad-wrapper, .walimah-wrapper{ width:92%; padding:10px; }
-      .akad-panel, .walimah-panel{ padding:20px 14px; }
-      .frame{ width:86%; height:auto; aspect-ratio: 240/280; }
-      .frame img{ max-width:86%; }
+    .ornament-bottom img {
+      width: 100%;
+      height: auto;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- top text -->
-    <div class="basmalah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
-    <div class="doa">
-      Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala,<br>
-      kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.
-    </div>
+  <div class="rsvp-container">
+    <h2>RSVP</h2>
+    <p>
+      Diharapkan kepada tamu undangan (Bapak/Ibu/Saudara/i) dapat mengisi form kehadiran
+      pada acara pernikahan kami
+    </p>
 
-    <!-- groom -->
-    <div class="frame">
-      <img src="assets/groom-1.png" alt="Mempelai Pria">
-    </div>
-    <div class="mempelai">
-      <h2>Jean Dwi Kustanto</h2>
-      <p><strong>PUTRA DARI</strong></p>
-      <p>Alm Bapak Slamet Budiono & Ibu Kuswati</p>
-      <a class="instagram-btn" href="https://www.instagram.com/jean_dk" target="_blank">
-        <i class="fab fa-instagram"></i> @jean_dk
-      </a>
-    </div>
+    <form class="rsvp-form">
+      <label for="nama">Nama Tamu:</label>
+      <input type="text" id="nama" name="nama" placeholder="Masukkan nama anda" required>
 
-    <!-- divider -->
-    <div class="divider-script"><span>&amp;</span></div>
+      <label for="konfirmasi">Konfirmasi Kehadiran:</label>
+      <select id="konfirmasi" name="konfirmasi" required>
+        <option value="">Pilih</option>
+        <option value="hadir">Hadir</option>
+        <option value="tidak">Tidak Hadir</option>
+      </select>
 
-    <!-- bride -->
-    <div class="frame">
-      <img src="assets/bride-1.png" alt="Mempelai Wanita">
-    </div>
-    <div class="mempelai">
-      <h2>Pujiana Dwi Kusumawati</h2>
-      <p><strong>PUTRI DARI</strong></p>
-      <p>Bapak Sudibyo & Ibu Siswati</p>
-      <a class="instagram-btn" href="https://www.instagram.com/nahnu_filfirdausinuzula/" target="_blank">
-        <i class="fab fa-instagram"></i> nahnu_filfirdausinuzula
-      </a>
+      <button type="submit">
+        <i class="fa-solid fa-paper-plane"></i> Konfirmasi Kehadiran
+      </button>
+    </form>
+
+    <!-- Ornamen di bawah -->
+    <div class="ornament-bottom">
+      <img src="assets/bunga-bawah.png" alt="Ornamen Bawah">
     </div>
   </div>
 
-  <!-- countdown -->
-  <section class="countdown-section">
-    <div class="flower-container"><img src="assets/flower-bucket.png" alt="Bunga"></div>
-    <h2 class="countdown-title">Menuju Hari Bahagia</h2>
-
-    <div class="countdown-timer">
-      <div class="time-box"><span id="days">0</span><p>Hari</p></div>
-      <div class="time-box"><span id="hours">00</span><p>Jam</p></div>
-      <div class="time-box"><span id="minutes">00</span><p>Menit</p></div>
-      <div class="time-box"><span id="seconds">00</span><p>Detik</p></div>
-    </div>
-
-    <button class="save-event" onclick="saveEvent()">Simpan Acara</button>
-  </section>
-
-  <!-- Acara Akad Nikah (bulat) -->
-  <div class="akad-wrapper">
-    <div class="akad-panel">
-      <div class="akad-title">AKAD NIKAH</div>
-      <div class="akad-day">SABTU</div>
-
-      <div class="akad-date-row">
-        <div class="akad-month">OCT</div>
-        <div class="akad-number">08</div>
-        <div class="akad-year">2025</div>
-      </div>
-
-      <div class="akad-time">08.00 - SELESAI</div>
-
-      <div class="akad-location">
-        <h3>KEDIAMAN MEMPELAI WANITA</h3>
-        <p><strong>(Rumah Bapak Sudibyo)</strong></p>
-        <p>
-          Jl. Raya Tempuran, Desa Tempuran<br>
-          Kecamatan Bantaran<br>
-          Kabupaten Probolinggo - Jawa Timur<br>
-          (Timur SMPN I Bantaran)
-        </p>
-        <a class="location-btn" href="https://maps.google.com/?q=-7.8457332%2C113.1792614&z=17&hl=id" target="_blank">
-          <i class="fas fa-map-marker-alt"></i> Lihat Lokasi Acara
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Acara Walimatul 'Urs (persegi, tanpa ornamen) -->
-  <div class="walimah-wrapper">
-    <div class="walimah-panel">
-      <div class="walimah-title">WALIMATUL 'URS</div>
-      <div class="walimah-day">MINGGU</div>
-
-      <div class="walimah-date-row">
-        <div class="walimah-month">OCT</div>
-        <div class="walimah-number">12</div>
-        <div class="walimah-year">2025</div>
-      </div>
-
-      <div class="walimah-time">16.00 - SELESAI</div>
-
-      <div class="walimah-location">
-        <h3>KEDIAMAN MEMPELAI PRIA</h3>
-        <p>
-          Candinegoro RT 001 RW 002<br>
-          Kecamatan Wonoayu<br>
-          Kabupaten Sidoarjo - Jawa Timur
-        </p>
-        <a class="location-btn" href="https://maps.google.com/?q=-7.4207464%2C112.6305425&z=17&hl=id" target="_blank">
-          <i class="fas fa-map-marker-alt"></i> Lihat Lokasi Acara
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- floating buttons -->
-  <div class="floating-buttons">
-    <button id="menuBtn" title="Menu"><i class="fas fa-th-large"></i></button>
-    <button id="musicBtn" title="Putar / Hentikan Musik"><i class="fas fa-play"></i></button>
-  </div>
-
-  <audio id="bgMusic" loop>
-    <source src="assets/music.mp3" type="audio/mpeg">
-  </audio>
-
-  <script>
-    // Music play/pause
-    const musicBtn = document.getElementById('musicBtn');
-    const bgMusic = document.getElementById('bgMusic');
-    let playing = false;
-    musicBtn.addEventListener('click', () => {
-      if (!bgMusic) return;
-      if (playing) { bgMusic.pause(); musicBtn.innerHTML = '<i class="fas fa-play"></i>'; }
-      else { bgMusic.play().catch(()=>{}); musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; }
-      playing = !playing;
-    });
-
-    // Save event
-    function saveEvent(){
-      alert('Simpan acara: fitur ekspor kalender belum diaktifkan di demo ini.');
-    }
-
-    // Countdown ke 08 Oktober 2025 08:00
-    const eventDate = new Date('2025-10-08T08:00:00').getTime();
-
-    function updateCountdown(){
-      const now = Date.now();
-      const distance = eventDate - now;
-      if (distance <= 0) {
-        document.getElementById('days').innerText = '0';
-        document.getElementById('hours').innerText = '00';
-        document.getElement
+</body>
+</html>
