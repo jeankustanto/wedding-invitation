@@ -42,25 +42,31 @@
       line-height: 1.6;
     }
 
-    /* ===== FRAME MEMPALAI ===== */
+       :root {
+      --frame-border: #d9cbd6; /* bisa diganti sesuai desain */
+    }
+
     .frame {
-      width: 280px;
-      height: 340px;
-      background: #8d7d8c; /* Warna seperti contoh */
-      margin: 25px auto;
-      border-radius: 140px 140px 30px 30px; /* Atas bulat, bawah rounded */
+      width: 240px;
+      height: 274px;
+      margin: 0 auto;
+      border: 10px solid var(--frame-border);
+      border-radius: 150px 150px 20px 20px;
+      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
       position: relative;
       overflow: hidden;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
     }
-
+    
     .frame img {
       position: absolute;
       bottom: 0;
-      width: 90%;
       left: 50%;
       transform: translateX(-50%);
+      width: 100%;
+      max-width: 220px;
     }
+
 
     /* ===== KOTAK IDENTITAS ===== */
     .mempelai {
