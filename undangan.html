@@ -1,80 +1,396 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSVP Pernikahan</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Undangan — Jean & Dwi</title>
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Amiri&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* === RESET DAN DASAR === */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+    :root{
+      --page-bg: #9a8c9f;
+      --outer-ring: #e8dfe6;
+      --inner-panel: #f6ecef;
+      --frame-border: #d9cbd6;
+      --muted: #7a6b75;
+      --accent: #7a596d;
+      --btn-bg: #bba7b4;
+      --top-section-bg: #f8f2f5; /* Background terang untuk bagian atas */
+      --bottom-section-bg: #7d6d78; /* Background gelap untuk bagian bawah */
     }
-
-    body {
-      background-color: #7b6c79; /* warna ungu gelap seperti contoh */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 10px;
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background: var(--page-bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      color:#2f2f33;
+      text-align:center;
     }
-
-    /* === CONTAINER === */
-    .rsvp-container {
-      background-color: #f8f2f5; /* warna soft pink */
-      width: 360px;
-      padding: 30px 20px 60px;
-      text-align: center;
-      border-radius: 20px 20px 150px 150px; /* setengah lingkaran bawah */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    
+    /* Bagian Atas */
+    .top-section {
+      background-color: var(--top-section-bg);
+      padding: 40px 20px 60px;
       position: relative;
+      overflow: hidden;
     }
-
-    /* === HEADER RSVP === */
-    .rsvp-container h2 {
-      font-size: 24px;
-      color: #7b6c79;
+    
+    .ornament {
       margin-bottom: 20px;
     }
-
-    .rsvp-container p {
+    
+    .ornament img {
+      width: 120px;
+      height: auto;
+    }
+    
+    .basmalah {
+      font-family: 'Amiri', serif;
+      font-size: 20px;
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+    
+    .doa {
       font-size: 14px;
-      color: #333;
-      margin-bottom: 30px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 320px;
+      margin: 0 auto 40px;
+    }
+    
+    .frame {
+      width: 240px;
+      height: 280px;
+      margin: 0 auto 20px;
+      border: 10px solid var(--frame-border);
+      border-radius: 150px 150px 20px 20px;
+      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 8px 18px rgba(0,0,0,0.25),
+                  inset 0 -6px 10px rgba(255,255,255,0.12);
+    }
+    
+    .frame img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 200px;
+      pointer-events: none;
+      user-select: none;
+    }
+    
+    .mempelai {
+      background: #fff;
+      width: 80%;
+      max-width: 320px;
+      margin: -30px auto 30px;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+      position: relative;
+      z-index: 5;
+    }
+    
+    .mempelai h2 {
+      font-size: 18px;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+    
+    .mempelai p {
+      font-size: 13px;
+      color: #555;
+      margin: 3px 0;
+    }
+    
+    .separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0 30px;
+    }
+    
+    .separator::before, .separator::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--muted);
+      opacity: 0.5;
+    }
+    
+    .separator::before {
+      margin-right: 15px;
+    }
+    
+    .separator::after {
+      margin-left: 15px;
+    }
+    
+    .separator span {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      color: var(--muted);
+    }
+    
+    /* Bagian Bawah */
+    .bottom-section {
+      background-color: var(--bottom-section-bg);
+      padding: 40px 20px;
+      color: #fff;
+    }
+    
+    /* countdown */
+    .countdown-container {
+      max-width: 320px;
+      margin: 0 auto 50px;
+      text-align: center;
+    }
+    
+    .flower {
+      width: 100px;
+      height: auto;
+      margin: 0 auto 20px;
+    }
+    
+    .countdown-container h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+    
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .countdown div {
+      text-align: center;
+    }
+    
+    .countdown span {
+      display: block;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    
+    .countdown small {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .save-btn {
+      background: #e6d6e3;
+      color: #6a5b65;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .save-btn:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    /* akad wrapper bulat */
+    .akad-wrapper {
+      width: 92%;
+      max-width: 340px;
+      margin: 30px auto 25px;
+      padding: 12px;
+      border-radius: 200px 200px 24px 24px;
+      background: var(--outer-ring);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+    }
+    
+    .akad-panel {
+      background: var(--inner-panel);
+      border-radius: 180px 180px 18px 18px;
+      padding: 26px 20px 22px;
+      border: 4px solid rgba(255,255,255,0.45);
+      box-shadow: inset 0 -12px 22px rgba(0,0,0,0.06), 0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align: center;
+      color: var(--text-dark);
+    }
+    
+    /* walimatul urs wrapper persegi */
+    .walimah-wrapper {
+      width: 92%;
+      max-width: 340px;
+      margin: 30px auto 25px;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--outer-ring);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    
+    .walimah-panel {
+      background: var(--inner-panel);
+      border-radius: 14px;
+      padding: 24px 18px;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+                  0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align: center;
+      color: var(--text-dark);
+    }
+    
+    .akad-title, .walimah-title, .rsvp-title {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      color: var(--muted);
+      margin: 6px 0;
+      letter-spacing: 1px;
+    }
+    
+    .akad-day, .walimah-day {
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 6px;
+      color: #222;
+    }
+    
+    .akad-date-row, .walimah-date-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 12px 0 6px;
+      color: #6d5e67;
+      font-weight: 600;
+    }
+    
+    .akad-month, .akad-year,
+    .walimah-month, .walimah-year {
+      font-size: 15px;
+      color: #5b4f56;
+    }
+    
+    .akad-number, .walimah-number {
+      font-size: 52px;
+      color: #b69fb0;
+      font-family: "Playfair Display", serif;
+      line-height: 1;
+    }
+    
+    .akad-time, .walimah-time {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #6b5b63;
+      letter-spacing: 0.6px;
+    }
+    
+    .akad-location, .walimah-location {
+      margin-top: 12px;
+      text-align: center;
+    }
+    
+    .akad-location h3, .walimah-location h3 {
+      font-size: 14px;
+      margin: 8px 0 6px;
+      color: #2d2d2d;
+      letter-spacing: 0.6px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    
+    .akad-location p, .walimah-location p {
+      font-size: 13px;
+      color: #53464d;
+      margin: 3px 0;
+      line-height: 1.4;
+    }
+    
+    .location-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 14px;
+      background: var(--btn-bg);
+      color: #fff;
+      border-radius: 18px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.14);
+    }
+    
+    /* RSVP Section - dengan frame setengah lingkaran di bawah */
+    .rsvp-wrapper {
+      width: 92%;
+      max-width: 340px;
+      margin: 30px auto 25px;
+      padding: 12px;
+      border-radius: 24px 24px 200px 200px;
+      background: var(--outer-ring);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+    }
+    
+    .rsvp-panel {
+      background: var(--inner-panel);
+      border-radius: 18px 18px 180px 180px;
+      padding: 26px 20px 60px;
+      border: 4px solid rgba(255,255,255,0.45);
+      box-shadow: inset 0 -12px 22px rgba(0,0,0,0.06), 0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      color: var(--text-dark);
+    }
+    
+    .rsvp-title {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      color: var(--muted);
+      margin: 6px 0;
+      letter-spacing: 1px;
+    }
+    
+    .rsvp-panel p {
+      font-size: 14px;
+      color: #53464d;
+      margin-bottom: 20px;
       line-height: 1.6;
     }
-
-    /* === FORM === */
+    
     .rsvp-form {
       text-align: left;
+      margin-bottom: 20px;
     }
-
+    
     .rsvp-form label {
       font-size: 14px;
-      color: #333;
+      color: var(--muted);
       display: block;
       margin-bottom: 5px;
     }
-
+    
     .rsvp-form input,
     .rsvp-form select {
       width: 100%;
       padding: 10px;
       border: none;
       border-radius: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       font-size: 14px;
       background-color: #fff;
       box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
     }
-
-    /* === BUTTON === */
+    
     .rsvp-form button {
       width: 100%;
-      background-color: #7b6c79;
+      background-color: var(--btn-bg);
       color: #fff;
       padding: 12px;
       border: none;
@@ -82,60 +398,460 @@
       font-size: 14px;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.3s ease;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.14);
+      margin-top: 10px;
+      transition: all 0.3s ease;
     }
-
+    
     .rsvp-form button:hover {
-      background-color: #6a5c69;
+      background-color: var(--accent);
+      transform: translateY(-2px);
     }
-
-    /* === ORNAMEN DI BAGIAN BAWAH === */
-    .ornament-bottom {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 300px;
-      opacity: 0.8;
+    
+    /* Floating buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 100;
     }
-
-    .ornament-bottom img {
-      width: 100%;
-      height: auto;
+    
+    .floating-buttons button {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(125, 109, 120, 0.8);
+      color: #fff;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .floating-buttons button:hover {
+      background: rgba(125, 109, 120, 1);
+      transform: scale(1.05);
+    }
+    
+    /* Responsive */
+    @media (max-width: 480px) {
+      .top-section {
+        padding: 30px 15px 40px;
+      }
+      
+      .ornament img {
+        width: 100px;
+      }
+      
+      .basmalah {
+        font-size: 18px;
+      }
+      
+      .doa {
+        font-size: 13px;
+        max-width: 280px;
+        margin-bottom: 30px;
+      }
+      
+      .frame {
+        width: 220px;
+        height: 260px;
+        border-width: 8px;
+      }
+      
+      .frame img {
+        max-width: 180px;
+      }
+      
+      .mempelai {
+        width: 85%;
+        padding: 12px;
+        margin-top: -25px;
+      }
+      
+      .mempelai h2 {
+        font-size: 16px;
+      }
+      
+      .mempelai p {
+        font-size: 12px;
+      }
+      
+      .separator {
+        margin: 15px 0 20px;
+      }
+      
+      .separator span {
+        font-size: 24px;
+      }
+      
+      .bottom-section {
+        padding: 30px 15px;
+      }
+      
+      .flower {
+        width: 80px;
+      }
+      
+      .countdown-container h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      
+      .countdown {
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      
+      .countdown span {
+        font-size: 28px;
+      }
+      
+      .countdown small {
+        font-size: 12px;
+      }
+      
+      .akad-wrapper, .walimah-wrapper, .rsvp-wrapper {
+        width: 94%;
+        margin: 25px auto 20px;
+        padding: 10px;
+      }
+      
+      .akad-panel {
+        border-radius: 140px 140px 12px 12px;
+        padding: 20px 14px 15px;
+      }
+      
+      .walimah-panel {
+        border-radius: 10px;
+        padding: 16px 12px;
+      }
+      
+      .rsvp-panel {
+        border-radius: 12px 12px 140px 140px;
+        padding: 20px 14px 50px;
+      }
+      
+      .akad-title, .walimah-title, .rsvp-title {
+        font-size: 20px;
+        margin: 4px 0;
+      }
+      
+      .akad-day, .walimah-day {
+        font-size: 12px;
+        margin-top: 4px;
+      }
+      
+      .akad-date-row, .walimah-date-row {
+        gap: 10px;
+        margin: 8px 0 4px;
+      }
+      
+      .akad-month, .akad-year, .walimah-month, .walimah-year {
+        font-size: 13px;
+      }
+      
+      .akad-number, .walimah-number {
+        font-size: 36px;
+      }
+      
+      .akad-time, .walimah-time {
+        margin-top: 5px;
+        font-size: 11px;
+      }
+      
+      .akad-location, .walimah-location {
+        margin-top: 8px;
+      }
+      
+      .akad-location h3, .walimah-location h3 {
+        font-size: 12px;
+        margin: 5px 0 3px;
+      }
+      
+      .akad-location p, .walimah-location p {
+        font-size: 11px;
+        margin: 1px 0;
+        line-height: 1.3;
+      }
+      
+      .location-btn {
+        margin-top: 8px;
+        padding: 6px 10px;
+        font-size: 11px;
+        border-radius: 12px;
+      }
+      
+      .rsvp-panel p {
+        font-size: 12px;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+      
+      .rsvp-form {
+        margin-bottom: 15px;
+      }
+      
+      .rsvp-form label {
+        font-size: 12px;
+        margin-bottom: 3px;
+      }
+      
+      .rsvp-form input, .rsvp-form select {
+        padding: 8px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        border-radius: 5px;
+      }
+      
+      .rsvp-form button {
+        padding: 9px;
+        font-size: 12px;
+        margin-top: 6px;
+      }
+      
+      .floating-buttons {
+        bottom: 15px;
+        left: 15px;
+      }
+      
+      .floating-buttons button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+    }
+    
+    @media (max-width: 320px) {
+      .frame {
+        width: 200px;
+        height: 240px;
+      }
+      
+      .frame img {
+        max-width: 160px;
+      }
+      
+      .akad-number, .walimah-number {
+        font-size: 32px;
+      }
+      
+      .countdown {
+        gap: 8px;
+      }
+      
+      .countdown span {
+        font-size: 24px;
+      }
+      
+      .mempelai h2 {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <div class="rsvp-container">
-    <h2>RSVP</h2>
-    <p>
-      Diharapkan kepada tamu undangan (Bapak/Ibu/Saudara/i) dapat mengisi form kehadiran
-      pada acara pernikahan kami
-    </p>
-
-    <form class="rsvp-form">
-      <label for="nama">Nama Tamu:</label>
-      <input type="text" id="nama" name="nama" placeholder="Masukkan nama anda" required>
-
-      <label for="konfirmasi">Konfirmasi Kehadiran:</label>
-      <select id="konfirmasi" name="konfirmasi" required>
-        <option value="">Pilih</option>
-        <option value="hadir">Hadir</option>
-        <option value="tidak">Tidak Hadir</option>
-      </select>
-
-      <button type="submit">
-        <i class="fa-solid fa-paper-plane"></i> Konfirmasi Kehadiran
-      </button>
-    </form>
-
-    <!-- Ornamen di bawah -->
-    <div class="ornament-bottom">
-      <img src="assets/bunga-bawah.png" alt="Ornamen Bawah">
+  <!-- Bagian Atas -->
+  <section class="top-section">
+    <div class="ornament">
+      <img src="assets/butterfly.png" alt="Ornament Butterfly">
     </div>
+    <div class="basmalah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="doa">
+      Assalamu'alaikum Warahmatullahi Wabarakatuh<br><br>
+      Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.<br>
+      Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami,
+    </div>
+    
+    <!-- Frame Mempelai Wanita -->
+    <div class="frame">
+      <img src="assets/bride-1.png" alt="Mempelai Wanita">
+    </div>
+    <div class="mempelai">
+      <h2>Pujiana Dwi Kusumawati</h2>
+      <p><strong>PUTRI DARI</strong></p>
+      <p>Bapak Sudibyo & Ibu Siswati</p>
+    </div>
+    
+    <!-- Separator -->
+    <div class="separator">
+      <span>&amp;</span>
+    </div>
+    
+    <!-- Frame Mempelai Pria -->
+    <div class="frame">
+      <img src="assets/groom-1.png" alt="Mempelai Pria">
+    </div>
+    <div class="mempelai">
+      <h2>Jean Dwi Kustanto</h2>
+      <p><strong>PUTRA DARI</strong></p>
+      <p>Alm. Bapak Slamet Budiono & Ibu Kuswati</p>
+    </div>
+  </section>
+  
+  <!-- Bagian Bawah -->
+  <section class="bottom-section">
+    <!-- Countdown -->
+    <div class="countdown-container">
+      <img src="assets/flower-bucket.png" alt="Buket Bunga" class="flower">
+      <h2>Menuju Hari Bahagia</h2>
+      <div class="countdown">
+        <div><span id="days">139</span><small>Hari</small></div>
+        <div><span id="hours">05</span><small>Jam</small></div>
+        <div><span id="minutes">03</span><small>Menit</small></div>
+        <div><span id="seconds">38</span><small>Detik</small></div>
+      </div>
+      <button class="save-btn" onclick="saveEvent()">Simpan Acara</button>
+    </div>
+    
+    <!-- Acara Akad Nikah (bulat) -->
+    <div class="akad-wrapper">
+      <div class="akad-panel">
+        <div class="akad-title">AKAD NIKAH</div>
+        <div class="akad-day">SABTU</div>
+        <div class="akad-date-row">
+          <div class="akad-month">OCT</div>
+          <div class="akad-number">08</div>
+          <div class="akad-year">2025</div>
+        </div>
+        <div class="akad-time">08.00 - SELESAI</div>
+        <div class="akad-location">
+          <h3>KEDIAMAN MEMPELAI WANITA</h3>
+          <p><strong>(Rumah Bapak Sudibyo)</strong></p>
+          <p>
+            Jl. Raya Tempuran, Desa Tempuran<br>
+            Kecamatan Bantaran<br>
+            Kabupaten Probolinggo - Jawa Timur<br>
+            (Timur SMPN I Bantaran)
+          </p>
+          <a class="location-btn" href="https://maps.google.com/?q=-7.8457332%2C113.1792614&z=17&hl=id" target="_blank">
+            <i class="fas fa-map-marker-alt"></i> Lihat Lokasi Acara
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Acara Walimatul 'Urs (persegi, tanpa ornamen) -->
+    <div class="walimah-wrapper">
+      <div class="walimah-panel">
+        <div class="walimah-title">WALIMATUL 'URS</div>
+        <div class="walimah-day">MINGGU</div>
+        <div class="walimah-date-row">
+          <div class="walimah-month">OCT</div>
+          <div class="walimah-number">12</div>
+          <div class="walimah-year">2025</div>
+        </div>
+        <div class="walimah-time">16.00 - SELESAI</div>
+        <div class="walimah-location">
+          <h3>KEDIAMAN MEMPELAI PRIA</h3>
+          <p>
+            Candinegoro RT 001 RW 002<br>
+            Kecamatan Wonoayu<br>
+            Kabupaten Sidoarjo - Jawa Timur
+          </p>
+          <a class="location-btn" href="https://maps.google.com/?q=-7.4207464%2C112.6305425&z=17&hl=id" target="_blank">
+            <i class="fas fa-map-marker-alt"></i> Lihat Lokasi Acara
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- RSVP Section - dengan frame setengah lingkaran di bawah -->
+    <div class="rsvp-wrapper">
+      <div class="rsvp-panel">
+        <h2 class="rsvp-title">RSVP</h2>
+        <p>Diharapkan kepada tamu undangan (Bapak/Ibu/Saudara/i) dapat mengisi form kehadiran pada acara pernikahan kami</p>
+        <form class="rsvp-form" id="rsvpForm">
+          <label for="nama">Nama Tamu:</label>
+          <input type="text" id="nama" name="nama" placeholder="Masukkan nama anda" required>
+          
+          <label for="konfirmasi">Konfirmasi Kehadiran:</label>
+          <select id="konfirmasi" name="konfirmasi" required>
+            <option value="">Pilih</option>
+            <option value="hadir">Hadir</option>
+            <option value="tidak">Tidak Hadir</option>
+          </select>
+          
+          <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i> Konfirmasi Kehadiran
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- floating buttons -->
+  <div class="floating-buttons">
+    <button id="menuBtn" title="Menu"><i class="fas fa-th-large"></i></button>
+    <button id="musicBtn" title="Putar / Hentikan Musik"><i class="fas fa-play"></i></button>
   </div>
-
+  
+  <audio id="bgMusic" loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
+  
+  <script>
+    // Music play/pause
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    let playing = false;
+    musicBtn.addEventListener('click', () => {
+      if (!bgMusic) return;
+      if (playing) { 
+        bgMusic.pause(); 
+        musicBtn.innerHTML = '<i class="fas fa-play"></i>'; 
+      } else { 
+        bgMusic.play().catch(()=>{}); 
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; 
+      }
+      playing = !playing;
+    });
+    
+    // Save event
+    function saveEvent(){
+      alert('Simpan acara: fitur ekspor kalender belum diaktifkan di demo ini.');
+    }
+    
+    // RSVP Form Handler
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nama = document.getElementById('nama').value;
+      const konfirmasi = document.getElementById('konfirmasi').value;
+      
+      if (nama && konfirmasi) {
+        alert(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
+        document.getElementById('rsvpForm').reset();
+      }
+    });
+    
+    // Countdown ke 08 Oktober 2025 08:00
+    const eventDate = new Date('2025-10-08T08:00:00').getTime();
+    function updateCountdown(){
+      const now = Date.now();
+      const distance = eventDate - now;
+      if (distance <= 0) {
+        document.getElementById('days').innerText = '0';
+        document.getElementById('hours').innerText = '00';
+        document.getElementById('minutes').innerText = '00';
+        document.getElementById('seconds').innerText = '00';
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').innerText = days;
+      document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
