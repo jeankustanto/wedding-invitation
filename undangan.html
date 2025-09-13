@@ -67,7 +67,6 @@
       max-width: 220px;
     }
 
-
     /* ===== KOTAK IDENTITAS ===== */
     .mempelai {
       background: white;
@@ -76,14 +75,18 @@
       padding: 15px;
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    
+      position: relative;
+      top: -30px; /* naik ke atas untuk sedikit menutupi frame */
+      z-index: 5; /* pastikan berada di atas frame */
     }
-
+    
     .mempelai h2 {
       font-size: 18px;
       color: #7a596d;
       margin: 5px 0;
     }
-
+    
     .mempelai p {
       font-size: 12px;
       margin: 3px 0;
