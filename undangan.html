@@ -11,9 +11,9 @@
 
   <style>
     :root{
-      --page-bg: #9a8c9f;        /* mauve background */
-      --outer-ring: #e8dfe6;     /* outer border */
-      --inner-panel: #f6ecef;    /* inner panel */
+      --page-bg: #9a8c9f;
+      --outer-ring: #e8dfe6;
+      --inner-panel: #f6ecef;
       --frame-border: #d9cbd6;
       --muted: #7a6b75;
       --accent: #7a596d;
@@ -52,7 +52,7 @@
       max-width:92%;
     }
 
-    /* frame for photos */
+    /* frame bulat (Akad) */
     .frame {
       width: 240px;
       height: 280px;
@@ -124,7 +124,7 @@
 
     .save-event{ background:#e6d6e3; color:#6a5b65; padding:10px 18px; border-radius:10px; border:none; font-weight:600; cursor:pointer; }
 
-    /* akad wrapper */
+    /* akad wrapper bulat */
     .akad-wrapper {
       width: 340px; max-width:92%;
       margin: 34px auto 30px;
@@ -143,19 +143,103 @@
       text-align:center;
     }
 
-    .akad-ornament img { width:64px; margin:0 auto 6px; display:block; }
-    .akad-title{ font-family:"Playfair Display", serif; font-size:28px; color:var(--muted); margin:6px 0; letter-spacing:1px; }
-    .akad-day{ font-size:14px; font-weight:700; margin-top:6px; color:#222; }
-    .akad-date-row{ display:flex; align-items:center; justify-content:center; gap:16px; margin:12px 0 6px; color:#6d5e67; font-weight:600; }
-    .akad-month, .akad-year{ font-size:15px; color:#5b4f56; }
-    .akad-number{ font-size:52px; color:#b69fb0; font-family:"Playfair Display", serif; line-height:1; }
-    .akad-time{ margin-top:8px; font-size:12px; color:#6b5b63; letter-spacing:0.6px; }
+    /* walimatul urs wrapper persegi */
+    .walimah-wrapper {
+      width: 340px; max-width:92%;
+      margin: 34px auto 30px;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--outer-ring);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
 
-    .akad-location{ margin-top:12px; text-align:center; }
-    .akad-location h3{ font-size:14px; margin:8px 0 6px; color:#2d2d2d; letter-spacing:0.6px; font-weight:700; text-transform:uppercase; }
-    .akad-location p{ font-size:13px; color:#53464d; margin:3px 0; line-height:1.4; }
+    .walimah-panel {
+      background: var(--inner-panel);
+      border-radius: 14px;
+      padding: 24px 18px;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+                  0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align:center;
+    }
 
-    .location-btn{ display:inline-block; margin-top:12px; padding:8px 14px; background:var(--btn-bg); color:#fff; border-radius:18px; text-decoration:none; font-weight:600; box-shadow:0 6px 12px rgba(0,0,0,0.14); }
+    .akad-title, .walimah-title {
+      font-family:"Playfair Display", serif;
+      font-size:28px;
+      color:var(--muted);
+      margin:6px 0;
+      letter-spacing:1px;
+    }
+
+    .akad-day, .walimah-day {
+      font-size:14px;
+      font-weight:700;
+      margin-top:6px;
+      color:#222;
+    }
+
+    .akad-date-row, .walimah-date-row {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin:12px 0 6px;
+      color:#6d5e67;
+      font-weight:600;
+    }
+
+    .akad-month, .akad-year,
+    .walimah-month, .walimah-year {
+      font-size:15px;
+      color:#5b4f56;
+    }
+
+    .akad-number, .walimah-number {
+      font-size:52px;
+      color:#b69fb0;
+      font-family:"Playfair Display", serif;
+      line-height:1;
+    }
+
+    .akad-time, .walimah-time {
+      margin-top:8px;
+      font-size:12px;
+      color:#6b5b63;
+      letter-spacing:0.6px;
+    }
+
+    .akad-location, .walimah-location {
+      margin-top:12px;
+      text-align:center;
+    }
+
+    .akad-location h3, .walimah-location h3 {
+      font-size:14px;
+      margin:8px 0 6px;
+      color:#2d2d2d;
+      letter-spacing:0.6px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    .akad-location p, .walimah-location p {
+      font-size:13px;
+      color:#53464d;
+      margin:3px 0;
+      line-height:1.4;
+    }
+
+    .location-btn {
+      display:inline-block;
+      margin-top:12px;
+      padding:8px 14px;
+      background:var(--btn-bg);
+      color:#fff;
+      border-radius:18px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 6px 12px rgba(0,0,0,0.14);
+    }
 
     /* floating buttons */
     .floating-buttons{ position:fixed; bottom:18px; left:18px; display:flex; flex-direction:column; gap:12px; z-index:1200; }
@@ -163,9 +247,9 @@
 
     /* responsive */
     @media (max-width:420px){
-      .akad-number{ font-size:44px; }
-      .akad-wrapper{ width:92%; padding:10px; }
-      .akad-panel{ padding:20px 14px; }
+      .akad-number, .walimah-number{ font-size:44px; }
+      .akad-wrapper, .walimah-wrapper{ width:92%; padding:10px; }
+      .akad-panel, .walimah-panel{ padding:20px 14px; }
       .frame{ width:86%; height:auto; aspect-ratio: 240/280; }
       .frame img{ max-width:86%; }
     }
@@ -226,10 +310,9 @@
     <button class="save-event" onclick="saveEvent()">Simpan Acara</button>
   </section>
 
-  <!-- Acara Akad Nikah -->
+  <!-- Acara Akad Nikah (bulat) -->
   <div class="akad-wrapper">
     <div class="akad-panel">
-      <div class="akad-ornament"><img src="assets/butterfly.png" alt="Ornamen"></div>
       <div class="akad-title">AKAD NIKAH</div>
       <div class="akad-day">SABTU</div>
 
@@ -257,22 +340,21 @@
     </div>
   </div>
 
-  <!-- Acara Walimatul 'Urs -->
-  <div class="akad-wrapper">
-    <div class="akad-panel">
-      <div class="akad-ornament"><img src="assets/butterfly.png" alt="Ornamen"></div>
-      <div class="akad-title">WALIMATUL 'URS</div>
-      <div class="akad-day">MINGGU</div>
+  <!-- Acara Walimatul 'Urs (persegi, tanpa ornamen) -->
+  <div class="walimah-wrapper">
+    <div class="walimah-panel">
+      <div class="walimah-title">WALIMATUL 'URS</div>
+      <div class="walimah-day">MINGGU</div>
 
-      <div class="akad-date-row">
-        <div class="akad-month">OCT</div>
-        <div class="akad-number">12</div>
-        <div class="akad-year">2025</div>
+      <div class="walimah-date-row">
+        <div class="walimah-month">OCT</div>
+        <div class="walimah-number">12</div>
+        <div class="walimah-year">2025</div>
       </div>
 
-      <div class="akad-time">16.00 - SELESAI</div>
+      <div class="walimah-time">16.00 - SELESAI</div>
 
-      <div class="akad-location">
+      <div class="walimah-location">
         <h3>KEDIAMAN MEMPELAI PRIA</h3>
         <p>
           Candinegoro RT 001 RW 002<br>
@@ -322,22 +404,4 @@
       if (distance <= 0) {
         document.getElementById('days').innerText = '0';
         document.getElementById('hours').innerText = '00';
-        document.getElementById('minutes').innerText = '00';
-        document.getElementById('seconds').innerText = '00';
-        return;
-      }
-      const days = Math.floor(distance / (1000*60*60*24));
-      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-      const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-      const seconds = Math.floor((distance % (1000*60)) / 1000);
-      document.getElementById('days').innerText = days;
-      document.getElementById('hours').innerText = String(hours).padStart(2,'0');
-      document.getElementById('minutes').innerText = String(minutes).padStart(2,'0');
-      document.getElementById('seconds').innerText = String(seconds).padStart(2,'0');
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-</body>
-</html>
+        document.getElement
