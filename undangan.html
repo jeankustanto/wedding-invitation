@@ -1,271 +1,357 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Undangan — Jean & Dwi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Jean & Dwi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Amiri&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-  :root{
-    --page-bg: #9a8c9f;     /* mauve (luar) */
-    --top-bg: #f8f2f5;      /* pink muda (di dalam .container) */
-    --outer-ring: #e8dfe6;
-    --inner-panel: #f6ecef;
-    --frame-border: #d9cbd6;
-    --muted: #7a6b75;
-    --accent: #7a596d;
-    --btn-bg: #bba7b4;
-  }
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4, h5 {
+      margin-bottom: 10px;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    a {
+      text-decoration: none;
+    }
 
-  html,body{
-    height:100%;
-    margin:0;
-    font-family: "Poppins", sans-serif;
-    background: var(--page-bg); /* laman luar mauve */
-    -webkit-font-smoothing:antialiased;
-    color:#2f2f33;
-    text-align:center;
-  }
+    /* ===== BAGIAN ATAS ===== */
+    .top-section {
+      background-color: #f8f2f5;
+      padding: 30px 15px;
+      text-align: center;
+    }
 
-  /* ===== CONTAINER (atas/pink) ===== */
-  .container {
-    width: 92%;
-    max-width: 420px;
-    margin: 18px auto;
-    background: var(--top-bg);           /* <--- pink area inside container */
-    border-radius: 18px;
-    padding: 22px 18px;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
-  }
+    /* Ornamen atas */
+    .ornament img {
+      width: 100px;
+      margin: 0 auto 15px;
+    }
 
-  /* ornament + teks (di dalam container) */
-  .ornament img { width:150px; margin: 8px auto 6px; display:block; }
-  .basmalah { font-family:'Amiri', serif; font-size:20px; color:#5a4b53; margin-top:6px; }
-  .doa { font-size:14px; color:#5c4f56; line-height:1.6; margin:10px auto 12px; max-width:92%; }
+    /* Basmalah */
+    .basmalah {
+      font-size: 18px;
+      color: #7d6d78;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
 
-  /* frame pengantin (di dalam container) */
-  .frame {
-    width: 240px;
-    height: 280px;
-    margin: 18px auto 0;
-    border: 10px solid var(--frame-border);
-    border-radius: 150px 150px 20px 20px;
-    background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
-    position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 8px 18px rgba(0,0,0,0.22), inset 0 -6px 10px rgba(255,255,255,0.12);
-  }
-  .frame img {
-    position:absolute; bottom:0; left:50%; transform:translateX(-50%);
-    width:100%; max-width:220px; user-select:none; pointer-events:none;
-  }
+    /* Doa pembuka */
+    .doa {
+      font-size: 14px;
+      color: #555;
+      max-width: 300px;
+      margin: 0 auto 20px;
+    }
 
-  .mempelai {
-    background:#fff; width:80%; margin:0 auto; padding:14px; border-radius:16px;
-    box-shadow:0 6px 14px rgba(0,0,0,0.10); position:relative; top:-30px; z-index:5;
-  }
-  .mempelai h2{ font-size:18px; color:var(--accent); margin:6px 0 4px; }
-  .mempelai p{ font-size:12px; color:#555; margin:3px 0; }
-  .instagram-btn{ display:inline-block; margin-top:8px; background:#e1d3d8; padding:6px 14px; border-radius:20px; color:#333; text-decoration:none; }
+    /* Frame mempelai */
+    .frame {
+      width: 240px;
+      height: 274px;
+      margin: 20px auto;
+      border: 10px solid #c0b0b9;
+      border-radius: 150px 150px 20px 20px;
+      background-color: #7d6d78;
+      overflow: hidden;
+      box-shadow: inset 0 8px 15px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+    .frame img {
+      width: 100%;
+      height: auto;
+    }
 
-  .divider-script{ display:flex; align-items:center; justify-content:center; margin:26px 0; }
-  .divider-script::before,.divider-script::after{
-    content:""; flex:1; height:10px;
-    background:repeating-linear-gradient(to right,transparent 0, transparent 6px, #9c8b97 6px, #9c8b97 12px);
-    border-radius:50px;
-  }
-  .divider-script::before{ margin-right:12px; } .divider-script::after{ margin-left:12px; }
-  .divider-script span{ font-size:28px; color:var(--muted); font-weight:600; }
+    /* Identitas mempelai */
+    .mempelai {
+      background: white;
+      width: 80%;
+      margin: -10px auto 20px;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .mempelai h2 {
+      font-size: 16px;
+      color: #7a596d;
+      margin-bottom: 5px;
+    }
+    .mempelai p {
+      font-size: 12px;
+      color: #555;
+      margin: 2px 0;
+    }
 
-  /* ===== COUNTDOWN SECTION (luar, mauve) ===== */
-  .countdown-section{
-    background: var(--page-bg); /* keep same mauve as body so it blends */
-    padding: 44px 18px 34px;
-    color:#fff;
-    margin-top: 18px;
-    border-top-left-radius:18px;
-    border-top-right-radius:18px;
-  }
-  .countdown-inner { background:#9a8c9f; padding:26px 14px 28px; border-radius:16px; color:#fff; }
-  .flower-container{ margin-top:-60px; margin-bottom:10px; text-align:center; }
-  .flower-container img{ width:110px; display:inline-block; }
-  .countdown-title{ font-family:'Great Vibes',cursive; font-size:28px; color:#fff; margin:8px 0 12px; }
-  .countdown-timer{ display:flex; justify-content:center; gap:24px; margin-bottom:14px; }
-  .time-box span{ display:block; font-size:34px; font-weight:700; color:#fff; }
-  .time-box p{ margin:0; font-size:13px; color:rgba(255,255,255,0.95); }
-  .save-event{ background:#e6d6e3; color:#6a5b65; padding:10px 18px; border-radius:10px; border:none; font-weight:600; cursor:pointer; }
+    /* Instagram button */
+    .instagram-btn {
+      display: inline-block;
+      margin-top: 8px;
+      background: #f8f2f5;
+      color: #7d6d78;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 10px;
+      border: 1px solid #7d6d78;
+      transition: 0.3s;
+    }
+    .instagram-btn:hover {
+      background: #7d6d78;
+      color: #fff;
+    }
 
-  /* ===== AKAD (outer ring + inner panel) - placed after countdown ===== */
-  .akad-wrapper {
-    width: 340px; max-width:92%; margin: 22px auto 40px; padding:12px;
-    border-radius:200px 200px 24px 24px; background:var(--outer-ring); box-shadow:0 12px 26px rgba(0,0,0,0.18);
-  }
-  .akad-panel{ background:var(--inner-panel); border-radius:180px 180px 18px 18px; padding:24px 18px; border:4px solid rgba(255,255,255,0.45); box-shadow:inset 0 -12px 22px rgba(0,0,0,0.06); text-align:center; }
-  .akad-ornament img{ width:64px; display:block; margin:0 auto 6px; }
-  .akad-title{ font-family:"Playfair Display",serif; font-size:28px; color:var(--muted); margin:6px 0; }
-  .akad-day{ font-size:14px; font-weight:700; color:#222; margin-top:6px; }
-  .akad-date-row{ display:flex; align-items:center; justify-content:center; gap:16px; margin:10px 0 6px; color:#6d5e67; font-weight:600; }
-  .akad-number{ font-size:52px; color:#b69fb0; font-family:"Playfair Display",serif; }
-  .akad-time{ font-size:12px; color:#6b5b63; margin-top:8px; }
-  .akad-location h3{ font-size:14px; margin:8px 0 6px; color:#2d2d2d; font-weight:700; text-transform:uppercase; }
-  .akad-location p{ font-size:13px; color:#53464d; margin:3px 0; line-height:1.4; }
-  .location-btn{ display:inline-block; margin-top:12px; padding:8px 14px; background:var(--btn-bg); color:#fff; border-radius:18px; text-decoration:none; font-weight:600; box-shadow:0 6px 12px rgba(0,0,0,0.14); }
+    /* Separator & */
+    .separator {
+      margin: 15px 0;
+    }
+    .separator span {
+      font-size: 30px;
+      color: #7d6d78;
+      font-family: 'Great Vibes', cursive;
+    }
 
-  /* floating */
-  .floating-buttons{ position:fixed; bottom:16px; left:16px; display:flex; flex-direction:column; gap:12px; z-index:1300; }
-  .floating-buttons button{ width:46px; height:46px; border-radius:50%; border:none; background:#8f7b85; color:#fff; box-shadow:0 6px 12px rgba(0,0,0,0.18); cursor:pointer; }
+    /* ===== BAGIAN BAWAH ===== */
+    .bottom-section {
+      background-color: #7d6d78;
+      padding: 30px 20px;
+      text-align: center;
+    }
 
-  /* responsive */
-  @media (max-width:420px){
-    .container{ padding:16px; border-radius:14px; }
-    .akad-number{ font-size:44px; }
-    .frame{ width:86%; height:auto; aspect-ratio:240/280; }
-    .frame img{ max-width:86%; }
-  }
-</style>
+    /* Countdown */
+    .countdown-container .flower {
+      width: 80px;
+      margin: 0 auto 10px;
+    }
+    .countdown-container h2 {
+      color: #f8f2f5;
+      font-family: "Great Vibes", cursive;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      color: white;
+      margin-bottom: 15px;
+    }
+    .countdown div {
+      text-align: center;
+    }
+    .countdown span {
+      display: block;
+      font-size: 32px;
+      font-weight: bold;
+    }
+    .countdown small {
+      font-size: 12px;
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* Tombol Simpan Acara */
+    .save-btn {
+      padding: 8px 15px;
+      background: #f8f2f5;
+      color: #7d6d78;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .save-btn:hover {
+      background: #e5dce0;
+    }
+
+    /* ===== FRAME AKAD ===== */
+    .akad-frame {
+      background: #f8f2f5;
+      border-radius: 120px 120px 20px 20px;
+      margin-top: 30px;
+      padding: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .akad-frame .akad-ornament {
+      width: 60px;
+      margin: 0 auto 10px;
+    }
+
+    .akad-frame h3 {
+      font-size: 22px;
+      color: #7d6d78;
+      margin-bottom: 10px;
+    }
+
+    .akad-frame .tanggal {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .akad-frame .jam {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .akad-frame h4 {
+      font-size: 14px;
+      margin-top: 10px;
+      color: #7d6d78;
+    }
+
+    .akad-frame .alamat {
+      font-size: 12px;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    /* Tombol Lokasi */
+    .location-btn {
+      display: inline-block;
+      padding: 8px 15px;
+      background: #7d6d78;
+      color: white;
+      border-radius: 8px;
+      font-size: 12px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .location-btn:hover {
+      background: #5d4a56;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- TOP: pink container (includes ornament, doa, groom & bride) -->
-  <div class="container">
+  <!-- ===== BAGIAN ATAS ===== -->
+  <section class="top-section">
     <!-- Ornamen Butterfly -->
     <div class="ornament">
       <img src="assets/butterfly.png" alt="Ornament Butterfly">
     </div>
 
-    <!-- Basmalah + Doa -->
+    <!-- Basmalah dan Doa -->
     <div class="basmalah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
     <div class="doa">
-      Assalamu'alaikum Warahmatullahi Wabarakatuh<br><br>
+      Assalamu'alaikum Warahmatullahi Wabarakatuh <br><br>
       Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.<br>
       Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami,
     </div>
 
-    <!-- Frame Foto Mempelai Pria -->
-    <div class="frame"><img src="assets/groom-1.png" alt="Mempelai Pria"></div>
-    <div class="mempelai">
-      <h2>Jean Dwi Kustanto</h2>
-      <p><strong>PUTRA DARI</strong></p>
-      <p>Alm Bapak Slamet Budiono & Ibu Kuswati</p>
-      <a class="instagram-btn" href="https://www.instagram.com/jean_dk" target="_blank"><i class="fab fa-instagram"></i> @jean_dk</a>
+    <!-- Frame Mempelai Wanita -->
+    <div class="frame">
+      <img src="assets/bride-1.png" alt="Mempelai Wanita">
     </div>
-
-    <!-- Divider -->
-    <div class="divider-script"><span>&amp;</span></div>
-
-    <!-- Frame Foto Mempelai Wanita -->
-    <div class="frame"><img src="assets/bride-1.png" alt="Mempelai Wanita"></div>
     <div class="mempelai">
       <h2>Pujiana Dwi Kusumawati</h2>
       <p><strong>PUTRI DARI</strong></p>
       <p>Bapak Sudibyo & Ibu Siswati</p>
-      <a class="instagram-btn" href="https://www.instagram.com/nahnu_filfirdausinuzula/" target="_blank"><i class="fab fa-instagram"></i> nahnu_filfirdausinuzula</a>
+      <a href="https://www.instagram.com/nahnu_filfirdausinuzula/" target="_blank" class="instagram-btn">
+        <i class="fab fa-instagram"></i> nahnu_filfirdausinuzula
+      </a>
     </div>
-  </div>
-  <!-- end .container -->
 
-  <!-- COUNTDOWN (luar, mauve) -->
-  <section class="countdown-section" aria-label="Countdown">
-    <div class="countdown-inner">
-      <div class="flower-container"><img src="assets/flower-bucket.png" alt="Bunga"></div>
-      <h2 class="countdown-title">Menuju Hari Bahagia</h2>
+    <!-- Separator -->
+    <div class="separator">
+      <span>&amp;</span>
+    </div>
 
-      <div class="countdown-timer" aria-hidden="false">
-        <div class="time-box"><span id="days">0</span><p>Hari</p></div>
-        <div class="time-box"><span id="hours">00</span><p>Jam</p></div>
-        <div class="time-box"><span id="minutes">00</span><p>Menit</p></div>
-        <div class="time-box"><span id="seconds">00</span><p>Detik</p></div>
-      </div>
-
-      <button class="save-event" onclick="saveEvent()">Simpan Acara</button>
+    <!-- Frame Mempelai Pria -->
+    <div class="frame">
+      <img src="assets/groom-1.png" alt="Mempelai Pria">
+    </div>
+    <div class="mempelai">
+      <h2>Jean Dwi Kustanto</h2>
+      <p><strong>PUTRA DARI</strong></p>
+      <p>Alm. Bapak Slamet Budiono & Ibu Kuswati</p>
+      <a href="https://www.instagram.com/jean_dk" target="_blank" class="instagram-btn">
+        <i class="fab fa-instagram"></i> @jean_dk
+      </a>
     </div>
   </section>
 
-  <!-- AKAD (outer ring + inner panel) -->
-  <div class="akad-wrapper" aria-label="Akad Nikah">
-    <div class="akad-panel">
-      <div class="akad-ornament"><img src="assets/butterfly.png" alt="Ornamen"></div>
-      <div class="akad-title">AKAD NIKAH</div>
-      <div class="akad-day">SABTU</div>
-
-      <div class="akad-date-row">
-        <div class="akad-month">OCT</div>
-        <div style="width:1px;height:36px;background:rgba(0,0,0,0.07);margin-top:6px;"></div>
-        <div class="akad-number">08</div>
-        <div style="width:1px;height:36px;background:rgba(0,0,0,0.07);margin-top:6px;"></div>
-        <div class="akad-year">2025</div>
+  <!-- ===== BAGIAN BAWAH ===== -->
+  <section class="bottom-section">
+    <!-- Countdown -->
+    <div class="countdown-container">
+      <img src="assets/flower-bucket.png" alt="Buket Bunga" class="flower">
+      <h2>Menuju Hari Bahagia</h2>
+      <div class="countdown">
+        <div><span id="days">139</span><small>Hari</small></div>
+        <div><span id="hours">05</span><small>Jam</small></div>
+        <div><span id="minutes">03</span><small>Menit</small></div>
+        <div><span id="seconds">38</span><small>Detik</small></div>
       </div>
-
-      <div class="akad-time">08.00 - SELESAI</div>
-
-      <div class="akad-location">
-        <h3>KEDIAMAN MEMPELAI WANITA</h3>
-        <p><strong>(Rumah Bapak Sudibyo)</strong></p>
-        <p>
-          Jl. Raya Tempuran, Desa Tempuran<br>
-          Kecamatan Bantaran<br>
-          Kabupaten Probolinggo - Jawa Timur<br>
-          (Timur SMPN I Bantaran)
-        </p>
-        <a class="location-btn" href="https://maps.google.com/?q=-7.8457332%2C113.1792614&z=17&hl=id" target="_blank">
-          <i class="fas fa-map-marker-alt"></i> Lihat Lokasi Acara
-        </a>
-      </div>
+      <button class="save-btn">Simpan Acara</button>
     </div>
-  </div>
 
-  <!-- Floating buttons -->
-  <div class="floating-buttons">
-    <button id="menuBtn" title="Menu"><i class="fas fa-th-large"></i></button>
-    <button id="musicBtn" title="Putar / Hentikan Musik"><i class="fas fa-play"></i></button>
-  </div>
+    <!-- Informasi Akad -->
+    <div class="akad-frame">
+      <img src="assets/butterfly.png" alt="Ornament" class="akad-ornament">
+      <h3>AKAD NIKAH</h3>
+      <p class="tanggal">SABTU, 08 OKTOBER 2025</p>
+      <p class="jam">08.00 - SELESAI</p>
+      <h4>Kediaman mempelai wanita</h4>
+      <p class="alamat">
+        Jl. Raya Tempuran, Desa Tempuran<br>
+        Kecamatan Bantaran<br>
+        Kabupaten Probolinggo - Jawa Timur<br>
+        (Timur SMPN I Bantaran)
+      </p>
+      <a href="https://maps.google.com/?q=-7.8457332%2C113.1792614&z=17&hl=id" target="_blank" class="location-btn">
+        Lihat Lokasi Acara
+      </a>
+    </div>
+  </section>
 
-  <audio id="bgMusic" loop>
-    <source src="assets/music.mp3" type="audio/mpeg">
-  </audio>
+  <script>
+    // Countdown Script
+    const countDownDate = new Date("Oct 8, 2025 08:00:00").getTime();
 
-<script>
-  // Play/pause music
-  const musicBtn = document.getElementById('musicBtn');
-  const bgMusic = document.getElementById('bgMusic');
-  let playing = false;
-  musicBtn.addEventListener('click', () => {
-    if (!bgMusic) return;
-    if (playing) { bgMusic.pause(); musicBtn.innerHTML = '<i class="fas fa-play"></i>'; }
-    else { bgMusic.play().catch(()=>{}); musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; }
-    playing = !playing;
-  });
+    const countdownFunction = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
 
-  function saveEvent(){
-    alert('Simpan acara: fitur ekspor kalender belum diaktifkan di demo ini.');
-  }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Countdown: Akad 08 Oct 2025 08:00 local time
-  const eventDate = new Date('2025-10-08T08:00:00').getTime();
-  function updateCountdown(){
-    const now = Date.now();
-    const distance = eventDate - now;
-    if (distance <= 0){
-      document.getElementById('days').innerText='0';
-      document.getElementById('hours').innerText='00';
-      document.getElementById('minutes').innerText='00';
-      document.getElementById('seconds').innerText='00';
-      return;
-    }
-    const days = Math.floor(distance / (1000*60*60*24));
-    const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-    const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    const seconds = Math.floor((distance % (1000*60)) / 1000);
-    document.getElementById('days').innerText = days;
-    document.getElementById('hours').innerText = String(hours).padStart(2,'0');
-    document.getElementById('minutes').innerText = String(minutes).padStart(2,'0');
-    document.getElementById('seconds').innerText = String(seconds).padStart(2,'0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-</script>
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.querySelector(".countdown").innerHTML = "Acara Telah Dimulai!";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
