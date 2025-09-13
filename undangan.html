@@ -318,55 +318,58 @@
       border: 3px solid rgba(255,255,255,0.5);
       box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
                   0 2px 0 rgba(255,255,255,0.35) inset;
-      text-align: left;
+      text-align: center;
       color: #333;
     }
     
-    .account-list {
-      margin-bottom: 25px;
+    /* Account Frame - Frame terpisah untuk setiap rekening */
+    .account-wrapper {
+      width: 92%;
+      max-width: 340px;
+      margin: 20px auto;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--outer-ring);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
     }
     
-    .account-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px dashed #ddd;
-    }
-    
-    .account-item:last-child {
-      border-bottom: none;
-    }
-    
-    .account-info {
-      flex: 1;
-    }
-    
-    .account-name {
-      font-weight: 600;
-      font-size: 14px;
+    .account-panel {
+      background: var(--amplop-card-bg);
+      border-radius: 14px;
+      padding: 20px 15px;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+                  0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align: center;
       color: #333;
-      margin-bottom: 5px;
     }
     
     .account-number {
       font-family: monospace;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+    
+    .account-name {
       font-size: 14px;
-      color: #666;
+      color: #555;
+      margin-bottom: 15px;
     }
     
     .copy-btn {
       background: var(--btn-bg);
       color: white;
       border: none;
-      padding: 6px 12px;
-      border-radius: 15px;
-      font-size: 12px;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
       cursor: pointer;
       transition: all 0.3s ease;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
     }
     
     .copy-btn:hover {
@@ -374,33 +377,47 @@
       transform: translateY(-2px);
     }
     
-    .address-section {
-      margin-top: 25px;
+    /* Address Frame - Frame terpisah untuk alamat */
+    .address-wrapper {
+      width: 92%;
+      max-width: 340px;
+      margin: 20px auto;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--outer-ring);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    
+    .address-panel {
+      background: var(--amplop-card-bg);
+      border-radius: 14px;
+      padding: 20px 15px;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+                  0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align: center;
+      color: #333;
     }
     
     .address-title {
       font-weight: 700;
       font-size: 16px;
-      color: #333;
-      margin-bottom: 10px;
+      color: var(--accent);
+      margin-bottom: 15px;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
     
     .address-info {
-      margin-bottom: 15px;
-    }
-    
-    .address-info p {
       font-size: 14px;
       color: #555;
-      margin: 5px 0;
+      margin-bottom: 15px;
       line-height: 1.5;
     }
     
     .recipient {
       font-weight: 600;
-      font-size: 14px;
+      font-size: 15px;
       color: #333;
       margin-bottom: 5px;
     }
@@ -411,21 +428,41 @@
       margin-bottom: 15px;
     }
     
+    /* WhatsApp Frame - Frame terpisah untuk tombol WhatsApp */
+    .whatsapp-wrapper {
+      width: 92%;
+      max-width: 340px;
+      margin: 20px auto;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--outer-ring);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    
+    .whatsapp-panel {
+      background: var(--amplop-card-bg);
+      border-radius: 14px;
+      padding: 20px 15px;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+                  0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align: center;
+      color: #333;
+    }
+    
     .whatsapp-btn {
-      display: inline-block;
+      display: inline-flex;
       background: #25D366;
       color: white;
-      padding: 10px 20px;
-      border-radius: 20px;
+      padding: 12px 20px;
+      border-radius: 25px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 15px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
-      display: flex;
       align-items: center;
-      gap: 8px;
-      margin: 0 auto;
+      gap: 10px;
     }
     
     .whatsapp-btn:hover {
@@ -843,40 +880,54 @@
         padding: 16px 12px;
       }
       
-      .account-name {
-        font-size: 13px;
+      .account-wrapper, .address-wrapper, .whatsapp-wrapper {
+        width: 94%;
+        margin: 15px auto;
+        padding: 10px;
+      }
+      
+      .account-panel, .address-panel, .whatsapp-panel {
+        border-radius: 10px;
+        padding: 16px 12px;
       }
       
       .account-number {
+        font-size: 18px;
+      }
+      
+      .account-name {
         font-size: 13px;
+        margin-bottom: 12px;
       }
       
       .copy-btn {
-        padding: 5px 10px;
-        font-size: 11px;
+        padding: 6px 12px;
+        font-size: 13px;
       }
       
       .address-title {
         font-size: 14px;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
       }
       
-      .address-info p {
+      .address-info {
         font-size: 13px;
-        margin: 3px 0;
+        margin-bottom: 12px;
       }
       
       .recipient {
-        font-size: 13px;
+        font-size: 14px;
+        margin-bottom: 4px;
       }
       
       .contact {
         font-size: 13px;
+        margin-bottom: 12px;
       }
       
       .whatsapp-btn {
-        padding: 8px 15px;
-        font-size: 13px;
+        padding: 10px 15px;
+        font-size: 14px;
       }
       
       .butterfly-ornament {
@@ -1211,49 +1262,53 @@
         Bagi Bapak/Ibu/Saudara/i yang ingin memberikan kado, dapat melalui transfer ke rekening berikut:
       </p>
       
-      <div class="amplop-wrapper">
-        <div class="amplop-panel">
-          <div class="account-list">
-            <div class="account-item">
-              <div class="account-info">
-                <div class="account-name">121512521313</div>
-                <div class="account-number">A/n Dinda Zahra Nabila</div>
-              </div>
-              <button class="copy-btn" onclick="copyAccount('121512521313')">
-                <i class="fas fa-copy"></i> Salin
-              </button>
-            </div>
-            
-            <div class="account-item">
-              <div class="account-info">
-                <div class="account-name">08421312412412</div>
-                <div class="account-number">A/n Dinda Zahra Nabila</div>
-              </div>
-              <button class="copy-btn" onclick="copyAccount('08421312412412')">
-                <i class="fas fa-copy"></i> Salin
-              </button>
-            </div>
-          </div>
-          
-          <div class="address-section">
-            <div class="address-title">ALAMAT PENGIRIMAN KADO</div>
-            <div class="address-info">
-              <p>Jalan Merdeka No.123, Kelurahan Mentai Indah</p>
-              <p>Kecamatan Bahagia</p>
-              <p>Kota Sejahtera</p>
-            </div>
-            <div class="recipient">Dinda Zahra Nabila</div>
-            <div class="contact">+62 822 -2355 -1205</div>
-            
-            <a href="https://wa.me/6282223551205?text=Assalamu'alaikum%20kak,%20saya%20sudah%20melakukan%20transfer%20kado%20pernikahan.%20Mohon%20konfirmasi%20ya.%20Terima%20kasih." 
-               class="whatsapp-btn" target="_blank">
-              <i class="fab fa-whatsapp"></i> KONFIRMASI WHATSAPP
-            </a>
-          </div>
-          
-          <img src="assets/butterfly.png" alt="Butterfly Ornament" class="butterfly-ornament">
+      <!-- Frame untuk Rekening 1 -->
+      <div class="account-wrapper">
+        <div class="account-panel">
+          <div class="account-number">121512521313</div>
+          <div class="account-name">A/n Dinda Zahra Nabila</div>
+          <button class="copy-btn" onclick="copyAccount('121512521313')">
+            <i class="fas fa-copy"></i> Salin
+          </button>
         </div>
       </div>
+      
+      <!-- Frame untuk Rekening 2 -->
+      <div class="account-wrapper">
+        <div class="account-panel">
+          <div class="account-number">08421312412412</div>
+          <div class="account-name">A/n Dinda Zahra Nabila</div>
+          <button class="copy-btn" onclick="copyAccount('08421312412412')">
+            <i class="fas fa-copy"></i> Salin
+          </button>
+        </div>
+      </div>
+      
+      <!-- Frame untuk Alamat Pengiriman Kado -->
+      <div class="address-wrapper">
+        <div class="address-panel">
+          <div class="address-title">ALAMAT PENGIRIMAN KADO</div>
+          <div class="address-info">
+            Candinegoro RT 001 RW 002<br>
+            Kecamatan Wonoayu<br>
+            Kabupaten Sidoarjo
+          </div>
+          <div class="recipient">Jean Dwi Kustanto</div>
+          <div class="contact">+62 951-5799-8815</div>
+        </div>
+      </div>
+      
+      <!-- Frame untuk Tombol WhatsApp -->
+      <div class="whatsapp-wrapper">
+        <div class="whatsapp-panel">
+          <a href="https://wa.me/6295157998815?text=Assalamu'alaikum%20kak,%20saya%20sudah%20melakukan%20transfer%20kado%20pernikahan.%20Mohon%20konfirmasi%20ya.%20Terima%20kasih." 
+             class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> KONFIRMASI WHATSAPP
+          </a>
+        </div>
+      </div>
+      
+      <img src="assets/butterfly.png" alt="Butterfly Ornament" class="butterfly-ornament">
     </div>
   </section>
   
