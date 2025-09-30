@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="utf-8" />
@@ -19,8 +19,8 @@
       --muted: #7a6b75;
       --accent: #7a596d;
       --btn-bg: #bba7b4;
-      --top-section-bg: #f8f2f5; /* Background terang untuk bagian atas */
-      --bottom-section-bg: #7d6d78; /* Background gelap untuk bagian bawah */
+      --top-section-bg: #f8f2f5;
+      --bottom-section-bg: #7d6d78;
       --love-bg: #f6f2f7;
       --love-card-bg: #7a6b75;
       --amplop-bg: #f8f2f5;
@@ -31,6 +31,8 @@
       --countdown-accent: #f8d7da;
       --ucapan-bg: #f8f2f5;
       --ucapan-card-bg: #fff;
+      --menu-bg: rgba(255, 255, 255, 0.1);
+      --menu-border: #ffcc4d;
     }
     html,body{
       height:100%;
@@ -41,7 +43,7 @@
       -moz-osx-font-smoothing:grayscale;
       color:#2f2f33;
       text-align:center;
-      overflow-x: hidden; /* Mencegah horizontal scroll */
+      overflow-x: hidden;
     }
     
     /* Menyeragamkan font pada semua inputan */
@@ -101,15 +103,14 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      width: 360px;
+      width: 180px;
       max-width: 180px;
       top: 10px;
     }
     
     .mempelai {
       background: #fff;
-      top: -50px;
-      width: 100%;
+      width: 85%;
       max-width: 280px;
       margin: -25px auto 25px;
       padding: 12px;
@@ -1050,95 +1051,51 @@
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
     }
     
-    /* Navigation Menu */
-    .nav-menu {
+    /* Menu Dropdown Navigasi - Perbaikan */
+    .menu-dropdown {
       position: fixed;
-      top: 0;
-      left: -280px;
-      width: 260px;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-      transition: left 0.3s ease;
-      z-index: 1000;
-      padding: 15px;
-      overflow-y: auto;
+      bottom: 70px;
+      left: 20px;
+      background: var(--menu-bg);
+      border: 2px solid var(--menu-border);
+      border-radius: 10px;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 180px;
+      z-index: 99;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
     }
     
-    .nav-menu.active {
-      left: 0;
-    }
-    
-    .nav-menu-header {
+    .menu-dropdown.active {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #eee;
     }
     
-    .nav-menu-title {
-      font-family: "Playfair Display", serif;
-      font-size: 20px;
-      color: var(--accent);
-    }
-    
-    .nav-menu-close {
-      background: none;
-      border: none;
-      font-size: 20px;
-      color: var(--muted);
-      cursor: pointer;
-    }
-    
-    .nav-menu-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .nav-menu-item {
-      margin-bottom: 12px;
-    }
-    
-    .nav-menu-link {
-      display: block;
-      padding: 10px 12px;
+    .menu-item {
+      padding: 8px 12px;
       border-radius: 6px;
-      text-decoration: none;
-      color: var(--muted);
+      color: #fff;
+      font-family: "Poppins", sans-serif;
       font-size: 14px;
-      transition: all 0.3s ease;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     
-    .nav-menu-link:hover {
-      background-color: var(--love-bg);
-      color: var(--accent);
+    .menu-item:hover {
+      background: rgba(255, 204, 77, 0.2);
+      transform: scale(0.95);
     }
     
-    .nav-menu-link i {
-      margin-right: 8px;
-      width: 18px;
+    .menu-item i {
+      color: var(--menu-border);
+      font-size: 16px;
+      width: 20px;
       text-align: center;
-    }
-    
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
     }
     
     /* Toast Notification */
@@ -1212,20 +1169,6 @@
         font-size: 11px;
       }
       
-      .nav-menu {
-        width: 240px;
-        left: -240px;
-      }
-      
-      .nav-menu-title {
-        font-size: 18px;
-      }
-      
-      .nav-menu-link {
-        padding: 8px 10px;
-        font-size: 13px;
-      }
-      
       /* Responsive floating buttons */
       .floating-buttons {
         bottom: 15px;
@@ -1237,6 +1180,22 @@
         width: 45px;
         height: 45px;
         font-size: 16px;
+      }
+      
+      .menu-dropdown {
+        bottom: 65px;
+        left: 15px;
+        min-width: 160px;
+      }
+      
+      .menu-item {
+        padding: 6px 10px;
+        font-size: 13px;
+      }
+      
+      .menu-item i {
+        font-size: 14px;
+        width: 18px;
       }
     }
     
@@ -1633,37 +1592,20 @@
         font-size: 20px;
       }
       
-      .nav-menu {
-        width: 280px;
-        left: -280px;
-        padding: 20px;
+      .menu-dropdown {
+        bottom: 80px;
+        left: 25px;
+        min-width: 200px;
       }
       
-      .nav-menu-header {
-        margin-bottom: 30px;
-        padding-bottom: 15px;
+      .menu-item {
+        padding: 10px 15px;
+        font-size: 15px;
       }
       
-      .nav-menu-title {
-        font-size: 24px;
-      }
-      
-      .nav-menu-close {
-        font-size: 24px;
-      }
-      
-      .nav-menu-item {
-        margin-bottom: 15px;
-      }
-      
-      .nav-menu-link {
-        padding: 12px 15px;
-        font-size: 16px;
-      }
-      
-      .nav-menu-link i {
-        margin-right: 10px;
-        width: 20px;
+      .menu-item i {
+        font-size: 18px;
+        width: 22px;
       }
       
       .toast {
@@ -2008,65 +1950,46 @@
   <!-- Foto Pasangan -->
     <img src="assets/bride-groom.png" alt="Jean & Dwi" style="width: 420px; top: 5px;">
 </section>
-  <!-- Navigation Menu -->
-  <div class="nav-menu" id="navMenu">
-    <div class="nav-menu-header">
-      <div class="nav-menu-title">Menu</div>
-      <button class="nav-menu-close" id="closeMenu">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <ul class="nav-menu-list">
-      <li class="nav-menu-item">
-        <a href="#mempelai" class="nav-menu-link">
-          <i class="fas fa-heart"></i> Mempelai
-        </a>
-      </li>
-      <li class="nav-menu-item">
-        <a href="#countdown" class="nav-menu-link">
-          <i class="fas fa-clock"></i> Countdown
-        </a>
-      </li>
-      <li class="nav-menu-item">
-        <a href="#akad" class="nav-menu-link">
-          <i class="fas fa-mosque"></i> Akad Nikah
-        </a>
-      </li>
-      <li class="nav-menu-item">
-        <a href="#walimah" class="nav-menu-link">
-          <i class="fas fa-ring"></i> Walimatul 'Urs
-        </a>
-      </li>
-      <li class="nav-menu-item">
-        <a href="#rsvp" class="nav-menu-link">
-          <i class="fas fa-check-circle"></i> RSVP
-        </a>
-      </li>
-      <li class="nav-menu-item">
-        <a href="#love-story" class="nav-menu-link">
-          <i class="fas fa-book-open"></i> Love Story
-        </a>
-      </li>
-      <li class="nav-menu-item">
-        <a href="#amplop" class="nav-menu-link">
-          <i class="fas fa-gift"></i> Amplop Digital
-        </a>
-      </li>
-      <li class="nav-menu-item">
-        <a href="#ucapan" class="nav-menu-link">
-          <i class="fas fa-comment"></i> Ucapan & Doa
-        </a>
-      </li>
-    </ul>
-  </div>
   
-  <!-- Overlay -->
-  <div class="overlay" id="overlay"></div>
+  <!-- Menu Dropdown Navigasi - Perbaikan -->
+  <div class="menu-dropdown" id="menuDropdown">
+    <div class="menu-item" onclick="scrollToSection('mempelai')">
+      <i class="fas fa-heart"></i> Mempelai
+    </div>
+    <div class="menu-item" onclick="scrollToSection('countdown')">
+      <i class="fas fa-clock"></i> Countdown
+    </div>
+    <div class="menu-item" onclick="scrollToSection('akad')">
+      <i class="fas fa-mosque"></i> Akad Nikah
+    </div>
+    <div class="menu-item" onclick="scrollToSection('walimah')">
+      <i class="fas fa-ring"></i> Walimatul 'Urs
+    </div>
+    <div class="menu-item" onclick="scrollToSection('rsvp')">
+      <i class="fas fa-check-circle"></i> RSVP
+    </div>
+    <div class="menu-item" onclick="scrollToSection('love-story')">
+      <i class="fas fa-book-open"></i> Love Story
+    </div>
+    <div class="menu-item" onclick="scrollToSection('amplop')">
+      <i class="fas fa-gift"></i> Amplop Digital
+    </div>
+    <div class="menu-item" onclick="scrollToSection('ucapan')">
+      <i class="fas fa-comment"></i> Ucapan & Doa
+    </div>
+    <div class="menu-item" onclick="scrollToSection('penutup')">
+      <i class="fas fa-heart"></i> Terima Kasih
+    </div>
+  </div>
   
   <!-- floating buttons -->
   <div class="floating-buttons">
-    <button id="menuBtn" title="Menu"><i class="fas fa-th-large"></i></button>
-    <button id="musicBtn" title="Putar / Hentikan Musik"><i class="fas fa-play"></i></button>
+    <button id="menuBtn" title="Menu" onclick="toggleMenu()">
+      <i class="fas fa-th-large"></i>
+    </button>
+    <button id="musicBtn" title="Putar / Hentikan Musik" onclick="toggleMusic()">
+      <i class="fas fa-play"></i>
+    </button>
   </div>
   
   <!-- Toast Notification -->
@@ -2112,45 +2035,32 @@
       showToast('Fitur simpan acara akan segera tersedia');
     }
     
-    // Menu Button
-    const menuBtn = document.getElementById('menuBtn');
-    const navMenu = document.getElementById('navMenu');
-    const closeMenu = document.getElementById('closeMenu');
-    const overlay = document.getElementById('overlay');
+    // Menu Button - Perbaikan
+    function toggleMenu() {
+      const menuDropdown = document.getElementById('menuDropdown');
+      menuDropdown.classList.toggle('active');
+    }
     
-    menuBtn.addEventListener('click', () => {
-      navMenu.classList.add('active');
-      overlay.classList.add('active');
-    });
-    
-    closeMenu.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      overlay.classList.remove('active');
-    });
-    
-    overlay.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      overlay.classList.remove('active');
-    });
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-menu-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
+    // Fungsi untuk scroll ke section tertentu - Perbaikan
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
         
-        if (targetSection) {
-          window.scrollTo({
-            top: targetSection.offsetTop - 20,
-            behavior: 'smooth'
-          });
-          
-          // Close menu after clicking a link
-          navMenu.classList.remove('active');
-          overlay.classList.remove('active');
-        }
-      });
+        // Tutup menu dropdown setelah memilih
+        document.getElementById('menuDropdown').classList.remove('active');
+      }
+    }
+    
+    // Tutup menu dropdown saat klik di luar area menu - Perbaikan
+    document.addEventListener('click', function(event) {
+      const menuDropdown = document.getElementById('menuDropdown');
+      const menuButton = document.getElementById('menuBtn');
+      
+      // Jika yang diklik bukan menu dropdown atau tombol menu
+      if (!menuDropdown.contains(event.target) && !menuButton.contains(event.target)) {
+        menuDropdown.classList.remove('active');
+      }
     });
     
     // RSVP Form Handler
