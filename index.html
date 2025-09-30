@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Jean & Dwi</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;700&family=Alice&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     :root {
       --background: #f6ebf1;
-      --frame-bg: #7d6d78;
       --frame-border: #e4d6dd;
-      --text-primary: #6d5e67;
-      --text-bold: #2c2c2c;
-      --button-bg: #b8a4af;
+      --text-primary: #333333;
+      --text-secondary: #555555;
+      --button-bg: #7c6c77;
+      --button-hover: #a28c98;
       --button-text: #ffffff;
     }
 
@@ -25,6 +28,7 @@
       background: var(--background);
       font-family: 'Poppins', sans-serif;
       text-align: center;
+      color: var(--text-primary);
     }
 
     .container {
@@ -33,7 +37,6 @@
       padding: 20px;
     }
 
-    /* FRAME FOTO */
     .frame {
       width: 240px;
       height: 274px;
@@ -43,12 +46,9 @@
       background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
       position: relative;
       overflow: hidden;
-
-      /* Bayangan luar */
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 0 5px 5px rgba(0,0,0,0.5);
     }
 
-    /* Efek bayangan dalam frame */
     .frame::after {
       content: "";
       position: absolute;
@@ -58,7 +58,6 @@
       z-index: 1;
     }
 
-    /* Gambar pengantin agar full */
     .frame img {
       position: absolute;
       bottom: 0;
@@ -69,88 +68,130 @@
       z-index: 2;
     }
 
-    /* TEKS UTAMA */
+    /* Judul Walimatul Urs */
     .title {
       font-family: 'Great Vibes', cursive;
-      font-size: 20px;
-      margin-top: 15px;
-      color: var(--text-primary);
-    }
-
-    .names {
-      font-family: 'Playfair Display', serif;
       font-size: 28px;
-      font-weight: normal;
-      color: var(--text-primary);
-      margin: 5px 0;
+      margin: 14px 0 8px;
+      color: #4a3b46;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      animation-delay: 0.5s;
     }
 
+    /* Nama pasangan */
+    .names {
+      font-family: 'Alice', serif;
+      font-weight: 400;
+      font-size: 30px;
+      margin: 0 0 12px;
+      color: #6d5b67;
+      /* Animasi scale */
+      opacity: 0;
+      animation: title 2s ease forwards;
+      animation-delay: 1s;
+    }
+
+    /* Tanggal */
     .date {
-      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      color: var(--text-bold);
-      margin: 8px 0 15px;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 2s;
     }
 
-    /* ALAMAT & TAMU */
     .guest-label {
       font-size: 13px;
-      font-weight: 600;
-      color: var(--text-bold);
+      font-weight: 400;
+      color: #333;
     }
 
     .guest-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-bold);
-      margin-top: 3px;
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 4px;
+      color: #222;
     }
 
     .note {
       font-size: 11px;
-      color: #6e6e6e;
+      color: #555;
       margin-top: 6px;
+      font-style: italic;
     }
 
-    /* BUTTON */
     .btn {
       display: inline-block;
       background: var(--button-bg);
       color: var(--button-text);
       padding: 10px 18px;
       margin-top: 20px;
-      border-radius: 10px;
-      font-size: 14px;
+      border-radius: 8px;
+      font-size: 13px;
       font-weight: 600;
       text-decoration: none;
+      transition: background 0.3s ease;
+      animation: slideIn 1s ease-in-out forwards;
+      animation-delay: 3s;
+    }
+
+    .btn:hover {
+      background: var(--button-hover);
     }
 
     .btn i {
       margin-right: 8px;
     }
+
+    /* Keyframes animasi */
+    @keyframes title {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- FRAME FOTO -->
     <div class="frame">
       <img src="bride-groom.png" alt="Jean & Dwi">
     </div>
 
-    <!-- TEKS UTAMA -->
     <div class="title">Walimatul 'Urs</div>
     <div class="names">Jean & Dwi</div>
     <div class="date">Minggu, 12 Oktober 2025</div>
 
-    <!-- ALAMAT DAN TAMU -->
     <div class="guest-label">Kepada Yth. Bapak/Ibu/Saudara/i:</div>
-    <div class="guest-name">Tamu Undangan</div>
+    <div class="guest-name" id="guestName">Tamu Undangan</div>
     <div class="note">Mohon maaf jika ada kesalahan penulisan nama dan gelar</div>
 
-    <!-- BUTTON -->
     <a href="undangan.html" class="btn">
-      <i>🔒</i> Buka Undangan
+      <i class="fa-solid fa-envelope"></i> Buka Undangan
     </a>
   </div>
+
+  <script>
+    // Ambil parameter URL
+    const params = new URLSearchParams(window.location.search);
+    const guest = params.get("to");
+
+    // Jika ada "to" -> tampilkan
+    if (guest) {
+      document.getElementById("guestName").textContent = guest.replace(/\+/g, " ");
+    }
+  </script>
 </body>
 </html>
