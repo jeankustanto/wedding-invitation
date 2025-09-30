@@ -22,6 +22,10 @@
       --love-card-bg: #7a6b75;
       --amplop-bg: #f8f2f5;
       --amplop-card-bg: #fff;
+      --countdown-bg: rgba(255, 255, 255, 0.15);
+      --countdown-card-bg: rgba(255, 255, 255, 0.25);
+      --countdown-text: #fff;
+      --countdown-accent: #f8d7da;
     }
     html,body{
       height:100%;
@@ -81,13 +85,10 @@
     
     .frame img {
       position: absolute;
-      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 100%;
-      max-width: 200px;
-      pointer-events: none;
-      user-select: none;
+      width: 280px;
+      max-width: 280px;
     }
     
     .mempelai {
@@ -150,11 +151,25 @@
       color: #fff;
     }
     
-    /* countdown */
+    /* countdown - improved design */
     .countdown-container {
       max-width: 320px;
       margin: 0 auto 50px;
       text-align: center;
+      position: relative;
+    }
+    
+    .countdown-container::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%);
+      border-radius: 20px;
+      z-index: -1;
+      backdrop-filter: blur(5px);
     }
     
     .flower {
@@ -167,6 +182,8 @@
       font-family: 'Great Vibes', cursive;
       font-size: 32px;
       margin-bottom: 25px;
+      color: var(--countdown-text);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     
     .countdown {
@@ -176,37 +193,74 @@
       margin-bottom: 25px;
     }
     
-    .countdown div {
-      text-align: center;
+    .countdown-item {
+      background: var(--countdown-card-bg);
+      border-radius: 12px;
+      padding: 15px 10px;
+      min-width: 70px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
-    .countdown span {
+    .countdown-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+    }
+    
+    .countdown-number {
       display: block;
       font-size: 32px;
       font-weight: 700;
       margin-bottom: 5px;
+      color: var(--countdown-text);
+      line-height: 1;
     }
     
-    .countdown small {
+    .countdown-label {
       font-size: 14px;
       opacity: 0.9;
+      color: var(--countdown-text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     
     .save-btn {
-      background: #e6d6e3;
+      background: linear-gradient(to right, #e6d6e3, #f0e6ef);
       color: #6a5b65;
       border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
+      padding: 12px 24px;
+      border-radius: 30px;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .save-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s;
+    }
+    
+    .save-btn:hover::before {
+      left: 100%;
     }
     
     .save-btn:hover {
-      background-color: var(--accent);
-      transform: translateY(-2px);
+      background: linear-gradient(to right, var(--accent), #8d6b7d);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
     
     /* akad wrapper bulat */
@@ -471,10 +525,11 @@
     }
     
     .butterfly-ornament {
-      width: 60px;
+      width: 120px; /* Diubah dari 60px menjadi 120px */
       height: auto;
-      margin: 20px auto 0;
-      opacity: 0.7;
+      margin: 20px auto; /* Diubah dari 20px auto 0 menjadi 20px auto */
+      display: block; /* Tambahkan properti ini */
+      opacity: 0.7; /* Biarkan opacity jika Anda ingin mempertahankan efek transparansi */
     }
     
     .akad-title, .walimah-title, .rsvp-title {
@@ -559,7 +614,7 @@
     .rsvp-wrapper {
       width: 92%;
       max-width: 340px;
-      margin: 30px auto 25px;
+      margin: 30px auto 50px; /* Menambah margin-bottom untuk jarak */
       padding: 12px;
       border-radius: 24px 24px 200px 200px;
       background: var(--outer-ring);
@@ -618,17 +673,19 @@
     }
     
     .rsvp-form button {
-      width: 100%;
-      background-color: var(--btn-bg);
-      color: #fff;
-      padding: 12px;
+      width: auto; /* Mengubah dari 100% menjadi auto */
+      max-width: 80%; /* Membatasi lebar maksimum */
+      padding: 12px 24px; /* Mengurangi padding horizontal */
       border: none;
-      border-radius: 8px;
+      border-radius: 30px; /* Membuat button lebih rounded */
       font-size: 14px;
       font-weight: bold;
       cursor: pointer;
+      background-color: var(--btn-bg);
+      color: #fff;
       box-shadow: 0 6px 12px rgba(0,0,0,0.14);
-      margin-top: 10px;
+      margin: 10px auto 0; /* Menambah margin auto untuk center */
+      display: block; /* Membuat button menjadi block element */
       transition: all 0.3s ease;
     }
     
@@ -646,9 +703,14 @@
       border-radius: 20px;
     }
     
+    /* Style untuk gambar butterfly di Love Story */
     .love-story-section img {
-      width: 80px;
-      margin-bottom: 15px;
+      width: 120px; /* Sama dengan .ornament img */
+      height: auto;
+      margin-bottom: 20px; /* Sama dengan .ornament */
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .love-story-section h2 {
@@ -690,6 +752,110 @@
       text-align: justify;
     }
     
+    /* UCAPAN & DOA SECTION */
+    .ucapan-section {
+      background-color: var(--love-bg);
+      padding: 40px 20px;
+      margin: 0 auto 30px;
+      max-width: 500px;
+      border-radius: 20px;
+    }
+    
+    .ucapan-title {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    
+    .ucapan-form {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+    
+    .ucapan-form label {
+      font-size: 14px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .ucapan-form input,
+    .ucapan-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      background-color: #fff;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .ucapan-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .ucapan-form button {
+      width: auto;
+      max-width: 80%;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: var(--btn-bg);
+      color: #fff;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.14);
+      margin: 10px auto 0;
+      display: block;
+      transition: all 0.3s ease;
+    }
+    
+    .ucapan-form button:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    .ucapan-list {
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .ucapan-item {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    
+    .ucapan-item h4 {
+      font-size: 16px;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+    
+    .ucapan-item p {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+      line-height: 1.5;
+    }
+    
+    .ucapan-item .date {
+      font-size: 12px;
+      color: #888;
+      margin-top: 8px;
+      text-align: right;
+    }
+    
     /* Floating buttons */
     .floating-buttons {
       position: fixed;
@@ -717,6 +883,97 @@
     .floating-buttons button:hover {
       background: rgba(125, 109, 120, 1);
       transform: scale(1.05);
+    }
+    
+    /* Navigation Menu */
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      transition: left 0.3s ease;
+      z-index: 1000;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+      left: 0;
+    }
+    
+    .nav-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .nav-menu-title {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      color: var(--accent);
+    }
+    
+    .nav-menu-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    
+    .nav-menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .nav-menu-item {
+      margin-bottom: 15px;
+    }
+    
+    .nav-menu-link {
+      display: block;
+      padding: 12px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-menu-link:hover {
+      background-color: var(--love-bg);
+      color: var(--accent);
+    }
+    
+    .nav-menu-link i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
     }
     
     /* Toast Notification */
@@ -808,15 +1065,20 @@
       }
       
       .countdown {
-        gap: 12px;
+        gap: 10px;
         margin-bottom: 20px;
       }
       
-      .countdown span {
+      .countdown-item {
+        min-width: 60px;
+        padding: 12px 8px;
+      }
+      
+      .countdown-number {
         font-size: 28px;
       }
       
-      .countdown small {
+      .countdown-label {
         font-size: 12px;
       }
       
@@ -832,6 +1094,12 @@
       .love-story-section .quote {
         font-size: 13px;
         max-width: 320px;
+      }
+      
+      /* Style untuk gambar butterfly di Love Story (mobile) */
+      .love-story-section img {
+        width: 100px; /* Sama dengan .ornament img di mobile */
+        margin-bottom: 15px; /* Sama dengan .ornament di mobile */
       }
       
       .story-wrapper {
@@ -931,12 +1199,19 @@
       }
       
       .butterfly-ornament {
-        width: 50px;
+        width: 100px; /* Diubah dari 50px menjadi 100px */
+        margin: 15px auto; /* Diubah dari 20px auto 0 menjadi 15px auto */
       }
       
-      .akad-wrapper, .walimah-wrapper, .rsvp-wrapper {
+      .akad-wrapper, .walimah-wrapper {
         width: 94%;
         margin: 25px auto 20px;
+        padding: 10px;
+      }
+      
+      .rsvp-wrapper {
+        width: 94%;
+        margin: 25px auto 40px; /* Menyesuaikan margin untuk mobile */
         padding: 10px;
       }
       
@@ -1028,9 +1303,10 @@
       }
       
       .rsvp-form button {
-        padding: 9px;
+        padding: 10px 20px; /* Mengurangi padding untuk mobile */
         font-size: 12px;
         margin-top: 6px;
+        max-width: 90%; /* Meningkatkan max-width untuk mobile */
       }
       
       .floating-buttons {
@@ -1042,6 +1318,70 @@
         width: 40px;
         height: 40px;
         font-size: 16px;
+      }
+      
+      .ucapan-section {
+        padding: 30px 15px;
+        margin-bottom: 20px;
+      }
+      
+      .ucapan-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+      }
+      
+      .ucapan-form label {
+        font-size: 12px;
+        margin-bottom: 3px;
+      }
+      
+      .ucapan-form input, .ucapan-form textarea {
+        padding: 8px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        border-radius: 5px;
+      }
+      
+      .ucapan-form button {
+        padding: 10px 20px;
+        font-size: 12px;
+        margin-top: 6px;
+        max-width: 90%;
+      }
+      
+      .ucapan-list {
+        max-height: 300px;
+      }
+      
+      .ucapan-item {
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      
+      .ucapan-item h4 {
+        font-size: 14px;
+      }
+      
+      .ucapan-item p {
+        font-size: 12px;
+      }
+      
+      .ucapan-item .date {
+        font-size: 10px;
+      }
+      
+      .nav-menu {
+        width: 250px;
+        left: -250px;
+      }
+      
+      .nav-menu-title {
+        font-size: 20px;
+      }
+      
+      .nav-menu-link {
+        padding: 10px 12px;
+        font-size: 14px;
       }
     }
     
@@ -1063,12 +1403,43 @@
         gap: 8px;
       }
       
-      .countdown span {
+      .countdown-number {
         font-size: 24px;
       }
       
       .mempelai h2 {
         font-size: 14px;
+      }
+      
+      /* Style untuk gambar butterfly di Love Story (mobile kecil) */
+      .love-story-section img {
+        width: 90px; /* Lebih kecil untuk layar sangat kecil */
+        margin-bottom: 12px;
+      }
+      
+      .countdown-item {
+        min-width: 50px;
+        padding: 10px 6px;
+      }
+      
+      .rsvp-form button {
+        padding: 8px 16px; /* Mengurangi padding lebih jauh untuk layar sangat kecil */
+        font-size: 11px;
+      }
+      
+      .butterfly-ornament {
+        width: 90px; /* Diubah dari tidak ada ukuran khusus menjadi 90px */
+        margin: 12px auto; /* Diubah dari tidak ada margin khusus menjadi 12px auto */
+      }
+      
+      .ucapan-form button {
+        padding: 8px 16px;
+        font-size: 11px;
+      }
+      
+      .nav-menu {
+        width: 220px;
+        left: -220px;
       }
     }
   </style>
@@ -1085,22 +1456,7 @@
       Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.<br>
       Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami,
     </div>
-    
-    <!-- Frame Mempelai Wanita -->
-    <div class="frame">
-      <img src="assets/bride-1.png" alt="Mempelai Wanita">
-    </div>
-    <div class="mempelai">
-      <h2>Pujiana Dwi Kusumawati</h2>
-      <p><strong>PUTRI DARI</strong></p>
-      <p>Bapak Sudibyo & Ibu Siswati</p>
-    </div>
-    
-    <!-- Separator -->
-    <div class="separator">
-      <span>&amp;</span>
-    </div>
-    
+
     <!-- Frame Mempelai Pria -->
     <div class="frame">
       <img src="assets/groom-1.png" alt="Mempelai Pria">
@@ -1109,6 +1465,21 @@
       <h2>Jean Dwi Kustanto</h2>
       <p><strong>PUTRA DARI</strong></p>
       <p>Alm. Bapak Slamet Budiono & Ibu Kuswati</p>
+    </div>
+    
+    <!-- Separator -->
+    <div class="separator">
+      <span>&amp;</span>
+    </div>
+
+     <!-- Frame Mempelai Wanita -->
+    <div class="frame">
+      <img src="assets/bride-1.png" alt="Mempelai Wanita">
+    </div>
+    <div class="mempelai">
+      <h2>Pujiana Dwi Kusumawati</h2>
+      <p><strong>PUTRI DARI</strong></p>
+      <p>Bapak Sudibyo & Ibu Siswati</p>
     </div>
   </section>
   
@@ -1119,12 +1490,26 @@
       <img src="assets/flower-bucket.png" alt="Buket Bunga" class="flower">
       <h2>Menuju Hari Bahagia</h2>
       <div class="countdown">
-        <div><span id="days">139</span><small>Hari</small></div>
-        <div><span id="hours">05</span><small>Jam</small></div>
-        <div><span id="minutes">03</span><small>Menit</small></div>
-        <div><span id="seconds">38</span><small>Detik</small></div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="days">139</span>
+          <span class="countdown-label">Hari</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="hours">05</span>
+          <span class="countdown-label">Jam</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="minutes">03</span>
+          <span class="countdown-label">Menit</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="seconds">38</span>
+          <span class="countdown-label">Detik</span>
+        </div>
       </div>
-      <button class="save-btn" onclick="saveEvent()">Simpan Acara</button>
+      <button class="save-btn" onclick="saveEvent()">
+        <i class="far fa-calendar-alt"></i> Simpan Acara
+      </button>
     </div>
     
     <!-- Acara Akad Nikah (bulat) -->
@@ -1142,9 +1527,7 @@
           <h3>KEDIAMAN MEMPELAI WANITA</h3>
           <p><strong>(Rumah Bapak Sudibyo)</strong></p>
           <p>
-            Jl. Raya Tempuran, Desa Tempuran<br>
-            Kecamatan Bantaran<br>
-            Kabupaten Probolinggo - Jawa Timur<br>
+            Jl. Raya Tempuran, Desa Tempuran Kecamatan Bantaran Kabupaten Probolinggo - Jawa Timur
             (Timur SMPN I Bantaran)
           </p>
           <a class="location-btn" href="https://maps.google.com/?q=-7.8457332%2C113.1792614&z=17&hl=id" target="_blank">
@@ -1201,8 +1584,10 @@
         </form>
       </div>
     </div>
-    
+    </section>
+
     <!-- LOVE STORY SECTION -->
+    <section class="top-section">
     <div class="love-story-section">
       <img src="assets/butterfly.png" alt="Ornament Love Story">
       <h2>- Love Story -</h2>
@@ -1240,7 +1625,17 @@
         </div>
       </div>
       
-      <!-- Kartu Ketiga: Akad & Walimah -->
+      <!-- Kartu Ketiga: Khitbah -->
+      <div class="story-wrapper">
+        <div class="story-panel">
+          <h3>Khitbah</h3>
+          <p>
+            Biidznillah, Alhamdulillah, dengan ridha Allah, kami sampai pada proses khitbah. Dengan perasaan haru penuh khidmat kami memohon dan berharap agar keputusan ini menjadi jalan kebaikan dunia - akhirat sesurga kelak.
+          </p>
+        </div>
+      </div>
+
+    <!-- Kartu Keempat: Akad & Walimah -->
       <div class="story-wrapper">
         <div class="story-panel">
           <h3>Akad & Walimah</h3>
@@ -1256,18 +1651,20 @@
     </div>
     
     <!-- AMLOP DIGITAL SECTION -->
-    <div class="amplop-section">
       <h2 class="amplop-title">Amplop Digital</h2>
       <p class="amplop-description">
         Bagi Bapak/Ibu/Saudara/i yang ingin memberikan kado, dapat melalui transfer ke rekening berikut:
       </p>
-      
+    
       <!-- Frame untuk Rekening 1 -->
       <div class="account-wrapper">
         <div class="account-panel">
-          <div class="account-number">121512521313</div>
-          <div class="account-name">A/n Dinda Zahra Nabila</div>
-          <button class="copy-btn" onclick="copyAccount('121512521313')">
+          <div class="account-number">
+            <i class="fa fa-bank" style="font-size:24px"></i>
+            BCA 1841662500
+          </div>
+          <div class="account-name">A/n JEAN DWI KUSTANTO</div>
+          <button class="copy-btn" onclick="copyAccount('1841662500')">
             <i class="fas fa-copy"></i> Salin
           </button>
         </div>
@@ -1276,9 +1673,12 @@
       <!-- Frame untuk Rekening 2 -->
       <div class="account-wrapper">
         <div class="account-panel">
-          <div class="account-number">08421312412412</div>
-          <div class="account-name">A/n Dinda Zahra Nabila</div>
-          <button class="copy-btn" onclick="copyAccount('08421312412412')">
+          <div class="account-number">
+            <i class="fa fa-bank" style="font-size:24px"></i>
+            BRI 315501052898530
+          </div>
+          <div class="account-name">A/n JEAN DWI KUSTANTO</div>
+          <button class="copy-btn" onclick="copyAccount('315501052898530')">
             <i class="fas fa-copy"></i> Salin
           </button>
         </div>
@@ -1289,28 +1689,114 @@
         <div class="address-panel">
           <div class="address-title">ALAMAT PENGIRIMAN KADO</div>
           <div class="address-info">
-            Candinegoro RT 001 RW 002<br>
-            Kecamatan Wonoayu<br>
+            Candinegoro RT 001 RW 002<
+            Kecamatan Wonoayu
             Kabupaten Sidoarjo
           </div>
           <div class="recipient">Jean Dwi Kustanto</div>
           <div class="contact">+62 951-5799-8815</div>
-        </div>
-      </div>
-      
-      <!-- Frame untuk Tombol WhatsApp -->
-      <div class="whatsapp-wrapper">
-        <div class="whatsapp-panel">
           <a href="https://wa.me/6295157998815?text=Assalamu'alaikum%20kak,%20saya%20sudah%20melakukan%20transfer%20kado%20pernikahan.%20Mohon%20konfirmasi%20ya.%20Terima%20kasih." 
              class="whatsapp-btn" target="_blank">
             <i class="fab fa-whatsapp"></i> KONFIRMASI WHATSAPP
           </a>
         </div>
       </div>
-      
       <img src="assets/butterfly.png" alt="Butterfly Ornament" class="butterfly-ornament">
+        <div class="basmalah">بَارَكَ اللهُ لَكُما وَبَارَكَ عَلَيْكُما وَجَمَعَ بَيْنَكُما فِي خَيْرٍ
+        </div>
+        <p class="amplop-description">"Semoga Allah memberi keberkahan kalian dan memberkahi atas kalian serta mengumpulkan kalian berdua dalam kebaikan" </p>
+        <p class="amplop-description">Doa Rasulullah saw karya Samir Mahmud al-Husni (2008: 250)</p>
+    </div>
+    
+    <!-- UCAPAN & DOA SECTION -->
+    <div class="ucapan-section">
+      <h2 class="ucapan-title">Ucapan & Doa</h2>
+      <p class="amplop-description">
+        Kirimkan ucapan dan doa untuk Jean & Dwi:
+      </p>
+      
+      <form class="ucapan-form" id="ucapanForm">
+        <label for="namaUcapan">Nama:</label>
+        <input type="text" id="namaUcapan" name="namaUcapan" placeholder="Masukkan nama anda" required>
+        
+        <label for="ucapan">Ucapan & Doa:</label>
+        <textarea id="ucapan" name="ucapan" placeholder="Tulis ucapan dan doa anda" required></textarea>
+        
+        <button type="submit">
+          <i class="fa-solid fa-paper-plane"></i> Beri Ucapan
+        </button>
+      </form>
+      
+      <div class="ucapan-list" id="ucapanList">
+        <!-- Ucapan akan ditampilkan di sini -->
+        <div class="ucapan-item">
+          <h4>Ahmad</h4>
+          <p>Barakallahu lakuma wa baraka 'alaikuma wa jama'a baynakuma fi khair. Semoga Allah memberkati kalian berdua dan mengumpulkan kalian dalam kebaikan.</p>
+          <div class="date">10 Oktober 2023</div>
+        </div>
+        <div class="ucapan-item">
+          <h4>Siti</h4>
+          <p>Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin.</p>
+          <div class="date">12 Oktober 2023</div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Navigation Menu -->
+  <div class="nav-menu" id="navMenu">
+    <div class="nav-menu-header">
+      <div class="nav-menu-title">Menu</div>
+      <button class="nav-menu-close" id="closeMenu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <ul class="nav-menu-list">
+      <li class="nav-menu-item">
+        <a href="#mempelai" class="nav-menu-link">
+          <i class="fas fa-heart"></i> Mempelai
+        </a>
+      </li>
+      <li class="nav-menu-item">
+        <a href="#countdown" class="nav-menu-link">
+          <i class="fas fa-clock"></i> Countdown
+        </a>
+      </li>
+      <li class="nav-menu-item">
+        <a href="#akad" class="nav-menu-link">
+          <i class="fas fa-mosque"></i> Akad Nikah
+        </a>
+      </li>
+      <li class="nav-menu-item">
+        <a href="#walimah" class="nav-menu-link">
+          <i class="fas fa-ring"></i> Walimatul 'Urs
+        </a>
+      </li>
+      <li class="nav-menu-item">
+        <a href="#rsvp" class="nav-menu-link">
+          <i class="fas fa-check-circle"></i> RSVP
+        </a>
+      </li>
+      <li class="nav-menu-item">
+        <a href="#love-story" class="nav-menu-link">
+          <i class="fas fa-book-open"></i> Love Story
+        </a>
+      </li>
+      <li class="nav-menu-item">
+        <a href="#amplop" class="nav-menu-link">
+          <i class="fas fa-gift"></i> Amplop Digital
+        </a>
+      </li>
+      <li class="nav-menu-item">
+        <a href="#ucapan" class="nav-menu-link">
+          <i class="fas fa-comment"></i> Ucapan & Doa
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
   
   <!-- floating buttons -->
   <div class="floating-buttons">
@@ -1347,9 +1833,45 @@
       showToast('Fitur simpan acara akan segera tersedia');
     }
     
-    // Menu Button (placeholder)
-    document.getElementById('menuBtn').addEventListener('click', () => {
-      showToast('Menu akan segera tersedia');
+    // Menu Button
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const overlay = document.getElementById('overlay');
+    
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.add('active');
+      overlay.classList.add('active');
+    });
+    
+    closeMenu.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+    
+    overlay.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-menu-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          window.scrollTo({
+            top: targetSection.offsetTop - 20,
+            behavior: 'smooth'
+          });
+          
+          // Close menu after clicking a link
+          navMenu.classList.remove('active');
+          overlay.classList.remove('active');
+        }
+      });
     });
     
     // RSVP Form Handler
@@ -1372,6 +1894,43 @@
         showToast('Gagal menyalin nomor rekening');
       });
     }
+    
+    // Ucapan & Doa Form Handler
+    document.getElementById('ucapanForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const namaUcapan = document.getElementById('namaUcapan').value;
+      const ucapan = document.getElementById('ucapan').value;
+      
+      if (namaUcapan && ucapan) {
+        // Create new ucapan item
+        const ucapanList = document.getElementById('ucapanList');
+        const newUcapan = document.createElement('div');
+        newUcapan.className = 'ucapan-item';
+        
+        // Format date
+        const now = new Date();
+        const formattedDate = now.toLocaleDateString('id-ID', { 
+          day: 'numeric', 
+          month: 'long', 
+          year: 'numeric' 
+        });
+        
+        newUcapan.innerHTML = `
+          <h4>${namaUcapan}</h4>
+          <p>${ucapan}</p>
+          <div class="date">${formattedDate}</div>
+        `;
+        
+        // Add to the top of the list
+        ucapanList.insertBefore(newUcapan, ucapanList.firstChild);
+        
+        // Show success message
+        showToast(`Terima kasih ${namaUcapan}! Ucapan dan doa Anda telah terkirim.`);
+        
+        // Reset form
+        document.getElementById('ucapanForm').reset();
+      }
+    });
     
     // Toast Notification Function
     function showToast(message) {
