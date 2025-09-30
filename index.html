@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undangan Jean & Dwi</title>
+  
+  <title>Undangan Pernikahan Jean & Dwi</title>
+  
+  <!-- SEO Description -->
+  <meta name="description" content="Dengan penuh rasa syukur, kami mengundang Anda hadir di pernikahan Jean & Dwi pada Minggu, 12 Oktober 2025 di Candinegoro RT 001 RW 002, Wonoayu, Sidoarjo.">
+  <meta name="author" content="Jean & Dwi Wedding">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph (Preview WhatsApp, Facebook, Instagram) -->
+  <meta property="og:title" content="Jean & Dwi Wedding Invitation">
+  <meta property="og:description" content="Dengan penuh syukur, kami mengundang Anda pada pernikahan kami. 12 Oktober 2025 - Wonoayu, Sidoarjo.">
+  <meta property="og:image" content="https://jeandwi.netlify.app/assets/foto-utama.jpg">
+  <meta property="og:url" content="https://jeandwi.netlify.app">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card (Opsional) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jean & Dwi Wedding Invitation">
+  <meta name="twitter:description" content="12 Oktober 2025 - Candinegoro, Wonoayu, Sidoarjo">
+  <meta name="twitter:image" content="https://jeandwi.netlify.app/assets/foto-utama.jpg">
 
-  <!-- Google Fonts - Kombinasi font yang lebih serasi -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts dengan font yang diminta -->
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=El+Messiri:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -27,13 +46,18 @@
 
     * {
       box-sizing: border-box;
+      /* Mencegah seleksi teks */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     body {
       margin: 0;
       padding: 0;
       background: var(--background);
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Roboto', sans-serif;
       text-align: center;
       color: var(--text-primary);
       min-height: 100vh;
@@ -43,6 +67,13 @@
       background-image: 
         radial-gradient(circle at 10% 20%, rgba(222, 207, 216, 0.46) 0%, rgba(222, 207, 216, 0) 90%),
         radial-gradient(circle at 90% 80%, rgba(210, 195, 204, 0.46) 0%, rgba(210, 195, 204, 0) 90%);
+      /* Mencegah klik kanan */
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     .container {
@@ -63,11 +94,11 @@
     }
 
     .frame {
-      width: 240px;
-      height: 274px;
+      width: 280px;
+      height: 340px;
       margin: 0 auto 30px;
-      border: 10px solid var(--frame-border);
-      border-radius: 150px 150px 20px 20px;
+      border: 12px solid var(--frame-border);
+      border-radius: 160px 160px 25px 25px;
       background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
       position: relative;
       overflow: hidden;
@@ -83,7 +114,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      border-radius: 140px 140px 15px 15px;
+      border-radius: 150px 150px 20px 20px;
       box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.15);
       z-index: 1;
     }
@@ -94,21 +125,26 @@
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
-      max-width: 240px;
+      max-width: 280px;
       z-index: 2;
       transition: transform 0.5s ease;
+      /* Mencegah gambar disimpan */
+      pointer-events: none;
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
     }
 
     .frame:hover img {
       transform: translateX(-50%) scale(1.1);
     }
 
-    /* Judul Walimatul Urs */
+    /* Judul Walimatul Urs - Menggunakan Pinyon Script dengan ukuran lebih kecil */
     .title {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 32px;
+      font-family: 'Pinyon Script', cursive;
+      font-size: 28px;
       margin: 14px 0 15px;
       color: var(--accent-color);
       opacity: 0;
@@ -118,6 +154,7 @@
       letter-spacing: 1px;
       position: relative;
       display: inline-block;
+      line-height: 1.2;
     }
 
     .title::after {
@@ -130,11 +167,11 @@
       background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
     }
 
-    /* Nama pasangan - Menggunakan font Tangerine yang elegan */
+    /* Nama pasangan - Menggunakan Font El Messiri */
     .names {
-      font-family: 'Tangerine', cursive;
+      font-family: 'El Messiri', sans-serif;
       font-weight: 700;
-      font-size: 65px;
+      font-size: 42px;
       margin: 5px 0 25px;
       color: var(--name-color);
       opacity: 0;
@@ -143,13 +180,13 @@
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
       position: relative;
       display: inline-block;
-      line-height: 1;
+      line-height: 1.2;
       letter-spacing: 2px;
     }
 
     /* Tanggal */
     .date {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-weight: 500;
       font-size: 18px;
       color: var(--text-primary);
@@ -169,12 +206,12 @@
       font-weight: 400;
       color: var(--text-primary);
       margin-bottom: 8px;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Roboto', sans-serif;
     }
 
     .guest-name {
       font-size: 22px;
-      font-weight: 500;
+      font-weight: 700;
       margin-top: 4px;
       color: var(--text-primary);
       padding: 12px;
@@ -182,8 +219,7 @@
       display: inline-block;
       min-width: 250px;
       max-width: 90%;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
+      font-family: 'Roboto', sans-serif;
     }
 
     .note {
@@ -194,7 +230,7 @@
       opacity: 0;
       animation: fadeIn 1s ease forwards;
       animation-delay: 2.5s;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Roboto', sans-serif;
     }
 
     .btn {
@@ -213,7 +249,7 @@
       box-shadow: 0 4px 15px rgba(157, 123, 148, 0.3);
       position: relative;
       overflow: hidden;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Roboto', sans-serif;
       letter-spacing: 0.5px;
     }
 
@@ -270,22 +306,24 @@
       }
       
       .frame {
-        width: 300px;
-        height: 343px;
+        width: 340px;
+        height: 410px;
         margin-bottom: 40px;
+        border: 15px solid var(--frame-border);
+        border-radius: 180px 180px 30px 30px;
       }
       
       .frame img {
-        max-width: 300px;
+        max-width: 340px;
       }
       
       .title {
-        font-size: 38px;
+        font-size: 32px;
         margin-bottom: 20px;
       }
       
       .names {
-        font-size: 85px;
+        font-size: 52px;
         margin-bottom: 30px;
       }
       
@@ -321,21 +359,23 @@
       }
       
       .frame {
-        width: 200px;
-        height: 228px;
+        width: 240px;
+        height: 300px;
         margin-bottom: 20px;
+        border: 10px solid var(--frame-border);
+        border-radius: 140px 140px 20px 20px;
       }
       
       .frame img {
-        max-width: 200px;
+        max-width: 240px;
       }
       
       .title {
-        font-size: 28px;
+        font-size: 24px;
       }
       
       .names {
-        font-size: 55px;
+        font-size: 36px;
       }
       
       .date {
@@ -398,6 +438,79 @@
       const frame = document.querySelector('.frame');
       frame.style.transform = 'perspective(1000px) rotateY(0) rotateX(0)';
     });
+    
+    // Mencegah klik kanan pada seluruh halaman
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    
+    // Mencegah teks diseleksi
+    document.addEventListener('selectstart', e => e.preventDefault());
+    
+    // Mencegah drag gambar
+    document.addEventListener('dragstart', e => e.preventDefault());
+    
+    // Menonaktifkan shortcut keyboard (Ctrl+A, Ctrl+C, Ctrl+U, dll)
+    document.addEventListener('keydown', e => {
+      // Disable F12 (Developer Tools)
+      if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+U (View Source)
+      if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+C (Copy)
+      if (e.ctrlKey && e.keyCode === 67) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+A (Select All)
+      if (e.ctrlKey && e.keyCode === 65) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+S (Save)
+      if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+Shift+I (Developer Tools)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+Shift+J (Developer Tools)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+        e.preventDefault();
+        return false;
+      }
+    });
+    
+    // Mencegah screenshot (bekerja di beberapa browser)
+    (() => {
+      const blockScreenshot = () => {
+        const html = document.querySelector('html');
+        const body = document.querySelector('body');
+        
+        html.style.pointerEvents = 'none';
+        body.style.pointerEvents = 'none';
+        
+        setTimeout(() => {
+          html.style.pointerEvents = '';
+          body.style.pointerEvents = '';
+        }, 100);
+      };
+      
+      document.addEventListener('keyup', blockScreenshot);
+      document.addEventListener('keydown', blockScreenshot);
+    })();
   </script>
 </body>
 </html>
