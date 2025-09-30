@@ -5,21 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Jean & Dwi</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;700&family=Alice&display=swap" rel="stylesheet">
+  <!-- Google Fonts - Kombinasi font yang lebih serasi -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     :root {
-      --background: #f6ebf1;
+      --background: #f8f3f7;
       --frame-border: #e4d6dd;
       --text-primary: #333333;
       --text-secondary: #555555;
-      --button-bg: #7c6c77;
-      --button-hover: #a28c98;
+      --button-bg: #9d7b94;
+      --button-hover: #b398aa;
       --button-text: #ffffff;
+      --accent-color: #9d7b94;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --name-color: #9d7b94; /* Warna ungu muda seperti pada gambar */
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -29,24 +36,47 @@
       font-family: 'Poppins', sans-serif;
       text-align: center;
       color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(222, 207, 216, 0.46) 0%, rgba(222, 207, 216, 0) 90%),
+        radial-gradient(circle at 90% 80%, rgba(210, 195, 204, 0.46) 0%, rgba(210, 195, 204, 0) 90%);
     }
 
     .container {
-      max-width: 360px;
+      max-width: 800px;
+      width: 90%;
       margin: 0 auto;
-      padding: 20px;
+      padding: 40px 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px var(--shadow);
+      backdrop-filter: blur(10px);
+      animation: containerFade 1.5s ease-in-out;
+    }
+
+    @keyframes containerFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .frame {
       width: 240px;
       height: 274px;
-      margin: 0 auto;
+      margin: 0 auto 30px;
       border: 10px solid var(--frame-border);
       border-radius: 150px 150px 20px 20px;
       background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
       position: relative;
       overflow: hidden;
-      box-shadow: inset 0 0 5px 5px rgba(0,0,0,0.5);
+      box-shadow: inset 0 0 5px 5px rgba(0,0,0,0.5), 0 15px 25px rgba(0,0,0,0.15);
+      transition: transform 0.5s ease;
+    }
+
+    .frame:hover {
+      transform: scale(1.05);
     }
 
     .frame::after {
@@ -66,85 +96,155 @@
       width: 100%;
       max-width: 240px;
       z-index: 2;
+      transition: transform 0.5s ease;
+    }
+
+    .frame:hover img {
+      transform: translateX(-50%) scale(1.1);
     }
 
     /* Judul Walimatul Urs */
     .title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 28px;
-      margin: 14px 0 8px;
-      color: #4a3b46;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 32px;
+      margin: 14px 0 15px;
+      color: var(--accent-color);
       opacity: 0;
       animation: fadeIn 1s ease-in-out forwards;
       animation-delay: 0.5s;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
     }
 
-    /* Nama pasangan */
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 25%;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    }
+
+    /* Nama pasangan - Menggunakan font Tangerine yang elegan */
     .names {
-      font-family: 'Alice', serif;
-      font-weight: 400;
-      font-size: 30px;
-      margin: 0 0 12px;
-      color: #6d5b67;
-      /* Animasi scale */
+      font-family: 'Tangerine', cursive;
+      font-weight: 700;
+      font-size: 65px;
+      margin: 5px 0 25px;
+      color: var(--name-color);
       opacity: 0;
       animation: title 2s ease forwards;
       animation-delay: 1s;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      position: relative;
+      display: inline-block;
+      line-height: 1;
+      letter-spacing: 2px;
     }
 
     /* Tanggal */
     .date {
       font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      color: #333;
-      margin-bottom: 18px;
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--text-primary);
+      margin-bottom: 30px;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
       animation-delay: 2s;
+      padding: 8px 25px;
+      display: inline-block;
+      background-color: rgba(157, 123, 148, 0.1);
+      border-radius: 30px;
+      letter-spacing: 0.5px;
     }
 
     .guest-label {
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 400;
-      color: #333;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      font-family: 'Poppins', sans-serif;
     }
 
     .guest-name {
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 500;
       margin-top: 4px;
-      color: #222;
+      color: var(--text-primary);
+      padding: 12px;
+      border-bottom: 2px dashed var(--frame-border);
+      display: inline-block;
+      min-width: 250px;
+      max-width: 90%;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
     }
 
     .note {
-      font-size: 11px;
-      color: #555;
-      margin-top: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 15px;
       font-style: italic;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 2.5s;
+      font-family: 'Poppins', sans-serif;
     }
 
     .btn {
       display: inline-block;
       background: var(--button-bg);
       color: var(--button-text);
-      padding: 10px 18px;
-      margin-top: 20px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
+      padding: 14px 28px;
+      margin-top: 30px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 500;
       text-decoration: none;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
       animation: slideIn 1s ease-in-out forwards;
       animation-delay: 3s;
+      box-shadow: 0 4px 15px rgba(157, 123, 148, 0.3);
+      position: relative;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
     }
 
     .btn:hover {
       background: var(--button-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(157, 123, 148, 0.4);
     }
 
     .btn i {
-      margin-right: 8px;
+      margin-right: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover i {
+      transform: translateX(5px);
     }
 
     /* Keyframes animasi */
@@ -161,6 +261,97 @@
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+
+    /* Media Queries untuk Responsivitas */
+    @media (min-width: 768px) {
+      .container {
+        padding: 60px 40px;
+      }
+      
+      .frame {
+        width: 300px;
+        height: 343px;
+        margin-bottom: 40px;
+      }
+      
+      .frame img {
+        max-width: 300px;
+      }
+      
+      .title {
+        font-size: 38px;
+        margin-bottom: 20px;
+      }
+      
+      .names {
+        font-size: 85px;
+        margin-bottom: 30px;
+      }
+      
+      .date {
+        font-size: 20px;
+        padding: 10px 30px;
+      }
+      
+      .guest-label {
+        font-size: 18px;
+      }
+      
+      .guest-name {
+        font-size: 26px;
+        min-width: 300px;
+      }
+      
+      .note {
+        font-size: 14px;
+      }
+      
+      .btn {
+        padding: 16px 32px;
+        font-size: 18px;
+        margin-top: 35px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 95%;
+        padding: 30px 15px;
+      }
+      
+      .frame {
+        width: 200px;
+        height: 228px;
+        margin-bottom: 20px;
+      }
+      
+      .frame img {
+        max-width: 200px;
+      }
+      
+      .title {
+        font-size: 28px;
+      }
+      
+      .names {
+        font-size: 55px;
+      }
+      
+      .date {
+        font-size: 16px;
+        padding: 8px 20px;
+      }
+      
+      .guest-name {
+        font-size: 20px;
+        min-width: 200px;
+      }
+      
+      .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -192,6 +383,21 @@
     if (guest) {
       document.getElementById("guestName").textContent = guest.replace(/\+/g, " ");
     }
+    
+    // Tambahkan efek parallax sederhana pada frame
+    document.addEventListener('mousemove', (e) => {
+      const frame = document.querySelector('.frame');
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      frame.style.transform = `perspective(1000px) rotateY(${(x - 0.5) * 10}deg) rotateX(${(0.5 - y) * 10}deg)`;
+    });
+    
+    // Reset transform saat mouse meninggalkan area
+    document.addEventListener('mouseleave', () => {
+      const frame = document.querySelector('.frame');
+      frame.style.transform = 'perspective(1000px) rotateY(0) rotateX(0)';
+    });
   </script>
 </body>
 </html>
