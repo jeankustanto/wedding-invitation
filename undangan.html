@@ -7,6 +7,9 @@
   <!-- Fonts & icons -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Amiri&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
   <style>
     :root{
       --page-bg: #9a8c9f;
@@ -26,6 +29,8 @@
       --countdown-card-bg: rgba(255, 255, 255, 0.25);
       --countdown-text: #fff;
       --countdown-accent: #f8d7da;
+      --ucapan-bg: #f8f2f5;
+      --ucapan-card-bg: #fff;
     }
     html,body{
       height:100%;
@@ -754,7 +759,7 @@
     
     /* UCAPAN & DOA SECTION */
     .ucapan-section {
-      background-color: var(--love-bg);
+      background-color: var(--ucapan-bg);
       padding: 40px 20px;
       margin: 0 auto 30px;
       max-width: 500px;
@@ -768,9 +773,40 @@
       margin-bottom: 20px;
     }
     
+    .ucapan-description {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+      max-width: 400px;
+      margin: 0 auto 25px;
+    }
+    
+    /* Ucapan Form Wrapper - sama seperti walimah-wrapper */
+    .ucapan-form-wrapper {
+      width: 92%;
+      max-width: 340px;
+      margin: 30px auto 25px;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--outer-ring);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    
+    /* Ucapan Form Panel */
+    .ucapan-form-panel {
+      background: var(--ucapan-card-bg);
+      border-radius: 14px;
+      padding: 24px 18px;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+                  0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align: center;
+      color: #333;
+    }
+    
     .ucapan-form {
       text-align: left;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
     
     .ucapan-form label {
@@ -819,6 +855,29 @@
       transform: translateY(-2px);
     }
     
+    /* Ucapan List Wrapper - sama seperti walimah-wrapper */
+    .ucapan-list-wrapper {
+      width: 92%;
+      max-width: 340px;
+      margin: 30px auto 25px;
+      padding: 14px;
+      border-radius: 20px;
+      background: var(--outer-ring);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+    
+    /* Ucapan List Panel */
+    .ucapan-list-panel {
+      background: var(--ucapan-card-bg);
+      border-radius: 14px;
+      padding: 24px 18px;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+                  0 2px 0 rgba(255,255,255,0.35) inset;
+      text-align: center;
+      color: #333;
+    }
+    
     .ucapan-list {
       max-height: 400px;
       overflow-y: auto;
@@ -854,6 +913,22 @@
       color: #888;
       margin-top: 8px;
       text-align: right;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+    }
+    
+    .loading i {
+      font-size: 24px;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
     
     /* Floating buttons */
@@ -1330,6 +1405,23 @@
         margin-bottom: 15px;
       }
       
+      .ucapan-description {
+        font-size: 13px;
+        max-width: 320px;
+        margin-bottom: 20px;
+      }
+      
+      .ucapan-form-wrapper, .ucapan-list-wrapper {
+        width: 94%;
+        margin: 25px auto 20px;
+        padding: 10px;
+      }
+      
+      .ucapan-form-panel, .ucapan-list-panel {
+        border-radius: 10px;
+        padding: 16px 12px;
+      }
+      
       .ucapan-form label {
         font-size: 12px;
         margin-bottom: 3px;
@@ -1446,7 +1538,7 @@
 </head>
 <body>
   <!-- Bagian Atas -->
-  <section class="top-section">
+  <section class="top-section" id="mempelai">
     <div class="ornament">
       <img src="assets/butterfly.png" alt="Ornament Butterfly">
     </div>
@@ -1484,7 +1576,7 @@
   </section>
   
   <!-- Bagian Bawah -->
-  <section class="bottom-section">
+  <section class="bottom-section" id="countdown">
     <!-- Countdown -->
     <div class="countdown-container">
       <img src="assets/flower-bucket.png" alt="Buket Bunga" class="flower">
@@ -1513,7 +1605,7 @@
     </div>
     
     <!-- Acara Akad Nikah (bulat) -->
-    <div class="akad-wrapper">
+    <div class="akad-wrapper" id="akad">
       <div class="akad-panel">
         <div class="akad-title">AKAD NIKAH</div>
         <div class="akad-day">SABTU</div>
@@ -1538,7 +1630,7 @@
     </div>
     
     <!-- Acara Walimatul 'Urs (persegi, tanpa ornamen) -->
-    <div class="walimah-wrapper">
+    <div class="walimah-wrapper" id="walimah">
       <div class="walimah-panel">
         <div class="walimah-title">WALIMATUL 'URS</div>
         <div class="walimah-day">MINGGU</div>
@@ -1563,7 +1655,7 @@
     </div>
     
     <!-- RSVP Section - dengan frame setengah lingkaran di bawah -->
-    <div class="rsvp-wrapper">
+    <div class="rsvp-wrapper" id="rsvp">
       <div class="rsvp-panel">
         <h2 class="rsvp-title">RSVP</h2>
         <p>Diharapkan kepada tamu undangan (Bapak/Ibu/Saudara/i) dapat mengisi form kehadiran pada acara pernikahan kami</p>
@@ -1587,7 +1679,7 @@
     </section>
 
     <!-- LOVE STORY SECTION -->
-    <section class="top-section">
+    <section class="top-section" id="love-story">
     <div class="love-story-section">
       <img src="assets/butterfly.png" alt="Ornament Love Story">
       <h2>- Love Story -</h2>
@@ -1651,6 +1743,7 @@
     </div>
     
     <!-- AMLOP DIGITAL SECTION -->
+    <div class="amplop-section" id="amplop">
       <h2 class="amplop-title">Amplop Digital</h2>
       <p class="amplop-description">
         Bagi Bapak/Ibu/Saudara/i yang ingin memberikan kado, dapat melalui transfer ke rekening berikut:
@@ -1709,35 +1802,39 @@
     </div>
     
     <!-- UCAPAN & DOA SECTION -->
-    <div class="ucapan-section">
+    <div class="ucapan-section" id="ucapan">
       <h2 class="ucapan-title">Ucapan & Doa</h2>
-      <p class="amplop-description">
+      <p class="ucapan-description">
         Kirimkan ucapan dan doa untuk Jean & Dwi:
       </p>
       
-      <form class="ucapan-form" id="ucapanForm">
-        <label for="namaUcapan">Nama:</label>
-        <input type="text" id="namaUcapan" name="namaUcapan" placeholder="Masukkan nama anda" required>
-        
-        <label for="ucapan">Ucapan & Doa:</label>
-        <textarea id="ucapan" name="ucapan" placeholder="Tulis ucapan dan doa anda" required></textarea>
-        
-        <button type="submit">
-          <i class="fa-solid fa-paper-plane"></i> Beri Ucapan
-        </button>
-      </form>
-      
-      <div class="ucapan-list" id="ucapanList">
-        <!-- Ucapan akan ditampilkan di sini -->
-        <div class="ucapan-item">
-          <h4>Ahmad</h4>
-          <p>Barakallahu lakuma wa baraka 'alaikuma wa jama'a baynakuma fi khair. Semoga Allah memberkati kalian berdua dan mengumpulkan kalian dalam kebaikan.</p>
-          <div class="date">10 Oktober 2023</div>
+      <!-- Frame untuk Form Ucapan -->
+      <div class="ucapan-form-wrapper">
+        <div class="ucapan-form-panel">
+          <form class="ucapan-form" id="ucapanForm">
+            <label for="namaUcapan">Nama:</label>
+            <input type="text" id="namaUcapan" name="namaUcapan" placeholder="Masukkan nama anda" required>
+            
+            <label for="ucapan">Ucapan & Doa:</label>
+            <textarea id="ucapan" name="ucapan" placeholder="Tulis ucapan dan doa anda" required></textarea>
+            
+            <button type="submit">
+              <i class="fa-solid fa-paper-plane"></i> Beri Ucapan
+            </button>
+          </form>
         </div>
-        <div class="ucapan-item">
-          <h4>Siti</h4>
-          <p>Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin.</p>
-          <div class="date">12 Oktober 2023</div>
+      </div>
+      
+      <!-- Frame untuk Daftar Ucapan -->
+      <div class="ucapan-list-wrapper">
+        <div class="ucapan-list-panel">
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--accent); margin-bottom: 15px;">Ucapan & Doa Para Tamu</h3>
+          <div class="ucapan-list" id="ucapanList">
+            <div class="loading">
+              <i class="fas fa-spinner"></i>
+              <p>Memuat ucapan...</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1812,6 +1909,20 @@
   </audio>
   
   <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyBqKXcY2Q5eQ6nLq9jR7p8oNtMvPqRsWtA",
+      authDomain: "jean-dwi-wedding.firebaseapp.com",
+      projectId: "jean-dwi-wedding",
+      storageBucket: "jean-dwi-wedding.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "1:123456789:web:abcdef123456"
+    };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    
     // Music play/pause
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
@@ -1881,8 +1992,20 @@
       const konfirmasi = document.getElementById('konfirmasi').value;
       
       if (nama && konfirmasi) {
-        showToast(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
-        document.getElementById('rsvpForm').reset();
+        // Save to Firebase
+        db.collection('rsvp').add({
+          nama: nama,
+          konfirmasi: konfirmasi,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(() => {
+          showToast(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
+          document.getElementById('rsvpForm').reset();
+        })
+        .catch((error) => {
+          console.error('Error writing document: ', error);
+          showToast('Terjadi kesalahan, silakan coba lagi.');
+        });
       }
     });
     
@@ -1902,34 +2025,93 @@
       const ucapan = document.getElementById('ucapan').value;
       
       if (namaUcapan && ucapan) {
-        // Create new ucapan item
-        const ucapanList = document.getElementById('ucapanList');
-        const newUcapan = document.createElement('div');
-        newUcapan.className = 'ucapan-item';
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+        submitBtn.disabled = true;
         
-        // Format date
-        const now = new Date();
-        const formattedDate = now.toLocaleDateString('id-ID', { 
-          day: 'numeric', 
-          month: 'long', 
-          year: 'numeric' 
+        // Save to Firebase
+        db.collection('ucapan').add({
+          nama: namaUcapan,
+          ucapan: ucapan,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(() => {
+          showToast(`Terima kasih ${namaUcapan}! Ucapan dan doa Anda telah terkirim.`);
+          document.getElementById('ucapanForm').reset();
+          
+          // Reset button
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        })
+        .catch((error) => {
+          console.error('Error writing document: ', error);
+          showToast('Terjadi kesalahan, silakan coba lagi.');
+          
+          // Reset button
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
         });
-        
-        newUcapan.innerHTML = `
-          <h4>${namaUcapan}</h4>
-          <p>${ucapan}</p>
-          <div class="date">${formattedDate}</div>
-        `;
-        
-        // Add to the top of the list
-        ucapanList.insertBefore(newUcapan, ucapanList.firstChild);
-        
-        // Show success message
-        showToast(`Terima kasih ${namaUcapan}! Ucapan dan doa Anda telah terkirim.`);
-        
-        // Reset form
-        document.getElementById('ucapanForm').reset();
       }
+    });
+    
+    // Load Ucapan from Firebase
+    function loadUcapan() {
+      const ucapanList = document.getElementById('ucapanList');
+      
+      // Clear loading indicator
+      ucapanList.innerHTML = '';
+      
+      // Get data from Firestore, ordered by timestamp (newest first)
+      db.collection('ucapan')
+        .orderBy('timestamp', 'desc')
+        .onSnapshot((snapshot) => {
+          ucapanList.innerHTML = '';
+          
+          if (snapshot.empty) {
+            ucapanList.innerHTML = '<p style="text-align: center; color: #888;">Belum ada ucapan. Jadilah yang pertama!</p>';
+            return;
+          }
+          
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            
+            // Create new ucapan item
+            const newUcapan = document.createElement('div');
+            newUcapan.className = 'ucapan-item';
+            
+            // Format date
+            let formattedDate = 'Sedang memuat...';
+            if (data.timestamp) {
+              const date = data.timestamp.toDate();
+              formattedDate = date.toLocaleDateString('id-ID', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+              });
+            }
+            
+            newUcapan.innerHTML = `
+              <h4>${data.nama}</h4>
+              <p>${data.ucapan}</p>
+              <div class="date">${formattedDate}</div>
+            `;
+            
+            // Add to the list
+            ucapanList.appendChild(newUcapan);
+          });
+        }, (error) => {
+          console.error('Error fetching documents: ', error);
+          ucapanList.innerHTML = '<p style="text-align: center; color: #ff6b6b;">Gagal memuat ucapan. Silakan refresh halaman.</p>';
+        });
+    }
+    
+    // Initialize loading ucapan when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      loadUcapan();
     });
     
     // Toast Notification Function
