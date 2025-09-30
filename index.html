@@ -81,7 +81,7 @@
       width: 90%;
       margin: 0 auto;
       padding: 40px 20px;
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(248, 243, 247, 0.7);
       border-radius: 20px;
       box-shadow: 0 10px 30px var(--shadow);
       backdrop-filter: blur(10px);
@@ -96,7 +96,7 @@
     .frame {
       width: 280px;
       height: 340px;
-      margin: 0 auto 30px;
+      margin: 0 auto 25px;
       border: 12px solid var(--frame-border);
       border-radius: 160px 160px 25px 25px;
       background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
@@ -141,11 +141,16 @@
       transform: translateX(-50%) scale(1.1);
     }
 
+    /* Container untuk judul dan nama pasangan */
+    .header-container {
+      margin-bottom: 15px;
+    }
+
     /* Judul Walimatul Urs - Menggunakan Pinyon Script dengan ukuran lebih kecil */
     .title {
       font-family: 'Pinyon Script', cursive;
       font-size: 28px;
-      margin: 14px 0 15px;
+      margin: 0 0 2px;
       color: var(--accent-color);
       opacity: 0;
       animation: fadeIn 1s ease-in-out forwards;
@@ -157,22 +162,12 @@
       line-height: 1.2;
     }
 
-    .title::after {
-      content: "";
-      position: absolute;
-      bottom: -8px;
-      left: 25%;
-      width: 50%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-    }
-
     /* Nama pasangan - Menggunakan Font El Messiri */
     .names {
       font-family: 'El Messiri', sans-serif;
       font-weight: 700;
       font-size: 42px;
-      margin: 5px 0 25px;
+      margin: 5px 0 0;
       color: var(--name-color);
       opacity: 0;
       animation: title 2s ease forwards;
@@ -190,7 +185,7 @@
       font-weight: 500;
       font-size: 18px;
       color: var(--text-primary);
-      margin-bottom: 30px;
+      margin-bottom: 15px;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
       animation-delay: 2s;
@@ -205,27 +200,31 @@
       font-size: 16px;
       font-weight: 400;
       color: var(--text-primary);
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       font-family: 'Roboto', sans-serif;
     }
 
     .guest-name {
-      font-size: 22px;
+      font-family: 'El Messiri', sans-serif;
       font-weight: 700;
-      margin-top: 4px;
-      color: var(--text-primary);
-      padding: 12px;
+      font-size: 32px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--name-color);
+      padding: 8px;
       border-bottom: 2px dashed var(--frame-border);
       display: inline-block;
       min-width: 250px;
       max-width: 90%;
-      font-family: 'Roboto', sans-serif;
+      line-height: 1.2;
+      letter-spacing: 1px;
     }
 
     .note {
       font-size: 13px;
       color: var(--text-secondary);
-      margin-top: 15px;
+      margin-top: 5px;
+      margin-bottom: 15px;
       font-style: italic;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
@@ -238,7 +237,7 @@
       background: var(--button-bg);
       color: var(--button-text);
       padding: 14px 28px;
-      margin-top: 30px;
+      margin-top: 5px;
       border-radius: 50px;
       font-size: 16px;
       font-weight: 500;
@@ -308,7 +307,7 @@
       .frame {
         width: 340px;
         height: 410px;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         border: 15px solid var(--frame-border);
         border-radius: 180px 180px 30px 30px;
       }
@@ -319,36 +318,40 @@
       
       .title {
         font-size: 32px;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
       }
       
       .names {
         font-size: 52px;
-        margin-bottom: 30px;
+        margin-top: 8px;
       }
       
       .date {
         font-size: 20px;
         padding: 10px 30px;
+        margin-bottom: 20px;
       }
       
       .guest-label {
         font-size: 18px;
+        margin-bottom: 8px;
       }
       
       .guest-name {
-        font-size: 26px;
+        font-size: 38px;
         min-width: 300px;
+        margin-bottom: 15px;
       }
       
       .note {
         font-size: 14px;
+        margin-bottom: 20px;
       }
       
       .btn {
         padding: 16px 32px;
         font-size: 18px;
-        margin-top: 35px;
+        margin-top: 10px;
       }
     }
 
@@ -372,20 +375,24 @@
       
       .title {
         font-size: 24px;
+        margin-bottom: 3px;
       }
       
       .names {
         font-size: 36px;
+        margin-top: 5px;
       }
       
       .date {
         font-size: 16px;
         padding: 8px 20px;
+        margin-bottom: 12px;
       }
       
       .guest-name {
-        font-size: 20px;
+        font-size: 28px;
         min-width: 200px;
+        margin-bottom: 8px;
       }
       
       .btn {
@@ -401,8 +408,11 @@
       <img src="bride-groom.png" alt="Jean & Dwi">
     </div>
 
-    <div class="title">Walimatul 'Urs</div>
-    <div class="names">Jean & Dwi</div>
+    <div class="header-container">
+      <div class="title">Walimatul 'Urs</div>
+      <div class="names">Jean & Dwi</div>
+    </div>
+    
     <div class="date">Minggu, 12 Oktober 2025</div>
 
     <div class="guest-label">Kepada Yth. Bapak/Ibu/Saudara/i:</div>
