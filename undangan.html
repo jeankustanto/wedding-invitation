@@ -41,90 +41,93 @@
       -moz-osx-font-smoothing:grayscale;
       color:#2f2f33;
       text-align:center;
+      overflow-x: hidden; /* Mencegah horizontal scroll */
     }
     
     /* Bagian Atas */
     .top-section {
       background-color: var(--top-section-bg);
-      padding: 40px 20px 60px;
+      padding: 30px 15px 40px;
       position: relative;
       overflow: hidden;
     }
     
     .ornament {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
     .ornament img {
-      width: 120px;
+      width: 80px;
       height: auto;
     }
     
     .basmalah {
       font-family: 'Amiri', serif;
-      font-size: 20px;
+      font-size: 16px;
       color: var(--muted);
-      margin-bottom: 15px;
+      margin-bottom: 10px;
+      line-height: 1.5;
     }
     
     .doa {
-      font-size: 14px;
-      line-height: 1.7;
+      font-size: 13px;
+      line-height: 1.6;
       color: var(--muted);
-      max-width: 320px;
-      margin: 0 auto 40px;
+      max-width: 280px;
+      margin: 0 auto 30px;
     }
     
     .frame {
-      width: 240px;
-      height: 280px;
-      margin: 0 auto 20px;
-      border: 10px solid var(--frame-border);
-      border-radius: 150px 150px 20px 20px;
+      width: 200px;
+      height: 240px;
+      margin: 0 auto 15px;
+      border: 8px solid var(--frame-border);
+      border-radius: 120px 120px 15px 15px;
       background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
       position: relative;
       overflow: hidden;
-      box-shadow: inset 0 8px 18px rgba(0,0,0,0.25),
-                  inset 0 -6px 10px rgba(255,255,255,0.12);
+      box-shadow: inset 0 6px 14px rgba(0,0,0,0.25),
+                  inset 0 -4px 8px rgba(255,255,255,0.12);
     }
     
     .frame img {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      width: 280px;
-      max-width: 280px;
+      width: 180px;
+      max-width: 180px;
+      top: 10px;
     }
     
     .mempelai {
       background: #fff;
-      width: 80%;
-      max-width: 320px;
-      margin: -30px auto 30px;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+      width: 85%;
+      max-width: 280px;
+      margin: -25px auto 25px;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
       position: relative;
       z-index: 5;
     }
     
     .mempelai h2 {
-      font-size: 18px;
+      font-size: 16px;
       color: var(--accent);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
     
     .mempelai p {
-      font-size: 13px;
+      font-size: 12px;
       color: #555;
-      margin: 3px 0;
+      margin: 2px 0;
     }
     
     .separator {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 20px 0 30px;
+      margin: 15px 0 20px;
     }
     
     .separator::before, .separator::after {
@@ -136,30 +139,30 @@
     }
     
     .separator::before {
-      margin-right: 15px;
+      margin-right: 10px;
     }
     
     .separator::after {
-      margin-left: 15px;
+      margin-left: 10px;
     }
     
     .separator span {
       font-family: "Playfair Display", serif;
-      font-size: 28px;
+      font-size: 24px;
       color: var(--muted);
     }
     
     /* Bagian Bawah */
     .bottom-section {
       background-color: var(--bottom-section-bg);
-      padding: 40px 20px;
+      padding: 30px 15px;
       color: #fff;
     }
     
     /* countdown - improved design */
     .countdown-container {
-      max-width: 320px;
-      margin: 0 auto 50px;
+      max-width: 280px;
+      margin: 0 auto 40px;
       text-align: center;
       position: relative;
     }
@@ -167,26 +170,26 @@
     .countdown-container::before {
       content: "";
       position: absolute;
-      top: -20px;
-      left: -20px;
-      right: -20px;
-      bottom: -20px;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
       background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%);
-      border-radius: 20px;
+      border-radius: 15px;
       z-index: -1;
       backdrop-filter: blur(5px);
     }
     
     .flower {
-      width: 100px;
+      width: 70px;
       height: auto;
-      margin: 0 auto 20px;
+      margin: 0 auto 15px;
     }
     
     .countdown-container h2 {
       font-family: 'Great Vibes', cursive;
-      font-size: 32px;
-      margin-bottom: 25px;
+      font-size: 24px;
+      margin-bottom: 20px;
       color: var(--countdown-text);
       text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
@@ -194,54 +197,54 @@
     .countdown {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 25px;
+      gap: 8px;
+      margin-bottom: 20px;
     }
     
     .countdown-item {
       background: var(--countdown-card-bg);
-      border-radius: 12px;
-      padding: 15px 10px;
-      min-width: 70px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      border-radius: 10px;
+      padding: 12px 6px;
+      min-width: 55px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255,255,255,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
     .countdown-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
     
     .countdown-number {
       display: block;
-      font-size: 32px;
+      font-size: 24px;
       font-weight: 700;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
       color: var(--countdown-text);
       line-height: 1;
     }
     
     .countdown-label {
-      font-size: 14px;
+      font-size: 11px;
       opacity: 0.9;
       color: var(--countdown-text);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
     
     .save-btn {
       background: linear-gradient(to right, #e6d6e3, #f0e6ef);
       color: #6a5b65;
       border: none;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       position: relative;
       overflow: hidden;
     }
@@ -264,48 +267,48 @@
     .save-btn:hover {
       background: linear-gradient(to right, var(--accent), #8d6b7d);
       color: #fff;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     }
     
     /* akad wrapper bulat */
     .akad-wrapper {
-      width: 92%;
-      max-width: 340px;
-      margin: 30px auto 25px;
-      padding: 12px;
-      border-radius: 200px 200px 24px 24px;
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto 20px;
+      padding: 10px;
+      border-radius: 150px 150px 20px 20px;
       background: var(--outer-ring);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
     }
     
     .akad-panel {
       background: var(--inner-panel);
-      border-radius: 180px 180px 18px 18px;
-      padding: 26px 20px 22px;
-      border: 4px solid rgba(255,255,255,0.45);
-      box-shadow: inset 0 -12px 22px rgba(0,0,0,0.06), 0 2px 0 rgba(255,255,255,0.35) inset;
+      border-radius: 140px 140px 15px 15px;
+      padding: 20px 15px 18px;
+      border: 3px solid rgba(255,255,255,0.45);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06), 0 2px 0 rgba(255,255,255,0.35) inset;
       text-align: center;
       color: var(--text-dark);
     }
     
     /* walimatul urs wrapper persegi */
     .walimah-wrapper {
-      width: 92%;
-      max-width: 340px;
-      margin: 30px auto 25px;
-      padding: 14px;
-      border-radius: 20px;
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto 20px;
+      padding: 10px;
+      border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
     
     .walimah-panel {
       background: var(--inner-panel);
-      border-radius: 14px;
-      padding: 24px 18px;
-      border: 3px solid rgba(255,255,255,0.5);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+      border-radius: 10px;
+      padding: 18px 12px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
                   0 2px 0 rgba(255,255,255,0.35) inset;
       text-align: center;
       color: var(--text-dark);
@@ -313,22 +316,22 @@
     
     /* LOVE STORY CARD WRAPPER - sama seperti walimah-wrapper */
     .story-wrapper {
-      width: 92%;
-      max-width: 340px;
-      margin: 30px auto 25px;
-      padding: 14px;
-      border-radius: 20px;
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto 20px;
+      padding: 10px;
+      border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
     
     /* LOVE STORY CARD PANEL - dengan warna love-card-bg */
     .story-panel {
       background: var(--love-card-bg);
-      border-radius: 14px;
-      padding: 24px 18px;
-      border: 3px solid rgba(255,255,255,0.5);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+      border-radius: 10px;
+      padding: 18px 12px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
                   0 2px 0 rgba(255,255,255,0.35) inset;
       text-align: left;
       color: #fff;
@@ -337,45 +340,45 @@
     /* AMLOP DIGITAL SECTION */
     .amplop-section {
       background-color: var(--amplop-bg);
-      padding: 40px 20px;
-      margin: 0 auto 30px;
+      padding: 30px 15px;
+      margin: 0 auto 20px;
       max-width: 500px;
-      border-radius: 20px;
+      border-radius: 15px;
     }
     
     .amplop-title {
       font-family: "Playfair Display", serif;
-      font-size: 26px;
+      font-size: 20px;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
     .amplop-description {
-      font-size: 14px;
-      line-height: 1.6;
+      font-size: 13px;
+      line-height: 1.5;
       color: #555;
-      max-width: 400px;
-      margin: 0 auto 25px;
+      max-width: 320px;
+      margin: 0 auto 20px;
     }
     
     /* Amplop Card Wrapper - sama seperti walimah-wrapper */
     .amplop-wrapper {
-      width: 92%;
-      max-width: 340px;
-      margin: 30px auto 25px;
-      padding: 14px;
-      border-radius: 20px;
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto 20px;
+      padding: 10px;
+      border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
     
     /* Amplop Card Panel */
     .amplop-panel {
       background: var(--amplop-card-bg);
-      border-radius: 14px;
-      padding: 24px 18px;
-      border: 3px solid rgba(255,255,255,0.5);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+      border-radius: 10px;
+      padding: 18px 12px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
                   0 2px 0 rgba(255,255,255,0.35) inset;
       text-align: center;
       color: #333;
@@ -383,21 +386,21 @@
     
     /* Account Frame - Frame terpisah untuk setiap rekening */
     .account-wrapper {
-      width: 92%;
-      max-width: 340px;
-      margin: 20px auto;
-      padding: 14px;
-      border-radius: 20px;
+      width: 90%;
+      max-width: 300px;
+      margin: 15px auto;
+      padding: 10px;
+      border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
     
     .account-panel {
       background: var(--amplop-card-bg);
-      border-radius: 14px;
-      padding: 20px 15px;
-      border: 3px solid rgba(255,255,255,0.5);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+      border-radius: 10px;
+      padding: 15px 10px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
                   0 2px 0 rgba(255,255,255,0.35) inset;
       text-align: center;
       color: #333;
@@ -405,30 +408,30 @@
     
     .account-number {
       font-family: monospace;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--accent);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
     
     .account-name {
-      font-size: 14px;
+      font-size: 12px;
       color: #555;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
     
     .copy-btn {
       background: var(--btn-bg);
       color: white;
       border: none;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 12px;
       cursor: pointer;
       transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     
     .copy-btn:hover {
@@ -438,21 +441,21 @@
     
     /* Address Frame - Frame terpisah untuk alamat */
     .address-wrapper {
-      width: 92%;
-      max-width: 340px;
-      margin: 20px auto;
-      padding: 14px;
-      border-radius: 20px;
+      width: 90%;
+      max-width: 300px;
+      margin: 15px auto;
+      padding: 10px;
+      border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
     
     .address-panel {
       background: var(--amplop-card-bg);
-      border-radius: 14px;
-      padding: 20px 15px;
-      border: 3px solid rgba(255,255,255,0.5);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+      border-radius: 10px;
+      padding: 15px 10px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
                   0 2px 0 rgba(255,255,255,0.35) inset;
       text-align: center;
       color: #333;
@@ -460,50 +463,50 @@
     
     .address-title {
       font-weight: 700;
-      font-size: 16px;
+      font-size: 14px;
       color: var(--accent);
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
     
     .address-info {
-      font-size: 14px;
+      font-size: 12px;
       color: #555;
-      margin-bottom: 15px;
-      line-height: 1.5;
+      margin-bottom: 12px;
+      line-height: 1.4;
     }
     
     .recipient {
       font-weight: 600;
-      font-size: 15px;
+      font-size: 13px;
       color: #333;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
     
     .contact {
-      font-size: 14px;
+      font-size: 12px;
       color: #555;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
     
     /* WhatsApp Frame - Frame terpisah untuk tombol WhatsApp */
     .whatsapp-wrapper {
-      width: 92%;
-      max-width: 340px;
-      margin: 20px auto;
-      padding: 14px;
-      border-radius: 20px;
+      width: 90%;
+      max-width: 300px;
+      margin: 15px auto;
+      padding: 10px;
+      border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
     
     .whatsapp-panel {
       background: var(--amplop-card-bg);
-      border-radius: 14px;
-      padding: 20px 15px;
-      border: 3px solid rgba(255,255,255,0.5);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+      border-radius: 10px;
+      padding: 15px 10px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
                   0 2px 0 rgba(255,255,255,0.35) inset;
       text-align: center;
       color: #333;
@@ -513,15 +516,15 @@
       display: inline-flex;
       background: #25D366;
       color: white;
-      padding: 12px 20px;
-      border-radius: 25px;
+      padding: 10px 15px;
+      border-radius: 20px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 13px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
     
     .whatsapp-btn:hover {
@@ -530,25 +533,25 @@
     }
     
     .butterfly-ornament {
-      width: 120px; /* Diubah dari 60px menjadi 120px */
+      width: 80px;
       height: auto;
-      margin: 20px auto; /* Diubah dari 20px auto 0 menjadi 20px auto */
-      display: block; /* Tambahkan properti ini */
-      opacity: 0.7; /* Biarkan opacity jika Anda ingin mempertahankan efek transparansi */
+      margin: 15px auto;
+      display: block;
+      opacity: 0.7;
     }
     
     .akad-title, .walimah-title, .rsvp-title {
       font-family: "Playfair Display", serif;
-      font-size: 28px;
+      font-size: 20px;
       color: var(--muted);
-      margin: 6px 0;
-      letter-spacing: 1px;
+      margin: 4px 0;
+      letter-spacing: 0.5px;
     }
     
     .akad-day, .walimah-day {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
-      margin-top: 6px;
+      margin-top: 4px;
       color: #222;
     }
     
@@ -556,82 +559,83 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      margin: 12px 0 6px;
+      gap: 10px;
+      margin: 8px 0 4px;
       color: #6d5e67;
       font-weight: 600;
     }
     
     .akad-month, .akad-year,
     .walimah-month, .walimah-year {
-      font-size: 15px;
+      font-size: 13px;
       color: #5b4f56;
     }
     
     .akad-number, .walimah-number {
-      font-size: 52px;
+      font-size: 36px;
       color: #b69fb0;
       font-family: "Playfair Display", serif;
       line-height: 1;
     }
     
     .akad-time, .walimah-time {
-      margin-top: 8px;
-      font-size: 12px;
+      margin-top: 5px;
+      font-size: 11px;
       color: #6b5b63;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
     }
     
     .akad-location, .walimah-location {
-      margin-top: 12px;
+      margin-top: 8px;
       text-align: center;
     }
     
     .akad-location h3, .walimah-location h3 {
-      font-size: 14px;
-      margin: 8px 0 6px;
+      font-size: 12px;
+      margin: 5px 0 3px;
       color: #2d2d2d;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
       font-weight: 700;
       text-transform: uppercase;
     }
     
     .akad-location p, .walimah-location p {
-      font-size: 13px;
+      font-size: 11px;
       color: #53464d;
-      margin: 3px 0;
-      line-height: 1.4;
+      margin: 1px 0;
+      line-height: 1.3;
     }
     
     .location-btn {
       display: inline-block;
-      margin-top: 12px;
-      padding: 8px 14px;
+      margin-top: 8px;
+      padding: 6px 10px;
       background: var(--btn-bg);
       color: #fff;
-      border-radius: 18px;
+      border-radius: 12px;
       text-decoration: none;
       font-weight: 600;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.14);
+      font-size: 11px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.14);
     }
     
     /* RSVP Section - dengan frame setengah lingkaran di bawah */
     .rsvp-wrapper {
-      width: 92%;
-      max-width: 340px;
-      margin: 30px auto 50px; /* Menambah margin-bottom untuk jarak */
-      padding: 12px;
-      border-radius: 24px 24px 200px 200px;
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto 35px;
+      padding: 10px;
+      border-radius: 20px 20px 150px 150px;
       background: var(--outer-ring);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
     }
     
     .rsvp-panel {
       background: var(--inner-panel);
-      border-radius: 18px 18px 180px 180px;
-      padding: 26px 20px 60px;
-      border: 4px solid rgba(255,255,255,0.45);
-      box-shadow: inset 0 -12px 22px rgba(0,0,0,0.06), 0 2px 0 rgba(255,255,255,0.35) inset;
+      border-radius: 15px 15px 130px 130px;
+      padding: 20px 15px 45px;
+      border: 3px solid rgba(255,255,255,0.45);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06), 0 2px 0 rgba(255,255,255,0.35) inset;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -640,57 +644,57 @@
     
     .rsvp-title {
       font-family: "Playfair Display", serif;
-      font-size: 28px;
+      font-size: 20px;
       color: var(--muted);
-      margin: 6px 0;
-      letter-spacing: 1px;
+      margin: 4px 0;
+      letter-spacing: 0.5px;
     }
     
     .rsvp-panel p {
-      font-size: 14px;
+      font-size: 12px;
       color: #53464d;
-      margin-bottom: 20px;
-      line-height: 1.6;
+      margin-bottom: 15px;
+      line-height: 1.5;
     }
     
     .rsvp-form {
       text-align: left;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
     .rsvp-form label {
-      font-size: 14px;
+      font-size: 12px;
       color: var(--muted);
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
     
     .rsvp-form input,
     .rsvp-form select {
       width: 100%;
-      padding: 10px;
+      padding: 8px;
       border: none;
-      border-radius: 8px;
-      margin-bottom: 16px;
-      font-size: 14px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-size: 12px;
       background-color: #fff;
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     }
     
     .rsvp-form button {
-      width: auto; /* Mengubah dari 100% menjadi auto */
-      max-width: 80%; /* Membatasi lebar maksimum */
-      padding: 12px 24px; /* Mengurangi padding horizontal */
+      width: auto;
+      max-width: 90%;
+      padding: 10px 20px;
       border: none;
-      border-radius: 30px; /* Membuat button lebih rounded */
-      font-size: 14px;
+      border-radius: 25px;
+      font-size: 12px;
       font-weight: bold;
       cursor: pointer;
       background-color: var(--btn-bg);
       color: #fff;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.14);
-      margin: 10px auto 0; /* Menambah margin auto untuk center */
-      display: block; /* Membuat button menjadi block element */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.14);
+      margin: 8px auto 0;
+      display: block;
       transition: all 0.3s ease;
     }
     
@@ -702,17 +706,17 @@
     /* LOVE STORY SECTION */
     .love-story-section {
       background-color: var(--love-bg);
-      padding: 40px 20px;
-      margin: 0 auto 30px;
+      padding: 30px 15px;
+      margin: 0 auto 20px;
       max-width: 500px;
-      border-radius: 20px;
+      border-radius: 15px;
     }
     
     /* Style untuk gambar butterfly di Love Story */
     .love-story-section img {
-      width: 120px; /* Sama dengan .ornament img */
+      width: 80px;
       height: auto;
-      margin-bottom: 20px; /* Sama dengan .ornament */
+      margin-bottom: 15px;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -720,23 +724,23 @@
     
     .love-story-section h2 {
       font-family: "Playfair Display", serif;
-      font-size: 26px;
+      font-size: 20px;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
     .love-story-section .quote {
       font-style: italic;
-      font-size: 14px;
-      line-height: 1.8;
+      font-size: 13px;
+      line-height: 1.6;
       color: #444;
-      max-width: 400px;
-      margin: 0 auto 30px;
+      max-width: 320px;
+      margin: 0 auto 25px;
     }
     
     .love-story-section .quote strong {
       display: block;
-      margin-top: 10px;
+      margin-top: 8px;
       font-style: normal;
       font-weight: 700;
       color: #000;
@@ -745,14 +749,14 @@
     /* Story Card Styling */
     .story-panel h3 {
       font-family: "Playfair Display", serif;
-      font-size: 18px;
-      margin-bottom: 10px;
+      font-size: 16px;
+      margin-bottom: 8px;
       color: #fff;
     }
     
     .story-panel p {
-      font-size: 14px;
-      line-height: 1.6;
+      font-size: 12px;
+      line-height: 1.5;
       color: #f2f2f2;
       text-align: justify;
     }
@@ -760,45 +764,45 @@
     /* UCAPAN & DOA SECTION */
     .ucapan-section {
       background-color: var(--ucapan-bg);
-      padding: 40px 20px;
-      margin: 0 auto 30px;
+      padding: 30px 15px;
+      margin: 0 auto 20px;
       max-width: 500px;
-      border-radius: 20px;
+      border-radius: 15px;
     }
     
     .ucapan-title {
       font-family: "Playfair Display", serif;
-      font-size: 26px;
+      font-size: 20px;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
     .ucapan-description {
-      font-size: 14px;
-      line-height: 1.6;
+      font-size: 13px;
+      line-height: 1.5;
       color: #555;
-      max-width: 400px;
-      margin: 0 auto 25px;
+      max-width: 320px;
+      margin: 0 auto 20px;
     }
     
     /* Ucapan Form Wrapper - sama seperti walimah-wrapper */
     .ucapan-form-wrapper {
-      width: 92%;
-      max-width: 340px;
-      margin: 30px auto 25px;
-      padding: 14px;
-      border-radius: 20px;
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto 20px;
+      padding: 10px;
+      border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
     
     /* Ucapan Form Panel */
     .ucapan-form-panel {
       background: var(--ucapan-card-bg);
-      border-radius: 14px;
-      padding: 24px 18px;
-      border: 3px solid rgba(255,255,255,0.5);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+      border-radius: 10px;
+      padding: 18px 12px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
                   0 2px 0 rgba(255,255,255,0.35) inset;
       text-align: center;
       color: #333;
@@ -806,46 +810,46 @@
     
     .ucapan-form {
       text-align: left;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
     .ucapan-form label {
-      font-size: 14px;
+      font-size: 12px;
       color: var(--muted);
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
     
     .ucapan-form input,
     .ucapan-form textarea {
       width: 100%;
-      padding: 10px;
+      padding: 8px;
       border: none;
-      border-radius: 8px;
-      margin-bottom: 16px;
-      font-size: 14px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-size: 12px;
       background-color: #fff;
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     }
     
     .ucapan-form textarea {
-      min-height: 100px;
+      min-height: 80px;
       resize: vertical;
     }
     
     .ucapan-form button {
       width: auto;
-      max-width: 80%;
-      padding: 12px 24px;
+      max-width: 90%;
+      padding: 10px 20px;
       border: none;
-      border-radius: 30px;
-      font-size: 14px;
+      border-radius: 25px;
+      font-size: 12px;
       font-weight: bold;
       cursor: pointer;
       background-color: var(--btn-bg);
       color: #fff;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.14);
-      margin: 10px auto 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.14);
+      margin: 8px auto 0;
       display: block;
       transition: all 0.3s ease;
     }
@@ -857,72 +861,72 @@
     
     /* Ucapan List Wrapper - sama seperti walimah-wrapper */
     .ucapan-list-wrapper {
-      width: 92%;
-      max-width: 340px;
-      margin: 30px auto 25px;
-      padding: 14px;
-      border-radius: 20px;
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto 20px;
+      padding: 10px;
+      border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
     
     /* Ucapan List Panel */
     .ucapan-list-panel {
       background: var(--ucapan-card-bg);
-      border-radius: 14px;
-      padding: 24px 18px;
-      border: 3px solid rgba(255,255,255,0.5);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06),
+      border-radius: 10px;
+      padding: 18px 12px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
                   0 2px 0 rgba(255,255,255,0.35) inset;
       text-align: center;
       color: #333;
     }
     
     .ucapan-list {
-      max-height: 400px;
+      max-height: 300px;
       overflow-y: auto;
-      padding: 10px;
-      border-radius: 10px;
+      padding: 8px;
+      border-radius: 8px;
       background-color: rgba(255, 255, 255, 0.5);
     }
     
     .ucapan-item {
       background-color: #fff;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       text-align: left;
     }
     
     .ucapan-item h4 {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--accent);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
     
     .ucapan-item p {
-      font-size: 14px;
+      font-size: 12px;
       color: #555;
       margin: 0;
-      line-height: 1.5;
+      line-height: 1.4;
     }
     
     .ucapan-item .date {
-      font-size: 12px;
+      font-size: 10px;
       color: #888;
-      margin-top: 8px;
+      margin-top: 6px;
       text-align: right;
     }
     
     .loading {
       text-align: center;
-      padding: 20px;
+      padding: 15px;
       color: var(--muted);
     }
     
     .loading i {
-      font-size: 24px;
+      font-size: 20px;
       animation: spin 1s linear infinite;
     }
     
@@ -934,23 +938,23 @@
     /* Floating buttons */
     .floating-buttons {
       position: fixed;
-      bottom: 20px;
-      left: 20px;
+      bottom: 15px;
+      left: 15px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       z-index: 100;
     }
     
     .floating-buttons button {
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: none;
       background: rgba(125, 109, 120, 0.8);
       color: #fff;
-      font-size: 18px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-size: 16px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -964,14 +968,14 @@
     .nav-menu {
       position: fixed;
       top: 0;
-      left: -300px;
-      width: 280px;
+      left: -280px;
+      width: 260px;
       height: 100%;
       background-color: rgba(255, 255, 255, 0.95);
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
       transition: left 0.3s ease;
       z-index: 1000;
-      padding: 20px;
+      padding: 15px;
       overflow-y: auto;
     }
     
@@ -983,21 +987,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 30px;
-      padding-bottom: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
       border-bottom: 1px solid #eee;
     }
     
     .nav-menu-title {
       font-family: "Playfair Display", serif;
-      font-size: 24px;
+      font-size: 20px;
       color: var(--accent);
     }
     
     .nav-menu-close {
       background: none;
       border: none;
-      font-size: 24px;
+      font-size: 20px;
       color: var(--muted);
       cursor: pointer;
     }
@@ -1009,16 +1013,16 @@
     }
     
     .nav-menu-item {
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
     
     .nav-menu-link {
       display: block;
-      padding: 12px 15px;
-      border-radius: 8px;
+      padding: 10px 12px;
+      border-radius: 6px;
       text-decoration: none;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 14px;
       transition: all 0.3s ease;
     }
     
@@ -1028,8 +1032,8 @@
     }
     
     .nav-menu-link i {
-      margin-right: 10px;
-      width: 20px;
+      margin-right: 8px;
+      width: 18px;
       text-align: center;
     }
     
@@ -1054,19 +1058,20 @@
     /* Toast Notification */
     .toast {
       position: fixed;
-      bottom: 80px;
+      bottom: 70px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
       background: rgba(122, 89, 109, 0.9);
       color: white;
-      padding: 15px 25px;
-      border-radius: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      padding: 12px 20px;
+      border-radius: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       opacity: 0;
       transition: all 0.4s ease;
       z-index: 1000;
       max-width: 80%;
       text-align: center;
+      font-size: 13px;
     }
     
     .toast.show {
@@ -1074,413 +1079,11 @@
       opacity: 1;
     }
     
-    /* Responsive */
-    @media (max-width: 480px) {
-      .top-section {
-        padding: 30px 15px 40px;
-      }
-      
-      .ornament img {
-        width: 100px;
-      }
-      
-      .basmalah {
-        font-size: 18px;
-      }
-      
-      .doa {
-        font-size: 13px;
-        max-width: 280px;
-        margin-bottom: 30px;
-      }
-      
+    /* Responsive untuk layar lebih kecil */
+    @media (max-width: 360px) {
       .frame {
-        width: 220px;
-        height: 260px;
-        border-width: 8px;
-      }
-      
-      .frame img {
-        max-width: 180px;
-      }
-      
-      .mempelai {
-        width: 85%;
-        padding: 12px;
-        margin-top: -25px;
-      }
-      
-      .mempelai h2 {
-        font-size: 16px;
-      }
-      
-      .mempelai p {
-        font-size: 12px;
-      }
-      
-      .separator {
-        margin: 15px 0 20px;
-      }
-      
-      .separator span {
-        font-size: 24px;
-      }
-      
-      .bottom-section {
-        padding: 30px 15px;
-      }
-      
-      .flower {
-        width: 80px;
-      }
-      
-      .countdown-container h2 {
-        font-size: 28px;
-        margin-bottom: 20px;
-      }
-      
-      .countdown {
-        gap: 10px;
-        margin-bottom: 20px;
-      }
-      
-      .countdown-item {
-        min-width: 60px;
-        padding: 12px 8px;
-      }
-      
-      .countdown-number {
-        font-size: 28px;
-      }
-      
-      .countdown-label {
-        font-size: 12px;
-      }
-      
-      .love-story-section {
-        padding: 30px 15px;
-        margin-bottom: 20px;
-      }
-      
-      .love-story-section h2 {
-        font-size: 22px;
-      }
-      
-      .love-story-section .quote {
-        font-size: 13px;
-        max-width: 320px;
-      }
-      
-      /* Style untuk gambar butterfly di Love Story (mobile) */
-      .love-story-section img {
-        width: 100px; /* Sama dengan .ornament img di mobile */
-        margin-bottom: 15px; /* Sama dengan .ornament di mobile */
-      }
-      
-      .story-wrapper {
-        width: 94%;
-        margin: 25px auto 20px;
-        padding: 10px;
-      }
-      
-      .story-panel {
-        border-radius: 10px;
-        padding: 16px 12px;
-      }
-      
-      .story-panel h3 {
-        font-size: 16px;
-      }
-      
-      .story-panel p {
-        font-size: 13px;
-      }
-      
-      .amplop-section {
-        padding: 30px 15px;
-        margin-bottom: 20px;
-      }
-      
-      .amplop-title {
-        font-size: 22px;
-        margin-bottom: 15px;
-      }
-      
-      .amplop-description {
-        font-size: 13px;
-        max-width: 320px;
-        margin-bottom: 20px;
-      }
-      
-      .amplop-wrapper {
-        width: 94%;
-        margin: 25px auto 20px;
-        padding: 10px;
-      }
-      
-      .amplop-panel {
-        border-radius: 10px;
-        padding: 16px 12px;
-      }
-      
-      .account-wrapper, .address-wrapper, .whatsapp-wrapper {
-        width: 94%;
-        margin: 15px auto;
-        padding: 10px;
-      }
-      
-      .account-panel, .address-panel, .whatsapp-panel {
-        border-radius: 10px;
-        padding: 16px 12px;
-      }
-      
-      .account-number {
-        font-size: 18px;
-      }
-      
-      .account-name {
-        font-size: 13px;
-        margin-bottom: 12px;
-      }
-      
-      .copy-btn {
-        padding: 6px 12px;
-        font-size: 13px;
-      }
-      
-      .address-title {
-        font-size: 14px;
-        margin-bottom: 12px;
-      }
-      
-      .address-info {
-        font-size: 13px;
-        margin-bottom: 12px;
-      }
-      
-      .recipient {
-        font-size: 14px;
-        margin-bottom: 4px;
-      }
-      
-      .contact {
-        font-size: 13px;
-        margin-bottom: 12px;
-      }
-      
-      .whatsapp-btn {
-        padding: 10px 15px;
-        font-size: 14px;
-      }
-      
-      .butterfly-ornament {
-        width: 100px; /* Diubah dari 50px menjadi 100px */
-        margin: 15px auto; /* Diubah dari 20px auto 0 menjadi 15px auto */
-      }
-      
-      .akad-wrapper, .walimah-wrapper {
-        width: 94%;
-        margin: 25px auto 20px;
-        padding: 10px;
-      }
-      
-      .rsvp-wrapper {
-        width: 94%;
-        margin: 25px auto 40px; /* Menyesuaikan margin untuk mobile */
-        padding: 10px;
-      }
-      
-      .akad-panel {
-        border-radius: 140px 140px 12px 12px;
-        padding: 20px 14px 15px;
-      }
-      
-      .walimah-panel {
-        border-radius: 10px;
-        padding: 16px 12px;
-      }
-      
-      .rsvp-panel {
-        border-radius: 12px 12px 140px 140px;
-        padding: 20px 14px 50px;
-      }
-      
-      .akad-title, .walimah-title, .rsvp-title {
-        font-size: 20px;
-        margin: 4px 0;
-      }
-      
-      .akad-day, .walimah-day {
-        font-size: 12px;
-        margin-top: 4px;
-      }
-      
-      .akad-date-row, .walimah-date-row {
-        gap: 10px;
-        margin: 8px 0 4px;
-      }
-      
-      .akad-month, .akad-year, .walimah-month, .walimah-year {
-        font-size: 13px;
-      }
-      
-      .akad-number, .walimah-number {
-        font-size: 36px;
-      }
-      
-      .akad-time, .walimah-time {
-        margin-top: 5px;
-        font-size: 11px;
-      }
-      
-      .akad-location, .walimah-location {
-        margin-top: 8px;
-      }
-      
-      .akad-location h3, .walimah-location h3 {
-        font-size: 12px;
-        margin: 5px 0 3px;
-      }
-      
-      .akad-location p, .walimah-location p {
-        font-size: 11px;
-        margin: 1px 0;
-        line-height: 1.3;
-      }
-      
-      .location-btn {
-        margin-top: 8px;
-        padding: 6px 10px;
-        font-size: 11px;
-        border-radius: 12px;
-      }
-      
-      .rsvp-panel p {
-        font-size: 12px;
-        margin-bottom: 15px;
-        line-height: 1.5;
-      }
-      
-      .rsvp-form {
-        margin-bottom: 15px;
-      }
-      
-      .rsvp-form label {
-        font-size: 12px;
-        margin-bottom: 3px;
-      }
-      
-      .rsvp-form input, .rsvp-form select {
-        padding: 8px;
-        margin-bottom: 10px;
-        font-size: 12px;
-        border-radius: 5px;
-      }
-      
-      .rsvp-form button {
-        padding: 10px 20px; /* Mengurangi padding untuk mobile */
-        font-size: 12px;
-        margin-top: 6px;
-        max-width: 90%; /* Meningkatkan max-width untuk mobile */
-      }
-      
-      .floating-buttons {
-        bottom: 15px;
-        left: 15px;
-      }
-      
-      .floating-buttons button {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-      }
-      
-      .ucapan-section {
-        padding: 30px 15px;
-        margin-bottom: 20px;
-      }
-      
-      .ucapan-title {
-        font-size: 22px;
-        margin-bottom: 15px;
-      }
-      
-      .ucapan-description {
-        font-size: 13px;
-        max-width: 320px;
-        margin-bottom: 20px;
-      }
-      
-      .ucapan-form-wrapper, .ucapan-list-wrapper {
-        width: 94%;
-        margin: 25px auto 20px;
-        padding: 10px;
-      }
-      
-      .ucapan-form-panel, .ucapan-list-panel {
-        border-radius: 10px;
-        padding: 16px 12px;
-      }
-      
-      .ucapan-form label {
-        font-size: 12px;
-        margin-bottom: 3px;
-      }
-      
-      .ucapan-form input, .ucapan-form textarea {
-        padding: 8px;
-        margin-bottom: 10px;
-        font-size: 12px;
-        border-radius: 5px;
-      }
-      
-      .ucapan-form button {
-        padding: 10px 20px;
-        font-size: 12px;
-        margin-top: 6px;
-        max-width: 90%;
-      }
-      
-      .ucapan-list {
-        max-height: 300px;
-      }
-      
-      .ucapan-item {
-        padding: 12px;
-        margin-bottom: 10px;
-      }
-      
-      .ucapan-item h4 {
-        font-size: 14px;
-      }
-      
-      .ucapan-item p {
-        font-size: 12px;
-      }
-      
-      .ucapan-item .date {
-        font-size: 10px;
-      }
-      
-      .nav-menu {
-        width: 250px;
-        left: -250px;
-      }
-      
-      .nav-menu-title {
-        font-size: 20px;
-      }
-      
-      .nav-menu-link {
-        padding: 10px 12px;
-        font-size: 14px;
-      }
-    }
-    
-    @media (max-width: 320px) {
-      .frame {
-        width: 200px;
-        height: 240px;
+        width: 180px;
+        height: 220px;
       }
       
       .frame img {
@@ -1492,46 +1095,481 @@
       }
       
       .countdown {
-        gap: 8px;
+        gap: 6px;
       }
       
       .countdown-number {
-        font-size: 24px;
+        font-size: 20px;
+      }
+      
+      .countdown-item {
+        min-width: 50px;
+        padding: 10px 5px;
       }
       
       .mempelai h2 {
         font-size: 14px;
       }
       
-      /* Style untuk gambar butterfly di Love Story (mobile kecil) */
       .love-story-section img {
-        width: 90px; /* Lebih kecil untuk layar sangat kecil */
+        width: 70px;
         margin-bottom: 12px;
       }
       
-      .countdown-item {
-        min-width: 50px;
-        padding: 10px 6px;
-      }
-      
-      .rsvp-form button {
-        padding: 8px 16px; /* Mengurangi padding lebih jauh untuk layar sangat kecil */
-        font-size: 11px;
-      }
-      
       .butterfly-ornament {
-        width: 90px; /* Diubah dari tidak ada ukuran khusus menjadi 90px */
-        margin: 12px auto; /* Diubah dari tidak ada margin khusus menjadi 12px auto */
+        width: 70px;
+        margin: 12px auto;
       }
       
-      .ucapan-form button {
+      .ucapan-form button, .rsvp-form button {
         padding: 8px 16px;
         font-size: 11px;
       }
       
       .nav-menu {
-        width: 220px;
-        left: -220px;
+        width: 240px;
+        left: -240px;
+      }
+      
+      .nav-menu-title {
+        font-size: 18px;
+      }
+      
+      .nav-menu-link {
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+    }
+    
+    /* Tablet dan Desktop */
+    @media (min-width: 768px) {
+      .top-section {
+        padding: 40px 20px 60px;
+      }
+      
+      .ornament img {
+        width: 120px;
+      }
+      
+      .basmalah {
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+      
+      .doa {
+        font-size: 14px;
+        max-width: 320px;
+        margin-bottom: 40px;
+      }
+      
+      .frame {
+        width: 240px;
+        height: 280px;
+        margin: 0 auto 20px;
+        border: 10px solid var(--frame-border);
+        border-radius: 150px 150px 20px 20px;
+      }
+      
+      .frame img {
+        max-width: 220px;
+      }
+      
+      .mempelai {
+        width: 80%;
+        max-width: 320px;
+        margin: -30px auto 30px;
+        padding: 15px;
+      }
+      
+      .mempelai h2 {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+      
+      .mempelai p {
+        font-size: 13px;
+        margin: 3px 0;
+      }
+      
+      .separator {
+        margin: 20px 0 30px;
+      }
+      
+      .separator span {
+        font-size: 28px;
+      }
+      
+      .bottom-section {
+        padding: 40px 20px;
+      }
+      
+      .flower {
+        width: 100px;
+        margin: 0 auto 20px;
+      }
+      
+      .countdown-container {
+        max-width: 320px;
+        margin-bottom: 50px;
+      }
+      
+      .countdown-container h2 {
+        font-size: 32px;
+        margin-bottom: 25px;
+      }
+      
+      .countdown {
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+      
+      .countdown-item {
+        min-width: 70px;
+        padding: 15px 10px;
+      }
+      
+      .countdown-number {
+        font-size: 32px;
+        margin-bottom: 5px;
+      }
+      
+      .countdown-label {
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+      
+      .save-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+      }
+      
+      .akad-wrapper, .walimah-wrapper, .story-wrapper, .amplop-wrapper, 
+      .ucapan-form-wrapper, .ucapan-list-wrapper, .account-wrapper, 
+      .address-wrapper, .whatsapp-wrapper {
+        width: 92%;
+        max-width: 340px;
+        margin: 30px auto 25px;
+        padding: 14px;
+        border-radius: 20px;
+      }
+      
+      .akad-panel {
+        border-radius: 180px 180px 18px 18px;
+        padding: 26px 20px 22px;
+        border: 4px solid rgba(255,255,255,0.45);
+      }
+      
+      .walimah-panel, .amplop-panel, .ucapan-form-panel, .ucapan-list-panel,
+      .account-panel, .address-panel, .whatsapp-panel {
+        border-radius: 14px;
+        padding: 24px 18px;
+        border: 3px solid rgba(255,255,255,0.5);
+      }
+      
+      .story-panel {
+        border-radius: 14px;
+        padding: 24px 18px;
+        border: 3px solid rgba(255,255,255,0.5);
+      }
+      
+      .rsvp-wrapper {
+        width: 92%;
+        max-width: 340px;
+        margin: 30px auto 50px;
+        padding: 12px;
+        border-radius: 24px 24px 200px 200px;
+      }
+      
+      .rsvp-panel {
+        border-radius: 18px 18px 180px 180px;
+        padding: 26px 20px 60px;
+        border: 4px solid rgba(255,255,255,0.45);
+      }
+      
+      .akad-title, .walimah-title, .rsvp-title {
+        font-size: 28px;
+        margin: 6px 0;
+        letter-spacing: 1px;
+      }
+      
+      .akad-day, .walimah-day {
+        font-size: 14px;
+        margin-top: 6px;
+      }
+      
+      .akad-date-row, .walimah-date-row {
+        gap: 16px;
+        margin: 12px 0 6px;
+      }
+      
+      .akad-month, .akad-year, .walimah-month, .walimah-year {
+        font-size: 15px;
+      }
+      
+      .akad-number, .walimah-number {
+        font-size: 52px;
+      }
+      
+      .akad-time, .walimah-time {
+        margin-top: 8px;
+        font-size: 12px;
+        letter-spacing: 0.6px;
+      }
+      
+      .akad-location, .walimah-location {
+        margin-top: 12px;
+      }
+      
+      .akad-location h3, .walimah-location h3 {
+        font-size: 14px;
+        margin: 8px 0 6px;
+        letter-spacing: 0.6px;
+      }
+      
+      .akad-location p, .walimah-location p {
+        font-size: 13px;
+        margin: 3px 0;
+        line-height: 1.4;
+      }
+      
+      .location-btn {
+        margin-top: 12px;
+        padding: 8px 14px;
+        font-size: 14px;
+        border-radius: 18px;
+      }
+      
+      .rsvp-panel p {
+        font-size: 14px;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+      
+      .rsvp-form {
+        margin-bottom: 20px;
+      }
+      
+      .rsvp-form label {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      
+      .rsvp-form input, .rsvp-form select {
+        padding: 10px;
+        margin-bottom: 16px;
+        font-size: 14px;
+        border-radius: 8px;
+      }
+      
+      .rsvp-form button {
+        padding: 12px 24px;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+      
+      .love-story-section {
+        padding: 40px 20px;
+        margin-bottom: 30px;
+      }
+      
+      .love-story-section h2 {
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+      
+      .love-story-section .quote {
+        font-size: 14px;
+        max-width: 400px;
+        margin-bottom: 30px;
+      }
+      
+      .love-story-section img {
+        width: 120px;
+        margin-bottom: 20px;
+      }
+      
+      .story-panel h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      
+      .story-panel p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      
+      .amplop-section {
+        padding: 40px 20px;
+        margin-bottom: 30px;
+      }
+      
+      .amplop-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+      
+      .amplop-description {
+        font-size: 14px;
+        max-width: 400px;
+        margin-bottom: 25px;
+      }
+      
+      .account-number {
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+      
+      .account-name {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+      
+      .copy-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+      
+      .address-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+      
+      .address-info {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+      
+      .recipient {
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+      
+      .contact {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+      
+      .whatsapp-btn {
+        padding: 12px 20px;
+        font-size: 15px;
+      }
+      
+      .butterfly-ornament {
+        width: 120px;
+        margin: 20px auto;
+      }
+      
+      .ucapan-section {
+        padding: 40px 20px;
+        margin-bottom: 30px;
+      }
+      
+      .ucapan-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+      
+      .ucapan-description {
+        font-size: 14px;
+        max-width: 400px;
+        margin-bottom: 25px;
+      }
+      
+      .ucapan-form label {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      
+      .ucapan-form input, .ucapan-form textarea {
+        padding: 10px;
+        margin-bottom: 16px;
+        font-size: 14px;
+        border-radius: 8px;
+      }
+      
+      .ucapan-form textarea {
+        min-height: 100px;
+      }
+      
+      .ucapan-form button {
+        padding: 12px 24px;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+      
+      .ucapan-list {
+        max-height: 400px;
+      }
+      
+      .ucapan-item {
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+      
+      .ucapan-item h4 {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      
+      .ucapan-item p {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      
+      .ucapan-item .date {
+        font-size: 12px;
+        margin-top: 8px;
+      }
+      
+      .floating-buttons {
+        bottom: 20px;
+        left: 20px;
+        gap: 10px;
+      }
+      
+      .floating-buttons button {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+      }
+      
+      .nav-menu {
+        width: 280px;
+        left: -280px;
+        padding: 20px;
+      }
+      
+      .nav-menu-header {
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+      }
+      
+      .nav-menu-title {
+        font-size: 24px;
+      }
+      
+      .nav-menu-close {
+        font-size: 24px;
+      }
+      
+      .nav-menu-item {
+        margin-bottom: 15px;
+      }
+      
+      .nav-menu-link {
+        padding: 12px 15px;
+        font-size: 16px;
+      }
+      
+      .nav-menu-link i {
+        margin-right: 10px;
+        width: 20px;
+      }
+      
+      .toast {
+        padding: 15px 25px;
+        font-size: 14px;
+        bottom: 80px;
       }
     }
   </style>
@@ -1753,7 +1791,7 @@
       <div class="account-wrapper">
         <div class="account-panel">
           <div class="account-number">
-            <i class="fa fa-bank" style="font-size:24px"></i>
+            <i class="fa fa-bank" style="font-size:20px"></i>
             BCA 1841662500
           </div>
           <div class="account-name">A/n JEAN DWI KUSTANTO</div>
@@ -1767,7 +1805,7 @@
       <div class="account-wrapper">
         <div class="account-panel">
           <div class="account-number">
-            <i class="fa fa-bank" style="font-size:24px"></i>
+            <i class="fa fa-bank" style="font-size:20px"></i>
             BRI 315501052898530
           </div>
           <div class="account-name">A/n JEAN DWI KUSTANTO</div>
@@ -1782,8 +1820,8 @@
         <div class="address-panel">
           <div class="address-title">ALAMAT PENGIRIMAN KADO</div>
           <div class="address-info">
-            Candinegoro RT 001 RW 002<
-            Kecamatan Wonoayu
+            Candinegoro RT 001 RW 002<br>
+            Kecamatan Wonoayu<br>
             Kabupaten Sidoarjo
           </div>
           <div class="recipient">Jean Dwi Kustanto</div>
@@ -1828,7 +1866,7 @@
       <!-- Frame untuk Daftar Ucapan -->
       <div class="ucapan-list-wrapper">
         <div class="ucapan-list-panel">
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--accent); margin-bottom: 15px;">Ucapan & Doa Para Tamu</h3>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 18px; color: var(--accent); margin-bottom: 12px;">Ucapan & Doa Para Tamu</h3>
           <div class="ucapan-list" id="ucapanList">
             <div class="loading">
               <i class="fas fa-spinner"></i>
@@ -2070,7 +2108,7 @@
           ucapanList.innerHTML = '';
           
           if (snapshot.empty) {
-            ucapanList.innerHTML = '<p style="text-align: center; color: #888;">Belum ada ucapan. Jadilah yang pertama!</p>';
+            ucapanList.innerHTML = '<p style="text-align: center; color: #888; font-size: 12px;">Belum ada ucapan. Jadilah yang pertama!</p>';
             return;
           }
           
@@ -2105,7 +2143,7 @@
           });
         }, (error) => {
           console.error('Error fetching documents: ', error);
-          ucapanList.innerHTML = '<p style="text-align: center; color: #ff6b6b;">Gagal memuat ucapan. Silakan refresh halaman.</p>';
+          ucapanList.innerHTML = '<p style="text-align: center; color: #ff6b6b; font-size: 12px;">Gagal memuat ucapan. Silakan refresh halaman.</p>';
         });
     }
     
