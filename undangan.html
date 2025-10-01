@@ -31,7 +31,7 @@
       --countdown-accent: #f8d7da;
       --ucapan-bg: #f8f2f5;
       --ucapan-card-bg: #fff;
-      --menu-bg: rgba(255, 255, 255, 0.1);
+      --menu-bg: rgba(0, 0, 0, 0.5);
       --menu-border: #ffcc4d;
       --name-color: #9d7b94; /* Warna ungu muda seperti pada halaman pertama */
     }
@@ -306,6 +306,43 @@
                   inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       color: var(--text-dark);
+      /* Tambahkan background gambar transparan */
+      background-image: url('assets/flower-1.png');
+      background-size: 70% auto;
+      background-position: right bottom;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    
+    /* Overlay untuk memastikan teks tetap terbaca */
+    .akad-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(246, 236, 239, 0.85);
+      border-radius: 140px 140px 15px 15px;
+      z-index: 1;
+    }
+    
+    .akad-panel > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Ornamen untuk Akad Nikah */
+    .akad-ornament {
+      width: 60px;
+      height: auto;
+      margin-bottom: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.8;
+      position: relative;
+      z-index: 2;
     }
     
     /* walimatul urs wrapper persegi - Perbaikan border dan shadow */
@@ -330,6 +367,30 @@
                   inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       color: var(--text-dark);
+      /* Tambahkan background gambar transparan */
+      background-image: url('assets/flower-2.png');
+      background-size: 80% auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    
+    /* Overlay untuk memastikan teks tetap terbaca */
+    .walimah-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(246, 236, 239, 0.85);
+      border-radius: 10px;
+      z-index: 1;
+    }
+    
+    .walimah-panel > * {
+      position: relative;
+      z-index: 2;
     }
     
     /* LOVE STORY CARD WRAPPER - Perbaikan border dan shadow */
@@ -689,6 +750,30 @@
       position: relative;
       overflow: hidden;
       color: var(--text-dark);
+      /* Tambahkan background gambar transparan */
+      background-image: url('assets/flower-frame.png');
+      background-size: 150% auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    
+    /* Overlay untuk memastikan teks tetap terbaca */
+    .rsvp-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(246, 236, 239, 0.85);
+      border-radius: 15px 15px 130px 130px;
+      z-index: 1;
+    }
+    
+    .rsvp-panel > * {
+      position: relative;
+      z-index: 2;
     }
     
     .rsvp-title {
@@ -1113,7 +1198,7 @@
       bottom: 70px;
       left: 20px;
       background: var(--menu-bg);
-      border: 2px solid var(--menu-border);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 10px;
       padding: 10px;
       display: none;
@@ -1123,7 +1208,7 @@
       z-index: 99;
       /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(8px);
     }
     
     .menu-dropdown.active {
@@ -1144,12 +1229,12 @@
     }
     
     .menu-item:hover {
-      background: rgba(255, 204, 77, 0.2);
+      background: rgba(255, 255, 255, 0.2);
       transform: scale(0.95);
     }
     
     .menu-item i {
-      color: var(--menu-border);
+      color: #fff;
       font-size: 16px;
       width: 20px;
       text-align: center;
@@ -1255,6 +1340,11 @@
       .menu-item i {
         font-size: 14px;
         width: 18px;
+      }
+      
+      .akad-ornament {
+        width: 50px;
+        margin-bottom: 12px;
       }
     }
     
@@ -1377,11 +1467,19 @@
         border: 4px solid rgba(255,255,255,0.45);
       }
       
+      .akad-panel::before {
+        border-radius: 180px 180px 18px 18px;
+      }
+      
       .walimah-panel, .amplop-panel, .ucapan-form-panel, .ucapan-list-panel,
       .account-panel, .address-panel, .whatsapp-panel {
         border-radius: 14px;
         padding: 24px 18px;
         border: 3px solid rgba(255,255,255,0.5);
+      }
+      
+      .walimah-panel::before {
+        border-radius: 14px;
       }
       
       .story-panel {
@@ -1402,6 +1500,10 @@
         border-radius: 18px 18px 180px 180px;
         padding: 26px 20px 60px;
         border: 4px solid rgba(255,255,255,0.45);
+      }
+      
+      .rsvp-panel::before {
+        border-radius: 18px 18px 180px 180px;
       }
       
       .akad-title, .walimah-title, .rsvp-title {
@@ -1676,6 +1778,11 @@
         font-size: 14px;
         bottom: 80px;
       }
+      
+      .akad-ornament {
+        width: 80px;
+        margin-bottom: 20px;
+      }
     }
   </style>
 </head>
@@ -1750,6 +1857,8 @@
     <!-- Acara Akad Nikah (bulat) -->
     <div class="akad-wrapper" id="akad">
       <div class="akad-panel">
+        <!-- Tambahkan ornamen kupu-kupu di sini -->
+        <img src="assets/butterfly.png" alt="Ornament Butterfly" class="akad-ornament">
         <div class="akad-title">AKAD NIKAH</div>
         <div class="akad-day">SABTU</div>
         <div class="akad-date-row">
