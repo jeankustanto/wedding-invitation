@@ -229,6 +229,9 @@
       max-width: 90%;
       line-height: 1.2;
       letter-spacing: 1px;
+      /* Animasi Scale In Forward Center */
+      opacity: 0;
+      animation: tamu 3s ease 2.2s forwards;
     }
 
     .note {
@@ -307,6 +310,18 @@
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+
+    /* Keyframes untuk animasi tamu undangan */
+    @keyframes tamu {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     /* Media Queries untuk Responsivitas */
@@ -478,60 +493,4 @@
       }
       
       // Disable Ctrl+U (View Source)
-      if (e.ctrlKey && e.keyCode === 85) {
-        e.preventDefault();
-        return false;
-      }
-      
-      // Disable Ctrl+C (Copy)
-      if (e.ctrlKey && e.keyCode === 67) {
-        e.preventDefault();
-        return false;
-      }
-      
-      // Disable Ctrl+A (Select All)
-      if (e.ctrlKey && e.keyCode === 65) {
-        e.preventDefault();
-        return false;
-      }
-      
-      // Disable Ctrl+S (Save)
-      if (e.ctrlKey && e.keyCode === 83) {
-        e.preventDefault();
-        return false;
-      }
-      
-      // Disable Ctrl+Shift+I (Developer Tools)
-      if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-        e.preventDefault();
-        return false;
-      }
-      
-      // Disable Ctrl+Shift+J (Developer Tools)
-      if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-        e.preventDefault();
-        return false;
-      }
-    });
-    
-    // Mencegah screenshot (bekerja di beberapa browser)
-    (() => {
-      const blockScreenshot = () => {
-        const html = document.querySelector('html');
-        const body = document.querySelector('body');
-        
-        html.style.pointerEvents = 'none';
-        body.style.pointerEvents = 'none';
-        
-        setTimeout(() => {
-          html.style.pointerEvents = '';
-          body.style.pointerEvents = '';
-        }, 100);
-      };
-      
-      document.addEventListener('keyup', blockScreenshot);
-      document.addEventListener('keydown', blockScreenshot);
-    })();
-  </script>
-</body>
-</html>
+      if (e.ctrlKey && e.keyCode === 85)
