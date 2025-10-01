@@ -4,21 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Undangan — Jean & Dwi</title>
-  <!-- Fonts & icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Amiri&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Fonts & icons - Menggunakan font yang sama dengan halaman pertama -->
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=El+Messiri:wght@400;500;700&family=Roboto:wght@400;500;700&family=Amiri&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
   <style>
     :root{
-      --page-bg: #9a8c9f;
-      --outer-ring: #e8dfe6;
+      --page-bg: #f8f3f7;
+      --outer-ring: #e4d6dd;
       --inner-panel: #f6ecef;
-      --frame-border: #d9cbd6;
+      --frame-border: #e4d6dd;
       --muted: #7a6b75;
-      --accent: #7a596d;
-      --btn-bg: #bba7b4;
+      --accent: #9d7b94;
+      --btn-bg: #9d7b94;
       --top-section-bg: #f8f2f5;
       --bottom-section-bg: #7d6d78;
       --love-bg: #f6f2f7;
@@ -33,22 +33,26 @@
       --ucapan-card-bg: #fff;
       --menu-bg: rgba(255, 255, 255, 0.1);
       --menu-border: #ffcc4d;
+      --name-color: #9d7b94; /* Warna ungu muda seperti pada halaman pertama */
     }
     html,body{
       height:100%;
       margin:0;
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      font-family: 'Roboto', sans-serif;
       background: var(--page-bg);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      color:#2f2f33;
+      color:#333333;
       text-align:center;
       overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(222, 207, 216, 0.46) 0%, rgba(222, 207, 216, 0) 90%),
+        radial-gradient(circle at 90% 80%, rgba(210, 195, 204, 0.46) 0%, rgba(210, 195, 204, 0) 90%);
     }
     
     /* Menyeragamkan font pada semua inputan */
     input, select, textarea {
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial !important;
+      font-family: 'Roboto', sans-serif !important;
       font-size: 14px !important;
       color: #333 !important;
     }
@@ -86,6 +90,7 @@
       margin: 0 auto 30px;
     }
     
+    /* Frame Mempelai - Perbaikan border dan shadow */
     .frame {
       width: 200px;
       height: 240px;
@@ -95,6 +100,7 @@
       background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
       position: relative;
       overflow: hidden;
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 6px 14px rgba(0,0,0,0.25),
                   inset 0 -4px 8px rgba(255,255,255,0.12);
     }
@@ -102,10 +108,12 @@
     .frame img {
       position: absolute;
       left: 50%;
-      transform: translateX(-50%);
-      width: 180px;
-      max-width: 180px;
-      top: 10px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
     }
     
     .mempelai {
@@ -115,15 +123,19 @@
       margin: -25px auto 25px;
       padding: 12px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
       position: relative;
       z-index: 5;
     }
     
     .mempelai h2 {
+      font-family: 'El Messiri', sans-serif;
+      font-weight: 700;
       font-size: 16px;
       color: var(--accent);
       margin-bottom: 4px;
+      letter-spacing: 1px;
     }
     
     .mempelai p {
@@ -156,8 +168,8 @@
     }
     
     .separator span {
-      font-family: "Playfair Display", serif;
-      font-size: 24px;
+      font-family: 'Pinyon Script', cursive;
+      font-size: 32px;
       color: var(--muted);
     }
     
@@ -174,19 +186,10 @@
       margin: 0 auto 40px;
       text-align: center;
       position: relative;
-    }
-    
-    .countdown-container::before {
-      content: "";
-      position: absolute;
-      top: -15px;
-      left: -15px;
-      right: -15px;
-      bottom: -15px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+      padding: 15px;
       border-radius: 15px;
-      z-index: -1;
-      backdrop-filter: blur(5px);
     }
     
     .flower {
@@ -196,8 +199,8 @@
     }
     
     .countdown-container h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 24px;
+      font-family: 'Pinyon Script', cursive;
+      font-size: 32px;
       margin-bottom: 20px;
       color: var(--countdown-text);
       text-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -215,15 +218,15 @@
       border-radius: 10px;
       padding: 12px 6px;
       min-width: 55px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255,255,255,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
     }
     
     .countdown-item:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
     
     .countdown-number {
@@ -250,12 +253,14 @@
       padding: 10px 20px;
       border-radius: 25px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
       position: relative;
       overflow: hidden;
+      font-family: 'Roboto', sans-serif;
     }
     
     .save-btn::before {
@@ -277,10 +282,9 @@
       background: linear-gradient(to right, var(--accent), #8d6b7d);
       color: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     }
     
-    /* akad wrapper bulat */
+    /* akad wrapper bulat - Perbaikan border dan shadow */
     .akad-wrapper {
       width: 90%;
       max-width: 300px;
@@ -288,7 +292,8 @@
       padding: 10px;
       border-radius: 150px 150px 20px 20px;
       background: var(--outer-ring);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .akad-panel {
@@ -296,12 +301,14 @@
       border-radius: 140px 140px 15px 15px;
       padding: 20px 15px 18px;
       border: 3px solid rgba(255,255,255,0.45);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06), 0 2px 0 rgba(255,255,255,0.35) inset;
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06), 
+                  inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       color: var(--text-dark);
     }
     
-    /* walimatul urs wrapper persegi */
+    /* walimatul urs wrapper persegi - Perbaikan border dan shadow */
     .walimah-wrapper {
       width: 90%;
       max-width: 300px;
@@ -309,7 +316,8 @@
       padding: 10px;
       border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .walimah-panel {
@@ -317,13 +325,14 @@
       border-radius: 10px;
       padding: 18px 12px;
       border: 2px solid rgba(255,255,255,0.5);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
-                  0 2px 0 rgba(255,255,255,0.35) inset;
+                  inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       color: var(--text-dark);
     }
     
-    /* LOVE STORY CARD WRAPPER - sama seperti walimah-wrapper */
+    /* LOVE STORY CARD WRAPPER - Perbaikan border dan shadow */
     .story-wrapper {
       width: 90%;
       max-width: 300px;
@@ -331,35 +340,41 @@
       padding: 10px;
       border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
-    /* LOVE STORY CARD PANEL - dengan warna love-card-bg */
+    /* LOVE STORY CARD PANEL - Perbaikan border dan shadow */
     .story-panel {
       background: var(--love-card-bg);
       border-radius: 10px;
       padding: 18px 12px;
       border: 2px solid rgba(255,255,255,0.5);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
-                  0 2px 0 rgba(255,255,255,0.35) inset;
+                  inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: left;
       color: #fff;
     }
     
-    /* AMLOP DIGITAL SECTION */
+    /* AMLOP DIGITAL SECTION - Perbaikan border dan shadow */
     .amplop-section {
       background-color: var(--amplop-bg);
       padding: 30px 15px;
       margin: 0 auto 20px;
       max-width: 500px;
       border-radius: 15px;
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .amplop-title {
-      font-family: "Playfair Display", serif;
+      font-family: 'El Messiri', sans-serif;
+      font-weight: 700;
       font-size: 20px;
       color: var(--accent);
       margin-bottom: 15px;
+      letter-spacing: 1px;
     }
     
     .amplop-description {
@@ -370,7 +385,7 @@
       margin: 0 auto 20px;
     }
     
-    /* Amplop Card Wrapper - sama seperti walimah-wrapper */
+    /* Amplop Card Wrapper - Perbaikan border dan shadow */
     .amplop-wrapper {
       width: 90%;
       max-width: 300px;
@@ -378,22 +393,24 @@
       padding: 10px;
       border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
-    /* Amplop Card Panel */
+    /* Amplop Card Panel - Perbaikan border dan shadow */
     .amplop-panel {
       background: var(--amplop-card-bg);
       border-radius: 10px;
       padding: 18px 12px;
       border: 2px solid rgba(255,255,255,0.5);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
-                  0 2px 0 rgba(255,255,255,0.35) inset;
+                  inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       color: #333;
     }
     
-    /* Account Frame - Frame terpisah untuk setiap rekening */
+    /* Account Frame - Perbaikan border dan shadow */
     .account-wrapper {
       width: 90%;
       max-width: 300px;
@@ -401,7 +418,8 @@
       padding: 10px;
       border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .account-panel {
@@ -409,8 +427,9 @@
       border-radius: 10px;
       padding: 15px 10px;
       border: 2px solid rgba(255,255,255,0.5);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
-                  0 2px 0 rgba(255,255,255,0.35) inset;
+                  inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       color: #333;
     }
@@ -418,7 +437,7 @@
     .account-number {
       font-family: monospace;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--accent);
       margin-bottom: 4px;
     }
@@ -429,7 +448,7 @@
       margin-bottom: 12px;
     }
     
-    /* Perbaikan tampilan tombol copy */
+    /* Perbaikan tampilan tombol copy - Hapus shadow */
     .copy-btn {
       background: linear-gradient(135deg, var(--btn-bg) 0%, var(--accent) 100%);
       color: white;
@@ -437,22 +456,21 @@
       padding: 10px 18px;
       border-radius: 25px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      font-family: 'Roboto', sans-serif;
     }
     
     .copy-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
       background: linear-gradient(135deg, var(--accent) 0%, #6a5b65 100%);
     }
     
-    /* Address Frame - Frame terpisah untuk alamat */
+    /* Address Frame - Perbaikan border dan shadow */
     .address-wrapper {
       width: 90%;
       max-width: 300px;
@@ -460,7 +478,8 @@
       padding: 10px;
       border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .address-panel {
@@ -468,8 +487,9 @@
       border-radius: 10px;
       padding: 15px 10px;
       border: 2px solid rgba(255,255,255,0.5);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
-                  0 2px 0 rgba(255,255,255,0.35) inset;
+                  inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       color: #333;
     }
@@ -491,7 +511,7 @@
     }
     
     .recipient {
-      font-weight: 600;
+      font-weight: 500;
       font-size: 13px;
       color: #333;
       margin-bottom: 4px;
@@ -503,7 +523,7 @@
       margin-bottom: 12px;
     }
     
-    /* WhatsApp Frame - Frame terpisah untuk tombol WhatsApp */
+    /* WhatsApp Frame - Perbaikan border dan shadow */
     .whatsapp-wrapper {
       width: 90%;
       max-width: 300px;
@@ -511,7 +531,8 @@
       padding: 10px;
       border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .whatsapp-panel {
@@ -519,13 +540,14 @@
       border-radius: 10px;
       padding: 15px 10px;
       border: 2px solid rgba(255,255,255,0.5);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
-                  0 2px 0 rgba(255,255,255,0.35) inset;
+                  inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       color: #333;
     }
     
-    /* Perbaikan tampilan tombol WhatsApp */
+    /* Perbaikan tampilan tombol WhatsApp - Hapus shadow */
     .whatsapp-btn {
       display: inline-flex;
       background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
@@ -533,17 +555,16 @@
       padding: 10px 15px;
       border-radius: 20px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 13px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
       align-items: center;
       gap: 8px;
+      font-family: 'Roboto', sans-serif;
     }
     
     .whatsapp-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     }
     
     .butterfly-ornament {
@@ -555,16 +576,17 @@
     }
     
     .akad-title, .walimah-title, .rsvp-title {
-      font-family: "Playfair Display", serif;
+      font-family: 'El Messiri', sans-serif;
+      font-weight: 700;
       font-size: 20px;
       color: var(--muted);
       margin: 4px 0;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
     }
     
     .akad-day, .walimah-day {
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 500;
       margin-top: 4px;
       color: #222;
     }
@@ -576,7 +598,7 @@
       gap: 10px;
       margin: 8px 0 4px;
       color: #6d5e67;
-      font-weight: 600;
+      font-weight: 500;
     }
     
     .akad-month, .akad-year,
@@ -588,7 +610,7 @@
     .akad-number, .walimah-number {
       font-size: 36px;
       color: #b69fb0;
-      font-family: "Playfair Display", serif;
+      font-family: 'El Messiri', sans-serif;
       line-height: 1;
     }
     
@@ -609,7 +631,7 @@
       margin: 5px 0 3px;
       color: #2d2d2d;
       letter-spacing: 0.5px;
-      font-weight: 700;
+      font-weight: 500;
       text-transform: uppercase;
     }
     
@@ -620,7 +642,7 @@
       line-height: 1.3;
     }
     
-    /* Perbaikan tampilan tombol lokasi */
+    /* Perbaikan tampilan tombol lokasi - Hapus shadow */
     .location-btn {
       display: inline-flex;
       background: linear-gradient(135deg, var(--btn-bg) 0%, var(--accent) 100%);
@@ -629,22 +651,21 @@
       padding: 8px 16px;
       border-radius: 20px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       align-items: center;
       gap: 6px;
       text-decoration: none;
+      font-family: 'Roboto', sans-serif;
     }
     
     .location-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
       background: linear-gradient(135deg, var(--accent) 0%, #6a5b65 100%);
     }
     
-    /* RSVP Section - dengan frame setengah lingkaran di bawah */
+    /* RSVP Section - Perbaikan border dan shadow */
     .rsvp-wrapper {
       width: 90%;
       max-width: 300px;
@@ -652,7 +673,8 @@
       padding: 10px;
       border-radius: 20px 20px 150px 150px;
       background: var(--outer-ring);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .rsvp-panel {
@@ -660,7 +682,9 @@
       border-radius: 15px 15px 130px 130px;
       padding: 20px 15px 45px;
       border: 3px solid rgba(255,255,255,0.45);
-      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06), 0 2px 0 rgba(255,255,255,0.35) inset;
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06), 
+                  inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -668,11 +692,12 @@
     }
     
     .rsvp-title {
-      font-family: "Playfair Display", serif;
+      font-family: 'El Messiri', sans-serif;
+      font-weight: 700;
       font-size: 20px;
       color: var(--muted);
       margin: 4px 0;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
     }
     
     .rsvp-panel p {
@@ -682,8 +707,9 @@
       line-height: 1.5;
     }
     
+    /* Perbaikan Form RSVP - Tambahkan text-align center */
     .rsvp-form {
-      text-align: left;
+      text-align: center;
       margin-bottom: 15px;
     }
     
@@ -691,41 +717,56 @@
       font-size: 12px;
       color: var(--muted);
       display: block;
-      margin-bottom: 3px;
+      margin-bottom: 5px;
+      text-align: left;
     }
     
+    /* Perbaikan ukuran input dan select agar konsisten */
     .rsvp-form input,
     .rsvp-form select {
       width: 100%;
-      padding: 8px;
+      height: 40px; /* Tinggi yang sama untuk kedua field */
+      padding: 0 12px; /* Padding horizontal yang sama */
       border: none;
       border-radius: 6px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       background-color: #fff;
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      color: #333;
+      /* Menghilangkan default styling select */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      /* Menambahkan background untuk select */
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239d7b94' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px;
+      padding-right: 35px; /* Ruang untuk panah dropdown */
     }
     
-    /* Perbaikan tampilan tombol RSVP */
+    /* Perbaikan tampilan tombol RSVP - Hapus shadow dan pastikan center */
     .rsvp-form button {
       width: auto;
-      max-width: 90%;
+      min-width: 200px; /* Lebar minimum untuk tombol */
       padding: 12px 24px;
       border: none;
       border-radius: 30px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       background: linear-gradient(135deg, var(--btn-bg) 0%, var(--accent) 100%);
       color: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      margin: 8px auto 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      margin: 15px auto 0; /* Margin atas yang lebih besar */
+      display: block; /* Mengubah ke block untuk centering yang lebih mudah */
+      text-align: center;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      font-family: 'Roboto', sans-serif;
     }
     
     .rsvp-form button::before {
@@ -745,16 +786,17 @@
     
     .rsvp-form button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     }
     
-    /* LOVE STORY SECTION */
+    /* LOVE STORY SECTION - Perbaikan border dan shadow */
     .love-story-section {
       background-color: var(--love-bg);
       padding: 30px 15px;
       margin: 0 auto 20px;
       max-width: 500px;
       border-radius: 15px;
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
     /* Style untuk gambar butterfly di Love Story */
@@ -768,10 +810,12 @@
     }
     
     .love-story-section h2 {
-      font-family: "Playfair Display", serif;
+      font-family: 'El Messiri', sans-serif;
+      font-weight: 700;
       font-size: 20px;
       color: var(--accent);
       margin-bottom: 15px;
+      letter-spacing: 1px;
     }
     
     .love-story-section .quote {
@@ -787,16 +831,18 @@
       display: block;
       margin-top: 8px;
       font-style: normal;
-      font-weight: 700;
+      font-weight: 500;
       color: #000;
     }
     
     /* Story Card Styling */
     .story-panel h3 {
-      font-family: "Playfair Display", serif;
+      font-family: 'El Messiri', sans-serif;
+      font-weight: 700;
       font-size: 16px;
       margin-bottom: 8px;
       color: #fff;
+      letter-spacing: 1px;
     }
     
     .story-panel p {
@@ -806,20 +852,24 @@
       text-align: justify;
     }
     
-    /* UCAPAN & DOA SECTION */
+    /* UCAPAN & DOA SECTION - Perbaikan border dan shadow */
     .ucapan-section {
       background-color: var(--ucapan-bg);
       padding: 30px 15px;
       margin: 0 auto 20px;
       max-width: 500px;
       border-radius: 15px;
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .ucapan-title {
-      font-family: "Playfair Display", serif;
+      font-family: 'El Messiri', sans-serif;
+      font-weight: 700;
       font-size: 20px;
       color: var(--accent);
       margin-bottom: 15px;
+      letter-spacing: 1px;
     }
     
     .ucapan-description {
@@ -830,7 +880,7 @@
       margin: 0 auto 20px;
     }
     
-    /* Ucapan Form Wrapper - sama seperti walimah-wrapper */
+    /* Ucapan Form Wrapper - Perbaikan border dan shadow */
     .ucapan-form-wrapper {
       width: 90%;
       max-width: 300px;
@@ -838,17 +888,19 @@
       padding: 10px;
       border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
-    /* Ucapan Form Panel */
+    /* Ucapan Form Panel - Perbaikan border dan shadow */
     .ucapan-form-panel {
       background: var(--ucapan-card-bg);
       border-radius: 10px;
       padding: 18px 12px;
       border: 2px solid rgba(255,255,255,0.5);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
-                  0 2px 0 rgba(255,255,255,0.35) inset;
+                  inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       color: #333;
     }
@@ -873,6 +925,7 @@
       border-radius: 6px;
       margin-bottom: 10px;
       background-color: #fff;
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     }
     
@@ -881,7 +934,7 @@
       resize: vertical;
     }
     
-    /* Perbaikan tampilan tombol Ucapan */
+    /* Perbaikan tampilan tombol Ucapan - Hapus shadow */
     .ucapan-form button {
       width: auto;
       max-width: 90%;
@@ -889,11 +942,10 @@
       border: none;
       border-radius: 30px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       background: linear-gradient(135deg, var(--btn-bg) 0%, var(--accent) 100%);
       color: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       margin: 8px auto 0;
       display: inline-flex;
       align-items: center;
@@ -902,6 +954,7 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      font-family: 'Roboto', sans-serif;
     }
     
     .ucapan-form button::before {
@@ -921,10 +974,9 @@
     
     .ucapan-form button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     }
     
-    /* Ucapan List Wrapper - sama seperti walimah-wrapper */
+    /* Ucapan List Wrapper - Perbaikan border dan shadow */
     .ucapan-list-wrapper {
       width: 90%;
       max-width: 300px;
@@ -932,17 +984,19 @@
       padding: 10px;
       border-radius: 15px;
       background: var(--outer-ring);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
-    /* Ucapan List Panel */
+    /* Ucapan List Panel - Perbaikan border dan shadow */
     .ucapan-list-panel {
       background: var(--ucapan-card-bg);
       border-radius: 10px;
       padding: 18px 12px;
       border: 2px solid rgba(255,255,255,0.5);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
       box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06),
-                  0 2px 0 rgba(255,255,255,0.35) inset;
+                  inset 0 2px 0 rgba(255,255,255,0.35);
       text-align: center;
       color: #333;
     }
@@ -960,14 +1014,18 @@
       border-radius: 8px;
       padding: 12px;
       margin-bottom: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
       text-align: left;
     }
     
     .ucapan-item h4 {
+      font-family: 'El Messiri', sans-serif;
+      font-weight: 700;
       font-size: 14px;
       color: var(--accent);
       margin-bottom: 4px;
+      letter-spacing: 1px;
     }
     
     .ucapan-item p {
@@ -1000,7 +1058,7 @@
       100% { transform: rotate(360deg); }
     }
     
-    /* Perbaikan tampilan floating buttons dengan desain modern */
+    /* Perbaikan tampilan floating buttons - Hapus shadow */
     .floating-buttons {
       position: fixed;
       bottom: 20px;
@@ -1019,7 +1077,6 @@
       background: linear-gradient(135deg, #7a596d 0%, #9a8c9f 100%);
       color: #fff;
       font-size: 18px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
       cursor: pointer;
       transition: all 0.3s ease;
       display: flex;
@@ -1048,10 +1105,9 @@
     
     .floating-buttons button:hover {
       transform: scale(1.1);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
     }
     
-    /* Menu Dropdown Navigasi - Perbaikan */
+    /* Menu Dropdown Navigasi - Perbaikan border dan shadow */
     .menu-dropdown {
       position: fixed;
       bottom: 70px;
@@ -1065,7 +1121,8 @@
       gap: 8px;
       min-width: 180px;
       z-index: 99;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      /* Mengganti box-shadow dengan inset shadow yang lebih halus */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
       backdrop-filter: blur(4px);
     }
     
@@ -1077,7 +1134,7 @@
       padding: 8px 12px;
       border-radius: 6px;
       color: #fff;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: 14px;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -1098,7 +1155,7 @@
       text-align: center;
     }
     
-    /* Toast Notification */
+    /* Toast Notification - Hapus shadow */
     .toast {
       position: fixed;
       bottom: 70px;
@@ -1108,7 +1165,6 @@
       color: white;
       padding: 12px 20px;
       border-radius: 25px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       opacity: 0;
       transition: all 0.4s ease;
       z-index: 1000;
@@ -1122,15 +1178,18 @@
       opacity: 1;
     }
     
-    /* Responsive untuk layar lebih kecil */
+    /* Responsive untuk layar lebih kecil - Perbaikan border */
     @media (max-width: 360px) {
       .frame {
         width: 180px;
         height: 220px;
+        border: 7px solid var(--frame-border); /* Border proporsional untuk layar kecil */
+        border-radius: 108px 108px 14px 14px; /* Border radius proporsional */
       }
       
       .frame img {
-        max-width: 160px;
+        width: 100%;
+        height: 100%;
       }
       
       .akad-number, .walimah-number {
@@ -1199,7 +1258,7 @@
       }
     }
     
-    /* Tablet dan Desktop */
+    /* Tablet dan Desktop - Perbaikan border */
     @media (min-width: 768px) {
       .top-section {
         padding: 40px 20px 60px;
@@ -1224,12 +1283,13 @@
         width: 240px;
         height: 280px;
         margin: 0 auto 20px;
-        border: 10px solid var(--frame-border);
-        border-radius: 150px 150px 20px 20px;
+        border: 10px solid var(--frame-border); /* Border proporsional untuk layar desktop */
+        border-radius: 140px 140px 18px 18px; /* Border radius proporsional */
       }
       
       .frame img {
-        max-width: 220px;
+        width: 100%;
+        height: 100%;
       }
       
       .mempelai {
@@ -1254,7 +1314,7 @@
       }
       
       .separator span {
-        font-size: 28px;
+        font-size: 36px;
       }
       
       .bottom-section {
@@ -1272,7 +1332,7 @@
       }
       
       .countdown-container h2 {
-        font-size: 32px;
+        font-size: 36px;
         margin-bottom: 25px;
       }
       
@@ -1345,7 +1405,7 @@
       }
       
       .akad-title, .walimah-title, .rsvp-title {
-        font-size: 28px;
+        font-size: 24px;
         margin: 6px 0;
         letter-spacing: 1px;
       }
@@ -1365,7 +1425,7 @@
       }
       
       .akad-number, .walimah-number {
-        font-size: 52px;
+        font-size: 42px;
       }
       
       .akad-time, .walimah-time {
@@ -1413,16 +1473,19 @@
       }
       
       .rsvp-form input, .rsvp-form select {
-        padding: 10px;
+        height: 44px; /* Tinggi yang sedikit lebih besar di desktop */
+        padding: 0 14px;
         margin-bottom: 16px;
         font-size: 14px;
         border-radius: 8px;
+        padding-right: 40px; /* Ruang untuk panah dropdown di desktop */
       }
       
       .rsvp-form button {
         padding: 12px 24px;
         font-size: 14px;
         margin-top: 10px;
+        min-width: 220px; /* Lebar minimum yang lebih besar di desktop */
       }
       
       .love-story-section {
@@ -1431,7 +1494,7 @@
       }
       
       .love-story-section h2 {
-        font-size: 26px;
+        font-size: 24px;
         margin-bottom: 20px;
       }
       
@@ -1462,7 +1525,7 @@
       }
       
       .amplop-title {
-        font-size: 26px;
+        font-size: 24px;
         margin-bottom: 20px;
       }
       
@@ -1473,7 +1536,7 @@
       }
       
       .account-number {
-        font-size: 20px;
+        font-size: 18px;
         margin-bottom: 5px;
       }
       
@@ -1483,7 +1546,7 @@
       }
       
       .copy-btn {
-        padding: 8px 15px;
+        padding: 10px 18px;
         font-size: 14px;
       }
       
@@ -1523,7 +1586,7 @@
       }
       
       .ucapan-title {
-        font-size: 26px;
+        font-size: 24px;
         margin-bottom: 20px;
       }
       
@@ -1908,7 +1971,7 @@
       <!-- Frame untuk Daftar Ucapan -->
       <div class="ucapan-list-wrapper">
         <div class="ucapan-list-panel">
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 18px; color: var(--accent); margin-bottom: 12px;">Ucapan & Doa Para Tamu</h3>
+          <h3 style="font-family: 'El Messiri', sans-serif; font-weight: 700; font-size: 18px; color: var(--accent); margin-bottom: 12px; letter-spacing: 1px;">Ucapan & Doa Para Tamu</h3>
           <div class="ucapan-list" id="ucapanList">
             <div class="loading">
               <i class="fas fa-spinner"></i>
@@ -1924,7 +1987,7 @@
   <div class="ornament">
     <img src="assets/butterfly.png" alt="Ornament Butterfly">
   </div>
-  <h2 style="font-family: 'Great Vibes', cursive; font-size: 32px; margin-bottom: 20px; color: #fff;">- Terima Kasih -</h2>
+  <h2 style="font-family: 'Pinyon Script', cursive; font-size: 42px; margin-bottom: 20px; color: #fff;">- Terima Kasih -</h2>
   <p style="max-width: 320px; margin: 0 auto 30px; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">
     Menjadi sebuah kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/Saudari berkenan hadir dalam hari bahagia kami. Terima kasih atas segala ucapan, do'a, dan perhatian yang diberikan.
   </p>
@@ -1939,7 +2002,7 @@
   </div>
   
   <div style="margin-top: 30px;">
-    <p style="font-family: 'Great Vibes', cursive; font-size: 28px; color: #fff; margin-bottom: 5px;">
+    <p style="font-family: 'El Messiri', sans-serif; font-weight: 700; font-size: 32px; color: #fff; margin-bottom: 5px; letter-spacing: 2px;">
       Jean & Dwi
     </p>
     <p style="font-size: 16px; color: rgba(255, 255, 255, 0.9);">
