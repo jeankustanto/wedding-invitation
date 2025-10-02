@@ -1591,6 +1591,14 @@
       transform: scale(0);
       animation: ripple-animation 0.6s ease-out;
     }
+
+    /* ==================== ANIMASI HIGHLIGHT INPUT ==================== */
+    .highlight-animation {
+      border-color: #ffcc4d !important; /* Warna emas untuk menonjol */
+      box-shadow: 0 0 15px rgba(255, 204, 77, 0.7) !important; /* Efek cahaya */
+      transform: scale(1.02);
+      transition: all 0.5s ease; /* Animasi halus */
+    }
     
     /* ==================== RESPONSIVE ==================== */
     @media (max-width: 480px) {
@@ -2121,6 +2129,49 @@
     
     // ==================== INITIALIZATION ====================
     document.addEventListener('DOMContentLoaded', function() {
+      // --- FUNGSI UNTUK MENGISI FORM DARI URL ---
+      function fillNameFromUrl() {
+        // 1. Ambil parameter dari URL
+        const params = new URLSearchParams(window.location.search);
+        const nameFromUrl = params.get('to'); // Cari parameter 'to'
+
+        // 2. Jika parameter 'to' ada
+        if (nameFromUrl) {
+          // 3. Decode nama (mengganti '+' dengan spasi) dan bersihkan
+          const decodedName = nameFromUrl.replace(/\+/g, ' ').trim();
+
+          // 4. Pilih input nama di kedua form
+          const rsvpNameInput = document.getElementById('nama');
+          const ucapanNameInput = document.getElementById('namaUcapan');
+
+          // 5. Isi nilai input jika elemen ditemukan
+          if (rsvpNameInput) {
+            rsvpNameInput.value = decodedName;
+            highlightInput(rsvpNameInput); // Panggil fungsi animasi
+          }
+          if (ucapanNameInput) {
+            ucapanNameInput.value = decodedName;
+            highlightInput(ucapanNameInput); // Panggil fungsi animasi
+          }
+        }
+      }
+
+      // --- FUNGSI UNTUK MENAMBAHKAN ANIMASI SOROTAN ---
+      function highlightInput(inputElement) {
+        if (!inputElement) return;
+        
+        // Tambahkan class untuk animasi
+        inputElement.classList.add('highlight-animation');
+        
+        // Hapus class setelah 2.5 detik agar animasi tidak terus berjalan
+        setTimeout(() => {
+          inputElement.classList.remove('highlight-animation');
+        }, 2500); // Durasi animasi 2.5 detik
+      }
+
+      // --- JALANKAN FUNGSI SAAT HALAMAN DIMUAT ---
+      fillNameFromUrl();
+
       // Observe semua sections untuk animasi scroll
       document.querySelectorAll('section').forEach(section => {
         section.style.opacity = '0';
