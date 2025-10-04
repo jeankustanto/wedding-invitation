@@ -1889,6 +1889,12 @@
             <label for="ucapan">Ucapan & Doa:</label>
             <textarea id="ucapan" name="ucapan" placeholder="Tulis ucapan dan doa anda" required></textarea>
             
+            <label for="privasi">Privasi:</label>
+            <select id="privasi" name="privasi">
+              <option value="publik">Publik</option>
+              <option value="privat">Privat (Hanya untuk mempelai)</option>
+            </select>
+            
             <button type="submit"><i class="fa-solid fa-paper-plane"></i> Beri Ucapan</button>
           </form>
         </div>
@@ -1911,14 +1917,14 @@
       <img src="assets/butterfly.png" alt="Ornament Butterfly">
       <h2>- Terima Kasih -</h2>
       <p>Menjadi sebuah kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/Saudara/Saudari/Saudari berkenan hadir dalam hari bahagia kami. Terima kasih atas segala ucapan, do'a, dan perhatian yang diberikan.</p>
-      <div>
-        <p class="arabic-text">جَزَاكُمُ اللهُ خَيْرًا</p>
-        <p class="arabic-meaning">"Semoga Allah membalas kalian dengan kebaikan"</p>
-      </div>
-      <div>
-        <p class="coupleple-name">Jean & Dwi</p>
-        <p class="family-text">Beserta Keluarga</p>
-      </div>
+    <div>
+      <p class="arabic-text">جَزَاكُمُ اللهُ خَيْرًا</p>
+      <p class="arabic-meaning">"Semoga Allah membalas kalian dengan kebaikan"</p>
+    </div>
+    <div>
+      <p class="couple-name">Jean & Dwi</p>
+      <p class="family-text">Beserta Keluarga</p>
+    </div>
     </div>
     <div class="footer-bride-groom">
         <img src="assets/bride-groom.png" alt="Jean & Dwi" class="footer-image">
@@ -1940,7 +1946,7 @@
   </div>
   
   <div class="floating-buttons">
-    <button id="menuBtn" title="Menu" onclick="toggleMenu()"><i class="fas fa-th-large"></i></button>
+    <button id="menuBtn" title="Menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
     <button id="musicBtn" title="Putar / Hentikan Musik" onclick="toggleMusic()"><i class="fas fa-play"></i></button>
   </div>
   
@@ -2047,6 +2053,7 @@
       
       const name = document.getElementById('namaUcapan').value;
       const ucapan = document.getElementById('ucapan').value;
+      const privacy = document.getElementById('privasi').value;
       
       // Tampilkan loading state
       const submitButton = event.target.querySelector('button[type="submit"]');
@@ -2054,11 +2061,12 @@
       submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
       submitButton.disabled = true;
       
-      // Buat objek ucapan (tanpa privacy)
+      // Buat objek ucapan
       const wish = {
         name: name,
         message: ucapan,
-        timestamp: new Date().toISOString()
+        privacy: privacy,
+        timestamp: firebase.database.ServerValue.TIMESTAMP
       };
       
       // Simpan ke Firebase
@@ -2072,7 +2080,7 @@
           submitButton.disabled = false;
           
           // Tampilkan notifikasi
-          showToast(`Terima kasih ${name}! Ucapan & doa Anda telah terkirim.`, "success");
+          showToast(`Terima kasih ${name}! Ucapan & doa Anda telah terkirim.`);
         })
         .catch((error) => {
           console.error('Error saving wish:', error);
@@ -2081,20 +2089,19 @@
           submitButton.innerHTML = originalText;
           submitButton.disabled = false;
           
-          showToast("Gagal mengirim ucapan. Silakan coba lagi.", "error");
+          showToast("Gagal mengirim ucapan. Silakan coba lagi.");
         });
     }
     
-    // Fungsi untuk menampilkan ucapan dari Firebase
-    function displayWishes() {
+    // Setup real-time listener untuk ucapan baru
+    function setupWishesListener() {
       const wishesContainer = document.getElementById('ucapanList');
       
       // Tampilkan loading state
-      wishesContainer.innerHTML = '<div class="no-wishes"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
+      wishesContainer.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
       
-      // Ambil ucapan dari Firebase
-      database.ref('ucapan').orderByChild('timestamp').once('value')
-        .then((snapshot) => {
+      database.ref('ucapan').orderByChild('timestamp')
+        .on('value', (snapshot) => {
           // Kosongkan container
           wishesContainer.innerHTML = '';
           
@@ -2127,77 +2134,16 @@
               minute: '2-digit'
             });
             
-            // Buat elemen untuk ucapan (tanpa privacy)
+            // Buat elemen untuk ucapan
             const wishElement = document.createElement('div');
             wishElement.className = 'ucapan-item';
             wishElement.style.animationDelay = `${index * 0.1}s`;
             
             wishElement.innerHTML = `
-              <div class="wish-header">
-                <h5 class="wish-name">${wish.name}</h5>
-                <span class="wish-date">${formattedDate}</span>
-              </div>
-              <p class="wish-message">${wish.message}</p>
-            `;
-            
-            wishesContainer.appendChild(wishElement);
-          });
-        })
-        .catch((error) => {
-          console.error('Error fetching wishes:', error);
-          wishesContainer.innerHTML = '<div class="no-wishes">Gagal memuat ucapan. Silakan refresh halaman.</div>';
-        });
-    }
-    
-    // Setup real-time listener untuk ucapan baru
-    function setupWishesListener() {
-      database.ref('ucapan').orderByChild('timestamp')
-        .on('value', (snapshot) => {
-          const wishesContainer = document.getElementById('ucapanList');
-          
-          // Kosongkan container
-          wishesContainer.innerHTML = '';
-          
-          if (!snapshot.exists()) {
-            wishesContainer.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
-            return;
-          }
-          
-          // Ubah snapshot menjadi array dan urutkan dari yang terbaru
-          const wishes = [];
-          snapshot.forEach((childSnapshot) => {
-            wishes.push({
-              id: childSnapshot.key,
-              ...childSnapshot.val()
-            });
-          });
-          
-          // Urutkan dari yang terbaru
-          wishes.reverse();
-          
-          // Tampilkan setiap ucapan
-          wishes.forEach((wish, index) => {
-            // Format tanggal yang mudah dibaca
-            const date = new Date(wish.timestamp);
-            const formattedDate = date.toLocaleDateString('id-ID', { 
-              day: 'numeric', 
-                month: 'long', 
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-            
-            // Buat elemen untuk ucapan (tanpa privacy)
-            const wishElement = document.createElement('div');
-            wishElement.className = 'ucapan-item';
-            wishElement.style.animationDelay = `${index * 0.1}s`;
-            
-            wishElement.innerHTML = `
-              <div class="wish-header">
-                <h5 class="wish-name">${wish.name}</h5>
-                <span class="wish-date">${formattedDate}</span>
-              </div>
-              <p class="wish-message">${wish.message}</p>
+              <h4>${wish.name}</h4>
+              <p>${wish.message}</p>
+              <div class="date">${formattedDate}</div>
+              ${wish.privacy === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
             `;
             
             wishesContainer.appendChild(wishElement);
