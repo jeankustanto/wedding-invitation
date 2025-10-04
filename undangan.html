@@ -1685,7 +1685,7 @@
     <div class="mempelai">
       <h2>Jean Dwi Kustanto</h2>
       <p><strong>PUTRA DARI</strong></p>
-      <p>Bapak Slamet Budiono (alm) & Ibu Kuswati</p>
+      <p>Bapakak Slamet Budiono (alm) & Ibu Kuswati</p>
     </div>
     
     <div class="separator">
@@ -1826,7 +1826,7 @@
       <div class="story-wrapper">
         <div class="story-panel">
           <h3>Akad & Walimah</h3>
-          <p>Biidznillah, dengan penuh rasa syukur, kami melangkah menuju hari yang dinanti. Akad yang insyaaAllah akan kami jalani, serta walimah yang ingin kami rayakan bersama keluarga dan sahabat tercinta, semoga menjadi momen suci yang penuh kebahagiaan. Rabu, 8 Oktober 2025, semoga Allah menjadikan pernikahan ini sebagai ladang ibadah, yang dipenuhi cinta, mawaddah, dan keberkahan yang berlimpah. Aamiin ya Rabbal 'Aalamin.</p>
+          <p>Biidznillah, dengan penuh rasa syukur, kami melangkah menuju hari yang dinanti. Akad yang insyaaAllah akan kami jalani, serta walimah yang ingin kami rayakan bersama keluarga dan sahabat tercinta, semoga menjadi momen suci yang penuh kebahagiaan. Rabu, 8 Oktober 2025, semoga Allah menjadikan pernikahan ini sebagai ladang ibadah yang penuh <span class="highlight">sakinah</span> dengan indah <span class="highlight">mawaddah</span> dan berlimpah <span class="highlight">rahmah</span>. Aamiin ya Rabbal 'Aalamin.</p>
         </div>
       </div>
     </div>
@@ -1867,7 +1867,8 @@
       </div>
       
       <img src="assets/butterfly.png" alt="Butterfly Ornament" class="butterfly-ornament">
-      <div class="basmalah">بَارَكَ اللهُ لَكُما وَبَارَكَ عَلَيْكُما وَجَمَعَ بَيْنَكُما فِي خَيْرٍ</div>
+      <div class="basmalah">بَارَكَ اللهُ لَكُما وَبَارَكَ عَلَيْكُما وَجَمَعَ بَيْنَكُما فِي خَيْرٍ
+      </div>
       <p class="amplop-description">"Semoga Allah memberi keberkahan kalian dan memberkahi atas kalian serta mengumpulkan kalian berdua dalam kebaikan"</p>
       <p class="amplop-description">Doa Rasulullah saw karya Samir Mahmud al-Husni (2008: 250)</p>
     </div>
@@ -1897,7 +1898,7 @@
         <div class="ucapan-list-panel">
           <h3>Ucapan & Doa Para Tamu</h3>
           <div class="ucapan-list" id="ucapanList">
-            <div class="loading"><i class="fas fa-spinner"></i><p>Memuat ucapan...</p></div>
+            <div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>
           </div>
         </div>
       </div>
@@ -1909,13 +1910,13 @@
     <div class="ornament">
       <img src="assets/butterfly.png" alt="Ornament Butterfly">
       <h2>- Terima Kasih -</h2>
-      <p>Menjadi sebuah kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/Saudari berkenan hadir dalam hari bahagia kami. Terima kasih atas segala ucapan, do'a, dan perhatian yang diberikan.</p>
+      <p>Menjadi sebuah kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/Saudara/Saudari/Saudari berkenan hadir dalam hari bahagia kami. Terima kasih atas segala ucapan, do'a, dan perhatian yang diberikan.</p>
       <div>
         <p class="arabic-text">جَزَاكُمُ اللهُ خَيْرًا</p>
         <p class="arabic-meaning">"Semoga Allah membalas kalian dengan kebaikan"</p>
       </div>
       <div>
-        <p class="couple-name">Jean & Dwi</p>
+        <p class="coupleple-name">Jean & Dwi</p>
         <p class="family-text">Beserta Keluarga</p>
       </div>
     </div>
@@ -2032,80 +2033,176 @@
         };
         
         database.ref('rsvp').push(rsvpData)
-        .then(() => {
-          showToast(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
-          this.reset();
-        })
-        .catch(() => showToast('Terjadi kesalahan, silakan coba lagi.'));
+          .then(() => {
+            showToast(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
+            this.reset();
+          })
+          .catch(() => showToast('Terjadi kesalahan, silakan coba lagi.'));
       }
     });
     
-    document.getElementById('ucapanForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const namaUcapan = document.getElementById('namaUcapan').value;
+    // Fungsi untuk submit ucapan & doa ke Firebase
+    function submitWish(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('namaUcapan').value;
       const ucapan = document.getElementById('ucapan').value;
       
-      if (namaUcapan && ucapan) {
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-        submitBtn.disabled = true;
-        
-        const ucapanData = {
-          nama: namaUcapan,
-          ucapan: ucapan,
-          timestamp: firebase.database.ServerValue.TIMESTAMP
-        };
-        
-        database.ref('ucapan').push(ucapanData)
+      // Tampilkan loading state
+      const submitButton = event.target.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+      submitButton.disabled = true;
+      
+      // Buat objek ucapan (tanpa privacy)
+      const wish = {
+        name: name,
+        message: ucapan,
+        timestamp: new Date().toISOString()
+      };
+      
+      // Simpan ke Firebase
+      database.ref('ucapan').push(wish)
         .then(() => {
-          showToast(`Terima kasih ${namaUcapan}! Ucapan dan doa Anda telah terkirim.`);
-          this.reset();
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
+          // Reset form
+          event.target.reset();
+          
+          // Kembalikan button ke state semula
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+          
+          // Tampilkan notifikasi
+          showToast(`Terima kasih ${name}! Ucapan & doa Anda telah terkirim.`, "success");
         })
-        .catch(() => {
-          showToast('Terjadi kesalahan, silakan coba lagi.');
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
+        .catch((error) => {
+          console.error('Error saving wish:', error);
+          
+          // Kembalikan button ke state semula
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+          
+          showToast("Gagal mengirim ucapan. Silakan coba lagi.", "error");
         });
-      }
-    });
+    }
     
-    // ==================== LOAD UCAPAN ====================
-    function loadUcapan() {
-      const ucapanList = document.getElementById('ucapanList');
-      database.ref('ucapan').orderByChild('timestamp').on('value', (snapshot) => {
-        ucapanList.innerHTML = '';
-        if (!snapshot.exists()) {
-          ucapanList.innerHTML = '<p style="text-align: center; color: #888;">Belum ada ucapan. Jadilah yang pertama!</p>';
-          return;
-        }
-        
-        const ucapanArray = [];
-        snapshot.forEach((childSnapshot) => {
-          ucapanArray.push({
-            id: childSnapshot.key,
-            ...childSnapshot.val()
+    // Fungsi untuk menampilkan ucapan dari Firebase
+    function displayWishes() {
+      const wishesContainer = document.getElementById('ucapanList');
+      
+      // Tampilkan loading state
+      wishesContainer.innerHTML = '<div class="no-wishes"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
+      
+      // Ambil ucapan dari Firebase
+      database.ref('ucapan').orderByChild('timestamp').once('value')
+        .then((snapshot) => {
+          // Kosongkan container
+          wishesContainer.innerHTML = '';
+          
+          if (!snapshot.exists()) {
+            wishesContainer.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
+            return;
+          }
+          
+          // Ubah snapshot menjadi array dan urutkan dari yang terbaru
+          const wishes = [];
+          snapshot.forEach((childSnapshot) => {
+            wishes.push({
+              id: childSnapshot.key,
+              ...childSnapshot.val()
+            });
+          });
+          
+          // Urutkan dari yang terbaru
+          wishes.reverse();
+          
+          // Tampilkan setiap ucapan
+          wishes.forEach((wish, index) => {
+            // Format tanggal yang mudah dibaca
+            const date = new Date(wish.timestamp);
+            const formattedDate = date.toLocaleDateString('id-ID', { 
+              day: 'numeric', 
+              month: 'long', 
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit'
+            });
+            
+            // Buat elemen untuk ucapan (tanpa privacy)
+            const wishElement = document.createElement('div');
+            wishElement.className = 'ucapan-item';
+            wishElement.style.animationDelay = `${index * 0.1}s`;
+            
+            wishElement.innerHTML = `
+              <div class="wish-header">
+                <h5 class="wish-name">${wish.name}</h5>
+                <span class="wish-date">${formattedDate}</span>
+              </div>
+              <p class="wish-message">${wish.message}</p>
+            `;
+            
+            wishesContainer.appendChild(wishElement);
+          });
+        })
+        .catch((error) => {
+          console.error('Error fetching wishes:', error);
+          wishesContainer.innerHTML = '<div class="no-wishes">Gagal memuat ucapan. Silakan refresh halaman.</div>';
+        });
+    }
+    
+    // Setup real-time listener untuk ucapan baru
+    function setupWishesListener() {
+      database.ref('ucapan').orderByChild('timestamp')
+        .on('value', (snapshot) => {
+          const wishesContainer = document.getElementById('ucapanList');
+          
+          // Kosongkan container
+          wishesContainer.innerHTML = '';
+          
+          if (!snapshot.exists()) {
+            wishesContainer.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
+            return;
+          }
+          
+          // Ubah snapshot menjadi array dan urutkan dari yang terbaru
+          const wishes = [];
+          snapshot.forEach((childSnapshot) => {
+            wishes.push({
+              id: childSnapshot.key,
+              ...childSnapshot.val()
+            });
+          });
+          
+          // Urutkan dari yang terbaru
+          wishes.reverse();
+          
+          // Tampilkan setiap ucapan
+          wishes.forEach((wish, index) => {
+            // Format tanggal yang mudah dibaca
+            const date = new Date(wish.timestamp);
+            const formattedDate = date.toLocaleDateString('id-ID', { 
+              day: 'numeric', 
+                month: 'long', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            // Buat elemen untuk ucapan (tanpa privacy)
+            const wishElement = document.createElement('div');
+            wishElement.className = 'ucapan-item';
+            wishElement.style.animationDelay = `${index * 0.1}s`;
+            
+            wishElement.innerHTML = `
+              <div class="wish-header">
+                <h5 class="wish-name">${wish.name}</h5>
+                <span class="wish-date">${formattedDate}</span>
+              </div>
+              <p class="wish-message">${wish.message}</p>
+            `;
+            
+            wishesContainer.appendChild(wishElement);
           });
         });
-        
-        // Sort by timestamp (newest first)
-        ucapanArray.sort((a, b) => b.timestamp - a.timestamp);
-        
-        ucapanArray.forEach((data) => {
-          const date = data.timestamp ? new Date(data.timestamp).toLocaleDateString('id-ID', { 
-            day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'
-          }) : 'Sedang memuat...';
-          
-          const newUcapan = document.createElement('div');
-          newUcapan.className = 'ucapan-item';
-          newUcapan.innerHTML = `<h4>${data.nama}</h4><p>${data.ucapan}</p><div class="date">${date}</div>`;
-          ucapanList.appendChild(newUcapan);
-        });
-      }, (error) => {
-        ucapanList.innerHTML = '<p style="text-align: center; color: #ff6b6b;">Gagal memuat ucapan. Silakan refresh halaman.</p>';
-      });
     }
     
     // ==================== COUNTDOWN ====================
@@ -2114,10 +2211,10 @@
       const now = Date.now();
       const distance = eventDate - now;
       if (distance <= 0) {
-        document.getElementById('days').innerText = '0';
-        document.getElementById('hours').innerText = '00';
-        document.getElementById('minutes').innerText = '00';
-        document.getElementById('seconds').innerText = '00';
+        document.getElementById("days").innerText = '0';
+        document.getElementById("hours").innerText = '00';
+        document.getElementById("minutes").innerText = '00';
+        document.getElementById("seconds").innerText = '00';
         return;
       }
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -2125,10 +2222,10 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
       
-      document.getElementById('days').innerText = days;
-      document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-      document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-      document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
     }
     
     // ==================== ANIMASI PADA SCROLL ====================
@@ -2232,7 +2329,8 @@
         observer.observe(section);
       });
 
-      loadUcapan();
+      // Setup real-time listener untuk ucapan
+      setupWishesListener();
       updateCountdown();
       setInterval(updateCountdown, 1000);
     });
