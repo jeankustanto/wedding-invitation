@@ -1954,23 +1954,62 @@
   <div id="toast" class="toast"></div>
   <audio id="bgMusic" loop><source src="assets/musik.mp3" type="audio/mpeg"></audio>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
   <script>
-    // ==================== FIREBASE INIT ====================
+    // Konfigurasi Firebase (dari invitation (5).html)
     const firebaseConfig = {
       apiKey: "AIzaSyASqqp-ZfPzZoEFhUSwSmcOAjOA9-W66nM",
       authDomain: "realtime-database-b4b69.firebaseapp.com",
-      databaseURL: "https://undanganku-20687-default-rtdb.asia-southeast1.firebasedatabase.app",
+      databaseURL: "https://realtime-database-b4b69-default-rtdb.firebaseio.com",
       projectId: "realtime-database-b4b69",
-      storageBucket: "realtime-database-b4b69.firebasestorage.app",
+      storageBucket: "realtime-database-b4b69.appspot.com",
       messagingSenderId: "575037702205",
       appId: "1:575037702205:web:e1ce1a0edced7067002a54",
       measurementId: "G-S8NJWYZK4L"
     };
-    
+
     // Inisialisasi Firebase
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
-    
+
+    // === RSVP ===
+    document.getElementById("rsvpForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const konfirmasi = document.getElementById("konfirmasi").value;
+      const waktu = Date.now();
+
+      database.ref("rsvp").push({
+        nama: nama,
+        konfirmasi: konfirmasi,
+        timestamp: waktu
+      });
+
+      alert("RSVP berhasil dikirim!");
+      e.target.reset();
+    });
+
+    // === Ucapan & Doa ===
+    document.getElementById("ucapanForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const nama = document.getElementById("namaUcapan").value;
+      const pesan = document.getElementById("ucapan").value;
+      const waktu = Date.now();
+
+      database.ref("ucapan").push({
+        name: nama,
+        message: pesan,
+        privacy: "publik", // default publik
+        timestamp: waktu
+      });
+
+      alert("Ucapan berhasil dikirim!");
+      e.target.reset();
+    });
+
     // ==================== GLOBAL VARIABLES ====================
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
@@ -2072,161 +2111,6 @@
       navigator.clipboard.writeText(accountNumber).then(() => {
         showToast(`Nomor rekening ${accountNumber} berhasil disalin!`);
       }).catch(() => showToast('Gagal menyalin nomor rekening'));
-    }
-    
-    // ==================== FORM HANDLERS ====================
-    // Handler untuk form RSVP
-    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const nama = document.getElementById('nama').value;
-      const konfirmasi = document.getElementById('konfirmasi').value;
-      
-      if (nama && konfirmasi) {
-        // Tampilkan loading state
-        const submitButton = this.querySelector('button[type="submit"]');
-        const originalText = submitButton.innerHTML;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-        submitButton.disabled = true;
-        
-        const rsvpData = {
-          nama: nama,
-          konfirmasi: konfirmasi,
-          timestamp: firebase.database.ServerValue.TIMESTAMP
-        };
-        
-        // Simpan data ke Firebase
-        database.ref('rsvp').push(rsvpData)
-          .then(() => {
-            // Tampilkan notifikasi sukses
-            showToast(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
-            
-            // Reset form
-            this.reset();
-            
-            // Kembalikan button ke state semula
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
-          })
-          .catch((error) => {
-            console.error('Error saving RSVP data:', error);
-            showToast('Terjadi kesalahan, silakan coba lagi.');
-            
-            // Kembalikan button ke state semula
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
-          });
-      }
-    });
-    
-    // Handler untuk form Ucapan & Doa
-    document.getElementById('ucapanForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const nama = document.getElementById('namaUcapan').value;
-      const ucapan = document.getElementById('ucapan').value;
-      const privasi = document.getElementById('privasi').value;
-      
-      // Tampilkan loading state
-      const submitButton = this.querySelector('button[type="submit"]');
-      const originalText = submitButton.innerHTML;
-      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-      submitButton.disabled = true;
-      
-      const ucapanData = {
-        nama: nama,
-        ucapan: ucapan,
-        privasi: privasi,
-        timestamp: firebase.database.ServerValue.TIMESTAMP
-      };
-      
-      // Simpan data ke Firebase
-      database.ref('ucapan').push(ucapanData)
-        .then(() => {
-          // Tampilkan notifikasi sukses
-          showToast(`Terima kasih ${nama}! Ucapan & doa Anda telah terkirim.`);
-          
-          // Reset form
-          this.reset();
-          
-          // Kembalikan button ke state semula
-          submitButton.innerHTML = originalText;
-          submitButton.disabled = false;
-          
-          // Refresh daftar ucapan
-          loadUcapan();
-        })
-        .catch((error) => {
-          console.error('Error saving ucapan data:', error);
-          showToast('Terjadi kesalahan, silakan coba lagi.');
-          
-          // Kembalikan button ke state semula
-          submitButton.innerHTML = originalText;
-          submitButton.disabled = false;
-        });
-    });
-    
-    // Fungsi untuk memuat ucapan dari Firebase
-    function loadUcapan() {
-      const ucapanList = document.getElementById('ucapanList');
-      
-      // Tampilkan loading state
-      ucapanList.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
-      
-      // Ambil data dari Firebase
-      database.ref('ucapan').orderByChild('timestamp').once('value')
-        .then((snapshot) => {
-          // Kosongkan container
-          ucapanList.innerHTML = '';
-          
-          if (!snapshot.exists()) {
-            ucapanList.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
-            return;
-          }
-          
-          // Ubah snapshot menjadi array dan urutkan dari yang terbaru
-          const ucapanArray = [];
-          snapshot.forEach((childSnapshot) => {
-            ucapanArray.push({
-              id: childSnapshot.key,
-              ...childSnapshot.val()
-            });
-          });
-          
-          // Urutkan dari yang terbaru
-          ucapanArray.reverse();
-          
-          // Tampilkan setiap ucapan
-          ucapanArray.forEach((ucapan, index) => {
-            // Format tanggal yang mudah dibaca
-            const date = new Date(ucapan.timestamp);
-            const formattedDate = date.toLocaleDateString('id-ID', { 
-              day: 'numeric', 
-              month: 'long', 
-              year: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit'
-            });
-            
-            // Buat elemen untuk ucapan
-            const ucapanElement = document.createElement('div');
-            ucapanElement.className = 'ucapan-item';
-            ucapanElement.style.animationDelay = `${index * 0.1}s`;
-            
-            ucapanElement.innerHTML = `
-              <h4>${ucapan.nama}</h4>
-              <p>${ucapan.ucapan}</p>
-              <div class="date">${formattedDate}</div>
-              ${ucapan.privasi === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
-            `;
-            
-            ucapanList.appendChild(ucapanElement);
-          });
-        })
-        .catch((error) => {
-          console.error('Error loading ucapan data:', error);
-          ucapanList.innerHTML = '<div class="error">Gagal memuat ucapan. Silakan refresh halaman.</div>';
-        });
     }
     
     // ==================== COUNTDOWN ====================
@@ -2354,9 +2238,6 @@
         section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(section);
       });
-
-      // Load ucapan saat halaman dimuat
-      loadUcapan();
       
       updateCountdown();
       setInterval(updateCountdown, 1000);
