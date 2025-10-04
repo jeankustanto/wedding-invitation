@@ -1959,33 +1959,85 @@
     const firebaseConfig = {
       apiKey: "AIzaSyASqqp-ZfPzZoEFhUSwSmcOAjOA9-W66nM",
       authDomain: "realtime-database-b4b69.firebaseapp.com",
-      databaseURL: "https://undanganku-20687-default-rtdb.asia-southeast1.firebasedatabase.app/",
+      databaseURL: "https://undanganku-20687-default-rtdb.asia-southeast1.firebasedatabase.app",
       projectId: "realtime-database-b4b69",
       storageBucket: "realtime-database-b4b69.firebasestorage.app",
       messagingSenderId: "575037702205",
       appId: "1:575037702205:web:e1ce1a0edced7067002a54",
       measurementId: "G-S8NJWYZK4L"
     };
+    
+    // Inisialisasi Firebase
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
+    
+    // Cek koneksi Firebase
+    console.log("Firebase initialized:", firebase.app().name);
+    console.log("Database URL:", firebaseConfig.databaseURL);
     
     // ==================== GLOBAL VARIABLES ====================
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
     let playing = false;
+    let userInteracted = false;
     
     // ==================== MUSIC CONTROL ====================
-    musicBtn.addEventListener('click', () => {
-      if (!bgMusic) return;
-      if (playing) { 
-        bgMusic.pause(); 
-        musicBtn.innerHTML = '<i class="fas fa-play"></i>'; 
-      } else { 
-        bgMusic.play().catch(()=>{}); 
-        musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; 
+    // Fungsi untuk memutar musik
+    function playMusic() {
+      if (bgMusic && !playing) {
+        const playPromise = bgMusic.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            playing = true;
+            musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            console.log("Music playing successfully");
+          }).catch(error => {
+            console.log("Autoplay prevented:", error);
+            // Jika autoplay diblokir, tampilkan tombol play
+            playing = false;
+            musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+          });
+        }
       }
-      playing = !playing;
+    }
+    
+    // Fungsi untuk menghentikan musik
+    function pauseMusic() {
+      if (bgMusic && playing) {
+        bgMusic.pause();
+        playing = false;
+        musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+        console.log("Music paused");
+      }
+    }
+    
+    // Event listener untuk tombol musik
+    musicBtn.addEventListener('click', () => {
+      if (playing) {
+        pauseMusic();
+      } else {
+        playMusic();
+      }
     });
+    
+    // Deteksi interaksi pengguna pertama kali untuk autoplay
+    function enableAutoplay() {
+      if (!userInteracted) {
+        userInteracted = true;
+        playMusic();
+        
+        // Hapus event listener setelah interaksi pertama
+        document.removeEventListener('click', enableAutoplay);
+        document.removeEventListener('touchstart', enableAutoplay);
+        document.removeEventListener('scroll', enableAutoplay);
+      }
+    }
+    
+    // Tambahkan event listener untuk berbagai jenis interaksi
+    document.addEventListener('click', enableAutoplay, { once: true });
+    document.addEventListener('touchstart', enableAutoplay, { once: true });
+    document.addEventListener('scroll', enableAutoplay, { once: true });
     
     // ==================== MENU & NAVIGATION ====================
     function toggleMenu() {
@@ -2033,18 +2085,38 @@
       const konfirmasi = document.getElementById('konfirmasi').value;
       
       if (nama && konfirmasi) {
+        // Tampilkan loading state
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+        submitButton.disabled = true;
+        
         const rsvpData = {
           nama: nama,
           konfirmasi: konfirmasi,
           timestamp: firebase.database.ServerValue.TIMESTAMP
         };
         
+        console.log("Submitting RSVP data:", rsvpData);
+        
         database.ref('rsvp').push(rsvpData)
           .then(() => {
+            console.log("RSVP data saved successfully");
             showToast(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
             this.reset();
+            
+            // Kembalikan button ke state semula
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
           })
-          .catch(() => showToast('Terjadi kesalahan, silakan coba lagi.'));
+          .catch((error) => {
+            console.error("Error saving RSVP data:", error);
+            showToast('Terjadi kesalahan, silakan coba lagi.');
+            
+            // Kembalikan button ke state semula
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+          });
       }
     });
     
@@ -2070,9 +2142,12 @@
         timestamp: firebase.database.ServerValue.TIMESTAMP
       };
       
+      console.log("Submitting wish data:", wish);
+      
       // Simpan ke Firebase
       database.ref('ucapan').push(wish)
         .then(() => {
+          console.log("Wish data saved successfully");
           // Reset form
           event.target.reset();
           
@@ -2084,7 +2159,7 @@
           showToast(`Terima kasih ${name}! Ucapan & doa Anda telah terkirim.`);
         })
         .catch((error) => {
-          console.error('Error saving wish:', error);
+          console.error("Error saving wish data:", error);
           
           // Kembalikan button ke state semula
           submitButton.innerHTML = originalText;
@@ -2101,8 +2176,12 @@
       // Tampilkan loading state
       wishesContainer.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
       
+      console.log("Setting up wishes listener...");
+      
       database.ref('ucapan').orderByChild('timestamp')
         .on('value', (snapshot) => {
+          console.log("Received wishes data:", snapshot.val());
+          
           // Kosongkan container
           wishesContainer.innerHTML = '';
           
@@ -2122,6 +2201,8 @@
           
           // Urutkan dari yang terbaru
           wishes.reverse();
+          
+          console.log("Processed wishes:", wishes);
           
           // Tampilkan setiap ucapan
           wishes.forEach((wish, index) => {
@@ -2149,6 +2230,9 @@
             
             wishesContainer.appendChild(wishElement);
           });
+        }, (error) => {
+          console.error("Error listening to wishes:", error);
+          wishesContainer.innerHTML = '<div class="error">Gagal memuat ucapan. Silakan refresh halaman.</div>';
         });
     }
     
@@ -2225,6 +2309,8 @@
     
     // ==================== INITIALIZATION ====================
     document.addEventListener('DOMContentLoaded', function() {
+      console.log("DOM fully loaded");
+      
       // --- FUNGSI UNTUK MENGISI FORM DARI URL ---
       function fillNameFromUrl() {
         // 1. Ambil parameter dari URL
@@ -2281,6 +2367,7 @@
       const ucapanForm = document.getElementById('ucapanForm');
       if (ucapanForm) {
         ucapanForm.addEventListener('submit', submitWish);
+        console.log("Ucapan form event listener attached");
       }
 
       // 2. Panggil fungsi untuk memuat dan mendengarkan perubahan ucapan saat halaman dibuka
@@ -2289,21 +2376,14 @@
       updateCountdown();
       setInterval(updateCountdown, 1000);
       
-      // Auto-play music when page loads
-      const playMusic = () => {
-        bgMusic.play().then(() => {
-          playing = true;
-          musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        }).catch(error => {
-          console.log('Autoplay prevented:', error);
-          // Jika autoplay diblokir, tetap tampilkan tombol play
-          playing = false;
-          musicBtn.innerHTML = '<i class="fas fa-play"></i>';
-        });
-      };
-      
-      // Coba putar musik
-      playMusic();
+      // Coba putar musik saat halaman dimuat
+      // Kita akan mencoba autoplay, tetapi kemungkinan besar akan diblokir oleh browser
+      // Oleh karena itu, kita juga menyiapkan event listener untuk interaksi pengguna
+      setTimeout(() => {
+        if (!userInteracted) {
+          playMusic();
+        }
+      }, 1000);
     });
     
     // Mencegah klik kanan pada seluruh halaman
