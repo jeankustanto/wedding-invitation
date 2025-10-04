@@ -16,7 +16,7 @@
   
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
   
   <style>
     /* ==================== GLOBAL STYLES ==================== */
@@ -86,12 +86,22 @@
       background-image: 
         radial-gradient(circle at 10% 20%, rgba(222, 207, 216, 0.46) 0%, rgba(222, 207, 216, 0) 90%),
         radial-gradient(circle at 90% 80%, rgba(210, 195, 204, 0.46) 0%, rgba(210, 195, 204, 0) 90%);
+      /* Mencegah seleksi teks */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
     
+    /* Izinkan seleksi pada input dan textarea */
     input, select, textarea {
       font-family: var(--font-primary) !important;
       font-size: var(--text-base) !important;
       color: #333 !important;
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
     }
 
     /* ==================== ANIMASI KEYFRAMES ==================== */
@@ -172,10 +182,8 @@
       transform: scale(1.5);
       transform-origin: center;
       transition: transform 0.3s ease;
-    }
-    
-    .ornament img:hover {
-      transform: scale(1.8) rotate(10deg);
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
     }
     
     .basmalah {
@@ -204,9 +212,9 @@
       width: 200px;
       height: 240px;
       margin: 0 auto 15px;
-      border: 8px solid var(--frame-border);
+      border: 8px solid var(--frame-border); /* Dikembalikan ke semula */
       border-radius: 120px 120px 15px 15px;
-      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
+      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%); /* Dikembalikan ke semula */
       position: relative;
       overflow: hidden;
       box-shadow: inset 0 6px 14px rgba(0,0,0,0.25), inset 0 -4px 8px rgba(255,255,255,0.12);
@@ -230,6 +238,13 @@
       object-fit: cover;
       object-position: center top;
       transition: transform 0.5s ease;
+      /* Mencegah drag gambar */
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      pointer-events: none;
     }
     
     .frame:hover img {
@@ -259,7 +274,7 @@
     .mempelai h2 {
       font-family: var(--font-secondary);
       font-weight: 700;
-      font-size: var(--text-xl);
+      font-size: var(--text-3xl); /* Diperbesar dari text-xl */
       color: var(--accent);
       margin-bottom: 4px;
       letter-spacing: var(--letter-normal);
@@ -268,6 +283,13 @@
     
     .mempelai:hover h2 {
       color: var(--btn-bg);
+    }
+    
+    .mempelai p {
+      font-size: var(--text-sm); /* Diperkecil dari text-xl */
+      color: var(--muted);
+      margin: 5px 0;
+      letter-spacing: var(--letter-tight);
     }
     
     /* ==================== PERCANTIK SEPARATOR ==================== */
@@ -321,6 +343,8 @@
       height: auto;
       margin: 0 auto 15px;
       animation: floatRotate 4s ease-in-out infinite;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
     }
     
     .countdown-container h2 {
@@ -500,6 +524,8 @@
       position: relative;
       z-index: 2;
       animation: float 3s ease-in-out infinite;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
     }
     
     .acara-title {
@@ -810,6 +836,8 @@
       margin-left: auto;
       margin-right: auto;
       animation: float 3s ease-in-out infinite;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
     }
     
     .love-story-section h2 {
@@ -1123,6 +1151,8 @@
       display: block;
       opacity: 0.7;
       animation: floatRotate 4s ease-in-out infinite;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
     }
     
     /* ==================== UCAPAN & DOA ==================== */
@@ -1365,7 +1395,7 @@
     
     #penutup p {
       max-width: 320px;
-      margin: 0 auto 30px;
+      margin: 0 auto 15px; /* Diperkecil dari 30px */
       line-height: 1.6;
       color: rgba(255, 255, 255, 0.9);
       font-size: var(--text-base);
@@ -1377,7 +1407,7 @@
     #penutup .arabic-text {
       font-family: var(--font-arabic);
       font-size: var(--text-xl);
-      margin-bottom: 10px;
+      margin-bottom: 5px; /* Diperkecil dari 10px */
       color: #fff;
       letter-spacing: var(--letter-normal);
     }
@@ -1387,6 +1417,7 @@
       font-style: italic;
       color: rgba(255, 255, 255, 0.8);
       letter-spacing: var(--letter-tight);
+      margin-bottom: 10px; /* Diperkecil */
     }
     
     #penutup .couple-name {
@@ -1396,6 +1427,7 @@
       color: #fff;
       letter-spacing: var(--letter-wider);
       text-align: center;
+      margin-bottom: 5px; /* Diperkecil */
       opacity: 0;
       animation: fadeInUp 1s ease 0.9s forwards;
       transition: transform 0.3s ease;
@@ -1409,17 +1441,20 @@
       font-size: var(--text-xl);
       color: rgba(255, 255, 255, 0.9);
       letter-spacing: var(--letter-tight);
+      margin-top: 0; /* Diperkecil */
     }
 
     .footer-image {
       display: block;
-      margin: 40px auto 0;
+      margin: 20px auto 0; /* Diperkecil dari 40px */
       max-width: 100%;
       height: auto;
       width: 420px;
       opacity: 0;
       animation: fadeInUp 1s ease 1.1s forwards;
       transition: transform 0.3s ease;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
     }
 
     .footer-image:hover {
@@ -1427,7 +1462,7 @@
     }
 
     .footer-bride-groom{
-      margin-top:1px ;
+      margin-top:0 ;
       margin-bottom: 0;
       padding-bottom: 0;
     }
@@ -1650,7 +1685,7 @@
     <div class="mempelai">
       <h2>Jean Dwi Kustanto</h2>
       <p><strong>PUTRA DARI</strong></p>
-      <p>Bapak Slamet Budiono (Alm) & Ibu Kuswati</p>
+      <p>Bapak Slamet Budiono (alm) & Ibu Kuswati</p>
     </div>
     
     <div class="separator">
@@ -1720,7 +1755,7 @@
           <div class="acara-number">12</div>
           <div class="acara-year">2025</div>
         </div>
-        <div class="acara-time">16.00 - SELESAI</div>
+        <div class="acara-time">12.00 - selesai</div>
         <div class="acara-location">
           <h3>KEDIAMAN MEMPELAI PRIA</h3>
           <p>Candinegoro RT 001 RW 002, Kec. Wonoayu, Kab. Sidoarjo</p>
@@ -1917,13 +1952,14 @@
     const firebaseConfig = {
       apiKey: "AIzaSyBqKXcY2Q5eQ6nLq9jR7p8oNtMvPqRsWtA",
       authDomain: "jean-dwi-wedding.firebaseapp.com",
+      databaseURL: "https://undangan-jeandwi-default-rtdb.asia-southeast1.firebasedatabase.app",
       projectId: "jean-dwi-wedding",
       storageBucket: "jean-dwi-wedding.appspot.com",
       messagingSenderId: "123456789",
       appId: "1:123456789:web:abcdef123456"
     };
     firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+    const database = firebase.database();
     
     // ==================== GLOBAL VARIABLES ====================
     const musicBtn = document.getElementById('musicBtn');
@@ -1989,10 +2025,13 @@
       const konfirmasi = document.getElementById('konfirmasi').value;
       
       if (nama && konfirmasi) {
-        db.collection('rsvp').add({
-          nama, konfirmasi,
-          timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        })
+        const rsvpData = {
+          nama: nama,
+          konfirmasi: konfirmasi,
+          timestamp: firebase.database.ServerValue.TIMESTAMP
+        };
+        
+        database.ref('rsvp').push(rsvpData)
         .then(() => {
           showToast(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
           this.reset();
@@ -2012,11 +2051,13 @@
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
         submitBtn.disabled = true;
         
-        db.collection('ucapan').add({
+        const ucapanData = {
           nama: namaUcapan,
           ucapan: ucapan,
-          timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        })
+          timestamp: firebase.database.ServerValue.TIMESTAMP
+        };
+        
+        database.ref('ucapan').push(ucapanData)
         .then(() => {
           showToast(`Terima kasih ${namaUcapan}! Ucapan dan doa Anda telah terkirim.`);
           this.reset();
@@ -2034,15 +2075,26 @@
     // ==================== LOAD UCAPAN ====================
     function loadUcapan() {
       const ucapanList = document.getElementById('ucapanList');
-      db.collection('ucapan').orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
+      database.ref('ucapan').orderByChild('timestamp').on('value', (snapshot) => {
         ucapanList.innerHTML = '';
-        if (snapshot.empty) {
+        if (!snapshot.exists()) {
           ucapanList.innerHTML = '<p style="text-align: center; color: #888;">Belum ada ucapan. Jadilah yang pertama!</p>';
           return;
         }
-        snapshot.forEach((doc) => {
-          const data = doc.data();
-          const date = data.timestamp ? data.timestamp.toDate().toLocaleDateString('id-ID', { 
+        
+        const ucapanArray = [];
+        snapshot.forEach((childSnapshot) => {
+          ucapanArray.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+        
+        // Sort by timestamp (newest first)
+        ucapanArray.sort((a, b) => b.timestamp - a.timestamp);
+        
+        ucapanArray.forEach((data) => {
+          const date = data.timestamp ? new Date(data.timestamp).toLocaleDateString('id-ID', { 
             day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'
           }) : 'Sedang memuat...';
           
@@ -2051,7 +2103,7 @@
           newUcapan.innerHTML = `<h4>${data.nama}</h4><p>${data.ucapan}</p><div class="date">${date}</div>`;
           ucapanList.appendChild(newUcapan);
         });
-      }, () => {
+      }, (error) => {
         ucapanList.innerHTML = '<p style="text-align: center; color: #ff6b6b;">Gagal memuat ucapan. Silakan refresh halaman.</p>';
       });
     }
@@ -2194,6 +2246,39 @@
       }
       document.removeEventListener('click', initAudio);
     }, { once: true });
+    
+    // Mencegah klik kanan pada seluruh halaman
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    
+    // Mencegah drag gambar
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    });
+    
+    // Mencegah copy teks (kecuali pada input dan textarea)
+    document.addEventListener('selectstart', function(e) {
+      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        return false;
+      }
+    });
+    
+    // Mencegah copy dengan Ctrl+C/Cmd+C (kecuali pada input dan textarea)
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+        const activeElement = document.activeElement;
+        if (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          return false;
+        }
+      }
+    });
   </script>
 </body>
 </html>
