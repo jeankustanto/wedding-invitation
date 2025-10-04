@@ -1775,7 +1775,7 @@
         <p>Diharapkan kepada tamu undangan dapat mengisi form kehadiran pada acara pernikahan kami</p>
         <form class="rsvp-form" id="rsvpForm">
           <label for="nama">Nama Tamu:</label>
-          <input type="text" id="nama" name="nama" placeholder="Masukkan nama anda">
+          <input type="text" id="nama" name="nama" placeholder="Masukkan nama anda" required>
           
           <label for="konfirmasi">Konfirmasi Kehadiran:</label>
           <select id="konfirmasi" name="konfirmasi" required>
@@ -2341,17 +2341,23 @@
       
       updateCountdown();
       setInterval(updateCountdown, 1000);
+      
+      // Auto-play music when page loads
+      const playMusic = () => {
+        bgMusic.play().then(() => {
+          playing = true;
+          musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        }).catch(error => {
+          console.log('Autoplay prevented:', error);
+          // Jika autoplay diblokir, tetap tampilkan tombol play
+          playing = false;
+          musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+        });
+      };
+      
+      // Coba putar musik
+      playMusic();
     });
-    
-    // Auto-play music on first user interaction
-    document.addEventListener('click', function initAudio() {
-      if (!playing) {
-        bgMusic.play().catch(() => {});
-        musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        playing = true;
-      }
-      document.removeEventListener('click', initAudio);
-    }, { once: true });
     
     // Mencegah klik kanan pada seluruh halaman
     document.addEventListener('contextmenu', function(e) {
