@@ -1971,10 +1971,6 @@
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
     
-    // Cek koneksi Firebase
-    console.log("Firebase initialized:", firebase.app().name);
-    console.log("Database URL:", firebaseConfig.databaseURL);
-    
     // ==================== GLOBAL VARIABLES ====================
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
@@ -2079,8 +2075,10 @@
     }
     
     // ==================== FORM HANDLERS ====================
+    // Handler untuk form RSVP
     document.getElementById('rsvpForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      
       const nama = document.getElementById('nama').value;
       const konfirmasi = document.getElementById('konfirmasi').value;
       
@@ -2097,12 +2095,13 @@
           timestamp: firebase.database.ServerValue.TIMESTAMP
         };
         
-        console.log("Submitting RSVP data:", rsvpData);
-        
+        // Simpan data ke Firebase
         database.ref('rsvp').push(rsvpData)
           .then(() => {
-            console.log("RSVP data saved successfully");
+            // Tampilkan notifikasi sukses
             showToast(`Terima kasih ${nama}! Konfirmasi kehadiran Anda (${konfirmasi === 'hadir' ? 'Hadir' : 'Tidak Hadir'}) telah kami terima.`);
+            
+            // Reset form
             this.reset();
             
             // Kembalikan button ke state semula
@@ -2110,7 +2109,7 @@
             submitButton.disabled = false;
           })
           .catch((error) => {
-            console.error("Error saving RSVP data:", error);
+            console.error('Error saving RSVP data:', error);
             showToast('Terjadi kesalahan, silakan coba lagi.');
             
             // Kembalikan button ke state semula
@@ -2120,94 +2119,87 @@
       }
     });
     
-    // Fungsi untuk submit ucapan & doa ke Firebase
-    function submitWish(event) {
-      event.preventDefault();
+    // Handler untuk form Ucapan & Doa
+    document.getElementById('ucapanForm').addEventListener('submit', function(e) {
+      e.preventDefault();
       
-      const name = document.getElementById('namaUcapan').value;
+      const nama = document.getElementById('namaUcapan').value;
       const ucapan = document.getElementById('ucapan').value;
-      const privacy = document.getElementById('privasi').value;
+      const privasi = document.getElementById('privasi').value;
       
       // Tampilkan loading state
-      const submitButton = event.target.querySelector('button[type="submit"]');
+      const submitButton = this.querySelector('button[type="submit"]');
       const originalText = submitButton.innerHTML;
       submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
       submitButton.disabled = true;
       
-      // Buat objek ucapan
-      const wish = {
-        name: name,
-        message: ucapan,
-        privacy: privacy,
+      const ucapanData = {
+        nama: nama,
+        ucapan: ucapan,
+        privasi: privasi,
         timestamp: firebase.database.ServerValue.TIMESTAMP
       };
       
-      console.log("Submitting wish data:", wish);
-      
-      // Simpan ke Firebase
-      database.ref('ucapan').push(wish)
+      // Simpan data ke Firebase
+      database.ref('ucapan').push(ucapanData)
         .then(() => {
-          console.log("Wish data saved successfully");
+          // Tampilkan notifikasi sukses
+          showToast(`Terima kasih ${nama}! Ucapan & doa Anda telah terkirim.`);
+          
           // Reset form
-          event.target.reset();
+          this.reset();
           
           // Kembalikan button ke state semula
           submitButton.innerHTML = originalText;
           submitButton.disabled = false;
           
-          // Tampilkan notifikasi
-          showToast(`Terima kasih ${name}! Ucapan & doa Anda telah terkirim.`);
+          // Refresh daftar ucapan
+          loadUcapan();
         })
         .catch((error) => {
-          console.error("Error saving wish data:", error);
+          console.error('Error saving ucapan data:', error);
+          showToast('Terjadi kesalahan, silakan coba lagi.');
           
           // Kembalikan button ke state semula
           submitButton.innerHTML = originalText;
           submitButton.disabled = false;
-          
-          showToast("Gagal mengirim ucapan. Silakan coba lagi.");
         });
-    }
+    });
     
-    // Setup real-time listener untuk ucapan baru
-    function setupWishesListener() {
-      const wishesContainer = document.getElementById('ucapanList');
+    // Fungsi untuk memuat ucapan dari Firebase
+    function loadUcapan() {
+      const ucapanList = document.getElementById('ucapanList');
       
       // Tampilkan loading state
-      wishesContainer.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
+      ucapanList.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
       
-      console.log("Setting up wishes listener...");
-      
-      database.ref('ucapan').orderByChild('timestamp')
-        .on('value', (snapshot) => {
-          console.log("Received wishes data:", snapshot.val());
-          
+      // Ambil data dari Firebase
+      database.ref('ucapan').orderByChild('timestamp').once('value')
+        .then((snapshot) => {
           // Kosongkan container
-          wishesContainer.innerHTML = '';
+          ucapanList.innerHTML = '';
           
           if (!snapshot.exists()) {
-            wishesContainer.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
+            ucapanList.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
             return;
           }
           
           // Ubah snapshot menjadi array dan urutkan dari yang terbaru
-          const wishes = [];
+          const ucapanArray = [];
           snapshot.forEach((childSnapshot) => {
-            wishes.push({
+            ucapanArray.push({
               id: childSnapshot.key,
               ...childSnapshot.val()
             });
           });
           
           // Urutkan dari yang terbaru
-          wishes.reverse();
-          
-          console.log("Processed wishes:", wishes);
+          ucapanArray.reverse();
           
           // Tampilkan setiap ucapan
-          wishes.forEach((wish, index) => {
+          ucapanArray.forEach((ucapan, index) => {
             // Format tanggal yang mudah dibaca
-            const date = new Date(wish.timestamp);
+            const date = new Date(ucapan.timestamp);
             const formattedDate = date.toLocaleDateString('id-ID', { 
               day: 'numeric', 
               month: 'long', 
@@ -2217,22 +2209,23 @@
             });
             
             // Buat elemen untuk ucapan
-            const wishElement = document.createElement('div');
-            wishElement.className = 'ucapan-item';
-            wishElement.style.animationDelay = `${index * 0.1}s`;
+            const ucapanElement = document.createElement('div');
+            ucapanElement.className = 'ucapan-item';
+            ucapanElement.style.animationDelay = `${index * 0.1}s`;
             
-            wishElement.innerHTML = `
-              <h4>${wish.name}</h4>
-              <p>${wish.message}</p>
+            ucapanElement.innerHTML = `
+              <h4>${ucapan.nama}</h4>
+              <p>${ucapan.ucapan}</p>
               <div class="date">${formattedDate}</div>
-              ${wish.privacy === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
+              ${ucapan.privasi === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
             `;
             
-            wishesContainer.appendChild(wishElement);
+            ucapanList.appendChild(ucapanElement);
           });
-        }, (error) => {
-          console.error("Error listening to wishes:", error);
-          wishesContainer.innerHTML = '<div class="error">Gagal memuat ucapan. Silakan refresh halaman.</div>';
+        })
+        .catch((error) => {
+          console.error('Error loading ucapan data:', error);
+          ucapanList.innerHTML = '<div class="error">Gagal memuat ucapan. Silakan refresh halaman.</div>';
         });
     }
     
@@ -2362,23 +2355,13 @@
         observer.observe(section);
       });
 
-      // *** PERBAIKAN UTAMA ***
-      // 1. Tambahkan event listener untuk form ucapan agar terhubung ke fungsi submitWish
-      const ucapanForm = document.getElementById('ucapanForm');
-      if (ucapanForm) {
-        ucapanForm.addEventListener('submit', submitWish);
-        console.log("Ucapan form event listener attached");
-      }
-
-      // 2. Panggil fungsi untuk memuat dan mendengarkan perubahan ucapan saat halaman dibuka
-      setupWishesListener();
+      // Load ucapan saat halaman dimuat
+      loadUcapan();
       
       updateCountdown();
       setInterval(updateCountdown, 1000);
       
       // Coba putar musik saat halaman dimuat
-      // Kita akan mencoba autoplay, tetapi kemungkinan besar akan diblokir oleh browser
-      // Oleh karena itu, kita juga menyiapkan event listener untuk interaksi pengguna
       setTimeout(() => {
         if (!userInteracted) {
           playMusic();
