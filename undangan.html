@@ -2329,8 +2329,16 @@
         observer.observe(section);
       });
 
-      // Setup real-time listener untuk ucapan
+      // *** PERBAIKAN UTAMA ***
+      // 1. Tambahkan event listener untuk form ucapan agar terhubung ke fungsi submitWish
+      const ucapanForm = document.getElementById('ucapanForm');
+      if (ucapanForm) {
+        ucapanForm.addEventListener('submit', submitWish);
+      }
+
+      // 2. Panggil fungsi untuk memuat dan mendengarkan perubahan ucapan saat halaman dibuka
       setupWishesListener();
+      
       updateCountdown();
       setInterval(updateCountdown, 1000);
     });
