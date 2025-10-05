@@ -1959,57 +1959,273 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 
   <script>
-    // Konfigurasi Firebase (dari invitation (5).html)
+    // ==================== FIREBASE CONFIGURATION ====================
+    // Ganti dengan konfigurasi Firebase Anda
     const firebaseConfig = {
-      apiKey: "AIzaSyASqqp-ZfPzZoEFhUSwSmcOAjOA9-W66nM",
-      authDomain: "realtime-database-b4b69.firebaseapp.com",
-      databaseURL: "https://realtime-database-b4b69-default-rtdb.firebaseio.com",
-      projectId: "realtime-database-b4b69",
-      storageBucket: "realtime-database-b4b69.appspot.com",
-      messagingSenderId: "575037702205",
-      appId: "1:575037702205:web:e1ce1a0edced7067002a54",
-      measurementId: "G-S8NJWYZK4L"
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      databaseURL: "YOUR_DATABASE_URL",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
     };
-
+    
     // Inisialisasi Firebase
     firebase.initializeApp(firebaseConfig);
+    
+    // Buat referensi ke database
     const database = firebase.database();
+    const rsvpRef = database.ref('rsvp');
+    const wishesRef = database.ref('wishes');
+    
+    // ==================== GLOBAL VARIABLES ====================
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    let playing = false;
+    let userInteracted = false;
+    
+    // ==================== MUSIC CONTROL ====================
+    // ... (semua fungsi musik tetap sama) ...
+    
+    // ==================== MENU & NAVIGATION ====================
+    // ... (semua fungsi menu tetap sama) ...
+    
+    // ==================== UTILITY FUNCTIONS ====================
+    function showToast(message, type = "success") {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      
+      // Set warna background berdasarkan tipe
+      if (type === "success") {
+        toast.style.background = "rgba(122, 89, 109, 0.9)";
+      } else if (type === "error") {
+        toast.style.background = "rgba(220, 53, 69, 0.9)";
+      }
+      
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
 
-    // === RSVP ===
-    document.getElementById("rsvpForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      const nama = document.getElementById("nama").value;
-      const konfirmasi = document.getElementById("konfirmasi").value;
-      const waktu = Date.now();
-
-      database.ref("rsvp").push({
-        nama: nama,
-        konfirmasi: konfirmasi,
-        timestamp: waktu
-      });
-
-      alert("RSVP berhasil dikirim!");
-      e.target.reset();
-    });
-
-    // === Ucapan & Doa ===
-    document.getElementById("ucapanForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      const nama = document.getElementById("namaUcapan").value;
-      const pesan = document.getElementById("ucapan").value;
-      const waktu = Date.now();
-
-      database.ref("ucapan").push({
-        name: nama,
-        message: pesan,
-        privacy: "publik", // default publik
-        timestamp: waktu
-      });
-
-      alert("Ucapan berhasil dikirim!");
-      e.target.reset();
-    });
-
+    function saveEvent() {
+      showToast('Fitur simpan acara akan segera tersedia');
+    }
+    
+    function copyAccount(accountNumber) {
+      navigator.clipboard.writeText(accountNumber).then(() => {
+        showToast(`Nomor rekening ${accountNumber} berhasil disalin!`);
+      }).catch(() => showToast('Gagal menyalin nomor rekening', "error"));
+    }
+    
+    // ==================== FIREBASE FUNCTIONS ====================
+    // Fungsi untuk submit RSVP ke Firebase
+    function submitRSVP(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('nama').value;
+        const attendance = document.getElementById('konfirmasi').value;
+        
+        // Tampilkan loading state
+        const submitButton = event.target.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+        submitButton.disabled = true;
+        
+        // Buat objek RSVP
+        const rsvp = {
+            name: name,
+            attendance: attendance,
+            timestamp: new Date().toISOString()
+        };
+        
+        // Simpan ke Firebase
+        rsvpRef.push(rsvp)
+            .then(() => {
+                // Reset form
+                event.target.reset();
+                
+                // Kembalikan button ke state semula
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                
+                // Tampilkan notifikasi
+                let attendanceText = attendance === 'hadir' ? 'Hadir' : 'Tidak Hadir';
+                showToast(`Terima kasih ${name}! Konfirmasi kehadiran Anda telah diterima. Status: ${attendanceText}`, "success");
+            })
+            .catch((error) => {
+                console.error('Error saving RSVP:', error);
+                
+                // Kembalikan button ke state semula
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                
+                showToast("Gagal mengirim konfirmasi. Silakan coba lagi.", "error");
+            });
+    }
+    
+    // Fungsi untuk submit ucapan & doa ke Firebase
+    function submitWish(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('namaUcapan').value;
+        const message = document.getElementById('ucapan').value;
+        const privacy = document.getElementById('privasi').value;
+        
+        // Tampilkan loading state
+        const submitButton = event.target.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+        submitButton.disabled = true;
+        
+        // Buat objek ucapan
+        const wish = {
+            name: name,
+            message: message,
+            privacy: privacy,
+            timestamp: new Date().toISOString()
+        };
+        
+        // Simpan ke Firebase
+        wishesRef.push(wish)
+            .then(() => {
+                // Reset form
+                event.target.reset();
+                
+                // Kembalikan button ke state semula
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                
+                // Tampilkan notifikasi
+                showToast(`Terima kasih ${name}! Ucapan & doa Anda telah terkirim.`, "success");
+            })
+            .catch((error) => {
+                console.error('Error saving wish:', error);
+                
+                // Kembalikan button ke state semula
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                
+                showToast("Gagal mengirim ucapan. Silakan coba lagi.", "error");
+            });
+    }
+    
+    // Fungsi untuk menampilkan ucapan dari Firebase
+    function displayWishes() {
+        const wishesContainer = document.getElementById('ucapanList');
+        
+        // Tampilkan loading state
+        wishesContainer.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
+        
+        // Ambil ucapan dari Firebase
+        wishesRef.orderByChild('timestamp').once('value')
+            .then((snapshot) => {
+                // Kosongkan container
+                wishesContainer.innerHTML = '';
+                
+                if (!snapshot.exists()) {
+                    wishesContainer.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
+                    return;
+                }
+                
+                // Ubah snapshot menjadi array dan urutkan dari yang terbaru
+                const wishes = [];
+                snapshot.forEach((childSnapshot) => {
+                    wishes.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    });
+                });
+                
+                // Urutkan dari yang terbaru
+                wishes.reverse();
+                
+                // Tampilkan setiap ucapan
+                wishes.forEach((wish, index) => {
+                    // Format tanggal
+                    const date = new Date(wish.timestamp);
+                    const formattedDate = date.toLocaleDateString('id-ID', { 
+                        day: 'numeric', 
+                        month: 'long', 
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    
+                    // Buat elemen untuk ucapan
+                    const wishElement = document.createElement('div');
+                    wishElement.className = 'ucapan-item';
+                    wishElement.style.animationDelay = `${index * 0.1}s`;
+                    
+                    wishElement.innerHTML = `
+                        <h4>${wish.name}</h4>
+                        <p>${wish.message}</p>
+                        <div class="date">${formattedDate}</div>
+                        ${wish.privacy === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
+                    `;
+                    
+                    wishesContainer.appendChild(wishElement);
+                });
+            })
+            .catch((error) => {
+                console.error('Error fetching wishes:', error);
+                wishesContainer.innerHTML = '<div class="no-wishes">Gagal memuat ucapan. Silakan refresh halaman.</div>';
+            });
+    }
+    
+    // Setup real-time listener untuk ucapan baru
+    function setupWishesListener() {
+        wishesRef.orderByChild('timestamp')
+            .on('value', (snapshot) => {
+                const wishesContainer = document.getElementById('ucapanList');
+                
+                // Kosongkan container
+                wishesContainer.innerHTML = '';
+                
+                if (!snapshot.exists()) {
+                    wishesContainer.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
+                    return;
+                }
+                
+                // Ubah snapshot menjadi array dan urutkan dari yang terbaru
+                const wishes = [];
+                snapshot.forEach((childSnapshot) => {
+                    wishes.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    });
+                });
+                
+                // Urutkan dari yang terbaru
+                wishes.reverse();
+                
+                // Tampilkan setiap ucapan
+                wishes.forEach((wish, index) => {
+                    // Format tanggal
+                    const date = new Date(wish.timestamp);
+                    const formattedDate = date.toLocaleDateString('id-ID', { 
+                        day: 'numeric', 
+                        month: 'long', 
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    
+                    // Buat elemen untuk ucapan
+                    const wishElement = document.createElement('div');
+                    wishElement.className = 'ucapan-item';
+                    wishElement.style.animationDelay = `${index * 0.1}s`;
+                    
+                    wishElement.innerHTML = `
+                        <h4>${wish.name}</h4>
+                        <p>${wish.message}</p>
+                        <div class="date">${formattedDate}</div>
+                        ${wish.privacy === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
+                    `;
+                    
+                    wishesContainer.appendChild(wishElement);
+                });
+            });
+    }
     // ==================== GLOBAL VARIABLES ====================
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
