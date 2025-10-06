@@ -43,7 +43,7 @@
       --menu-bg: rgba(0, 0, 0, 0.5);
       --menu-border: #ffcc4d;
       --name-color: #9d7b94;
-      --border-color: #e4d6dd; /* DITAMBAHKAN */
+      --border-color: #e4d6dd;
       
       /* Typography Variables */
       --font-primary: 'Roboto', sans-serif;
@@ -87,14 +87,12 @@
       background-image: 
         radial-gradient(circle at 10% 20%, rgba(222, 207, 216, 0.46) 0%, rgba(222, 207, 216, 0) 90%),
         radial-gradient(circle at 90% 80%, rgba(210, 195, 204, 0.46) 0%, rgba(210, 195, 204, 0) 90%);
-      /* Mencegah seleksi teks */
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
     }
     
-    /* Izinkan seleksi pada input dan textarea */
     input, select, textarea {
       font-family: var(--font-primary) !important;
       font-size: var(--text-base) !important;
@@ -168,7 +166,7 @@
     .bottom-section {
       background-color: var(--bottom-section-bg);
       color: #fff;
-      padding-bottom: 0; /* Changed from 60px */
+      padding-bottom: 0;
     }
 
     /* ==================== MEMPELAI ==================== */
@@ -183,7 +181,6 @@
       transform: scale(1.5);
       transform-origin: center;
       transition: transform 0.3s ease;
-      /* Mencegah klik kanan pada gambar */
       pointer-events: none;
     }
     
@@ -213,9 +210,9 @@
       width: 200px;
       height: 240px;
       margin: 0 auto 15px;
-      border: 8px solid var(--frame-border); /* Dikembalikan ke semula */
+      border: 8px solid var(--frame-border);
       border-radius: 120px 120px 15px 15px;
-      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%); /* Dikembalikan ke semula */
+      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%);
       position: relative;
       overflow: hidden;
       box-shadow: inset 0 6px 14px rgba(0,0,0,0.25), inset 0 -4px 8px rgba(255,255,255,0.12);
@@ -239,7 +236,6 @@
       object-fit: cover;
       object-position: center top;
       transition: transform 0.5s ease;
-      /* Mencegah drag gambar */
       -webkit-user-drag: none;
       -khtml-user-drag: none;
       -moz-user-drag: none;
@@ -275,7 +271,7 @@
     .mempelai h2 {
       font-family: var(--font-secondary);
       font-weight: 700;
-      font-size: var(--text-3xl); /* Diperbesar dari text-xl */
+      font-size: var(--text-3xl);
       color: var(--accent);
       margin-bottom: 4px;
       letter-spacing: var(--letter-normal);
@@ -287,7 +283,7 @@
     }
     
     .mempelai p {
-      font-size: var(--text-sm); /* Diperkecil dari text-xl */
+      font-size: var(--text-sm);
       color: var(--muted);
       margin: 5px 0;
       letter-spacing: var(--letter-tight);
@@ -344,7 +340,6 @@
       height: auto;
       margin: 0 auto 15px;
       animation: floatRotate 4s ease-in-out infinite;
-      /* Mencegah klik kanan pada gambar */
       pointer-events: none;
     }
     
@@ -525,7 +520,6 @@
       position: relative;
       z-index: 2;
       animation: float 3s ease-in-out infinite;
-      /* Mencegah klik kanan pada gambar */
       pointer-events: none;
     }
     
@@ -837,7 +831,6 @@
       margin-left: auto;
       margin-right: auto;
       animation: float 3s ease-in-out infinite;
-      /* Mencegah klik kanan pada gambar */
       pointer-events: none;
     }
     
@@ -1152,7 +1145,6 @@
       display: block;
       opacity: 0.7;
       animation: floatRotate 4s ease-in-out infinite;
-      /* Mencegah klik kanan pada gambar */
       pointer-events: none;
     }
     
@@ -1290,7 +1282,6 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
-    /* Wishes Container - Menggunakan struktur dari kode 2 */
     .wishes-container {
       max-height: 400px;
       overflow-y: auto;
@@ -1410,7 +1401,7 @@
     
     #penutup p {
       max-width: 320px;
-      margin: 0 auto 15px; /* Diperkecil dari 30px */
+      margin: 0 auto 15px;
       line-height: 1.6;
       color: rgba(255, 255, 255, 0.9);
       font-size: var(--text-base);
@@ -1422,7 +1413,7 @@
     #penutup .arabic-text {
       font-family: var(--font-arabic);
       font-size: var(--text-xl);
-      margin-bottom: 5px; /* Diperkecil dari 10px */
+      margin-bottom: 5px;
       color: #fff;
       letter-spacing: var(--letter-normal);
     }
@@ -1432,7 +1423,7 @@
       font-style: italic;
       color: rgba(255, 255, 255, 0.8);
       letter-spacing: var(--letter-tight);
-      margin-bottom: 10px; /* Diperkecil */
+      margin-bottom: 10px;
     }
     
     #penutup .couple-name {
@@ -1442,7 +1433,7 @@
       color: #fff;
       letter-spacing: var(--letter-wider);
       text-align: center;
-      margin-bottom: 5px; /* Diperkecil */
+      margin-bottom: 5px;
       opacity: 0;
       animation: fadeInUp 1s ease 0.9s forwards;
       transition: transform 0.3s ease;
@@ -1456,19 +1447,18 @@
       font-size: var(--text-xl);
       color: rgba(255, 255, 255, 0.9);
       letter-spacing: var(--letter-tight);
-      margin-top: 0; /* Diperkecil */
+      margin-top: 0;
     }
 
     .footer-image {
       display: block;
-      margin: 20px auto 0; /* Diperkecil dari 40px */
+      margin: 20px auto 0;
       max-width: 100%;
       height: auto;
       width: 420px;
       opacity: 0;
       animation: fadeInUp 1s ease 1.1s forwards;
       transition: transform 0.3s ease;
-      /* Mencegah klik kanan pada gambar */
       pointer-events: none;
     }
 
@@ -1644,10 +1634,10 @@
 
     /* ==================== ANIMASI HIGHLIGHT INPUT ==================== */
     .highlight-animation {
-      border-color: #ffcc4d !important; /* Warna emas untuk menonjol */
-      box-shadow: 0 0 15px rgba(255, 204, 77, 0.7) !important; /* Efek cahaya */
+      border-color: #ffcc4d !important;
+      box-shadow: 0 0 15px rgba(255, 204, 77, 0.7) !important;
       transform: scale(1.02);
-      transition: all 0.5s ease; /* Animasi halus */
+      transition: all 0.5s ease;
     }
     
     /* ==================== RESPONSIVE ==================== */
@@ -1892,7 +1882,7 @@
           <div class="address-info">Candinegoro RT 001 RW 002, Kec. Wonoayu, Kab. Sidoarjo</div>
           <div class="recipient">Jean Dwi Kustanto</div>
           <div class="contact">+6285157998815</div>
-          <a href="https://wa.me/+628515799881?text=Assalamu'alaikum%20kak,%20saya%20sudah%20melakukan%20transfer%20kado%20pernikahan.%20Mohon%20konfirmasi%20ya.%20Terima%20kasih." class="whatsapp-btn" target="_blank">
+          <a href="https://wa.me/6295157998815?text=Assalamu'alaikum%20kak,%20saya%20sudah%20melakukan%20transfer%20kado%20pernikahan.%20Mohon%20konfirmasi%20ya.%20Terima%20kasih." class="whatsapp-btn" target="_blank">
             <i class="fab fa-whatsapp"></i> KONFIRMASI WHATSAPP
           </a>
         </div>
@@ -1932,7 +1922,6 @@
         </div>
       </div>
       
-      <!-- Area untuk menampilkan ucapan -->
       <div class="mt-4">
         <h3 class="section-title" style="font-size: 1.4rem;">Ucapan & Doa dari Tamu</h3>
         <div id="wishes-container" class="wishes-container">
@@ -1987,7 +1976,7 @@
 
   <script>
     // ==================== FIREBASE CONFIGURATION ====================
-    // Inisialisasi Firebase
+    console.log("Firebase script loaded.");
     const firebaseConfig = {
       apiKey: "AIzaSyBg6EGMrQWLWX5HjlV9jAXU4-zhq4iltCo",
       authDomain: "undangan-jeandwi.firebaseapp.com",
@@ -1999,13 +1988,13 @@
       measurementId: "G-N49XBBL4P3"
     };
     
-    // Inisialisasi Firebase
     firebase.initializeApp(firebaseConfig);
+    console.log("Firebase initialized.");
     
-    // Buat referensi ke database
     const database = firebase.database();
     const rsvpRef = database.ref('rsvp');
     const wishesRef = database.ref('wishes');
+    console.log("Firebase references created.");
     
     // ==================== GLOBAL VARIABLES ====================
     const musicBtn = document.getElementById('musicBtn');
@@ -2014,19 +2003,15 @@
     let userInteracted = false;
     
     // ==================== MUSIC CONTROL ====================
-    // Fungsi untuk memutar musik
     function playMusic() {
       if (bgMusic && !playing) {
         const playPromise = bgMusic.play();
-        
         if (playPromise !== undefined) {
           playPromise.then(() => {
             playing = true;
             musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            console.log("Music playing successfully");
           }).catch(error => {
             console.log("Autoplay prevented:", error);
-            // Jika autoplay diblokir, tampilkan tombol play
             playing = false;
             musicBtn.innerHTML = '<i class="fas fa-play"></i>';
           });
@@ -2034,17 +2019,14 @@
       }
     }
     
-    // Fungsi untuk menghentikan musik
     function pauseMusic() {
       if (bgMusic && playing) {
         bgMusic.pause();
         playing = false;
         musicBtn.innerHTML = '<i class="fas fa-play"></i>';
-        console.log("Music paused");
       }
     }
     
-    // Event listener untuk tombol musik
     musicBtn.addEventListener('click', () => {
       if (playing) {
         pauseMusic();
@@ -2053,20 +2035,16 @@
       }
     });
     
-    // Deteksi interaksi pengguna pertama kali untuk autoplay
     function enableAutoplay() {
       if (!userInteracted) {
         userInteracted = true;
         playMusic();
-        
-        // Hapus event listener setelah interaksi pertama
         document.removeEventListener('click', enableAutoplay);
         document.removeEventListener('touchstart', enableAutoplay);
         document.removeEventListener('scroll', enableAutoplay);
       }
     }
     
-    // Tambahkan event listener untuk berbagai jenis interaksi
     document.addEventListener('click', enableAutoplay, { once: true });
     document.addEventListener('touchstart', enableAutoplay, { once: true });
     document.addEventListener('scroll', enableAutoplay, { once: true });
@@ -2096,14 +2074,11 @@
     function showToast(message, type = "success") {
       const toast = document.getElementById('toast');
       toast.textContent = message;
-      
-      // Set warna background berdasarkan tipe
       if (type === "success") {
         toast.style.background = "rgba(122, 89, 109, 0.9)";
       } else if (type === "error") {
         toast.style.background = "rgba(220, 53, 69, 0.9)";
       }
-      
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 3000);
     }
@@ -2119,10 +2094,8 @@
     }
     
     // ==================== FIREBASE FUNCTIONS ====================
-    // Fungsi untuk menangani error Firebase
     function handleFirebaseError(error, operation) {
       console.error(`Error ${operation}:`, error);
-      
       if (error.code === 'PERMISSION_DENIED') {
         showToast("Anda tidak memiliki izin untuk melakukan operasi ini", "error");
       } else if (error.code === 'NETWORK_ERROR') {
@@ -2132,75 +2105,56 @@
       }
     }
     
-    // Fungsi untuk submit RSVP ke Firebase
     function submitRSVP(event) {
       event.preventDefault();
-      
       const name = document.getElementById('nama').value.trim();
       const attendance = document.getElementById('konfirmasi').value;
-      
       if (!name || !attendance) {
         showToast("Harap isi semua field", "error");
         return;
       }
-      
-      // Tampilkan loading state
       const submitButton = event.target.querySelector('button[type="submit"]');
       const originalText = submitButton.innerHTML;
       submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
       submitButton.disabled = true;
-      
-      // Buat objek RSVP
-      const rsvp = {
-        name: name,
-        attendance: attendance,
-        timestamp: new Date().toISOString()
-      };
-      
-      // Simpan ke Firebase
+      const rsvp = { name: name, attendance: attendance, timestamp: new Date().toISOString() };
       rsvpRef.push(rsvp)
         .then(() => {
-          // Reset form
           event.target.reset();
-          
-          // Kembalikan button ke state semula
           submitButton.innerHTML = originalText;
           submitButton.disabled = false;
-          
-          // Tampilkan notifikasi
           let attendanceText = attendance === 'hadir' ? 'Hadir' : 'Tidak Hadir';
           showToast(`Terima kasih ${name}! Konfirmasi kehadiran Anda telah diterima. Status: ${attendanceText}`, "success");
         })
         .catch((error) => {
           handleFirebaseError(error, "menyimpan RSVP");
-          
-          // Kembalikan button ke state semula
           submitButton.innerHTML = originalText;
           submitButton.disabled = false;
         });
     }
     
-    // ==================== FUNGSI UCAPAN & DOA (PERBAIKAN) ====================
-    // Fungsi untuk submit ucapan & doa ke Firebase
+    // ==================== FUNGSI UCAPAN & DOA (FINAL) ====================
     function submitWish(event) {
       event.preventDefault();
-      
+      console.log("submitWish function started.");
+
       const name = document.getElementById('namaUcapan').value.trim();
       const message = document.getElementById('ucapan').value.trim();
       const privacy = document.getElementById('privasi').value;
       
+      console.log("Form values:", { name, message, privacy });
+
       if (!name || !message) {
         showToast("Harap isi nama dan ucapan", "error");
+        console.log("Validation failed: name or message is empty.");
         return;
       }
       
-      // Tampilkan loading state
       const submitButton = event.target.querySelector('button[type="submit"]');
       const originalText = submitButton.innerHTML;
       submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
       submitButton.disabled = true;
       
-      // Buat objek ucapan
       const wish = {
         name: name,
         message: message,
@@ -2208,107 +2162,39 @@
         timestamp: new Date().toISOString()
       };
       
-      // Simpan ke Firebase
+      console.log("Attempting to save wish to Firebase:", wish);
+      
       wishesRef.push(wish)
         .then(() => {
-          // Reset form
+          console.log("Wish successfully saved to Firebase.");
           event.target.reset();
-          
-          // Kembalikan button ke state semula
           submitButton.innerHTML = originalText;
           submitButton.disabled = false;
-          
-          // Tampilkan notifikasi
           showToast(`Terima kasih ${name}! Ucapan & doa Anda telah terkirim.`, "success");
         })
         .catch((error) => {
+          console.error("Error saving wish to Firebase:", error);
           handleFirebaseError(error, "menyimpan ucapan");
-          
-          // Kembalikan button ke state semula
           submitButton.innerHTML = originalText;
           submitButton.disabled = false;
         });
     }
     
-    // Fungsi untuk menampilkan ucapan dari Firebase
-    function displayWishes() {
-      const wishesContainer = document.getElementById('wishes-container');
-      
-      // Tampilkan loading state
-      wishesContainer.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
-      
-      // Ambil ucapan dari Firebase
-      wishesRef.orderByChild('timestamp').once('value')
-        .then((snapshot) => {
-          // Kosongkan container
-          wishesContainer.innerHTML = '';
-          
-          if (!snapshot.exists()) {
-            wishesContainer.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
-            return;
-          }
-          
-          // Ubah snapshot menjadi array dan urutkan dari yang terbaru
-          const wishes = [];
-          snapshot.forEach((childSnapshot) => {
-            wishes.push({
-              id: childSnapshot.key,
-              ...childSnapshot.val()
-            });
-          });
-          
-          // Urutkan dari yang terbaru
-          wishes.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-          
-          // Tampilkan setiap ucapan
-          wishes.forEach((wish, index) => {
-            // Format tanggal
-            const date = new Date(wish.timestamp);
-            const formattedDate = date.toLocaleDateString('id-ID', { 
-              day: 'numeric', 
-              month: 'long', 
-              year: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit'
-            });
-            
-            // Buat elemen untuk ucapan
-            const wishElement = document.createElement('div');
-            wishElement.className = 'wish-item';
-            wishElement.style.animationDelay = `${index * 0.1}s`;
-            
-            wishElement.innerHTML = `
-              <div class="wish-header">
-                <h5 class="wish-name">${wish.name}</h5>
-                <span class="wish-date">${formattedDate}</span>
-              </div>
-              <p class="wish-message">${wish.message}</p>
-              ${wish.privacy === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
-            `;
-            
-            wishesContainer.appendChild(wishElement);
-          });
-        })
-        .catch((error) => {
-          handleFirebaseError(error, "memuat ucapan");
-          wishesContainer.innerHTML = '<div class="no-wishes">Gagal memuat ucapan. Silakan refresh halaman.</div>';
-        });
-    }
-    
-    // Setup real-time listener untuk ucapan baru
     function setupWishesListener() {
+      console.log("Setting up real-time wishes listener...");
+      const wishesContainer = document.getElementById('wishes-container');
+      wishesContainer.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
+
       wishesRef.orderByChild('timestamp').on('value', (snapshot) => {
-        const wishesContainer = document.getElementById('wishes-container');
-        
-        // Kosongkan container
+        console.log("Firebase listener received new data.");
         wishesContainer.innerHTML = '';
         
         if (!snapshot.exists()) {
+          console.log("No wishes found in database.");
           wishesContainer.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
           return;
         }
         
-        // Ubah snapshot menjadi array dan urutkan dari yang terbaru
         const wishes = [];
         snapshot.forEach((childSnapshot) => {
           wishes.push({
@@ -2317,22 +2203,16 @@
           });
         });
         
-        // Urutkan dari yang terbaru
         wishes.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        console.log("Processed and sorted wishes:", wishes);
         
-        // Tampilkan setiap ucapan
         wishes.forEach((wish, index) => {
-          // Format tanggal
           const date = new Date(wish.timestamp);
           const formattedDate = date.toLocaleDateString('id-ID', { 
-            day: 'numeric', 
-            month: 'long', 
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
+            day: 'numeric', month: 'long', year: 'numeric',
+            hour: '2-digit', minute: '2-digit'
           });
           
-          // Buat elemen untuk ucapan
           const wishElement = document.createElement('div');
           wishElement.className = 'wish-item';
           wishElement.style.animationDelay = `${index * 0.1}s`;
@@ -2348,6 +2228,10 @@
           
           wishesContainer.appendChild(wishElement);
         });
+      }, (error) => {
+        console.error("Error in wishes listener:", error);
+        handleFirebaseError(error, "memuat ucapan");
+        wishesContainer.innerHTML = '<div class="no-wishes">Gagal memuat ucapan. Silakan refresh halaman.</div>';
       });
     }
     
@@ -2379,7 +2263,6 @@
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -2394,7 +2277,6 @@
       element.addEventListener('focus', function() {
         this.parentElement.style.transform = 'scale(1.02)';
       });
-      
       element.addEventListener('blur', function() {
         this.parentElement.style.transform = 'scale(1)';
       });
@@ -2424,42 +2306,27 @@
     
     // ==================== FUNGSI UNTUK MENGISI FORM DARI URL ====================
     function fillNameFromUrl() {
-      // Ambil parameter dari URL
       const params = new URLSearchParams(window.location.search);
-      const nameFromUrl = params.get('to'); // Cari parameter 'to'
-
-      // Jika parameter 'to' ada
+      const nameFromUrl = params.get('to');
       if (nameFromUrl) {
-        // Decode nama (mengganti '+' dengan spasi) dan bersihkan
         const decodedName = decodeURIComponent(nameFromUrl).trim();
-
-        // Pilih input nama di kedua form
         const rsvpNameInput = document.getElementById('nama');
         const ucapanNameInput = document.getElementById('namaUcapan');
-
-        // Isi nilai input jika elemen ditemukan
         if (rsvpNameInput) {
           rsvpNameInput.value = decodedName;
-          highlightInput(rsvpNameInput); // Panggil fungsi animasi
+          highlightInput(rsvpNameInput);
         }
         if (ucapanNameInput) {
           ucapanNameInput.value = decodedName;
-          highlightInput(ucapanNameInput); // Panggil fungsi animasi
+          highlightInput(ucapanNameInput);
         }
       }
     }
     
-    // ==================== FUNGSI UNTUK MENAMBAHKAN ANIMASI SOROTAN ====================
     function highlightInput(inputElement) {
       if (!inputElement) return;
-      
-      // Tambahkan class untuk animasi
       inputElement.classList.add('highlight-animation');
-      
-      // Fokus pada input
       inputElement.focus();
-      
-      // Hapus class setelah 2.5 detik agar animasi tidak terus berjalan
       setTimeout(() => {
         inputElement.classList.remove('highlight-animation');
       }, 2500);
@@ -2467,21 +2334,19 @@
     
     // ==================== INITIALIZATION ====================
     document.addEventListener('DOMContentLoaded', function() {
-      // Jalankan fungsi untuk mengisi nama dari URL
+      console.log("DOM fully loaded and parsed.");
       fillNameFromUrl();
       
-      // Tambahkan event listener untuk form RSVP
       const rsvpForm = document.getElementById('rsvpForm');
       if (rsvpForm) {
         rsvpForm.addEventListener('submit', submitRSVP);
+        console.log("RSVP form event listener attached.");
       }
       
-      // **PERUBAHAN PENTING**: Hapus event listener untuk form ucapan, karena sekarang menggunakan onsubmit langsung di HTML
+      // Listener untuk ucapan sudah diatur via onsubmit di HTML
       
-      // Panggil fungsi untuk menampilkan ucapan
       setupWishesListener();
       
-      // Observe semua sections untuk animasi scroll
       document.querySelectorAll('section').forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(30px)';
@@ -2492,7 +2357,6 @@
       updateCountdown();
       setInterval(updateCountdown, 1000);
       
-      // Coba putar musik saat halaman dimuat
       setTimeout(() => {
         if (!userInteracted) {
           playMusic();
@@ -2500,38 +2364,11 @@
       }, 1000);
     });
     
-    // // Mencegah klik kanan pada seluruh halaman
-    // document.addEventListener('contextmenu', function(e) {
-    //   e.preventDefault();
-    //   return false;
-    // });
-    
-    // Mencegah drag gambar
-    document.addEventListener('dragstart', function(e) {
-      if (e.target.tagName === 'IMG') {
-        e.preventDefault();
-        return false;
-      }
-    });
-    
-    // // Mencegah copy teks (kecuali pada input dan textarea)
-    // document.addEventListener('selectstart', function(e) {
-    //   if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-    //     e.preventDefault();
-    //     return false;
-    //   }
-    // });
-    
-    // // Mencegah copy dengan Ctrl+C/Cmd+C (kecuali pada input dan textarea)
-    // document.addEventListener('keydown', function(e) {
-    //   if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
-    //     const activeElement = document.activeElement;
-    //     if (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA') {
-    //       e.preventDefault();
-    //       return false;
-    //     }
-    //   }
-    // });
+    // Mencegah klik kanan, drag, dan copy
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+    document.addEventListener('selectstart', e => { if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') e.preventDefault(); });
+    document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'c' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') e.preventDefault(); });
   </script>
 </body>
 </html>
