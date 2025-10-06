@@ -1,4 +1,2571 @@
-undangan:2187 Uncaught TypeError: Cannot read properties of undefined (reading 'trim')
-    at HTMLFormElement.submitWish (undangan:2187:62)Understand this error
-6undangan:2187 Uncaught TypeError: Cannot read properties of undefined (reading 'trim')
-    at HTMLFormElement.submitWish (undangan:2187:62)
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Undangan — Jean & Dwi</title>
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=El+Messiri:wght@400;500;700&family=Roboto:wght@400;500;700&family=Amiri&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/logo.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+  
+  <style>
+    /* ==================== GLOBAL STYLES ==================== */
+    :root{
+      --page-bg: #f8f3f7;
+      --outer-ring: #e4d6dd;
+      --inner-panel: #f6ecef;
+      --frame-border: #e4d6dd;
+      --muted: #7a6b75;
+      --accent: #9d7b94;
+      --btn-bg: #9d7b94;
+      --top-section-bg: #f8f2f5;
+      --bottom-section-bg: #7d6d78;
+      --love-bg: #f6f2f7;
+      --love-card-bg: #7a6b75;
+      --amplop-bg: #f8f2f5;
+      --amplop-card-bg: #fff;
+      --countdown-bg: rgba(255, 255, 255, 0.15);
+      --countdown-card-bg: rgba(255, 255, 255, 0.25);
+      --countdown-text: #fff;
+      --countdown-accent: #f8d7da;
+      --ucapan-bg: #f8f2f5;
+      --ucapan-card-bg: #fff;
+      --menu-bg: rgba(0, 0, 0, 0.5);
+      --menu-border: #ffcc4d;
+      --name-color: #9d7b94;
+      
+      /* Typography Variables */
+      --font-primary: 'Roboto', sans-serif;
+      --font-secondary: 'El Messiri', sans-serif;
+      --font-script: 'Pinyon Script', cursive;
+      --font-arabic: 'Amiri', serif;
+      
+      /* Font Sizes */
+      --text-xs: 11px;
+      --text-sm: 12px;
+      --text-base: 13px;
+      --text-lg: 14px;
+      --text-xl: 16px;
+      --text-2xl: 18px;
+      --text-3xl: 20px;
+      --text-4xl: 24px;
+      --text-5xl: 32px;
+      --text-6xl: 42px;
+      
+      /* Letter Spacing */
+      --letter-tight: 0.5px;
+      --letter-normal: 1px;
+      --letter-wide: 1.5px;
+      --letter-wider: 2px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: var(--font-primary);
+      background: var(--page-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: #333333;
+      text-align: center;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(222, 207, 216, 0.46) 0%, rgba(222, 207, 216, 0) 90%),
+        radial-gradient(circle at 90% 80%, rgba(210, 195, 204, 0.46) 0%, rgba(210, 195, 204, 0) 90%);
+      /* Mencegah seleksi teks */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Izinkan seleksi pada input dan textarea */
+    input, select, textarea {
+      font-family: var(--font-primary) !important;
+      font-size: var(--text-base) !important;
+      color: #333 !important;
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+
+    /* ==================== ANIMASI KEYFRAMES ==================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes floatRotate {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 5px rgba(157, 123, 148, 0.5); }
+      50% { box-shadow: 0 0 20px rgba(157, 123, 148, 0.8); }
+    }
+    @keyframes ripple-animation {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* ==================== SECTIONS ==================== */
+    section {
+      padding: 40px 15px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .top-section {
+      background-color: var(--top-section-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .bottom-section {
+      background-color: var(--bottom-section-bg);
+      color: #fff;
+      padding-bottom: 0; /* Changed from 60px */
+    }
+
+    /* ==================== MEMPELAI ==================== */
+    .ornament {
+      margin-bottom: 25px;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .ornament img {
+      width: 80px;
+      height: auto;
+      transform: scale(1.5);
+      transform-origin: center;
+      transition: transform 0.3s ease;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
+    }
+    
+    .basmalah {
+      font-family: var(--font-arabic);
+      font-size: var(--text-xl);
+      color: var(--muted);
+      margin-bottom: 10px;
+      line-height: 1.5;
+      letter-spacing: var(--letter-normal);
+      opacity: 0;
+      animation: fadeInDown 1s ease 0.5s forwards;
+    }
+    
+    .doa {
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 280px;
+      margin: 0 auto 30px;
+      letter-spacing: var(--letter-tight);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.7s forwards;
+    }
+
+    .frame {
+      width: 200px;
+      height: 240px;
+      margin: 0 auto 15px;
+      border: 8px solid var(--frame-border); /* Dikembalikan ke semula */
+      border-radius: 120px 120px 15px 15px;
+      background: radial-gradient(circle at top, #7d6d78 0%, #6a5b65 100%); /* Dikembalikan ke semula */
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 6px 14px rgba(0,0,0,0.25), inset 0 -4px 8px rgba(255,255,255,0.12);
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .frame:hover {
+      transform: scale(1.05);
+      box-shadow: inset 0 6px 14px rgba(0,0,0,0.25), inset 0 -4px 8px rgba(255,255,255,0.12), 0 10px 30px rgba(157, 123, 148, 0.3);
+    }
+    
+    .frame img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.5s ease;
+      /* Mencegah drag gambar */
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      pointer-events: none;
+    }
+    
+    .frame:hover img {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    
+    .mempelai {
+      background: #fff;
+      width: 85%;
+      max-width: 280px;
+      margin: -25px auto 25px;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      position: relative;
+      z-index: 5;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .mempelai:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    
+    .mempelai h2 {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: var(--text-3xl); /* Diperbesar dari text-xl */
+      color: var(--accent);
+      margin-bottom: 4px;
+      letter-spacing: var(--letter-normal);
+      transition: color 0.3s ease;
+    }
+    
+    .mempelai:hover h2 {
+      color: var(--btn-bg);
+    }
+    
+    .mempelai p {
+      font-size: var(--text-sm); /* Diperkecil dari text-xl */
+      color: var(--muted);
+      margin: 5px 0;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    /* ==================== PERCANTIK SEPARATOR ==================== */
+    .separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.5s forwards;
+    }
+    
+    .separator::before, .separator::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--muted), transparent);
+    }
+    
+    .separator::before {
+      margin-right: 15px;
+    }
+    
+    .separator::after {
+      margin-left: 15px;
+    }
+    
+    .separator span {
+      font-size: 24px;
+      color: var(--accent);
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+    
+    /* ==================== COUNTDOWN ==================== */
+    .countdown-container {
+      max-width: 280px;
+      margin: 0 auto 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      border-radius: 15px;
+      background: var(--countdown-bg);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+    
+    .flower {
+      width: 70px;
+      height: auto;
+      margin: 0 auto 15px;
+      animation: floatRotate 4s ease-in-out infinite;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
+    }
+    
+    .countdown-container h2 {
+      font-family: var(--font-script);
+      font-size: var(--text-5xl);
+      margin-bottom: 20px;
+      color: var(--countdown-text);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      letter-spacing: var(--letter-normal);
+      opacity: 0;
+      animation: fadeInDown 1s ease 0.5s forwards;
+    }
+    
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .countdown-item {
+      background: var(--countdown-card-bg);
+      border-radius: 10px;
+      padding: 12px 6px;
+      min-width: 55px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: transform 0.3s ease;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+    
+    .countdown-item:nth-child(1) { animation-delay: 0.6s; }
+    .countdown-item:nth-child(2) { animation-delay: 0.7s; }
+    .countdown-item:nth-child(3) { animation-delay: 0.8s; }
+    .countdown-item:nth-child(4) { animation-delay: 0.9s; }
+    
+    .countdown-item:hover {
+      transform: translateY(-5px) scale(1.05);
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    .countdown-number {
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--countdown-text);
+      line-height: 1;
+      transition: transform 0.3s ease;
+    }
+    
+    .countdown-item:hover .countdown-number {
+      transform: scale(1.2);
+    }
+    
+    .countdown-label {
+      font-size: var(--text-xs);
+      opacity: 0.9;
+      color: var(--countdown-text);
+      text-transform: uppercase;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .save-btn {
+      background: linear-gradient(to right, #e6d6e3, #f0e6ef);
+      color: #6a5b65;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: var(--text-base);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-family: var(--font-primary);
+      letter-spacing: var(--letter-tight);
+      opacity: 0;
+      animation: fadeInUp 1s ease 1s forwards;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .save-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .save-btn:hover::before {
+      left: 100%;
+    }
+    
+    .save-btn:hover {
+      background: linear-gradient(to right, var(--accent), #8d6b7d);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* ==================== ACARA (AKAD & WALIMAH) ==================== */
+    .acara-wrapper {
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto;
+      padding: 10px;
+      border-radius: 15px;
+      background: var(--outer-ring);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+    
+    .akad-wrapper {
+      animation-delay: 0.3s;
+    }
+    
+    .acara-panel {
+      background: var(--inner-panel);
+      border-radius: 10px;
+      padding: 20px 15px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06), inset 0 2px 0 rgba(255,255,255,0.35);
+      text-align: center;
+      color: var(--text-dark);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    
+    .acara-panel:hover {
+      transform: scale(1.02);
+    }
+    
+    .acara-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(246, 236, 239, 0.85);
+      z-index: 1;
+    }
+    
+    .acara-panel > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .akad-wrapper {
+      border-radius: 150px 150px 20px 20px;
+    }
+    .akad-panel {
+      border-radius: 140px 140px 15px 15px;
+      padding: 25px 15px 20px;
+      border: 3px solid rgba(255,255,255,0.45);
+    }
+    .akad-panel::before {
+      border-radius: 140px 140px 15px 15px;
+    }
+    
+    .acara-ornament {
+      width: 100px !important;
+      height: auto;
+      margin-bottom: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.8;
+      position: relative;
+      z-index: 2;
+      animation: float 3s ease-in-out infinite;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
+    }
+    
+    .acara-title {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: var(--text-3xl);
+      color: var(--muted);
+      margin: 4px 0;
+      letter-spacing: var(--letter-normal);
+      transition: transform 0.3s ease;
+    }
+    
+    .acara-panel:hover .acara-title {
+      transform: scale(1.05);
+    }
+    
+    .acara-day {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      margin-top: 4px;
+      color: #222;
+      letter-spacing: var(--letter-tight);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+    
+    .acara-date-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 8px 0 4px;
+      color: #6d5e67;
+      font-weight: 500;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.4s forwards;
+    }
+    
+    .acara-month, .acara-year {
+      font-size: var(--text-sm);
+      color: #5b4f56;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .acara-number {
+      font-size: 36px;
+      color: #b69fb0;
+      font-family: var(--font-secondary);
+      line-height: 1;
+      transition: transform 0.3s ease;
+    }
+    
+    .acara-date-row:hover .acara-number {
+      transform: scale(1.2) rotate(5deg);
+    }
+    
+    .acara-time {
+      margin-top: 5px;
+      font-size: var(--text-xs);
+      color: #6b5b63;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .acara-location {
+      margin-top: 12px;
+    }
+    
+    .acara-location h3 {
+      font-size: var(--text-sm);
+      margin: 5px 0 3px;
+      color: #2d2d2d;
+      letter-spacing: var(--letter-tight);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    
+    .acara-location p {
+      font-size: var(--text-xs);
+      color: #53464d;
+      margin: 1px 0;
+      line-height: 1.3;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .location-btn {
+      display: inline-flex;
+      background: linear-gradient(135deg, var(--btn-bg) 0%, var(--accent) 100%);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-family: var(--font-primary);
+      margin-top: 10px;
+      letter-spacing: var(--letter-tight);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.6s forwards;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .location-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+    }
+    
+    .location-btn:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .location-btn:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, var(--accent) 0%, #6a5b65 100%);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* ==================== RSVP ==================== */
+    .rsvp-wrapper {
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto;
+      padding: 10px;
+      border-radius: 20px 20px 150px 150px;
+      background: var(--outer-ring);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+    
+    .rsvp-panel {
+      background: var(--inner-panel);
+      border-radius: 15px 15px 130px 130px;
+      padding: 25px 15px 45px;
+      border: 3px solid rgba(255,255,255,0.45);
+      box-shadow: inset 0 -8px 16px rgba(0,0,0,0.06), inset 0 2px 0 rgba(255,255,255,0.35);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      color: var(--text-dark);
+      transition: transform 0.3s ease;
+    }
+    
+    .rsvp-panel:hover {
+      transform: scale(1.02);
+    }
+    
+    .rsvp-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(246, 236, 239, 0.85);
+      border-radius: 15px 15px 130px 130px;
+      z-index: 1;
+    }
+    
+    .rsvp-panel > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .rsvp-title {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: var(--text-3xl);
+      color: var(--muted);
+      margin: 4px 0;
+      letter-spacing: var(--letter-normal);
+      opacity: 0;
+      animation: fadeInDown 1s ease 0.3s forwards;
+    }
+    
+    .rsvp-panel p {
+      font-size: var(--text-sm);
+      color: #53464d;
+      margin-bottom: 15px;
+      line-height: 1.5;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .rsvp-form {
+      text-align: center;
+    }
+    
+    .rsvp-form label {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      display: block;
+      margin-bottom: 5px;
+      text-align: left;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .rsvp-form input,
+    .rsvp-form select {
+      width: 100%;
+      height: 40px;
+      padding: 0 12px;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      background-color: #fff;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      color: #333;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239d7b94' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px;
+      padding-right: 35px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+    
+    .rsvp-form input:nth-of-type(1) { animation-delay: 0.5s; }
+    .rsvp-form select { animation-delay: 0.6s; }
+    
+    .rsvp-form input:focus,
+    .rsvp-form select:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(157, 123, 148, 0.2);
+      transform: scale(1.02);
+    }
+    
+    .rsvp-form button {
+      width: auto;
+      min-width: 200px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: var(--text-base);
+      font-weight: 500;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--btn-bg) 0%, var(--accent) 100%);
+      color: #fff;
+      margin: 15px auto 0;
+      display: block;
+      text-align: center;
+      transition: all 0.3s ease;
+      font-family: var(--font-primary);
+      letter-spacing: var(--letter-tight);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.7s forwards;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .rsvp-form button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .rsvp-form button:hover::before {
+      left: 100%;
+    }
+    
+    .rsvp-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* ==================== LOVE STORY ==================== */
+    .love-story-section {
+      background-color: var(--love-bg);
+      padding: 40px 15px;
+      margin: 0 auto 20px;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+    
+    .love-story-section img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      animation: float 3s ease-in-out infinite;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
+    }
+    
+    .love-story-section h2 {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: var(--text-3xl);
+      color: var(--accent);
+      margin-bottom: 15px;
+      letter-spacing: var(--letter-normal);
+      opacity: 0;
+      animation: fadeInDown 1s ease 0.5s forwards;
+    }
+    
+    .love-story-section .quote {
+      font-style: italic;
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: #444;
+      max-width: 320px;
+      margin: 0 auto 25px;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .love-story-section .quote strong {
+      display: block;
+      margin-top: 8px;
+      font-style: normal;
+      font-weight: 500;
+      color: #000;
+    }
+    
+    .story-wrapper {
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto;
+      padding: 10px;
+      border-radius: 15px;
+      background: var(--outer-ring);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: fadeInLeft 1s ease forwards;
+      transition: transform 0.3s ease;
+    }
+    
+    .story-wrapper:nth-of-type(3) { animation-delay: 0.7s; }
+    .story-wrapper:nth-of-type(4) { animation-delay: 0.9s; }
+    .story-wrapper:nth-of-type(5) { animation-delay: 1.1s; }
+    .story-wrapper:nth-of-type(6) { animation-delay: 1.3s; }
+    
+    .story-wrapper:hover {
+      transform: translateX(10px);
+    }
+    
+    .story-panel {
+      background: var(--love-card-bg);
+      border-radius: 10px;
+      padding: 18px 12px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06), inset 0 2px 0 rgba(255,255,255,0.35);
+      text-align: left;
+      color: #fff;
+      transition: transform 0.3s ease;
+    }
+    
+    .story-wrapper:hover .story-panel {
+      transform: scale(1.02);
+    }
+    
+    .story-panel h3 {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: var(--text-xl);
+      margin-bottom: 8px;
+      color: #fff;
+      letter-spacing: var(--letter-normal);
+      transition: transform 0.3s ease;
+    }
+    
+    .story-panel:hover h3 {
+      transform: translateX(5px);
+    }
+    
+    .story-panel p {
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      color: #f2f2f2;
+      text-align: justify;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    /* ==================== AMPLOP DIGITAL ==================== */
+    .amplop-section {
+      background-color: var(--amplop-bg);
+      padding: 40px 15px;
+      margin: 0 auto 20px;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+    
+    .amplop-title {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: var(--text-3xl);
+      color: var(--accent);
+      margin-bottom: 15px;
+      letter-spacing: var(--letter-normal);
+    }
+    
+    .amplop-description {
+      font-size: var(--text-base);
+      line-height: 1.5;
+      color: #555;
+      max-width: 320px;
+      margin: 0 auto 20px;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .account-wrapper {
+      width: 90%;
+      max-width: 300px;
+      margin: 15px auto;
+      padding: 10px;
+      border-radius: 15px;
+      background: var(--outer-ring);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: fadeInRight 1s ease forwards;
+      transition: transform 0.3s ease;
+    }
+    
+    .account-wrapper:nth-of-type(3) { animation-delay: 0.5s; }
+    .account-wrapper:nth-of-type(4) { animation-delay: 0.7s; }
+    
+    .account-wrapper:hover {
+      transform: translateX(-10px);
+    }
+    
+    .account-panel {
+      background: var(--amplop-card-bg);
+      border-radius: 10px;
+      padding: 15px 10px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06), inset 0 2px 0 rgba(255,255,255,0.35);
+      text-align: center;
+      color: #333;
+      transition: transform 0.3s ease;
+    }
+    
+    .account-wrapper:hover .account-panel {
+      transform: scale(1.02);
+    }
+    
+    .account-number {
+      font-family: monospace;
+      font-size: var(--text-xl);
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 4px;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .account-name {
+      font-size: var(--text-sm);
+      color: #555;
+      margin-bottom: 12px;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .copy-btn {
+      background: linear-gradient(135deg, var(--btn-bg) 0%, var(--accent) 100%);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-size: var(--text-base);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-primary);
+      letter-spacing: var(--letter-tight);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .copy-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+    }
+    
+    .copy-btn:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .copy-btn:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, var(--accent) 0%, #6a5b65 100%);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .address-wrapper {
+      width: 90%;
+      max-width: 300px;
+      margin: 15px auto;
+      padding: 10px;
+      border-radius: 15px;
+      background: var(--outer-ring);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: fadeInRight 1s ease 0.9s forwards;
+    }
+    
+    .address-panel {
+      background: var(--amplop-card-bg);
+      border-radius: 10px;
+      padding: 15px 10px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06), inset 0 2px 0 rgba(255,255,255,0.35);
+      text-align: center;
+      color: #333;
+    }
+    
+    .address-title {
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--accent);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .address-info {
+      font-size: var(--text-sm);
+      color: #555;
+      margin-bottom: 12px;
+      line-height: 1.4;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .recipient {
+      font-weight: 500;
+      font-size: var(--text-base);
+      color: #333;
+      margin-bottom: 4px;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .contact {
+      font-size: var(--text-sm);
+      color: #555;
+      margin-bottom: 12px;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .whatsapp-btn {
+      display: inline-flex;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: var(--text-base);
+      transition: all 0.3s ease;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-primary);
+      letter-spacing: var(--letter-tight);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .whatsapp-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .whatsapp-btn:hover::before {
+      left: 100%;
+    }
+    
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .butterfly-ornament {
+      width: 80px;
+      height: auto;
+      margin: 15px auto;
+      display: block;
+      opacity: 0.7;
+      animation: floatRotate 4s ease-in-out infinite;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
+    }
+    
+    /* ==================== UCAPAN & DOA (PERBAIKAN) ==================== */
+    .ucapan-section {
+      background-color: var(--ucapan-bg);
+      padding: 40px 15px;
+      margin: 0 auto 20px;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+    
+    .ucapan-title {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: var(--text-3xl);
+      color: var(--accent);
+      margin-bottom: 15px;
+      letter-spacing: var(--letter-normal);
+    }
+    
+    .ucapan-description {
+      font-size: var(--text-base);
+      line-height: 1.5;
+      color: #555;
+      max-width: 320px;
+      margin: 0 auto 20px;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .ucapan-form-wrapper {
+      width: 90%;
+      max-width: 300px;
+      margin: 25px auto;
+      padding: 10px;
+      border-radius: 15px;
+      background: var(--outer-ring);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: fadeInLeft 1s ease 0.5s forwards;
+    }
+    
+    .ucapan-form-panel {
+      background: var(--ucapan-card-bg);
+      border-radius: 10px;
+      padding: 18px 12px;
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06), inset 0 2px 0 rgba(255,255,255,0.35);
+      text-align: center;
+      color: #333;
+    }
+    
+    .ucapan-form {
+      text-align: left;
+    }
+    
+    .ucapan-form label {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      display: block;
+      margin-bottom: 3px;
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .ucapan-form input,
+    .ucapan-form textarea {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      background-color: #fff;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      transition: all 0.3s ease;
+    }
+    
+    .ucapan-form input:focus,
+    .ucapan-form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(157, 123, 148, 0.2);
+      transform: scale(1.02);
+    }
+    
+    .ucapan-form textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    
+    .ucapan-form button {
+      width: auto;
+      max-width: 90%;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: var(--text-base);
+      font-weight: 500;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--btn-bg) 0%, var(--accent) 100%);
+      color: #fff;
+      margin: 8px auto 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      font-family: var(--font-primary);
+      letter-spacing: var(--letter-tight);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .ucapan-form button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .ucapan-form button:hover::before {
+      left: 100%;
+    }
+    
+    .ucapan-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Wishes Container - Menggunakan struktur dari kode 2 */
+    .wishes-container {
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 10px;
+      margin-top: 20px;
+    }
+    
+    .wishes-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .wishes-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    
+    .wishes-container::-webkit-scrollbar-thumb {
+      background: rgba(157, 123, 148, 0.5);
+      border-radius: 10px;
+    }
+    
+    .wishes-container::-webkit-scrollbar-thumb:hover {
+      background: rgba(157, 123, 148, 0.7);
+    }
+    
+    .wish-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      padding: 15px;
+      margin-bottom: 15px;
+      opacity: 0;
+      animation: fadeInUp 0.5s ease forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .wish-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .wish-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .wish-name {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0;
+    }
+    
+    .wish-date {
+      font-family: var(--font-primary);
+      font-size: var(--text-xs);
+      color: #888;
+    }
+    
+    .wish-message {
+      font-family: var(--font-primary);
+      font-size: var(--text-sm);
+      color: #555;
+      margin: 0;
+      line-height: 1.5;
+    }
+    
+    .wish-privacy {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: var(--text-xs);
+      color: var(--accent);
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+    }
+    
+    .loading i {
+      font-size: 20px;
+      animation: spin 1s linear infinite;
+    }
+    
+    .no-wishes {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-style: italic;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* ==================== PENUTUP ==================== */
+    #penutup {
+      text-align: center;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+    
+    #penutup h2 {
+      font-family: var(--font-script);
+      font-size: var(--text-6xl);
+      margin-bottom: 20px;
+      color: #fff;
+      letter-spacing: var(--letter-normal);
+      opacity: 0;
+      animation: fadeInDown 1s ease 0.5s forwards;
+    }
+    
+    #penutup p {
+      max-width: 320px;
+      margin: 0 auto 15px; /* Diperkecil dari 30px */
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: var(--text-base);
+      letter-spacing: var(--letter-tight);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.7s forwards;
+    }
+    
+    #penutup .arabic-text {
+      font-family: var(--font-arabic);
+      font-size: var(--text-xl);
+      margin-bottom: 5px; /* Diperkecil dari 10px */
+      color: #fff;
+      letter-spacing: var(--letter-normal);
+    }
+    
+    #penutup .arabic-meaning {
+      font-size: var(--text-base);
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: var(--letter-tight);
+      margin-bottom: 10px; /* Diperkecil */
+    }
+    
+    #penutup .couple-name {
+      font-family: var(--font-secondary);
+      font-weight: 700;
+      font-size: var(--text-6xl);
+      color: #fff;
+      letter-spacing: var(--letter-wider);
+      text-align: center;
+      margin-bottom: 5px; /* Diperkecil */
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.9s forwards;
+      transition: transform 0.3s ease;
+    }
+    
+    #penutup .couple-name:hover {
+      transform: scale(1.05);
+    }
+    
+    #penutup .family-text {
+      font-size: var(--text-xl);
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: var(--letter-tight);
+      margin-top: 0; /* Diperkecil */
+    }
+
+    .footer-image {
+      display: block;
+      margin: 20px auto 0; /* Diperkecil dari 40px */
+      max-width: 100%;
+      height: auto;
+      width: 420px;
+      opacity: 0;
+      animation: fadeInUp 1s ease 1.1s forwards;
+      transition: transform 0.3s ease;
+      /* Mencegah klik kanan pada gambar */
+      pointer-events: none;
+    }
+
+    .footer-image:hover {
+      transform: scale(1.05);
+    }
+
+    .footer-bride-groom{
+      margin-top:0 ;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    /* ==================== FLOATING BUTTONS & MENU ==================== */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 100;
+      opacity: 0;
+      animation: fadeInLeft 1s ease 1.5s forwards;
+    }
+    
+    .floating-buttons button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #7a596d 0%, #9a8c9f 100%);
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .floating-buttons button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+    }
+    
+    .floating-buttons button:hover::before {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .floating-buttons button:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    .menu-dropdown {
+      position: fixed;
+      bottom: 70px;
+      left: 20px;
+      background: var(--menu-bg);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 180px;
+      z-index: 99;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+    
+    .menu-dropdown.active {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .menu-item {
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: #fff;
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: var(--letter-tight);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .menu-item::before {
+      content: '';
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      transition: left 0.3s ease;
+    }
+    
+    .menu-item:hover::before {
+      left: 0;
+    }
+    
+    .menu-item:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(5px);
+    }
+    
+    .menu-item i {
+      color: #fff;
+      font-size: 16px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(122, 89, 109, 0.9);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      opacity: 0;
+      transition: all 0.4s ease;
+      z-index: 1000;
+      max-width: 80%;
+      text-align: center;
+      font-size: var(--text-base);
+      letter-spacing: var(--letter-tight);
+    }
+    
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      animation: bounce 0.5s ease;
+    }
+    
+    /* ==================== RIPPLE EFFECT ==================== */
+    button {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(0);
+      animation: ripple-animation 0.6s ease-out;
+    }
+
+    /* ==================== ANIMASI HIGHLIGHT INPUT ==================== */
+    .highlight-animation {
+      border-color: #ffcc4d !important; /* Warna emas untuk menonjol */
+      box-shadow: 0 0 15px rgba(255, 204, 77, 0.7) !important; /* Efek cahaya */
+      transform: scale(1.02);
+      transition: all 0.5s ease; /* Animasi halus */
+    }
+    
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 480px) {
+      .footer-image {
+        width: 90%;
+      }
+      .floating-buttons {
+        bottom: 15px;
+        left: 15px;
+      }
+      .menu-dropdown {
+        bottom: 65px;
+        left: 15px;
+        min-width: 160px;
+      }
+      .mempelai h2 {
+        font-size: var(--text-2xl);
+      }
+      .mempelai p {
+        font-size: var(--text-xs);
+      }
+      .acara-title {
+        font-size: var(--text-2xl);
+      }
+      .countdown-number {
+        font-size: 20px;
+      }
+      .countdown-item {
+        min-width: 45px;
+        padding: 10px 4px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .footer-image {
+        width: 420px;
+      }
+      .floating-buttons {
+        bottom: 25px;
+        left: 25px;
+      }
+      .menu-dropdown {
+        bottom: 80px;
+        left: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== MEMPELAI ==================== -->
+  <section class="top-section" id="mempelai">
+    <div class="ornament">
+      <img src="assets/butterfly.png" alt="Ornament Butterfly">
+    </div>
+    <div class="basmalah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="doa">
+      Assalamu'alaikum Warahmatullahi Wabarakatuh<br><br>
+      Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.<br>
+      Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami,
+    </div>
+
+    <div class="frame">
+      <img src="assets/groom-1.png" alt="Mempelai Pria">
+    </div>
+    <div class="mempelai">
+      <h2>Jean Dwi Kustanto</h2>
+      <p><strong>PUTRA DARI</strong></p>
+      <p>Bapakak Slamet Budiono (alm) & Ibu Kuswati</p>
+    </div>
+    
+    <div class="separator">
+      <span><i class="fas fa-heart"></i></span>
+    </div>
+
+    <div class="frame">
+      <img src="assets/bride-1.png" alt="Mempelai Wanita">
+    </div>
+    <div class="mempelai">
+      <h2>Pujiana Dwi Kusumawati</h2>
+      <p><strong>PUTRI DARI</strong></p>
+      <p>Bapak Sudibyo & Ibu Siswati</p>
+    </div>
+  </section>
+  
+  <!-- ==================== COUNTDOWN ==================== -->
+  <section class="bottom-section" id="countdown">
+    <div class="countdown-container">
+      <img src="assets/flower-bucket.png" alt="Buket Bunga" class="flower">
+      <h2>Menuju Hari Bahagia</h2>
+      <div class="countdown">
+        <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Hari</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Jam</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Menit</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Detik</span></div>
+      </div>
+      <button class="save-btn" onclick="saveEvent()">
+        <i class="far fa-calendar-alt"></i> Simpan Acara
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== ACARA AKAD ==================== -->
+  <section class="top-section" id="akad" style="padding-bottom: 20px;">
+    <div class="acara-wrapper akad-wrapper">
+      <div class="acara-panel akad-panel">
+        <img src="assets/butterfly.png" alt="Ornament Butterfly" class="acara-ornament">
+        <div class="acara-title">AKAD NIKAH</div>
+        <div class="acara-day">SABTU</div>
+        <div class="acara-date-row">
+          <div class="acara-month">OCT</div>
+          <div class="acara-number">08</div>
+          <div class="acara-year">2025</div>
+        </div>
+        <div class="acara-time">08.00 - SELESAI</div>
+        <div class="acara-location">
+          <h3>KEDIAMAN MEMPELAI WANITA</h3>
+          <p><strong>(Rumah Bapak Sudibyo)</strong></p>
+          <p>Jl. Raya Tempuran, Desa Tempuran Kec. Bantaran, Kab. Probolinggo</p>
+          <a class="location-btn" href="https://maps.google.com/?q=-7.8457332%2C113.1792614&z=17&hl=id" target="_blank">
+            <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ACARA WALIMAH ==================== -->
+  <section class="top-section" id="walimah" style="padding-top: 20px; padding-bottom: 20px;">
+    <div class="acara-wrapper">
+      <div class="acara-panel">
+        <div class="acara-title">WALIMATUL 'URS</div>
+        <div class="acara-day">MINGGU</div>
+        <div class="acara-date-row">
+          <div class="acara-month">OCT</div>
+          <div class="acara-number">12</div>
+          <div class="acara-year">2025</div>
+        </div>
+        <div class="acara-time">12.00 - selesai</div>
+        <div class="acara-location">
+          <h3>KEDIAMAN MEMPELAI PRIA</h3>
+          <p>Candinegoro RT 001 RW 002, Kec. Wonoayu, Kab. Sidoarjo</p>
+          <a class="location-btn" href="https://maps.app.goo.gl/xL2mdUejiBm7BWap7" target="_blank">
+            <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== RSVP ==================== -->
+  <section class="top-section" id="rsvp" style="padding-top: 20px;">
+    <div class="rsvp-wrapper">
+      <div class="rsvp-panel">
+        <h2 class="rsvp-title">RSVP</h2>
+        <p>Diharapkan kepada tamu undangan dapat mengisi form kehadiran pada acara pernikahan kami</p>
+        <form class="rsvp-form" id="rsvpForm">
+          <label for="nama">Nama Tamu:</label>
+          <input type="text" id="nama" name="nama" placeholder="Masukkan nama anda" required>
+          
+          <label for="konfirmasi">Konfirmasi Kehadiran:</label>
+          <select id="konfirmasi" name="konfirmasi" required>
+            <option value="">Pilih</option>
+            <option value="hadir">Hadir</option>
+            <option value="tidak">Tidak Hadir</option>
+          </select>
+          
+          <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i> Konfirmasi Kehadiran
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOVE STORY ==================== -->
+  <section class="top-section" id="love-story">
+    <div class="love-story-section">
+      <img src="assets/butterfly.png" alt="Ornament Love Story">
+      <h2>- Love Story -</h2>
+      <div class="quote">
+        "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+        <strong>– QS. Ar-Rum : 21 –</strong>
+      </div>
+      
+      <div class="story-wrapper">
+        <div class="story-panel">
+          <h3>Ta'aruf</h3>
+          <p>Awal bulan Juni, dengan izin Allah, kami memulai langkah pertama menuju jalan yang diridhai-Nya. Bukan dengan janji manis, bukan pula dengan pertemuan tanpa arah, melainkan melalui proses saling memperkenalkan diri secara syar'i. Kami bertukar CV, saling bertanya tentang visi dan misi hidup, tujuan pernikahan, serta hal-hal yang menjadi dasar aqidah dan keimanan, agar saling mengenal lebih dalam dan memahami satu sama lain.</p>
+        </div>
+      </div>
+      
+      <div class="story-wrapper">
+        <div class="story-panel">
+          <h3>Nadzor</h3>
+          <p>Biidznillah, Alhamdulillah, dengan ridha Allah, kami sampai pada tahap nadzor. Dengan hati yang haru dan penuh khidmat, kami memohon dan berharap agar keputusan ini menjadi jalan kebaikan, pembuka keberkahan dunia hingga akhirat, serta mengantarkan kami menuju surga-Nya kelak.</p>
+        </div>
+      </div>
+      
+      <div class="story-wrapper">
+        <div class="story-panel">
+          <h3>Khitbah</h3>
+          <p>Biidznillah, Alhamdulillah, dengan ridha Allah, kami sampai pada proses khitbah. Dengan perasaan haru penuh khidmat kami memohon dan berharap agar keputusan ini menjadi jalan kebaikan dunia - akhirat sesurga kelak.</p>
+        </div>
+      </div>
+
+      <div class="story-wrapper">
+        <div class="story-panel">
+          <h3>Akad & Walimah</h3>
+          <p>Biidznillah, dengan penuh rasa syukur, kami melangkah menuju hari yang dinanti. Akad yang insyaaAllah akan kami jalani, serta walimah yang ingin kami rayakan bersama keluarga dan sahabat tercinta, semoga menjadi momen suci yang penuh kebahagiaan. Rabu, 8 Oktober 2025, semoga Allah menjadikan pernikahan ini sebagai ladang ibadah yang penuh <span class="highlight">sakinah</span> dengan indah <span class="highlight">mawaddah</span> dan berlimpah <span class="highlight">rahmah</span>. Aamiin ya Rabbal 'Aalamin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ==================== AMPLOP DIGITAL ==================== -->
+  <section class="top-section" id="amplop">
+    <div class="amplop-section">
+      <h2 class="amplop-title">Amplop Digital</h2>
+      <p class="amplop-description">Bagi Bapak/Ibu/Saudara/i yang ingin memberikan kado, dapat melalui transfer ke rekening berikut:</p>
+    
+      <div class="account-wrapper">
+        <div class="account-panel">
+          <div class="account-number"><i class="fa fa-bank"></i> BCA 1841662500</div>
+          <div class="account-name">A/n JEAN DWI KUSTANTO</div>
+          <button class="copy-btn" onclick="copyAccount('1841662500')"><i class="fas fa-copy"></i> Salin</button>
+        </div>
+      </div>
+      
+      <div class="account-wrapper">
+        <div class="account-panel">
+          <div class="account-number"><i class="fa fa-bank"></i> BRI 315501052898530</div>
+          <div class="account-name">A/n JEAN DWI KUSTANTO</div>
+          <button class="copy-btn" onclick="copyAccount('315501052898530')"><i class="fas fa-copy"></i> Salin</button>
+        </div>
+      </div>
+      
+      <div class="address-wrapper">
+        <div class="address-panel">
+          <div class="address-title">ALAMAT PENGIRIMAN KADO</div>
+          <div class="address-info">Candinegoro RT 001 RW 002, Kec. Wonoayu, Kab. Sidoarjo</div>
+          <div class="recipient">Jean Dwi Kustanto</div>
+          <div class="contact">+6285157998815</div>
+          <a href="https://wa.me/6295157998815?text=Assalamu'alaikum%20kak,%20saya%20sudah%20melakukan%20transfer%20kado%20pernikahan.%20Mohon%20konfirmasi%20ya.%20Terima%20kasih." class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> KONFIRMASI WHATSAPP
+          </a>
+        </div>
+      </div>
+      
+      <img src="assets/butterfly.png" alt="Butterfly Ornament" class="butterfly-ornament">
+      <div class="basmalah">بَارَكَ اللهُ لَكُما وَبَارَكَ عَلَيْكُما وَجَمَعَ بَيْنَكُما فِي خَيْرٍ
+      </div>
+      <p class="amplop-description">"Semoga Allah memberi keberkahan kalian dan memberkahi atas kalian serta mengumpulkan kalian berdua dalam kebaikan"</p>
+      <p class="amplop-description">Doa Rasulullah saw karya Samir Mahmud al-Husni (2008: 250)</p>
+    </div>
+  </section>
+
+  <!-- ==================== UCAPAN & DOA (PERBAIKAN) ==================== -->
+  <section class="top-section" id="ucapan">
+    <div class="ucapan-section">
+      <h2 class="ucapan-title">Ucapan & Doa</h2>
+      <p class="ucapan-description">Kirimkan ucapan dan doa untuk Jean & Dwi:</p>
+      
+      <div class="ucapan-form-wrapper">
+        <div class="ucapan-form-panel">
+          <form class="ucapan-form" id="ucapanForm">
+            <label for="namaUcapan">Nama:</label>
+            <input type="text" id="namaUcapan" name="namaUcapan" placeholder="Masukkan nama anda" required>
+            
+            <label for="ucapan">Ucapan & Doa:</label>
+            <textarea id="ucapan" name="ucapan" placeholder="Tulis ucapan dan doa anda" required></textarea>
+            
+            <label for="privasi">Privasi:</label>
+            <select id="privasi" name="privasi">
+              <option value="publik">Publik</option>
+              <option value="privat">Privat (Hanya untuk mempelai)</option>
+            </select>
+            
+            <button type="submit"><i class="fa-solid fa-paper-plane"></i> Beri Ucapan</button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Area untuk menampilkan ucapan -->
+      <div class="mt-4">
+        <h3 class="section-title" style="font-size: 1.4rem;">Ucapan & Doa dari Tamu</h3>
+        <div id="wishes-container" class="wishes-container">
+          <!-- Ucapan akan ditampilkan di sini -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PENUTUP ==================== -->
+  <section class="bottom-section" id="penutup">
+    <div class="ornament">
+      <img src="assets/butterfly.png" alt="Ornament Butterfly">
+      <h2>- Terima Kasih -</h2>
+      <p>Menjadi sebuah kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/Saudara/Saudari/Saudari berkenan hadir dalam hari bahagia kami. Terima kasih atas segala ucapan, do'a, dan perhatian yang diberikan.</p>
+    <div>
+      <p class="arabic-text">جَزَاكُمُ اللهُ خَيْرًا</p>
+      <p class="arabic-meaning">"Semoga Allah membalas kalian dengan kebaikan"</p>
+    </div>
+    <div>
+      <p class="couple-name">Jean & Dwi</p>
+      <p class="family-text">Beserta Keluarga</p>
+    </div>
+    </div>
+    <div class="footer-bride-groom">
+        <img src="assets/bride-groom.png" alt="Jean & Dwi" class="footer-image">
+    </div>
+    
+  </section>
+  
+  <!-- ==================== MENU & FLOATING BUTTONS ==================== -->
+  <div class="menu-dropdown" id="menuDropdown">
+    <div class="menu-item" onclick="scrollToSection('mempelai')"><i class="fas fa-heart"></i> Mempelai</div>
+    <div class="menu-item" onclick="scrollToSection('countdown')"><i class="fas fa-clock"></i> Countdown</div>
+    <div class="menu-item" onclick="scrollToSection('akad')"><i class="fas fa-mosque"></i> Akad Nikah</div>
+    <div class="menu-item" onclick="scrollToSection('walimah')"><i class="fas fa-ring"></i> Walimatul 'Urs</div>
+    <div class="menu-item" onclick="scrollToSection('rsvp')"><i class="fas fa-check-circle"></i> RSVP</div>
+    <div class="menu-item" onclick="scrollToSection('love-story')"><i class="fas fa-book-open"></i> Love Story</div>
+    <div class="menu-item" onclick="scrollToSection('amplop')"><i class="fas fa-gift"></i> Amplop Digital</div>
+    <div class="menu-item" onclick="scrollToSection('ucapan')"><i class="fas fa-comment"></i> Ucapan & Doa</div>
+    <div class="menu-item" onclick="scrollToSection('penutup')"><i class="fas fa-heart"></i> Terima Kasih</div>
+  </div>
+  
+  <div class="floating-buttons">
+    <button id="menuBtn" title="Menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    <button id="musicBtn" title="Putar / Hentikan Musik" onclick="toggleMusic()"><i class="fas fa-play"></i></button>
+  </div>
+  
+  <!-- ==================== NOTIFICATION & AUDIO ==================== -->
+  <div id="toast" class="toast"></div>
+  <audio id="bgMusic" loop><source src="assets/musik.mp3" type="audio/mpeg"></audio>
+
+  <script>
+    // ==================== FIREBASE CONFIGURATION ====================
+    // Inisialisasi Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyBg6EGMrQWLWX5HjlV9jAXU4-zhq4iltCo",
+      authDomain: "undangan-jeandwi.firebaseapp.com",
+      databaseURL: "https://undangan-jeandwi-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "undangan-jeandwi",
+      storageBucket: "undangan-jeandwi.firebasestorage.app",
+      messagingSenderId: "877292826662",
+      appId: "1:877292826662:web:903eff3cdd94c38cd736e7",
+      measurementId: "G-N49XBBL4P3"
+    };
+    
+    // Inisialisasi Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+    // Buat referensi ke database
+    const database = firebase.database();
+    const rsvpRef = database.ref('rsvp');
+    const wishesRef = database.ref('wishes');
+    
+    // ==================== GLOBAL VARIABLES ====================
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    let playing = false;
+    let userInteracted = false;
+    
+    // ==================== MUSIC CONTROL ====================
+    // Fungsi untuk memutar musik
+    function playMusic() {
+      if (bgMusic && !playing) {
+        const playPromise = bgMusic.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            playing = true;
+            musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            console.log("Music playing successfully");
+          }).catch(error => {
+            console.log("Autoplay prevented:", error);
+            // Jika autoplay diblokir, tampilkan tombol play
+            playing = false;
+            musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+          });
+        }
+      }
+    }
+    
+    // Fungsi untuk menghentikan musik
+    function pauseMusic() {
+      if (bgMusic && playing) {
+        bgMusic.pause();
+        playing = false;
+        musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+        console.log("Music paused");
+      }
+    }
+    
+    // Event listener untuk tombol musik
+    musicBtn.addEventListener('click', () => {
+      if (playing) {
+        pauseMusic();
+      } else {
+        playMusic();
+      }
+    });
+    
+    // Deteksi interaksi pengguna pertama kali untuk autoplay
+    function enableAutoplay() {
+      if (!userInteracted) {
+        userInteracted = true;
+        playMusic();
+        
+        // Hapus event listener setelah interaksi pertama
+        document.removeEventListener('click', enableAutoplay);
+        document.removeEventListener('touchstart', enableAutoplay);
+        document.removeEventListener('scroll', enableAutoplay);
+      }
+    }
+    
+    // Tambahkan event listener untuk berbagai jenis interaksi
+    document.addEventListener('click', enableAutoplay, { once: true });
+    document.addEventListener('touchstart', enableAutoplay, { once: true });
+    document.addEventListener('scroll', enableAutoplay, { once: true });
+    
+    // ==================== MENU & NAVIGATION ====================
+    function toggleMenu() {
+      document.getElementById('menuDropdown').classList.toggle('active');
+    }
+    
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('menuDropdown').classList.remove('active');
+      }
+    }
+    
+    document.addEventListener('click', function(event) {
+      const menuDropdown = document.getElementById('menuDropdown');
+      const menuButton = document.getElementById('menuBtn');
+      if (!menuDropdown.contains(event.target) && !menuButton.contains(event.target)) {
+        menuDropdown.classList.remove('active');
+      }
+    });
+    
+    // ==================== UTILITY FUNCTIONS ====================
+    function showToast(message, type = "success") {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      
+      // Set warna background berdasarkan tipe
+      if (type === "success") {
+        toast.style.background = "rgba(122, 89, 109, 0.9)";
+      } else if (type === "error") {
+        toast.style.background = "rgba(220, 53, 69, 0.9)";
+      }
+      
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function saveEvent() {
+      showToast('Fitur simpan acara akan segera tersedia');
+    }
+    
+    function copyAccount(accountNumber) {
+      navigator.clipboard.writeText(accountNumber).then(() => {
+        showToast(`Nomor rekening ${accountNumber} berhasil disalin!`);
+      }).catch(() => showToast('Gagal menyalin nomor rekening', "error"));
+    }
+    
+    // ==================== FIREBASE FUNCTIONS ====================
+    // Fungsi untuk menangani error Firebase
+    function handleFirebaseError(error, operation) {
+      console.error(`Error ${operation}:`, error);
+      
+      if (error.code === 'PERMISSION_DENIED') {
+        showToast("Anda tidak memiliki izin untuk melakukan operasi ini", "error");
+      } else if (error.code === 'NETWORK_ERROR') {
+        showToast("Koneksi internet bermasalah. Silakan coba lagi", "error");
+      } else {
+        showToast(`Terjadi kesalahan saat ${operation}. Silakan coba lagi`, "error");
+      }
+    }
+    
+    // Fungsi untuk submit RSVP ke Firebase
+    function submitRSVP(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('nama').value.trim();
+      const attendance = document.getElementById('konfirmasi').value;
+      
+      if (!name || !attendance) {
+        showToast("Harap isi semua field", "error");
+        return;
+      }
+      
+      // Tampilkan loading state
+      const submitButton = event.target.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+      submitButton.disabled = true;
+      
+      // Buat objek RSVP
+      const rsvp = {
+        name: name,
+        attendance: attendance,
+        timestamp: new Date().toISOString()
+      };
+      
+      // Simpan ke Firebase
+      rsvpRef.push(rsvp)
+        .then(() => {
+          // Reset form
+          event.target.reset();
+          
+          // Kembalikan button ke state semula
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+          
+          // Tampilkan notifikasi
+          let attendanceText = attendance === 'hadir' ? 'Hadir' : 'Tidak Hadir';
+          showToast(`Terima kasih ${name}! Konfirmasi kehadiran Anda telah diterima. Status: ${attendanceText}`, "success");
+        })
+        .catch((error) => {
+          handleFirebaseError(error, "menyimpan RSVP");
+          
+          // Kembalikan button ke state semula
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+        });
+    }
+    
+    // Fungsi untuk submit ucapan & doa ke Firebase (PERBAIKAN)
+    function submitWish(event) {
+      console.log("submitWish function called"); // DEBUG LOG
+      event.preventDefault();
+      console.log("Default prevented"); // DEBUG LOG
+      
+      // Cek apakah elemen ada sebelum mencoba mengaksesnya
+      const nameInput = document.getElementById('namaUcapan');
+      const messageInput = document.getElementById('ucapan');
+      const privacyInput = document.getElementById('privasi');
+      
+      if (!nameInput || !messageInput || !privacyInput) {
+        console.error("One or more form elements not found:", { 
+          nameInput: !!nameInput, 
+          messageInput: !!messageInput, 
+          privacyInput: !!privacyInput 
+        });
+        showToast("Terjadi kesalahan pada form. Silakan refresh halaman.", "error");
+        return;
+      }
+      
+      const name = nameInput.value.trim();
+      const message = messageInput.value.trim();
+      const privacy = privacyInput.value;
+      
+      console.log("Form values:", { name, message, privacy }); // DEBUG LOG
+      
+      if (!name || !message) {
+        console.log("Validation failed"); // DEBUG LOG
+        showToast("Harap isi semua field", "error");
+        return;
+      }
+      
+      // Tampilkan loading state
+      const submitButton = event.target.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+      submitButton.disabled = true;
+      
+      // Buat objek ucapan
+      const wish = {
+        name: name,
+        message: message,
+        privacy: privacy,
+        timestamp: new Date().toISOString()
+      };
+      
+      console.log("Saving wish to Firebase:", wish); // DEBUG LOG
+      
+      // Simpan ke Firebase
+      wishesRef.push(wish)
+        .then(() => {
+          console.log("Wish saved successfully"); // DEBUG LOG
+          // Reset form
+          event.target.reset();
+          
+          // Kembalikan button ke state semula
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+          
+          // Tampilkan notifikasi
+          showToast(`Terima kasih ${name}! Ucapan & doa Anda telah terkirim.`, "success");
+        })
+        .catch((error) => {
+          console.error("Error saving wish:", error); // DEBUG LOG
+          handleFirebaseError(error, "menyimpan ucapan");
+          
+          // Kembalikan button ke state semula
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+        });
+    }
+    
+    // Fungsi untuk menampilkan ucapan dari Firebase (PERBAIKAN)
+    function displayWishes() {
+      const wishesContainer = document.getElementById('wishes-container');
+      
+      // Tampilkan loading state
+      wishesContainer.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
+      
+      // Ambil ucapan dari Firebase
+      wishesRef.orderByChild('timestamp').once('value')
+        .then((snapshot) => {
+          // Kosongkan container
+          wishesContainer.innerHTML = '';
+          
+          if (!snapshot.exists()) {
+            wishesContainer.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
+            return;
+          }
+          
+          // Ubah snapshot menjadi array dan urutkan dari yang terbaru
+          const wishes = [];
+          snapshot.forEach((childSnapshot) => {
+            wishes.push({
+              id: childSnapshot.key,
+              ...childSnapshot.val()
+            });
+          });
+          
+          // Urutkan dari yang terbaru
+          wishes.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+          
+          // Tampilkan setiap ucapan
+          wishes.forEach((wish, index) => {
+            // Format tanggal
+            const date = new Date(wish.timestamp);
+            const formattedDate = date.toLocaleDateString('id-ID', { 
+              day: 'numeric', 
+              month: 'long', 
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit'
+            });
+            
+            // Buat elemen untuk ucapan
+            const wishElement = document.createElement('div');
+            wishElement.className = 'wish-item';
+            wishElement.style.animationDelay = `${index * 0.1}s`;
+            
+            wishElement.innerHTML = `
+              <div class="wish-header">
+                <h5 class="wish-name">${wish.name}</h5>
+                <span class="wish-date">${formattedDate}</span>
+              </div>
+              <p class="wish-message">${wish.message}</p>
+              ${wish.privacy === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
+            `;
+            
+            wishesContainer.appendChild(wishElement);
+          });
+        })
+        .catch((error) => {
+          handleFirebaseError(error, "memuat ucapan");
+          wishesContainer.innerHTML = '<div class="no-wishes">Gagal memuat ucapan. Silakan refresh halaman.</div>';
+        });
+    }
+    
+    // Setup real-time listener untuk ucapan baru (PERBAIKAN)
+    function setupWishesListener() {
+      console.log("Setting up wishes listener"); // DEBUG LOG
+      wishesRef.orderByChild('timestamp').on('value', (snapshot) => {
+        console.log("Wishes listener triggered"); // DEBUG LOG
+        const wishesContainer = document.getElementById('wishes-container');
+        
+        // Kosongkan container
+        wishesContainer.innerHTML = '';
+        
+        if (!snapshot.exists()) {
+          wishesContainer.innerHTML = '<div class="no-wishes">Belum ada ucapan. Jadilah yang pertama memberikan ucapan!</div>';
+          return;
+        }
+        
+        // Ubah snapshot menjadi array dan urutkan dari yang terbaru
+        const wishes = [];
+        snapshot.forEach((childSnapshot) => {
+          wishes.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+        
+        // Urutkan dari yang terbaru
+        wishes.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        
+        // Tampilkan setiap ucapan
+        wishes.forEach((wish, index) => {
+          // Format tanggal
+          const date = new Date(wish.timestamp);
+          const formattedDate = date.toLocaleDateString('id-ID', { 
+            day: 'numeric', 
+            month: 'long', 
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          });
+          
+          // Buat elemen untuk ucapan
+          const wishElement = document.createElement('div');
+          wishElement.className = 'wish-item';
+          wishElement.style.animationDelay = `${index * 0.1}s`;
+          
+          wishElement.innerHTML = `
+            <div class="wish-header">
+              <h5 class="wish-name">${wish.name}</h5>
+              <span class="wish-date">${formattedDate}</span>
+            </div>
+            <p class="wish-message">${wish.message}</p>
+            ${wish.privacy === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
+          `;
+          
+          wishesContainer.appendChild(wishElement);
+        });
+      });
+    }
+    
+    // ==================== COUNTDOWN ====================
+    const eventDate = new Date('2025-10-12T08:00:00').getTime();
+    function updateCountdown(){
+      const now = Date.now();
+      const distance = eventDate - now;
+      if (distance <= 0) {
+        document.getElementById("days").innerText = '0';
+        document.getElementById("hours").innerText = '00';
+        document.getElementById("minutes").innerText = '00';
+        document.getElementById("seconds").innerText = '00';
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById("days").innerText = days.toString().padStart(2, '0');
+      document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+    
+    // ==================== ANIMASI PADA SCROLL ====================
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // ==================== ANIMASI UNTUK FORM INPUTS ====================
+    document.querySelectorAll('input, textarea, select').forEach(element => {
+      element.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'scale(1.02)';
+      });
+      
+      element.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'scale(1)';
+      });
+    });
+
+    // ==================== ANIMASI UNTUK BUTTON CLICKS (RIPPLE) ====================
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      });
+    });
+    
+    // ==================== FUNGSI UNTUK MENGISI FORM DARI URL ====================
+    function fillNameFromUrl() {
+      // Ambil parameter dari URL
+      const params = new URLSearchParams(window.location.search);
+      const nameFromUrl = params.get('to'); // Cari parameter 'to'
+
+      // Jika parameter 'to' ada
+      if (nameFromUrl) {
+        // Decode nama (mengganti '+' dengan spasi) dan bersihkan
+        const decodedName = decodeURIComponent(nameFromUrl).trim();
+
+        // Pilih input nama di kedua form
+        const rsvpNameInput = document.getElementById('nama');
+        const ucapanNameInput = document.getElementById('namaUcapan');
+
+        // Isi nilai input jika elemen ditemukan
+        if (rsvpNameInput) {
+          rsvpNameInput.value = decodedName;
+          highlightInput(rsvpNameInput); // Panggil fungsi animasi
+        }
+        if (ucapanNameInput) {
+          ucapanNameInput.value = decodedName;
+          highlightInput(ucapanNameInput); // Panggil fungsi animasi
+        }
+      }
+    }
+    
+    // ==================== FUNGSI UNTUK MENAMBAHKAN ANIMASI SOROTAN ====================
+    function highlightInput(inputElement) {
+      if (!inputElement) return;
+      
+      // Tambahkan class untuk animasi
+      inputElement.classList.add('highlight-animation');
+      
+      // Fokus pada input
+      inputElement.focus();
+      
+      // Hapus class setelah 2.5 detik agar animasi tidak terus berjalan
+      setTimeout(() => {
+        inputElement.classList.remove('highlight-animation');
+      }, 2500);
+    }
+    
+    // ==================== INITIALIZATION ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log("DOM fully loaded"); // DEBUG LOG
+      
+      // Jalankan fungsi untuk mengisi nama dari URL
+      fillNameFromUrl();
+      
+      // Tambahkan event listener untuk form RSVP
+      const rsvpForm = document.getElementById('rsvpForm');
+      if (rsvpForm) {
+        rsvpForm.addEventListener('submit', submitRSVP);
+        console.log("RSVP form event listener attached"); // DEBUG LOG
+      }
+      
+      // Tambahkan event listener untuk form Ucapan (PERBAIKAN)
+      const ucapanForm = document.getElementById('ucapanForm');
+      if (ucapanForm) {
+        ucapanForm.addEventListener('submit', submitWish);
+        console.log("Ucapan form event listener attached"); // DEBUG LOG
+      } else {
+        console.error("Ucapan form not found!"); // DEBUG LOG
+      }
+      
+      // Panggil fungsi untuk menampilkan ucapan (PERBAIKAN)
+      setupWishesListener();
+      
+      // Observe semua sections untuk animasi scroll
+      document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+      });
+      
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      
+      // Coba putar musik saat halaman dimuat
+      setTimeout(() => {
+        if (!userInteracted) {
+          playMusic();
+        }
+      }, 1000);
+    });
+    
+    // Mencegah klik kanan pada seluruh halaman
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    
+    // Mencegah drag gambar
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    });
+    
+    // Mencegah copy teks (kecuali pada input dan textarea)
+    document.addEventListener('selectstart', function(e) {
+      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        return false;
+      }
+    });
+    
+    // Mencegah copy dengan Ctrl+C/Cmd+C (kecuali pada input dan textarea)
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+        const activeElement = document.activeElement;
+        if (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          return false;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
