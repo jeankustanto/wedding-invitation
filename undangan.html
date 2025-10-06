@@ -14,9 +14,9 @@
   <link rel="apple-touch-icon" href="assets/logo.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
   
-  <!-- Firebase SDK - Update ke versi terbaru -->
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
   
   <style>
     /* ==================== GLOBAL STYLES ==================== */
@@ -1155,7 +1155,7 @@
       pointer-events: none;
     }
     
-    /* ==================== UCAPAN & DOA ==================== */
+    /* ==================== UCAPAN & DOA (PERBAIKAN) ==================== */
     .ucapan-section {
       background-color: var(--ucapan-bg);
       padding: 40px 15px;
@@ -1288,87 +1288,101 @@
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
-    
-    .ucapan-list-wrapper {
-      width: 90%;
-      max-width: 300px;
-      margin: 25px auto;
-      padding: 10px;
-      border-radius: 15px;
-      background: var(--outer-ring);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      opacity: 0;
-      animation: fadeInRight 1s ease 0.7s forwards;
-    }
-    
-    .ucapan-list-panel {
-      background: var(--ucapan-card-bg);
-      border-radius: 10px;
-      padding: 18px 12px;
-      border: 2px solid rgba(255,255,255,0.5);
-      box-shadow: inset 0 -6px 12px rgba(0,0,0,0.06), inset 0 2px 0 rgba(255,255,255,0.35);
-      text-align: center;
-      color: #333;
-    }
-    
-    .ucapan-list {
-      max-height: 300px;
+
+    /* Wishes Container - Menggunakan struktur dari kode 2 */
+    .wishes-container {
+      max-height: 400px;
       overflow-y: auto;
-      padding: 8px;
-      border-radius: 8px;
-      background-color: rgba(255, 255, 255, 0.5);
+      padding-right: 10px;
+      margin-top: 20px;
     }
     
-    .ucapan-item {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      text-align: left;
+    .wishes-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .wishes-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    
+    .wishes-container::-webkit-scrollbar-thumb {
+      background: rgba(157, 123, 148, 0.5);
+      border-radius: 10px;
+    }
+    
+    .wishes-container::-webkit-scrollbar-thumb:hover {
+      background: rgba(157, 123, 148, 0.7);
+    }
+    
+    .wish-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      padding: 15px;
+      margin-bottom: 15px;
       opacity: 0;
       animation: fadeInUp 0.5s ease forwards;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
-    .ucapan-item:hover {
+    .wish-item:hover {
       transform: translateX(5px);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     
-    .ucapan-item h4 {
-      font-family: var(--font-secondary);
-      font-weight: 700;
-      font-size: var(--text-xl);
-      color: var(--accent);
-      margin-bottom: 4px;
-      letter-spacing: var(--letter-normal);
+    .wish-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
     }
     
-    .ucapan-item p {
+    .wish-name {
+      font-family: var(--font-secondary);
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0;
+    }
+    
+    .wish-date {
+      font-family: var(--font-primary);
+      font-size: var(--text-xs);
+      color: #888;
+    }
+    
+    .wish-message {
+      font-family: var(--font-primary);
       font-size: var(--text-sm);
       color: #555;
       margin: 0;
-      line-height: 1.4;
-      letter-spacing: var(--letter-tight);
+      line-height: 1.5;
     }
     
-    .ucapan-item .date {
+    .wish-privacy {
+      display: inline-block;
+      margin-top: 8px;
       font-size: var(--text-xs);
-      color: #888;
-      margin-top: 6px;
-      text-align: right;
+      color: var(--accent);
     }
     
     .loading {
       text-align: center;
-      padding: 15px;
+      padding: 20px;
       color: var(--muted);
     }
     
     .loading i {
       font-size: 20px;
       animation: spin 1s linear infinite;
+    }
+    
+    .no-wishes {
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-style: italic;
     }
     
     @keyframes spin {
@@ -1702,7 +1716,7 @@
     <div class="mempelai">
       <h2>Jean Dwi Kustanto</h2>
       <p><strong>PUTRA DARI</strong></p>
-      <p>Bapak Slamet Budiono (alm) & Ibu Kuswati</p>
+      <p>Bapakak Slamet Budiono (alm) & Ibu Kuswati</p>
     </div>
     
     <div class="separator">
@@ -1877,7 +1891,7 @@
           <div class="address-info">Candinegoro RT 001 RW 002, Kec. Wonoayu, Kab. Sidoarjo</div>
           <div class="recipient">Jean Dwi Kustanto</div>
           <div class="contact">+6285157998815</div>
-          <a href="https://wa.me/+6285157998815?text=Assalamu'alaikum%20kak,%20saya%20sudah%20melakukan%20transfer%20kado%20pernikahan.%20Mohon%20konfirmasi%20ya.%20Terima%20kasih." class="whatsapp-btn" target="_blank">
+          <a href="https://wa.me/6295157998815?text=Assalamu'alaikum%20kak,%20saya%20sudah%20melakukan%20transfer%20kado%20pernikahan.%20Mohon%20konfirmasi%20ya.%20Terima%20kasih." class="whatsapp-btn" target="_blank">
             <i class="fab fa-whatsapp"></i> KONFIRMASI WHATSAPP
           </a>
         </div>
@@ -1891,7 +1905,7 @@
     </div>
   </section>
 
-  <!-- ==================== UCAPAN & DOA ==================== -->
+  <!-- ==================== UCAPAN & DOA (PERBAIKAN) ==================== -->
   <section class="top-section" id="ucapan">
     <div class="ucapan-section">
       <h2 class="ucapan-title">Ucapan & Doa</h2>
@@ -1917,12 +1931,11 @@
         </div>
       </div>
       
-      <div class="ucapan-list-wrapper">
-        <div class="ucapan-list-panel">
-          <h3>Ucapan & Doa Para Tamu</h3>
-          <div class="ucapan-list" id="ucapanList">
-            <div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>
-          </div>
+      <!-- Area untuk menampilkan ucapan -->
+      <div class="mt-4">
+        <h3 class="section-title" style="font-size: 1.4rem;">Ucapan & Doa dari Tamu</h3>
+        <div id="wishes-container" class="wishes-container">
+          <!-- Ucapan akan ditampilkan di sini -->
         </div>
       </div>
     </div>
@@ -2166,7 +2179,7 @@
         });
     }
     
-    // Fungsi untuk submit ucapan & doa ke Firebase
+    // Fungsi untuk submit ucapan & doa ke Firebase (PERBAIKAN)
     function submitWish(event) {
       event.preventDefault();
       
@@ -2215,9 +2228,9 @@
         });
     }
     
-    // Fungsi untuk menampilkan ucapan dari Firebase
+    // Fungsi untuk menampilkan ucapan dari Firebase (PERBAIKAN)
     function displayWishes() {
-      const wishesContainer = document.getElementById('ucapanList');
+      const wishesContainer = document.getElementById('wishes-container');
       
       // Tampilkan loading state
       wishesContainer.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Memuat ucapan...</p></div>';
@@ -2259,13 +2272,15 @@
             
             // Buat elemen untuk ucapan
             const wishElement = document.createElement('div');
-            wishElement.className = 'ucapan-item';
+            wishElement.className = 'wish-item';
             wishElement.style.animationDelay = `${index * 0.1}s`;
             
             wishElement.innerHTML = `
-              <h4>${wish.name}</h4>
-              <p>${wish.message}</p>
-              <div class="date">${formattedDate}</div>
+              <div class="wish-header">
+                <h5 class="wish-name">${wish.name}</h5>
+                <span class="wish-date">${formattedDate}</span>
+              </div>
+              <p class="wish-message">${wish.message}</p>
               ${wish.privacy === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
             `;
             
@@ -2278,10 +2293,10 @@
         });
     }
     
-    // Setup real-time listener untuk ucapan baru
+    // Setup real-time listener untuk ucapan baru (PERBAIKAN)
     function setupWishesListener() {
       wishesRef.orderByChild('timestamp').on('value', (snapshot) => {
-        const wishesContainer = document.getElementById('ucapanList');
+        const wishesContainer = document.getElementById('wishes-container');
         
         // Kosongkan container
         wishesContainer.innerHTML = '';
@@ -2317,13 +2332,15 @@
           
           // Buat elemen untuk ucapan
           const wishElement = document.createElement('div');
-          wishElement.className = 'ucapan-item';
+          wishElement.className = 'wish-item';
           wishElement.style.animationDelay = `${index * 0.1}s`;
           
           wishElement.innerHTML = `
-            <h4>${wish.name}</h4>
-            <p>${wish.message}</p>
-            <div class="date">${formattedDate}</div>
+            <div class="wish-header">
+              <h5 class="wish-name">${wish.name}</h5>
+              <span class="wish-date">${formattedDate}</span>
+            </div>
+            <p class="wish-message">${wish.message}</p>
             ${wish.privacy === 'privat' ? '<span class="wish-privacy"><i class="fas fa-lock"></i> Privat</span>' : ''}
           `;
           
@@ -2459,13 +2476,13 @@
         rsvpForm.addEventListener('submit', submitRSVP);
       }
       
-      // Tambahkan event listener untuk form Ucapan
+      // Tambahkan event listener untuk form Ucapan (PERBAIKAN)
       const ucapanForm = document.getElementById('ucapanForm');
       if (ucapanForm) {
         ucapanForm.addEventListener('submit', submitWish);
       }
       
-      // Panggil fungsi untuk menampilkan ucapan
+      // Panggil fungsi untuk menampilkan ucapan (PERBAIKAN)
       setupWishesListener();
       
       // Observe semua sections untuk animasi scroll
@@ -2487,11 +2504,11 @@
       }, 1000);
     });
     
-    // // Mencegah klik kanan pada seluruh halaman
-    // document.addEventListener('contextmenu', function(e) {
-    //   e.preventDefault();
-    //   return false;
-    // });
+    // Mencegah klik kanan pada seluruh halaman
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
     
     // Mencegah drag gambar
     document.addEventListener('dragstart', function(e) {
@@ -2501,24 +2518,24 @@
       }
     });
     
-    // // Mencegah copy teks (kecuali pada input dan textarea)
-    // document.addEventListener('selectstart', function(e) {
-    //   if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-    //     e.preventDefault();
-    //     return false;
-    //   }
-    // });
+    // Mencegah copy teks (kecuali pada input dan textarea)
+    document.addEventListener('selectstart', function(e) {
+      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        return false;
+      }
+    });
     
     // Mencegah copy dengan Ctrl+C/Cmd+C (kecuali pada input dan textarea)
-    // document.addEventListener('keydown', function(e) {
-    //   if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
-    //     const activeElement = document.activeElement;
-    //     if (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA') {
-    //       e.preventDefault();
-    //       return false;
-    //     }
-    //   }
-    // });
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+        const activeElement = document.activeElement;
+        if (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          return false;
+        }
+      }
+    });
   </script>
 </body>
 </html>
