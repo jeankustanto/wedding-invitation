@@ -2487,11 +2487,11 @@
       }, 1000);
     });
     
-    // Mencegah klik kanan pada seluruh halaman
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-      return false;
-    });
+    // // Mencegah klik kanan pada seluruh halaman
+    // document.addEventListener('contextmenu', function(e) {
+    //   e.preventDefault();
+    //   return false;
+    // });
     
     // Mencegah drag gambar
     document.addEventListener('dragstart', function(e) {
@@ -2501,24 +2501,24 @@
       }
     });
     
-    // Mencegah copy teks (kecuali pada input dan textarea)
-    document.addEventListener('selectstart', function(e) {
-      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        return false;
-      }
-    });
+    // // Mencegah copy teks (kecuali pada input dan textarea)
+    // document.addEventListener('selectstart', function(e) {
+    //   if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+    //     e.preventDefault();
+    //     return false;
+    //   }
+    // });
     
     // Mencegah copy dengan Ctrl+C/Cmd+C (kecuali pada input dan textarea)
-    document.addEventListener('keydown', function(e) {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
-        const activeElement = document.activeElement;
-        if (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA') {
-          e.preventDefault();
-          return false;
-        }
-      }
-    });
+    // document.addEventListener('keydown', function(e) {
+    //   if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+    //     const activeElement = document.activeElement;
+    //     if (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA') {
+    //       e.preventDefault();
+    //       return false;
+    //     }
+    //   }
+    // });
   </script>
 </body>
 </html>
