@@ -2133,14 +2133,38 @@
         });
     }
     
-    // ==================== FUNGSI UCAPAN & DOA (FINAL) ====================
+    // ==================== FUNGSI UCAPAN & DOA (FINAL & AMAN) ====================
     function submitWish(event) {
       event.preventDefault();
       console.log("submitWish function started.");
 
-      const name = document.getElementById('namaUcapan').value.trim();
-      const message = document.getElementById('ucapan').value.trim();
-      const privacy = document.getElementById('privasi').value;
+      // --- Pemeriksaan Keamanan ---
+      const nameInput = document.getElementById('namaUcapan');
+      const messageInput = document.getElementById('ucapan');
+      const privacySelect = document.getElementById('privasi');
+
+      if (!nameInput || !messageInput || !privacySelect) {
+          console.error("CRITICAL ERROR: Form elements not found!", { 
+              nameInput: !!nameInput, 
+              messageInput: !!messageInput, 
+              privacySelect: !!privacySelect 
+          });
+          showToast("Terjadi kesalahan fatal pada form. Silakan refresh halaman.", "error");
+          return;
+      }
+
+      if (typeof nameInput.value === 'undefined' || typeof messageInput.value === 'undefined') {
+          console.error("CRITICAL ERROR: Element found but has no .value property. Check your HTML IDs!", { 
+              nameInputTag: nameInput.tagName, 
+              messageInputTag: messageInput.tagName 
+          });
+          showToast("Terjadi kesalahan fatal pada form. Periksa atribut ID pada HTML.", "error");
+          return;
+      }
+      
+      const name = nameInput.value.trim();
+      const message = messageInput.value.trim();
+      const privacy = privacySelect.value;
       
       console.log("Form values:", { name, message, privacy });
 
@@ -2342,8 +2366,6 @@
         rsvpForm.addEventListener('submit', submitRSVP);
         console.log("RSVP form event listener attached.");
       }
-      
-      // Listener untuk ucapan sudah diatur via onsubmit di HTML
       
       setupWishesListener();
       
