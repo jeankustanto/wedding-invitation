@@ -43,6 +43,7 @@
       --menu-bg: rgba(0, 0, 0, 0.5);
       --menu-border: #ffcc4d;
       --name-color: #9d7b94;
+      --border-color: #e4d6dd; /* DITAMBAHKAN */
       
       /* Typography Variables */
       --font-primary: 'Roboto', sans-serif;
@@ -1857,7 +1858,7 @@
       <div class="story-wrapper">
         <div class="story-panel">
           <h3>Akad & Walimah</h3>
-          <p>Biidznillah, dengan penuh rasa syukur, kami melangkah menuju hari yang dinanti. Akad yang insyaaAllah akan kami jalani, serta walimah yang ingin kami rayakan bersama keluarga dan sahabat tercinta, semoga menjadi momen suci yang penuh kebahagiaan. Rabu, 8 Oktober 2025, semoga Allah menjadikan pernikahan ini sebagai ladang ibadah yang penuh <span class="highlight">sakinah</span> dengan indah <span class="highlight">mawaddah</span> dan berlimpah <span class="highlight">rahmah</span>. Aamiin ya Rabbal 'Aalamin.</p>
+          <p>Biidznillah, dengan penuh rasa syukur, kami melangkah menuju hari yang dinanti. Akad yang insyaaAllah akan kami jalani, serta walimah yang ingin kami rayakan bersama keluarga dan sahabat tercinta, semoga menjadi momen suci yang penuh <span class="highlight">sakinah</span> dengan indah <span class="highlight">mawaddah</span> dan berlimpah <span class="highlight">rahmah</span>. Aamiin ya Rabbal 'Aalamin.</p>
         </div>
       </div>
     </div>
@@ -1913,7 +1914,7 @@
       
       <div class="ucapan-form-wrapper">
         <div class="ucapan-form-panel">
-          <form class="ucapan-form" id="ucapanForm">
+          <form class="ucapan-form" id="ucapanForm" onsubmit="submitWish(event)">
             <label for="namaUcapan">Nama:</label>
             <input type="text" id="namaUcapan" name="namaUcapan" placeholder="Masukkan nama anda" required>
             
@@ -2179,36 +2180,17 @@
         });
     }
     
-    // Fungsi untuk submit ucapan & doa ke Firebase (PERBAIKAN)
+    // ==================== FUNGSI UCAPAN & DOA (PERBAIKAN) ====================
+    // Fungsi untuk submit ucapan & doa ke Firebase
     function submitWish(event) {
-      console.log("submitWish function called"); // DEBUG LOG
       event.preventDefault();
-      console.log("Default prevented"); // DEBUG LOG
       
-      // Cek apakah elemen ada sebelum mencoba mengaksesnya
-      const nameInput = document.getElementById('namaUcapan');
-      const messageInput = document.getElementById('ucapan');
-      const privacyInput = document.getElementById('privasi');
-      
-      if (!nameInput || !messageInput || !privacyInput) {
-        console.error("One or more form elements not found:", { 
-          nameInput: !!nameInput, 
-          messageInput: !!messageInput, 
-          privacyInput: !!privacyInput 
-        });
-        showToast("Terjadi kesalahan pada form. Silakan refresh halaman.", "error");
-        return;
-      }
-      
-      const name = nameInput.value.trim();
-      const message = messageInput.value.trim();
-      const privacy = privacyInput.value;
-      
-      console.log("Form values:", { name, message, privacy }); // DEBUG LOG
+      const name = document.getElementById('namaUcapan').value.trim();
+      const message = document.getElementById('ucapan').value.trim();
+      const privacy = document.getElementById('privasi').value;
       
       if (!name || !message) {
-        console.log("Validation failed"); // DEBUG LOG
-        showToast("Harap isi semua field", "error");
+        showToast("Harap isi nama dan ucapan", "error");
         return;
       }
       
@@ -2226,12 +2208,9 @@
         timestamp: new Date().toISOString()
       };
       
-      console.log("Saving wish to Firebase:", wish); // DEBUG LOG
-      
       // Simpan ke Firebase
       wishesRef.push(wish)
         .then(() => {
-          console.log("Wish saved successfully"); // DEBUG LOG
           // Reset form
           event.target.reset();
           
@@ -2243,7 +2222,6 @@
           showToast(`Terima kasih ${name}! Ucapan & doa Anda telah terkirim.`, "success");
         })
         .catch((error) => {
-          console.error("Error saving wish:", error); // DEBUG LOG
           handleFirebaseError(error, "menyimpan ucapan");
           
           // Kembalikan button ke state semula
@@ -2252,7 +2230,7 @@
         });
     }
     
-    // Fungsi untuk menampilkan ucapan dari Firebase (PERBAIKAN)
+    // Fungsi untuk menampilkan ucapan dari Firebase
     function displayWishes() {
       const wishesContainer = document.getElementById('wishes-container');
       
@@ -2317,11 +2295,9 @@
         });
     }
     
-    // Setup real-time listener untuk ucapan baru (PERBAIKAN)
+    // Setup real-time listener untuk ucapan baru
     function setupWishesListener() {
-      console.log("Setting up wishes listener"); // DEBUG LOG
       wishesRef.orderByChild('timestamp').on('value', (snapshot) => {
-        console.log("Wishes listener triggered"); // DEBUG LOG
         const wishesContainer = document.getElementById('wishes-container');
         
         // Kosongkan container
@@ -2491,8 +2467,6 @@
     
     // ==================== INITIALIZATION ====================
     document.addEventListener('DOMContentLoaded', function() {
-      console.log("DOM fully loaded"); // DEBUG LOG
-      
       // Jalankan fungsi untuk mengisi nama dari URL
       fillNameFromUrl();
       
@@ -2500,19 +2474,11 @@
       const rsvpForm = document.getElementById('rsvpForm');
       if (rsvpForm) {
         rsvpForm.addEventListener('submit', submitRSVP);
-        console.log("RSVP form event listener attached"); // DEBUG LOG
       }
       
-      // Tambahkan event listener untuk form Ucapan (PERBAIKAN)
-      const ucapanForm = document.getElementById('ucapanForm');
-      if (ucapanForm) {
-        ucapanForm.addEventListener('submit', submitWish);
-        console.log("Ucapan form event listener attached"); // DEBUG LOG
-      } else {
-        console.error("Ucapan form not found!"); // DEBUG LOG
-      }
+      // **PERUBAHAN PENTING**: Hapus event listener untuk form ucapan, karena sekarang menggunakan onsubmit langsung di HTML
       
-      // Panggil fungsi untuk menampilkan ucapan (PERBAIKAN)
+      // Panggil fungsi untuk menampilkan ucapan
       setupWishesListener();
       
       // Observe semua sections untuk animasi scroll
@@ -2534,11 +2500,11 @@
       }, 1000);
     });
     
-    // Mencegah klik kanan pada seluruh halaman
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-      return false;
-    });
+    // // Mencegah klik kanan pada seluruh halaman
+    // document.addEventListener('contextmenu', function(e) {
+    //   e.preventDefault();
+    //   return false;
+    // });
     
     // Mencegah drag gambar
     document.addEventListener('dragstart', function(e) {
@@ -2548,24 +2514,24 @@
       }
     });
     
-    // Mencegah copy teks (kecuali pada input dan textarea)
-    document.addEventListener('selectstart', function(e) {
-      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        return false;
-      }
-    });
+    // // Mencegah copy teks (kecuali pada input dan textarea)
+    // document.addEventListener('selectstart', function(e) {
+    //   if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+    //     e.preventDefault();
+    //     return false;
+    //   }
+    // });
     
-    // Mencegah copy dengan Ctrl+C/Cmd+C (kecuali pada input dan textarea)
-    document.addEventListener('keydown', function(e) {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
-        const activeElement = document.activeElement;
-        if (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA') {
-          e.preventDefault();
-          return false;
-        }
-      }
-    });
+    // // Mencegah copy dengan Ctrl+C/Cmd+C (kecuali pada input dan textarea)
+    // document.addEventListener('keydown', function(e) {
+    //   if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+    //     const activeElement = document.activeElement;
+    //     if (activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA') {
+    //       e.preventDefault();
+    //       return false;
+    //     }
+    //   }
+    // });
   </script>
 </body>
 </html>
